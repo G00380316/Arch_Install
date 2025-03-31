@@ -83,9 +83,9 @@ function no_such_file_or_directory_handler {
 # cleaning up home folder
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 XDG_CONFIG_DIR="${XDG_CONFIG_DIR:-$HOME/.config}"
-XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.config/scripts/Hyde_Inject/share}"
 XDG_DATA_DIRS="${XDG_DATA_DIRS:-$XDG_DATA_HOME:/usr/local/share:/usr/share}"
-XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}"
+XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.config/scripts/Hyde_Inject/state}"
 XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
 XDG_DESKTOP_DIR="${XDG_DESKTOP_DIR:-$HOME/Desktop}"
 XDG_DOWNLOAD_DIR="${XDG_DOWNLOAD_DIR:-$HOME/Downloads}"
@@ -115,7 +115,7 @@ if [ -t 1 ]; then
 
     # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh
     [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-    
+
     PM="pm.sh"
     # Check if pm.sh is in PATH
     if ! command -v "$PM" &>/dev/null; then

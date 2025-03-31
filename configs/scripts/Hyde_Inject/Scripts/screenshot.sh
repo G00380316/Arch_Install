@@ -81,7 +81,7 @@ take_screenshot() {
 	local extra_args=("$@")
 
 	# execute grimblast with given args
-	if "$LIB_DIR/hyde/grimblast" "${extra_args[@]}" copysave "$mode" "$temp_screenshot"; then
+	if "$LIB_DIR/grimblast" "${extra_args[@]}" copysave "$mode" "$temp_screenshot"; then
 		if ! "${annotation_tool}" "${annotation_args[@]}"; then
 			notify-send -a "HyDE Alert" "Screenshot Error" "Failed to open annotation tool"
 			return 1

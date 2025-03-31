@@ -10,14 +10,14 @@ else
 fi
 
 BIN_DIR=$(dirname "$(which "${EXECUTABLE:-hyde-shell}")")
-LIB_DIR="${BIN_DIR}/../lib"
+LIB_DIR="${BIN_DIR}/../Scripts"
 SHARE_DIR="${BIN_DIR}/../share"
-PATH="$BIN_DIR:$LIB_DIR/hyde:$PATH" #! I added this to the PATH to make sure that the hyde commands are available in the shell
+PATH="$BIN_DIR:$LIB_DIR:$PATH" #! I added this to the PATH to make sure that the hyde commands are available in the shell
 
 export BIN_DIR LIB_DIR SHARE_DIR
 
 # shellcheck disable=SC1091
-if ! source "${LIB_DIR}/hyde/globalcontrol.sh"; then
+if ! source "${LIB_DIR}/globalcontrol.sh"; then
     echo "Error: Could not load HyDE, broken installation?"
     exit 1
 fi
@@ -137,12 +137,12 @@ call_wallbashScript() {
 hyde_reload() {
 
     print_log -sec "hyde" "Reloading HyDE"
-    "$LIB_DIR/hyde/swwwallcache.sh" -t ""
-    "$LIB_DIR/hyde/theme.switch.sh"
+    "$LIB_DIR/swwwallcache.sh" -t ""
+    "$LIB_DIR/theme.switch.sh"
 }
 
 list_script() {
-    find "$LIB_DIR/hyde" -type f \( -name "*.sh" -o -name "*.py" \) -exec basename {} \;
+    find "$LIB_DIR/" -type f \( -name "*.sh" -o -name "*.py" \) -exec basename {} \;
 }
 
 if [[ ! "${BASH_SOURCE[0]}" != "${0}" ]]; then
@@ -169,7 +169,7 @@ if [[ ! "${BASH_SOURCE[0]}" != "${0}" ]]; then
         list_script
         ;;
     --list-script-path)
-        find "$LIB_DIR/hyde" -type f \( -name "*.sh" -o -name "*.py" \) -exec echo {} \;
+        find "$LIB_DIR" -type f \( -name "*.sh" -o -name "*.py" \) -exec echo {} \;
         ;;
     "")
         for func in $(compgen -A function); do
@@ -177,12 +177,12 @@ if [[ ! "${BASH_SOURCE[0]}" != "${0}" ]]; then
         done
         ;;
     *)
-        if [ -f "${LIB_DIR}/hyde/${1}.sh" ]; then
-            bash "${LIB_DIR}/hyde/${1}.sh" "${@:2}"
-        elif [ -f "${LIB_DIR}/hyde/${1}.py" ]; then
-            python "${LIB_DIR}/hyde/${1}.py" "${@:2}"
-        elif [ -f "${LIB_DIR}/hyde/${1}" ]; then
-            "${LIB_DIR}/hyde/${1}" "${@:2}"
+        if [ -f "${LIB_DIR}/${1}.sh" ]; then
+            bash "${LIB_DIR}/${1}.sh" "${@:2}"
+        elif [ -f "${LIB_DIR}/${1}.py" ]; then
+            python "${LIB_DIR}/${1}.py" "${@:2}"
+        elif [ -f "${LIB_DIR}/${1}" ]; then
+            "${LIB_DIR}/${1}" "${@:2}"
         elif [ -f "${1}" ] && [ -x "${1}" ]; then
             "$1" "${@:2}"
         else
