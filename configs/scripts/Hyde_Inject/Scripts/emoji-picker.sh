@@ -82,7 +82,7 @@ HELP
     shift # Shift off the current option being processed
 done
 
-emojiDir=${XDG_DATA_HOME:-$HOME/.local/share}/hyde
+emojiDir=${XDG_DATA_HOME:-$HOME/.config/scripts/Hyde_Inject/share}/hyde
 emojiData="${emojiDir}/emoji.db"
 recentData="${cacheDir}/landing/show_emoji.recent"
 

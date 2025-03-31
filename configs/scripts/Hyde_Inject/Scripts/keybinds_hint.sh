@@ -2,7 +2,7 @@
 
 pkill -x rofi && exit
 scrDir=$(dirname "$(realpath "$0")")
-scrDir="${scrDir:-$HOME/.local/lib/hyde}"
+scrDir="${scrDir:-$HOME/.config/scripts/Hyde_Inject/Scripts}"
 # shellcheck disable=SC1091
 source "$scrDir/globalcontrol.sh"
 

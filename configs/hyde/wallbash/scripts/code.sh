@@ -47,10 +47,10 @@ for i in "${!codeConf[@]}"; do
     [ -d "${codeConf[i]}/User" ] || continue
     [ -f "${codeConf[i]}/User/settings.json" ] || echo -e "{\n \"workbench.colorTheme\":\"Wallbash\" \n}" >"${codeConf[i]}/User/settings.json"
     extTheme="$(
-        "$LIB_DIR/hyde/parse.json.py" -CRQ '.["workbench.colorTheme"]' "${codeConf[i]}/User/settings.json"
+        "$LIB_DIR/parse.json.py" -CRQ '.["workbench.colorTheme"]' "${codeConf[i]}/User/settings.json"
     )"
     if [ "${extTheme}" != "${set_theme}" ]; then
-        "$LIB_DIR/hyde/parse.json.py" -CU '.["workbench.colorTheme"]' "${set_theme}" "${codeConf[i]}/User/settings.json"
+        "$LIB_DIR/parse.json.py" -CU '.["workbench.colorTheme"]' "${set_theme}" "${codeConf[i]}/User/settings.json"
         echo "[wallbashcode] Theme set to: ${set_theme} in ${codeConf[i]}"
     #! jq '.["workbench.colorTheme"] = "Wallbash"' "${codeConf[i]}/User/settings.json" >"${tmpFile}" && mv "${tmpFile}" "${codeConf[i]}/User/settings.json" # DEPRECATED
     fi

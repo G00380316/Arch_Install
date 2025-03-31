@@ -3,7 +3,7 @@
 # set variables
 
 scrDir=$(dirname "$(realpath "$0")")
-scrDir="${scrDir:-$HOME/.local/lib/hyde}"
+scrDir="${scrDir:-$HOME/.config/scripts/Hyde_Inject/Scripts}"
 source $scrDir/globalcontrol.sh
 confDir=${confDir:-$XDG_CONFIG_HOME}
 rofi_config="$confDir/rofi/quickapps.rasi"

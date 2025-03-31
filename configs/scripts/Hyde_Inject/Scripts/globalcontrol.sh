@@ -3,9 +3,9 @@
 
 # xdg resolution
 export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
-export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.config/scripts/Hyde_Inject/share}"
 export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
-export XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}"
+export XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.config/scripts/Hyde_Inject/state}"
 export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-/run/user/$(id -u)}"
 # ! export XDG_DATA_DIRS="$XDG_DATA_HOME/hyde:/usr/local/share/hyde/:/usr/share/hyde/:$XDG_DATA_DIRS" # Causes issues https://github.com/HyDE-Project/HyDE/issues/308#issuecomment-2691229673
 

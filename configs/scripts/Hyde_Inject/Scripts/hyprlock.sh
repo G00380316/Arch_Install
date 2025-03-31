@@ -7,7 +7,7 @@ if ! source "$(which hyde-shell)"; then
     echo "[wallbash] code :: Is HyDE installed?"
     exit 1
 fi
-scrDir=${scrDir:-$HOME/.local/lib/hyde}
+scrDir=${scrDir:-$HOME/.config/scripts/Hyde_Inject/Scripts}
 confDir="${confDir:-$XDG_CONFIG_HOME}"
 cacheDir="${HYDE_CACHE_HOME:-"${XDG_CACHE_HOME}/hyde"}"
 WALLPAPER="${cacheDir}/wall.set"

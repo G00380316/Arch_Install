@@ -14,7 +14,7 @@ fi
 #TODO:    make the update Script run on User space
 
 # Define paths and files
-glyph_dir=${HYDE_DATA_HOME:-$HOME/.local/share/hyde}
+glyph_dir=${HYDE_DATA_HOME:-$HOME/.config/scripts/Hyde_Inject/share/hyde}
 glyph_data="${glyph_dir}/glyph.db"
 cache_dir="${HYDE_CACHE_HOME:-$HOME/.cache/hyde}"
 recent_data="${cache_dir}/landing/show_glyph.recent"

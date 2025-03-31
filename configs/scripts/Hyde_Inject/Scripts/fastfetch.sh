@@ -28,7 +28,7 @@ USAGE
 
 # Set the variables
 confDir="${XDG_CONFIG_HOME:-$HOME/.config}"
-iconDir="${XDG_DATA_HOME:-$HOME/.local/share}/icons"
+iconDir="${XDG_DATA_HOME:-$HOME/.config/scripts/Hyde_Inject/share}/icons"
 image_dirs=()
 hyde_distro_logo=${iconDir}/Wallbash-Icon/distro/$LOGO
 
