@@ -106,6 +106,8 @@ export PATH="$HOME/.config/waybar/scripts:$PATH"
 export PATH="$HOME/Documents/Applications/Sideloader/Working Binaries:$PATH"
 export PATH="$HOME/.config/scripts:$PATH"
 export GTK_THEME=Adwaita:dark
+export QT_QPA_PLATFORM=wayland
+export QT_QPA_PLATFORM=xcb
 
 if [ -t 1 ]; then
     # We are loading the prompt on start so users can see the prompt immediately
