@@ -88,7 +88,7 @@ main() {
 
   # Random choice case
   if [[ "$choice" == "$RANDOM_PIC_NAME" ]]; then
-	swww img -o "$focused_monitor" "$RANDOM_PIC" $SWWW_PARAMS;
+	swww img "$(readlink -f "$RANDOM_PIC")" $SWWW_PARAMS;
     sleep 2
     "$SCRIPTSDIR/WallustSwww.sh"
     sleep 0.5
@@ -106,7 +106,7 @@ main() {
   done
 
   if [[ $pic_index -ne -1 ]]; then
-    swww img -o "$focused_monitor" "${PICS[$pic_index]}" $SWWW_PARAMS
+    swww img "$(readlink -f "${PICS[$pic_index]}")" $SWWW_PARAMS
   else
     echo "Image not found."
     exit 1
@@ -149,8 +149,8 @@ if [[ -n "$choice" ]]; then
     fi
 
     # Open terminal to enter password
-    $terminal -e bash -c "echo 'Enter your password to set wallpaper as SDDM Background'; \
-    sudo cp -r $wallpaper_current '$sddm_sequoia/backgrounds/default' && \
+    #$terminal -e bash -c "echo 'Enter your password to set wallpaper as SDDM Background'; \
+    #sudo cp -r $wallpaper_current '$sddm_sequoia/backgrounds/default' && \
     notify-send -i '$iDIR/ja.png' 'SDDM' 'Background SET'"
     fi
   fi

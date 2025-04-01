@@ -2,6 +2,7 @@
 # shellcheck disable=SC2154
 
 scrDir="$(dirname "$(realpath "$0")")"
+SCRIPTSDIR="$HOME/.config/hypr/scripts"
 # shellcheck disable=SC1091
 source "${scrDir}/globalcontrol.sh"
 
@@ -260,9 +261,13 @@ main() {
     if [ -f "${scrDir}/wallpaper.${wallpaper_backend}.sh" ] && [ -n "${wallpaper_backend}" ]; then
         print_log -sec "wallpaper" "Using backend: ${wallpaper_backend}"
         "${scrDir}/wallpaper.${wallpaper_backend}.sh" "${wallSet}"
+        wait $!
+        "$SCRIPTSDIR/WallustSwww.sh"
     else
         if command -v "wallpaper.${wallpaper_backend}.sh" >/dev/null; then
             "wallpaper.${wallpaper_backend}.sh" "${wallSet}"
+            wait $!
+            "$SCRIPTSDIR/WallustSwww.sh"
         else
             print_log -warn "wallpaper" "No backend script found for ${wallpaper_backend}"
             print_log -warn "wallpaper" "Created: $HYDE_CACHE_HOME/wallpapers/${wallpaper_backend}.png instead"
