@@ -18,6 +18,7 @@
     cp -r ~/Arch_Install/configs/.zshrc ~
     cp -r ~/Arch_Install/configs/.p10k.zsh ~
     cp -r ~/Arch_Install/configs/.fzf.zsh ~
+    cp -r ~/Arch_Install/configs/.gtkrc-2.0 ~
 
 echo "Installing JetBrains Nerd Font..."
     # Step 1: Download the Nerd Font

@@ -150,6 +150,7 @@ if [ -f "./AniInstall.sh" ]; then
     if [[ "$choice" == "y" ]]; then
         bash ./wallpapers.sh
         bash ./AniInstall.sh
+        bash ./install-scripts/Hyde-Install/install.sh
     fi
 fi
 

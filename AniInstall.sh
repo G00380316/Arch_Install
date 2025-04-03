@@ -128,7 +128,6 @@ ags="OFF"
 sddm="OFF"
 sddm_theme="OFF"
 xdph="OFF"
-zsh="OFF"
 pokemon="OFF"
 input_group="OFF"
 nvidia="OFF"
@@ -261,7 +260,6 @@ options_command+=(
     "thunar" "Do you want Thunar file manager to be installed?" "OFF"
     "ags" "Install AGS v1 for Desktop-Like Overview" "OFF"
     "xdph" "Install XDG-DESKTOP-PORTAL-HYPRLAND (for screen share)?" "OFF"
-    "zsh" "Install zsh shell with Oh-My-Zsh?" "OFF"
     "pokemon" "Add Pokemon color scripts to your terminal?" "OFF"
 )
 
@@ -396,10 +394,6 @@ for option in "${options[@]}"; do
             echo "${INFO} Downloading & Installing ${SKY_BLUE}Additional SDDM theme...${RESET}" | tee -a "$LOG"
             execute_script "sddm_theme.sh"
             ;;
-        zsh)
-            echo "${INFO} Installing ${SKY_BLUE}zsh with Oh-My-Zsh...${RESET}" | tee -a "$LOG"
-            execute_script "zsh.sh"
-            ;;
         pokemon)
             echo "${INFO} Adding ${SKY_BLUE}Pokemon color scripts to terminal...${RESET}" | tee -a "$LOG"
             execute_script "zsh_pokemon.sh"
@@ -436,7 +430,7 @@ if pacman -Q hyprland &> /dev/null || pacman -Q hyprland-git &> /dev/null; then
     printf "\n${NOTE} You can start Hyprland by typing ${SKY_BLUE}Hyprland${RESET} (IF SDDM is not installed) (note the capital H!).\n"
     printf "\n${NOTE} However, it is ${YELLOW}highly recommended to reboot${RESET} your system.\n\n"
 
-    read -rp "${CAT} Would you like to reboot now? (y/n): " HYP
+    read -rp "${CAT} Would you like to reboot now ("No" if you want to complete Hyde injection)? (y/n): " HYP
 
     HYP=$(echo "$HYP" | tr '[:upper:]' '[:lower:]')
 

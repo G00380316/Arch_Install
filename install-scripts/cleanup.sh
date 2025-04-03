@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# pacman -Qe
+# grep "installed" /var/log/pacman.log | tail -n 20
 # Function to check if a service is active and enabled
 service_active_and_enabled() {
     local service="$1"
@@ -149,8 +151,12 @@ if [[ "$response" =~ ^[Yy]$ ]]; then
     echo "Configuring for FireFoxPWA is complete (Please enable plugins in the Apps {Youtube , Youtube Music and Timetree})"
     echo "For the best experience Shortkeys to open them should be working straight away!!"
 
-    # pacman -Qe
-    # grep "installed" /var/log/pacman.log | tail -n 20
+    cp -r ~/Arch_Install/configs/scripts/Hyde_Inject/share/kio ~/.local/share/
+    cp -r ~/Arch_Install/configs/scripts/Hyde_Inject/share/kxmlgui5 ~/.local/share/
+    cp -r ~/Arch_Install/configs/scripts/Hyde_Inject/share/icons ~/.local/share/
+    cp -r ~/Arch_Install/configs/scripts/Hyde_Inject/share/dolphin ~/.local/share/
+    cp -r ~/Arch_Install/configs/scripts/Hyde_Inject/share/fastfetch ~/.local/share/
+    cp -r ~/Arch_Install/configs/scripts/Hyde_Inject/state/dolphinstaterc ~/.local/state/
 
     echo "Automation done!!! Everything should be installed and tidy!"
 else
