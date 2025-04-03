@@ -5,6 +5,17 @@
 /* Custom Modules like weather browser, tty, file manager at the beginning */
 
 {
+  "custom/pomodoro": {
+    "format-icons": {
+      "work": "󰔟",
+      "break": ""
+    },
+    "format": "{icon}{text}",
+    "return-type": "json",
+    "exec": "waybar-module-pomodoro -w 50 -s 10 -l 20 --no-icons",
+    "on-click": "waybar-module-pomodoro toggle",
+    "on-click-right": "waybar-module-pomodoro reset"
+  },
 "custom/weather": {
 	"format": "{}",
 	"format-alt": "{alt}: {}",
