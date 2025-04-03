@@ -3,7 +3,6 @@
 
 # Variables
 rofi_theme="$HOME/.config/rofi/config-emoji.rasi"
-msg='** note ** 👀 Click or Return to choose || Ctrl V to Paste'
 
 # Check if rofi is already running
 if pidof rofi > /dev/null; then
@@ -11,7 +10,7 @@ if pidof rofi > /dev/null; then
 fi
 
 sed '1,/^# # DATA # #$/d' "$0" | \
-rofi -i -dmenu -mesg "$msg" -config $rofi_theme | \
+rofi -i -dmenu -config $rofi_theme | \
 awk '{print $1}' | \
 head -n 1 | \
 tr -d '\n' | \
