@@ -95,6 +95,12 @@ if [[ "$response" =~ ^[Yy]$ ]]; then
     sudo rm -rf ~/clone.sh
     echo "Dirs removed!"
 
+    echo "Making Some useful directories..."
+    cd ~/
+    dircolors -p > ~/.dircolors
+    mkdir -p ~/Coding/Projects
+    echo "Dirs made!"
+
     echo "Removing unwanted extra packages..."
     sudo pacman -Rns $(pacman -Qdtq)
     yay -Rns $(yay -Qdtq)
@@ -130,6 +136,10 @@ if [[ "$response" =~ ^[Yy]$ ]]; then
         fi
     fi
 
+    echo "Adding a some themes..."
+    # Add GTK theme and icon theme
+    bash ~/Arch_Install/colorschemes/purple.sh
+
     echo "Checking if SDDM is installed..."
     if check_sddm; then
         echo "SDDM is already installed and enabled (recommended)."
@@ -142,14 +152,14 @@ if [[ "$response" =~ ^[Yy]$ ]]; then
         bash ./sddm_theme.sh
     fi
 
-    # echo "Making some dirs..."
-    # mkdir -p ~/Pictures/ScreenShots/
-    # echo "Made new dirs!"
-
     echo "Configuring FireFoxPWA"
-    cp -r ~/Arch_Install/Extra/firefoxpwa/ ~/.local/share/
+    cp -r ./Extra/firefoxpwa/ ~/.local/share/
     echo "Configuring for FireFoxPWA is complete (Please enable plugins in the Apps {Youtube , Youtube Music and Timetree})"
     echo "For the best experience Shortkeys to open them should be working straight away!!"
+
+    echo "Setting up SDDM Theme - Candy_Modified"
+    sudo cp -r ./Extra/Candy_Modified /usr/share/sddm/themes/
+    echo "Theme in the right dir now"
 
     cp -r ~/Arch_Install/configs/scripts/Hyde_Inject/share/kio ~/.local/share/
     cp -r ~/Arch_Install/configs/scripts/Hyde_Inject/share/kxmlgui5 ~/.local/share/
@@ -157,6 +167,23 @@ if [[ "$response" =~ ^[Yy]$ ]]; then
     cp -r ~/Arch_Install/configs/scripts/Hyde_Inject/share/dolphin ~/.local/share/
     cp -r ~/Arch_Install/configs/scripts/Hyde_Inject/share/fastfetch ~/.local/share/
     cp -r ~/Arch_Install/configs/scripts/Hyde_Inject/state/dolphinstaterc ~/.local/state/
+
+    # Enable necessary services
+    sudo pacman -Rns --noconfirm pulseaudio pulseaudio-alsa
+    systemctl --user daemon-reload
+    systemctl --user restart xdg-desktop-portal-wlr.service
+    sudo systemctl enable avahi-daemon
+    sudo systemctl enable acpid
+    sudo systemctl --user enable --now pipewire pipewire-pulse
+    xdg-mime default thunar.desktop inode/directory application/x-gnome-saved-search
+    sudo systemctl enable --now tlp
+
+    # Update user directories
+    xdg-user-dirs-update
+
+    # Clean up
+    echo "Cleaning up..."
+    sudo pacman -Sc --noconfirm
 
     echo "Automation done!!! Everything should be installed and tidy!"
 else

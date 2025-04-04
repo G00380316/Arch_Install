@@ -35,6 +35,10 @@ else
     echo "No SSH applications found to remove."
 fi
 
+
+# Update user directories
+xdg-user-dirs-update
+
 apps_to_hide=(
 "jconsole-java-openjdk.desktop"
 "jshell-java-openjdk.desktop"

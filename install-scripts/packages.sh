@@ -37,7 +37,7 @@ install_packages() {
 # Main list of packages
 file_managers=("thunar" "pcmanfm" "krusader" "nautilus" "nemo" "dolphin" "ranger" "nnn" "lf")
 
-echo "Choose File Managers to install (space-separated list, e.g., 1 3 5):"
+echo "Choose File Managers to install (space-separated list, e.g., 1 6 7):"
 for i in "${!file_managers[@]}"; do
     echo "$((i+1)). ${file_managers[i]}"
 done
@@ -51,7 +51,7 @@ done
 # Graphics
 graphics=("gimp" "flameshot" "eog" "sxiv" "inkscape" "scrot" "feh")
 
-echo "Choose graphics applications to install (space-separated list, e.g., 1 3 5):"
+echo "Choose graphics applications to install (space-separated list, e.g., 1 4 7):"
 for i in "${!graphics[@]}"; do
     echo "$((i+1)). ${graphics[i]}"
 done
@@ -111,8 +111,8 @@ fi
 # Utilities
 utilities=( \
     "gparted" "gnome-disk-utility" "neofetch" "nitrogen" "numlockx" "galculator" "cpu-x" "udns-utils" \
-    "whois" "tree" "btop" "htop" "bat" "brightnessctl" "redshift" "i7z" "bleachbit" \
-    "gdisk" "ntfs-3g" "dosfstools" "xdg-desktop-portal-wlr" "v4l2loopback-dkms" "lm_sensors" "fd" "ripgrep" \
+    "whois" "tree" "btop" "htop" "brightnessctl" "i7z" "bleachbit" \
+    "xdg-desktop-portal-wlr" "v4l2loopback-dkms" "lm_sensors" "fd" "ripgrep" \
     "pavucontrol" "wl-clipboard" "bc"
 )
 
@@ -133,7 +133,7 @@ fi
 
 # Other Packages
 other_packages=( \
-    "unrar" "freetype2" "harfbuzz" "cairo" "pango" "wayland" "libxkbcommon" "meson" "scdoc" "wayland-protocols" \
+    "unrar" "freetype2" "harfbuzz" "cairo" "pango" "libxkbcommon" "meson" "scdoc" "wayland-protocols" \
     "dhclient" "usbmuxd" "ifuse" "libimobiledevice" "gvfs-mtp" "mtpfs" "zathura" "zathura-pdf-mupdf" \
     "wlr-randr" "qbittorrent"
 )

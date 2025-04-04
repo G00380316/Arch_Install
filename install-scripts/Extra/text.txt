@@ -1,0 +1,47 @@
+- Installing samba (For network comunication between Host and VM)
+
+cd /var/cache/pacman/pkg
+sudo wget https://archlinux.org/packages/extra/x86_64/samba/download/
+sudo pacman -U samba-*.pkg.tar.zst
+
+cd etc
+touch samba/
+cd samba
+sudo systemctl enable smb\
+sudo systemctl restart smb\
+sudo systemctl status smb\
+n smb.conf
+
+-- add configuration ("ip a" in terminal to get ip address)
+[shared]
+   path = /home/your_user/shared_folder
+   browseable = yes
+   read only = no
+   guest ok = yes
+--
+
+cat /etc/samba/smb.conf\
+-- To change password of network (Could be useful especially for Windows Vm)
+sudo smbpasswd -a enoch
+
+
+- Cuda llama install
+
+sudo pacman -S ollama-cuda
+use "ollama server" to start ollama proccess and then ollama run to install models and run them
+
+- Wine install
+
+❯ n /etc/pacman.conf
+
+Uncomment """
+
+[multilib]
+Include = /etc/pacman.d/mirrorlist
+
+""
+sudo pacman -S wine wine-mono wine-gecko winetricks
+
+yay -S winegui
+
+dome!

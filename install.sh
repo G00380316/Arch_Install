@@ -23,25 +23,6 @@ fi
 
 echo "Git is installed. Continuing with the script..."
 
-# Check if yay is installed, else attempt installation
-if ! command_exists yay; then
-    echo "Yay is not installed. Attempting to install Yay..."
-    if command_exists pacman; then
-        git clone https://aur.archlinux.org/yay.git "$HOME/.config/yay"
-        cd "$HOME/.config/yay" || exit 1
-        makepkg -si --noconfirm
-        if command_exists yay; then
-            echo "Yay installation successful. Run this script again to use yay."
-            exit 1
-        else
-            echo "Cannot install Yay automatically. Please install Yay manually."
-            exit 1
-        fi
-    fi
-fi
-
-echo "Yay is installed. Continuing with the script..."
-
 if [ -d "$HOME/Arch_Install" ]; then
     echo "Arch_Install directory already exists. Pulling latest changes..."
     cd "$HOME/Arch_Install" && git pull
@@ -74,7 +55,7 @@ cd ~/Arch_Install/install-scripts/ || exit 1
 chmod +x *.sh
 
 # Available scripts
-SCRIPTS=("setup.sh" "devs.sh" "packages.sh" "displaymanager.sh" "add_bashrc.sh" "printers.sh" "bluetooth.sh" "util.sh" "cleanup.sh" "displaylinkinstall.sh")
+SCRIPTS=( "vanilla_sway.sh" "packages.sh" "displaymanager.sh" "printers.sh" "bluetooth.sh" "displaylinkinstall.sh" "util.sh" "nerdfonts.sh" "AniInstall.sh" "wallpapers.sh" "install.sh" "cleanup.sh")
 
 # Function to run a script
 run_script() {
@@ -144,14 +125,39 @@ done
 
 cd ~/Arch_Install/
 
-# Run wallpapers and AniInstall if available
-if [ -f "./AniInstall.sh" ]; then
-    read -p "Do you want to run Additional Install for Animations? (y/n): " choice
-    if [[ "$choice" == "y" ]]; then
-        bash ./wallpapers.sh
-        bash ./AniInstall.sh
-        bash ./install-scripts/Hyde-Install/install.sh
-    fi
-fi
+# Move custom configuration files
+clear
+sleep 3
+echo "Working hard on moving your existing config files..."
+clear
+sleep 3
+echo "Working hard on moving your existing config files..."
+clear
+sleep 3
+echo "Working hard on moving your existing config files..."
+
+rsync -a --progress ~/Arch_Install/configs/ ~/.config/
+# Move application config folders to .config
+echo "Moving zsh dependecies to HOME directory..."
+cp -r ~/Arch_Install/configs/.zshenv ~
+cp -r ~/Arch_Install/configs/.zshrc ~
+cp -r ~/Arch_Install/configs/.p10k.zsh ~
+cp -r ~/Arch_Install/configs/.fzf.zsh ~
+cp -r ~/Arch_Install/configs/.gtkrc-2.0 ~
+
+# Cloning Neovim and tmux configurations
+echo "Cloning Neovim configuration..."
+git clone https://github.com/G00380316/nvim.git ~/.config/nvim
+echo "Cloning tpm for tmux configuration..."
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+bash ./wallpapers.sh
+
+echo "Installing some Coding languages(python and node) and reseting font cache"
+pyenv install 3.11.4
+pyenv global 3.11.4
+pip install -U hyfetch
+nvm install --lts
+nvm use --lts
+fc-cache -fv
 
 printf "\e[1;32mYou can now reboot! Thank you. Consider running cleanup Script will tidy and configure some missing pieces\e[0m\n"

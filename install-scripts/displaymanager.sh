@@ -172,10 +172,10 @@ case $choice in
         exit 0
         ;;
     1)
-        install_gdm
+        install_sddm
         ;;
     2)
-        install_sddm
+        install_gdm
         ;;
     3)
         install_lightdm

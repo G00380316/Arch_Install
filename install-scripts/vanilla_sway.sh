@@ -9,20 +9,6 @@ packages=(
     "foot"
 )
 
-# Function to read common packages from a file
-read_base_packages() {
-    local base_file="$1"
-    if [ -f "$base_file" ]; then
-        packages+=( $(< "$base_file") )
-    else
-        echo "Base packages file not found: $common_file"
-        exit 1
-    fi
-}
-
-# Read common packages from file
-read_base_packages "$HOME/Arch_Install/install-scripts/base_packages.txt"
-
 # Function to install packages if they are not already installed
 install_packages() {
     local pkgs=("$@")
@@ -50,6 +36,3 @@ install_packages() {
 
 # Call function to install packages
 install_packages "${packages[@]}"
-
-# Update user directories (equivalent to xdg-user-dirs-update)
-xdg-user-dirs-update
