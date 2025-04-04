@@ -41,6 +41,7 @@ lsp-plugins
 ladspa 
 calf
 flatpak
+fd
 
 # --------------------------------------------------- // Display Manager
 sddm                                                   # display manager for KDE plasma
@@ -97,6 +98,7 @@ vim                                                    # terminal text editor
 code                                                   # ide text editor
 nwg-displays                                           # monitor management utility
 fzf                                                    # Command-line fuzzy finder
+feh
 
 # --------------------------------------------------- // Shell
 eza|zsh                                                # file lister for zsh

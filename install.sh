@@ -57,7 +57,7 @@ sleep 3
 chmod +x *.sh
 
 # Available scripts
-SCRIPTS=( "vanilla_sway.sh" "packages.sh" "displaymanager.sh" "printers.sh" "bluetooth.sh" "displaylinkinstall.sh" "util.sh" "nerdfonts.sh" "AniInstall.sh" "wallpapers.sh" "install.sh" "cleanup.sh")
+SCRIPTS=( "install.sh" "AniInstall.sh" "vanilla_sway.sh" "packages.sh" "displaymanager.sh" "printers.sh" "bluetooth.sh" "displaylinkinstall.sh" "nerdfonts.sh" "wallpapers.sh" "util.sh" "cleanup.sh")
 
 # Function to run a script
 run_script() {
@@ -141,11 +141,11 @@ echo "Working hard on moving your existing config files..."
 rsync -a --progress ~/Arch_Install/configs/ ~/.config/
 # Move application config folders to .config
 echo "Moving zsh dependecies to HOME directory..."
-cp -r ~/Arch_Install/configs/.zshenv ~
-cp -r ~/Arch_Install/configs/.zshrc ~
-cp -r ~/Arch_Install/configs/.p10k.zsh ~
-cp -r ~/Arch_Install/configs/.fzf.zsh ~
-cp -r ~/Arch_Install/configs/.gtkrc-2.0 ~
+rsync -a --progress ~/Arch_Install/configs/.zshenv ~
+rsync -a --progress ~/Arch_Install/configs/.zshrc ~
+rsync -a --progress ~/Arch_Install/configs/.p10k.zsh ~
+rsync -a --progress ~/Arch_Install/configs/.fzf.zsh ~
+rsync -a --progress ~/Arch_Install/configs/.gtkrc-2.0 ~
 
 # Cloning Neovim and tmux configurations
 echo "Cloning Neovim configuration..."

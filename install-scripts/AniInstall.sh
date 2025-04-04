@@ -388,7 +388,6 @@ for option in "${options[@]}"; do
         thunar)
             echo "${INFO} Installing ${SKY_BLUE}Thunar file manager...${RESET}" | tee -a "$LOG"
             execute_script "thunar.sh"
-            execute_script "thunar_default.sh"
             ;;
         sddm_theme)
             echo "${INFO} Downloading & Installing ${SKY_BLUE}Additional SDDM theme...${RESET}" | tee -a "$LOG"
@@ -428,27 +427,32 @@ if pacman -Q hyprland &> /dev/null || pacman -Q hyprland-git &> /dev/null; then
     printf "\n%.0s" {1..2}
 
     printf "\n${NOTE} You can start Hyprland by typing ${SKY_BLUE}Hyprland${RESET} (IF SDDM is not installed) (note the capital H!).\n"
-    printf "\n${NOTE} However, it is ${YELLOW}highly recommended to reboot${RESET} your system.\n\n"
+    printf "\n${NOTE} However, it is ${YELLOW}highly recommended to reboot${RESET} your system after the full install.\n\n"
 
-    read -rp "${CAT} Would you like to reboot now ("No" if you want to complete Hyde injection)? (y/n): " HYP
-
-    HYP=$(echo "$HYP" | tr '[:upper:]' '[:lower:]')
-
-    if [[ "$HYP" == "y" || "$HYP" == "yes" ]]; then
-        echo "${INFO} Rebooting now..."
-        systemctl reboot
-    elif [[ "$HYP" == "n" || "$HYP" == "no" ]]; then
-        echo "👌 ${OK} You choose NOT to reboot"
-        printf "\n%.0s" {1..1}
-        # Check if NVIDIA GPU is present
-        if lspci | grep -i "nvidia" &> /dev/null; then
-            echo "${INFO} HOWEVER ${YELLOW}NVIDIA GPU${RESET} detected. Reminder that you must REBOOT your SYSTEM..."
-            printf "\n%.0s" {1..1}
-        fi
-    else
-        echo "${WARN} Invalid response. Please answer with 'y' or 'n'. Exiting."
-        exit 1
+    if lspci | grep -i "nvidia" &> /dev/null; then
+    echo "${INFO} HOWEVER ${YELLOW}NVIDIA GPU${RESET} detected. Reminder that you must REBOOT your SYSTEM..."
+    printf "\n%.0s" {1..1}
     fi
+
+    # read -rp "${CAT} Would you like to reboot now ("No" if you want to complete Hyde injection)? (y/n): " HYP
+    #
+    # HYP=$(echo "$HYP" | tr '[:upper:]' '[:lower:]')
+    #
+    # if [[ "$HYP" == "y" || "$HYP" == "yes" ]]; then
+    #     echo "${INFO} Rebooting now..."
+    #     systemctl reboot
+    # elif [[ "$HYP" == "n" || "$HYP" == "no" ]]; then
+    #     echo "👌 ${OK} You choose NOT to reboot"
+    #     printf "\n%.0s" {1..1}
+    #     # Check if NVIDIA GPU is present
+    #     if lspci | grep -i "nvidia" &> /dev/null; then
+    #         echo "${INFO} HOWEVER ${YELLOW}NVIDIA GPU${RESET} detected. Reminder that you must REBOOT your SYSTEM..."
+    #         printf "\n%.0s" {1..1}
+    #     fi
+    # else
+    #     echo "${WARN} Invalid response. Please answer with 'y' or 'n'. Exiting."
+    #     exit 1
+    # fi
 else
     # Print error message if neither package is installed
     printf "\n${WARN} Hyprland is NOT installed. Please check 00_CHECK-time_installed.log and other files in the Install-Logs/ directory..."

@@ -7,6 +7,9 @@ wttrbar                                                # for weather
 python-requests|wttrbar                                # script dependency
 ddcui                                                  # GUI to control brightness for external monitors
 # hyprgui-bin                                          # GUI for hyprland configuration // might mess your userprefs but convenient // Just disappeared
+gnome-disk-utility
+xdg-desktop-portal-wlr
+unrar
 
 # --------------------------------------------------- // Misc
 xdg-desktop-portal-gtk                                 # xdg desktop portal using gtk
@@ -26,6 +29,9 @@ arc-gtx-theme                                          # GTK theme
 # android-ndk
 tff-jetbrains-mono
 tff-jetbrains-mono-nerd
+usbmuxd
+ifuse
+libimobiledevice
 
 # --------------------------------------------------- // Gaming
 steam                                                  # gaming platform
@@ -64,10 +70,18 @@ boxes
 komikku
 tasks
 flatseal
+vlc
+obs-studio
+kodi
+bleachbit
+zathura
+zathura-pdf-mupdf
+qbittorrent
 
 # --------------------------------------------------- // Shell
 # oh-my-zsh-git|zsh                                    # Optional plugin manager for zsh
 pokemon-colorscripts-git|zsh                           # display pokemon sprites (optional)
+neofetch
 
 # --------------------------------------------------- // Editor
 # vscodium                                             # Full oss text editor

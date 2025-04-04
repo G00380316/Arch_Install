@@ -114,7 +114,7 @@
   "cpu": {
     "interval": 1,
     "format": "<span foreground='#6c71c4'> </span>  CPU {usage:2}%",
-    "on-click": "tilix -e 'htop'"
+    "on-click": "kitty -e btop"
   },
 "battery": {
             "interval": 2,

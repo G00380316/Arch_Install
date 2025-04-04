@@ -35,7 +35,7 @@ install_packages() {
 }
 
 # Main list of packages
-file_managers=("thunar" "pcmanfm" "krusader" "nautilus" "nemo" "dolphin" "ranger" "nnn" "lf")
+file_managers=("pcmanfm" "krusader" "nautilus" "nemo" "ranger" "nnn" "lf")
 
 echo "Choose File Managers to install (space-separated list, e.g., 1 6 7):"
 for i in "${!file_managers[@]}"; do
@@ -49,9 +49,9 @@ for index in $file_manager_selection; do
 done
 
 # Graphics
-graphics=("gimp" "flameshot" "eog" "sxiv" "inkscape" "scrot" "feh")
+graphics=("gimp" "flameshot" "eog" "sxiv" "inkscape" "scrot" )
 
-echo "Choose graphics applications to install (space-separated list, e.g., 1 4 7):"
+echo "Choose graphics applications to install (space-separated list, e.g., 1 4 5):"
 for i in "${!graphics[@]}"; do
     echo "$((i+1)). ${graphics[i]}"
 done
@@ -91,7 +91,7 @@ for index in $text_editor_selection; do
 done
 
 # Multimedia
-multimedia=("mpv" "kodi" "vlc" "audacity" "kdenlive" "obs-studio" "rhythmbox" "ncmpcpp" "mkvtoolnix-gui" "ffmpeg" "yt-dlp")
+multimedia=("audacity" "kdenlive" "rhythmbox" "ncmpcpp" "mkvtoolnix-gui" "ffmpeg")
 
 echo "Choose Multimedia applications to install (space-separated list, e.g., 1 3 5), or type 'all' to install all):"
 for i in "${!multimedia[@]}"; do
@@ -110,10 +110,9 @@ fi
 
 # Utilities
 utilities=( \
-    "gparted" "gnome-disk-utility" "neofetch" "nitrogen" "numlockx" "galculator" "cpu-x" "udns-utils" \
-    "whois" "tree" "btop" "htop" "brightnessctl" "i7z" "bleachbit" \
-    "xdg-desktop-portal-wlr" "v4l2loopback-dkms" "lm_sensors" "fd" "ripgrep" \
-    "pavucontrol" "wl-clipboard" "bc"
+    "gparted" "nitrogen" "numlockx" "galculator" "cpu-x" "udns-utils" \
+    "whois" "tree" "htop" "i7z" \
+    "v4l2loopback-dkms" "lm_sensors" "ripgrep" 
 )
 
 echo "Choose utilities applications to install (space-separated list, e.g., 1 3 5, or type 'all' to install all):"
@@ -131,28 +130,6 @@ else
     done
 fi
 
-# Other Packages
-other_packages=( \
-    "unrar" libxkbcommon" "meson" "scdoc" "wayland-protocols" \
-    "dhclient" "usbmuxd" "ifuse" "libimobiledevice" "gvfs-mtp" "mtpfs" "zathura" "zathura-pdf-mupdf" \
-    "wlr-randr" "qbittorrent"
-)
-
-echo "Choose other packages to install (space-separated list, e.g., 1 3 5, or type 'all' to install all):"
-for i in "${!other_packages[@]}"; do
-    echo "$((i+1)). ${other_packages[i]}"
-done
-read -rp "Selection: " other_packages_selection
-
-selected_other_packages=()
-if [[ "$other_packages_selection" == "all" ]]; then
-    selected_other_packages=("${other_packages[@]}")
-else
-    for index in $other_packages_selection; do
-        selected_other_packages+=("${other_packages[index-1]}")
-    done
-fi
-
 # Install selected packages
 install_packages "${selected_file_managers[@]}" "${selected_graphics[@]}" "${selected_terminals[@]}" \
-    "${selected_text_editors[@]}" "${selected_multimedia[@]}" "${selected_utilities[@]}" "${selected_other_packages[@]}"
+    "${selected_text_editors[@]}" "${selected_multimedia[@]}" "${selected_utilities[@]}"

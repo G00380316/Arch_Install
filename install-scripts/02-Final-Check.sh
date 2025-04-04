@@ -29,10 +29,6 @@ local_pkgs_installed=(
 # Determine the directory where the script is located
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-# Change the working directory to the parent directory of the script
-PARENT_DIR="$SCRIPT_DIR/.."
-cd "$PARENT_DIR" || { echo "${ERROR} Failed to change directory to $PARENT_DIR"; exit 1; }
-
 # Source the global functions script
 source "$(dirname "$(readlink -f "$0")")/Global_functions.sh"
 

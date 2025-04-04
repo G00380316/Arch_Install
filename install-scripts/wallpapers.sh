@@ -16,6 +16,7 @@ LUE="$(tput setaf 4)"
 SKY_BLUE="$(tput setaf 6)"
 RESET="$(tput sgr0)"
 
+wallpaper=$HOME/Pictures/wallpapers/Gear5luffy.jpg
 
 # Check if running as root. If root, script will exit
 if [[ $EUID -eq 0 ]]; then
@@ -39,7 +40,7 @@ LOG="Copy-Logs/install-$(date +%d-%H%M%S)_dotfiles.log"
 
 # wallpaper stuff
 mkdir -p $HOME/Pictures/wallpapers
-if cp -r ./wallpapers $HOME/Pictures/; then
+if rsync -a --progress ./wallpapers $HOME/Pictures ; then
 echo "${OK} Some ${MAGENTA}wallpapers${RESET} copied successfully!" | tee -a "$LOG"
 else
 echo "${ERROR} Failed to copy some ${YELLOW}wallpapers${RESET}" | tee -a "$LOG"
@@ -63,15 +64,17 @@ case $WALL in
             echo "${OK} Created wallpapers directory." 2>&1 | tee -a "$LOG"
         fi
 
-        if cp -R ./wallpapers/* "$HOME/Pictures/wallpapers/" >> "$LOG" 2>&1; then
+        if rsync -a --progress ./Wallpaper-Bank/* "$HOME/Pictures/" >> "$LOG" 2>&1; then
             echo "${OK} Wallpapers copied successfully." 2>&1 | tee -a "$LOG"
-            rm -rf ./wallpapers/ 2>&1 # Remove cloned repository after copying wallpapers
+            rm -rf ./Wallpaper-Bank 2>&1 # Remove cloned repository after copying wallpapers
             break
         else
             echo "${ERROR} Copying wallpapers failed" 2>&1 | tee -a "$LOG"
         fi
     else
         echo "${ERROR} Downloading additional wallpapers failed" 2>&1 | tee -a "$LOG"
+        rm -rf ./Wallpaper-Bank
+        echo "${INFO} Try Again..." 2>&1 | tee -a "$LOG"
     fi
     ;;
 [Nn])

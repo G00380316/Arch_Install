@@ -5,6 +5,8 @@ command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
 
+echo "Just making sure all the fonts have been install..."
+
 # Check if unzip is installed; if not, install it
 if ! command_exists unzip; then
     echo "Installing unzip..."
