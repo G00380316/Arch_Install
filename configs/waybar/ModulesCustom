@@ -135,10 +135,10 @@
 	"on-scroll-down": "$HOME/.config/hypr/scripts/Volume.sh --dec",
 	"smooth-scrolling-threshold": 1,
 },
-    
+
 "custom/power": {
 	"format": " ⏻ ",
-	"on-click": "$HOME/.config/hypr/scripts/Wlogout.sh",
+	"on-click": "$HOME/.config/scripts/Hyde_Inject/Scripts/logoutlaunch.sh",
 	"on-click-right": "$HOME/.config/hypr/scripts/ChangeBlur.sh",
 	"tooltip": true,
 	"tooltip-format": "Left Click: Logout Menu\nRight Click: Change Blur",
@@ -150,7 +150,7 @@
     "tooltip": true,
 	"tooltip-format": "Left Click: Reboot",
 },
-    
+
 "custom/quit": {
     "format": "󰗼",
     "on-click": "hyprctl dispatch exit",
