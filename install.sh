@@ -50,6 +50,8 @@ echo "
 "
 
 cd ~/Arch_Install/install-scripts/ || exit 1
+git checkout Hyde-Injection
+sleep 3
 
 # Make scripts executable
 chmod +x *.sh
