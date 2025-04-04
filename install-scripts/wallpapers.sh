@@ -39,7 +39,7 @@ LOG="Copy-Logs/install-$(date +%d-%H%M%S)_dotfiles.log"
 
 # wallpaper stuff
 mkdir -p $HOME/Pictures/wallpapers
-if cp -r ../wallpapers $HOME/Pictures/; then
+if cp -r ./wallpapers $HOME/Pictures/; then
 echo "${OK} Some ${MAGENTA}wallpapers${RESET} copied successfully!" | tee -a "$LOG"
 else
 echo "${ERROR} Failed to copy some ${YELLOW}wallpapers${RESET}" | tee -a "$LOG"

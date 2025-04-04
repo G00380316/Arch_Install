@@ -133,7 +133,7 @@ fi
 
 # Other Packages
 other_packages=( \
-    "unrar" "freetype2" "harfbuzz" "cairo" "pango" "libxkbcommon" "meson" "scdoc" "wayland-protocols" \
+    "unrar" libxkbcommon" "meson" "scdoc" "wayland-protocols" \
     "dhclient" "usbmuxd" "ifuse" "libimobiledevice" "gvfs-mtp" "mtpfs" "zathura" "zathura-pdf-mupdf" \
     "wlr-randr" "qbittorrent"
 )
