@@ -113,6 +113,9 @@ sudo systemctl enable --now tlp
 xdg-mime default thunar.desktop inode/directory application/x-gnome-saved-search
 xdg-user-dirs-update
 
+# Caching fonts once again
+fc-cache -fv
+
 ### Final Cleanup ###
 echo "Running final cleanup..."
 sudo pacman -Sc --noconfirm

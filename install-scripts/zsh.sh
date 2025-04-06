@@ -68,13 +68,6 @@
     if [ -f "$HOME/.zshenv" ]; then
         cp -b "$HOME/.zshenv" "$HOME/.zshenv-backup" || true
     fi
-    
-    # Copying the preconfigured zsh themes and profile
-    cp -r './assets/.zshrc' ~/ >> "$LOG" 2>&1
-    cp -r './assets/.zshenv' ~/ >> "$LOG" 2>&1
-    cp -r './assets/.fzf.zsh' ~/ >> "$LOG" 2>&1
-    cp -r './assets/.p10k.zsh' ~/ >> "$LOG" 2>&1
-    cp -r './assets/.zshrc.pre-oh-my-zsh' ~/ >> "$LOG" 2>&1
 
     # Check if the current shell is zsh
   if [[ "$SHELL" != *"zsh"* ]]; then
@@ -98,6 +91,24 @@ for ZSH2 in "${zsh_pkg2[@]}"; do
     install_package "$ZSH2" "$LOG"
 done
 
+    # Copying the preconfigured zsh themes and profile
+    cp -r './assets/.zshrc' ~/ >> "$LOG" 2>&1
+    cp -r './assets/.zshenv' ~/ >> "$LOG" 2>&1
+    cp -r './assets/.fzf.zsh' ~/ >> "$LOG" 2>&1
+    cp -r './assets/.p10k.zsh' ~/ >> "$LOG" 2>&1
+    cp -r './assets/.zshrc.pre-oh-my-zsh' ~/ >> "$LOG" 2>&1
+
+    # Checking and making env and sourcing to .zshrc and caching
+    echo -e '\n# Pyenv configuration' >> ~/.zshrc
+    echo 'export PATH="$HOME/.pyenv/bin:$PATH"' >> ~/.zshrc
+    echo 'eval "$(pyenv init --path)"' >> ~/.zshrc
+    echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+    source ~/.nvm/nvm.sh
+    echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.zshrc
+    source ~/.cargo/env
+    echo 'export PATH="$HOME/.dotnet/tools:$PATH"' >> ~/.zshrc
+    source ~/.zshrc
+    
 # copy additional oh-my-zsh themes from assets
 if [ -d "$HOME/.oh-my-zsh/themes" ]; then
     cp -r assets/add_zsh_theme/* ~/.oh-my-zsh/themes >> "$LOG" 2>&1

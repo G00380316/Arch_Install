@@ -103,7 +103,6 @@ Extra=(
   bruno
   lazygit
   github-cli
-  flutter-bin
   code
 )
 
