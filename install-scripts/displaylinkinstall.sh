@@ -4,6 +4,9 @@
 echo "Updating system..."
 sudo pacman -Syu linux-headers --noconfirm
 
+## WARNING: DO NOT EDIT BEYOND THIS LINE IF YOU DON'T KNOW WHAT YOU ARE DOING! ##
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
 # Source the global functions script
 if ! source "$(dirname "$(readlink -f "$0")")/Global_functions.sh"; then
     echo "Failed to source Global_functions.sh"
@@ -15,11 +18,11 @@ LOG="Install-Logs/install-$(date +%d-%H%M%S)_displaylink.log"
 
 # Install the Evdi driver
 echo "Installing Evdi driver..."
-install_package evdi
+install_package evdi "$LOG"
 
 # Install the DisplayLink driver
 echo "Installing DisplayLink driver..."
-install_package displaylink
+install_package displaylink "$LOG"
 
 # Enable the DisplayLink service
 echo "Enabling DisplayLink service..."

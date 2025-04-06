@@ -8,20 +8,21 @@ io.gitlab.adhami3310.Impression                # Impression
 # io.github.dimtpap.coppwr                     # Coppwr
 
 # ------------------------------------------- // Browser
-# com.brave.Browser                              # Brave
+# com.brave.Browser                            # Brave
 # org.torproject.torbrowser-launcher           # Tor
 
 # ------------------------------------------- // Social
 # org.signal.Signal                            # Signal
 # com.discordapp.Discord                       # Discord
-# dev.vencord.Vesktop                          # Vesktop
+dev.vencord.Vesktop                            # Vesktop
 io.github.spacingbat3.webcord                  # Webcord
 
 # ------------------------------------------- // Productivity
-# md.obsidian.Obsidian                         # Obsidian
+md.obsidian.Obsidian                           # Obsidian
 # org.mozilla.Thunderbird                      # Thunderbird
-io.github.alainm23.planify                   # Planify
-io.github.mezoahmedii.Picker
+io.github.alainm23.planify                     # Planify
+org.dbgate.DbGate                              # Dbgate
+io.github.mezoahmedii.Picker                   # Picker
 
 # ------------------------------------------- // Image/Graphics
 org.inkscape.Inkscape                          # Inkscape

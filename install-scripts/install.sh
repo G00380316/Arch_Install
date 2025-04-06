@@ -32,9 +32,9 @@ fi
 #------------------#
 # evaluate options #
 #------------------#
-flg_Install=0
+flg_Install=1
 flg_Restore=0
-flg_Service=0
+flg_Service=1
 flg_DryRun=0
 flg_Shell=0
 flg_Nvidia=1
@@ -104,6 +104,9 @@ if [ ${flg_Install} -eq 1 ] && [ ${flg_Restore} -eq 1 ]; then
 EOF
 
     "${scrDir}/install_pre.sh"
+    #   Step 1: Configuring custom bootloader configuration(grub or systemd-boot)
+    #   Step 2: Configuring pacman to incoporate ectra spice and multilib
+    #   Step 3: Prompt to install CHAOTIC-AUR and perform the install
 fi
 
 #------------#
@@ -119,7 +122,7 @@ if [ ${flg_Install} -eq 1 ]; then
                             |___|
 
 EOF
-
+    # Prepare all the packages to install
     #----------------------#
     # prepare package list #
     #----------------------#
@@ -234,7 +237,10 @@ if [ ${flg_Install} -eq 1 ] && [ ${flg_Restore} -eq 1 ]; then
 |_|
 
 EOF
-
+    # Step 1:   Configures Sddm Theme
+    # Step 2:   Dolphin set as File Manager
+    # Step 3:   Then points to the zsh restore script to install zsh plugins
+    # Step 4:   prompts for flatpak installs
     "${scrDir}/install_pst.sh"
 fi
 

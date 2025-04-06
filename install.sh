@@ -23,6 +23,22 @@ fi
 
 echo "Git is installed. Continuing with the script..."
 
+if ! command_exists rsync; then
+    echo "Rsync is not installed. Attempting to install Rsync..."
+    if command_exists pacman; then
+        sudo pacman -S --noconfirm rsync
+        if command_exists rsync; then
+            echo "Rsync installation successful. Rsync this script again to use git."
+            exit 1
+        else
+            echo "Cannot install Rsync automatically. Please install Rsync manually."
+            exit 1
+        fi
+    fi
+fi
+
+echo "Rsync and Git is installed. Continuing with the script..."
+
 if [ -d "$HOME/Arch_Install" ]; then
     echo "Arch_Install directory already exists. Pulling latest changes..."
     cd "$HOME/Arch_Install" && git pull
@@ -70,11 +86,8 @@ rsync -a --progress ~/Arch_Install/configs/ ~/.config/
 rsync -a --progress ~/Arch_Install/configs/.gtkrc-2.0 ~
 
 # Cloning Neovim and tmux configurations
-echo "Cloning Neovim configuration..."
-git clone https://github.com/G00380316/nvim.git ~/.config/nvim
 echo "Cloning tpm for tmux configuration..."
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-bash ./wallpapers.sh
 
 echo "Installing some Coding languages(python, node, rust)"
 # Install Python using pyenv
@@ -106,7 +119,7 @@ echo "
 chmod +x *.sh
 
 # Available scripts
-SCRIPTS=( "install.sh" "AniInstall.sh" "vanilla_sway.sh" "packages.sh" "displaymanager.sh" "printers.sh" "displaylinkinstall.sh" "nerdfonts.sh" "wallpapers.sh" "util.sh" "cleanup.sh")
+SCRIPTS=( "AniInstall.sh" "install.sh" "vanilla_sway.sh" "packages.sh" "displaymanager.sh" "printers.sh" "displaylinkinstall.sh" "nerdfonts.sh" "wallpapers.sh" "util.sh" "cleanup.sh")
 
 # Function to run a script
 run_script() {
@@ -173,5 +186,10 @@ while true; do
         fi
     fi
 done
+
+ln -s ~/.config/scripts/Hyde_Inject/bin ~/.local/
+ln -s ~/.config/scripts/Hyde_Inject/Scripts ~/.local/
+ln -s ~/.config/scripts/Hyde_Inject/state/* ~/.local/state
+ln -s ~/.config/scripts/Hyde_Inject/share/* ~/.local/share
 
 printf "\e[1;32mYou can now reboot! Thank you. Consider running cleanup Script will tidy and configure some missing pieces\e[0m\n"

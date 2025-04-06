@@ -1,11 +1,9 @@
 #!/bin/bash
+set -e  # Exit script on error
 
-# pacman -Qe
-# grep "installed" /var/log/pacman.log | tail -n 20
 # Function to check if a service is active and enabled
 service_active_and_enabled() {
     local service="$1"
-    # Check if service is active and enabled
     sudo systemctl is-active --quiet "$service" && sudo systemctl is-enabled --quiet "$service"
 }
 
@@ -23,116 +21,100 @@ detect_package_manager() {
     fi
 }
 
-echo "Would you like to run automated Clean-up? (y/n)"
-read response
+## WARNING: DO NOT EDIT BELOW UNLESS YOU KNOW WHAT YOU'RE DOING ##
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-if [[ "$response" =~ ^[Yy]$ ]]; then
-    echo "Automating some tasks for you..."
-    # Update user directories
-    xdg-user-dirs-update
-
-    echo "Removing some directories..."
-    sudo rm -rf ~/go
-    sudo rm -rf ~/JetBrainsMono
-    sudo rm -rf ~/install.sh
-    sudo rm -rf ~/clone.sh
-    sudo rm -rf ~/Clone
-    echo "Dirs removed!"
-
-    echo "Making Some useful directories..."
-    cd ~/
-    dircolors -p > ~/.dircolors
-    mkdir -p ~/Coding/Projects
-    echo "Dirs made!"
-
-    echo "Removing unwanted extra packages..."
-    sudo pacman -Rns $(pacman -Qdtq)
-    yay -Rns $(yay -Qdtq)
-    echo "Removed unwanted extra packages!"
-
-    echo "Building Neovim Plugins..."
-    cd ~/.local/share/nvim/lazy/command-t/lua/wincent/commandt/lib
-    make clean
-    make
-    echo "Built Neovim Plugins!"
-
-    echo "Building Waybar Plugins..."
-    cd ~/.config/waybar/waybar-module-pomodoro/
-    cargo build
-    echo "Built Waybar Plugins!"
-
-    echo "Checking if SDDM is installed..."
-
-    echo "Building Weather Module Plugins..."
-
-    # Attempt to run Weather.py
-    if  python3 ~/.config/hypr/UserScripts/Weather.py; then
-        echo "Built Weather Module!"
-    else
-        echo "Error occurred. Trying to install pyquery..."
-        pip install pyquery
-
-        # Try running Weather.py again
-        if python3 ~/.config/hypr/UserScripts/Weather.py; then
-            echo "Built Weather Module!"
-        else
-            echo "Failed to build Weather Module. Please check your script."
-        fi
-    fi
-
-    echo "Adding a some themes..."
-    # Add GTK theme and icon theme
-    bash ~/Arch_Install/colorschemes/purple.sh
-
-    echo "Checking if SDDM is installed..."
-    if check_sddm; then
-        echo "SDDM is already installed and enabled (recommended)."
-        ask_enable_sddm
-    else
-        echo "SDDM is not installed or enabled."
-        detect_package_manager
-        ask_install_sddm
-        bash ./sddm.sh
-        bash ./sddm_theme.sh
-    fi
-
-    echo "Configuring FireFoxPWA"
-    cp -r ./Extra/firefoxpwa/ ~/.local/share/
-    echo "Configuring for FireFoxPWA is complete (Please enable plugins in the Apps {Youtube , Youtube Music and Timetree})"
-    echo "For the best experience Shortkeys to open them should be working straight away!!"
-
-    echo "Setting up SDDM Theme - Candy_Modified"
-    sudo cp -r ./Extra/Candy_Modified /usr/share/sddm/themes/
-    echo "Theme in the right dir now"
-
-    # need to use "ln -s" here 
-    cp -r ~/Arch_Install/configs/scripts/Hyde_Inject/share/kio ~/.local/share/
-    cp -r ~/Arch_Install/configs/scripts/Hyde_Inject/share/kxmlgui5 ~/.local/share/
-    cp -r ~/Arch_Install/configs/scripts/Hyde_Inject/share/icons ~/.local/share/
-    cp -r ~/Arch_Install/configs/scripts/Hyde_Inject/share/dolphin ~/.local/share/
-    cp -r ~/Arch_Install/configs/scripts/Hyde_Inject/share/fastfetch ~/.local/share/
-    cp -r ~/Arch_Install/configs/scripts/Hyde_Inject/state/dolphinstaterc ~/.local/state/
-
-    # Enable necessary services
-    sudo pacman -Rns --noconfirm pulseaudio pulseaudio-alsa
-    systemctl --user daemon-reload
-    systemctl --user restart xdg-desktop-portal-wlr.service
-    sudo systemctl enable avahi-daemon
-    sudo systemctl enable acpid
-    sudo systemctl --user enable --now pipewire pipewire-pulse
-    xdg-mime default thunar.desktop inode/directory application/x-gnome-saved-search
-    sudo systemctl enable --now tlp
-
-    # Update user directories
-    xdg-user-dirs-update
-
-    # Clean up
-    echo "Cleaning up..."
-    sudo pacman -Sc --noconfirm
-
-    echo "Automation done!!! Everything should be installed and tidy!"
-else
-    echo "Exiting without cleanup."
+# Source global functions
+if ! source "$(dirname "$(readlink -f "$0")")/Global_functions.sh"; then
+    echo "Failed to source Global_functions.sh"
+    exit 1
 fi
 
-exit 0
+LOG="Install-Logs/install-$(date +%d-%H%M%S)_cleanup.log"
+
+echo "Automating some tasks for you..."
+
+### Build Waybar Plugin ###
+echo "Building Waybar Plugins..."
+cd ~/.config/waybar/waybar-module-pomodoro/
+cargo build
+echo "Waybar Plugins built!"
+
+### Build Weather Module ###
+echo "Building Weather Module Plugins..."
+if python3 ~/Arch_Install/config/hypr/UserScripts/Weather.py; then
+    echo "Weather Module built successfully!"
+else
+    echo "Error occurred. Installing pyquery..."
+    pip install pyquery
+
+    if python3 ~/.config/hypr/UserScripts/Weather.py; then
+        echo "Weather Module built successfully after installing pyquery!"
+    else
+        echo "Failed to build Weather Module. Please check the script."
+    fi
+fi
+
+### Add Themes ###
+echo "Adding Extra Hyprlock Theme..."
+sudo cp -r ~/Arch_Install/install-scripts/Extra/Candy_Modified /usr/share/sddm/themes
+
+echo "Applying GTK and icon themes..."
+bash ~/Arch_Install/colorschemes/purple.sh
+bash ~/Arch_Install/colorschemes/blue.sh
+
+echo "Configuring FireFoxPWA"
+cp -r ~/Arch_Install/install-scripts/Extra/firefoxpwa ~/.local/share/
+echo "Configuring for FireFoxPWA is complete (Please enable plugins in the Apps {Youtube , Youtube Music and Timetree})"
+echo "For the best experience Shortkeys to open them should be working straight away!!"
+
+
+### Clean Up Unwanted Files ###
+echo "Removing temporary files and folders..."
+rm -rf ~/go ~/JetBrainsMono ~/install.sh ~/clone.sh ~/Clone
+echo "Cleanup complete."
+
+### Create Useful Directories ###
+echo "Creating Coding/Projects directory..."
+mkdir -p ~/Coding/Projects
+dircolors -p > ~/.dircolors
+echo "Directory structure set up!"
+
+### Remove Orphaned Packages ###
+echo "Removing orphaned packages..."
+if pacman -Qdtq &> /dev/null; then
+    sudo pacman -Rns $(pacman -Qdtq)
+fi
+if command -v yay &> /dev/null && yay -Qdtq &> /dev/null; then
+    yay -Rns $(yay -Qdtq)
+fi
+echo "Unwanted packages removed!"
+
+### Easy Effect Presets ###
+echo "Importing Easyeffect presets..."
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/JackHack96/PulseEffects-Presets/master/install.sh)"
+
+### Build Neovim Plugins ###
+echo "Building Neovim plugins..."
+cd ~/.local/share/nvim/lazy/command-t/lua/wincent/commandt/lib
+make clean && make
+echo "Neovim plugins built!"
+
+### Service Configuration ###
+echo "Configuring services..."
+
+systemctl --user daemon-reload
+systemctl --user restart xdg-desktop-portal-wlr.service
+sudo systemctl enable avahi-daemon
+sudo systemctl enable acpid
+sudo systemctl --user enable --now pipewire pipewire-pulse
+sudo systemctl enable --now tlp
+
+xdg-mime default thunar.desktop inode/directory application/x-gnome-saved-search
+xdg-user-dirs-update
+
+### Final Cleanup ###
+echo "Running final cleanup..."
+sudo pacman -Sc --noconfirm
+
+echo "🎉 Automation complete! Your system should now be fully configured and tidy!"

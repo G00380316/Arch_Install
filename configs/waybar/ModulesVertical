@@ -114,7 +114,7 @@
 
 "custom/power_vertical": {
 	"format": "⏻",
-	"on-click": "$HOME/.config/hypr/scripts/Wlogout.sh",
+	"on-click": "$HOME/.config/hypr/scripts/Hyde_Inject/Scripts/logoutlaunch.sh",
 	"on-click-right": "$HOME/.config/hypr/scripts/ChangeBlur.sh",
 	"tooltip": true,
 	"tooltip-format": "Left Click: Logout Menu\nRight Click: Change Blur",

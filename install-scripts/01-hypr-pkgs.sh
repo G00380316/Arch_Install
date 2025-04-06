@@ -101,7 +101,6 @@ Extra=(
   flatseal
   android-studio
   bruno
-  dbgate
   lazygit
   github-cli
   flutter-bin
@@ -140,6 +139,7 @@ hypr_package=(
   unzip # needed later
   wallust
   waybar
+  ollama-cuda
   wget
   wl-clipboard
   wlogout

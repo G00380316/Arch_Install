@@ -42,4 +42,4 @@ else
 fi
 
 
-bash ~/bookworm-scripts/colorschemes/update_gtk_settings.sh
+bash ~/Arch_Install/colorschemes/update_gtk_settings.sh
