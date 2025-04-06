@@ -18,6 +18,15 @@ BLUE="$(tput setaf 4)"
 SKY_BLUE="$(tput setaf 6)"
 RESET="$(tput sgr0)"
 
+## WARNING: DO NOT EDIT BEYOND THIS LINE IF YOU DON'T KNOW WHAT YOU ARE DOING! ##
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# Source the global functions script
+if ! source "$(dirname "$(readlink -f "$0")")/Global_functions.sh"; then
+    echo "Failed to source Global_functions.sh"
+    exit 1
+fi
+
 # Create Directory for Install Logs
 if [ ! -d Install-Logs ]; then
     mkdir Install-Logs
@@ -132,6 +141,7 @@ pokemon="OFF"
 input_group="OFF"
 nvidia="OFF"
 nouveau="OFF"
+zsh="OFF"
 
 # Function to load preset file
 load_preset() {
@@ -260,6 +270,7 @@ options_command+=(
     "thunar" "Do you want Thunar file manager to be installed?" "OFF"
     "ags" "Install AGS v1 for Desktop-Like Overview" "OFF"
     "xdph" "Install XDG-DESKTOP-PORTAL-HYPRLAND (for screen share)?" "OFF"
+    "zsh" "Install zsh shell with Oh-My-Zsh?" "OFF"
     "pokemon" "Add Pokemon color scripts to your terminal?" "OFF"
 )
 
@@ -393,6 +404,10 @@ for option in "${options[@]}"; do
             echo "${INFO} Downloading & Installing ${SKY_BLUE}Additional SDDM theme...${RESET}" | tee -a "$LOG"
             execute_script "sddm_theme.sh"
             ;;
+        zsh)
+            echo "${INFO} Installing ${SKY_BLUE}zsh with Oh-My-Zsh...${RESET}" | tee -a "$LOG"
+            execute_script "zsh.sh"
+            ;;
         pokemon)
             echo "${INFO} Adding ${SKY_BLUE}Pokemon color scripts to terminal...${RESET}" | tee -a "$LOG"
             execute_script "zsh_pokemon.sh"
@@ -406,7 +421,7 @@ done
 sleep 1
 # copy fastfetch config if arch.png is not present
 if [ ! -f "$HOME/.config/fastfetch/arch.png" ]; then
-    cp -r assets/fastfetch "$HOME/.config/"
+    cp -r "$SCRIPT_DIR/assets/fastfetch" "$HOME/.config/"
 fi
 
 clear

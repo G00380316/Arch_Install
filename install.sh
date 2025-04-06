@@ -55,11 +55,58 @@ sleep 1
 git pull
 sleep 3
 
+# Move custom configuration files
+clear
+sleep 3
+echo "Working hard on moving your existing config files..."
+clear
+sleep 3
+echo "Working hard on moving your existing config files..."
+clear
+sleep 3
+echo "Working hard on moving your existing config files..."
+
+rsync -a --progress ~/Arch_Install/configs/ ~/.config/
+rsync -a --progress ~/Arch_Install/configs/.gtkrc-2.0 ~
+
+# Cloning Neovim and tmux configurations
+echo "Cloning Neovim configuration..."
+git clone https://github.com/G00380316/nvim.git ~/.config/nvim
+echo "Cloning tpm for tmux configuration..."
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+bash ./wallpapers.sh
+
+echo "Installing some Coding languages(python, node, rust)"
+# Install Python using pyenv
+echo "Installing pyenv and Python..."
+pyenv install 3.11.4
+pyenv global 3.11.4
+pip install -U hyfetch
+# Install Node.js using nvm
+echo "Installing nvm and Node.js..."
+nvm install --lts
+nvm use --lts
+# Install Rust
+echo "Installing Rust..."
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+rustup update
+
+sleep 5
+clear
+
+echo "
+        +-+-+-+-+-+-+-+-+-+-+-+-+-+
+        | | |G|0|0|3|8|0|3|1|6| | |
+        +-+-+-+-+-+-+-+-+-+-+-+-+-+
+        |c|u|s|t|o|m| |s|c|r|i|p|t|
+        +-+-+-+-+-+-+ +-+-+-+-+-+-+
+"
+
 # Make scripts executable
 chmod +x *.sh
 
 # Available scripts
-SCRIPTS=( "install.sh" "AniInstall.sh" "vanilla_sway.sh" "packages.sh" "displaymanager.sh" "printers.sh" "bluetooth.sh" "displaylinkinstall.sh" "nerdfonts.sh" "wallpapers.sh" "util.sh" "cleanup.sh")
+SCRIPTS=( "install.sh" "AniInstall.sh" "vanilla_sway.sh" "packages.sh" "displaymanager.sh" "printers.sh" "displaylinkinstall.sh" "nerdfonts.sh" "wallpapers.sh" "util.sh" "cleanup.sh")
 
 # Function to run a script
 run_script() {
@@ -126,42 +173,5 @@ while true; do
         fi
     fi
 done
-
-cd ~/Arch_Install/
-
-# Move custom configuration files
-clear
-sleep 3
-echo "Working hard on moving your existing config files..."
-clear
-sleep 3
-echo "Working hard on moving your existing config files..."
-clear
-sleep 3
-echo "Working hard on moving your existing config files..."
-
-rsync -a --progress ~/Arch_Install/configs/ ~/.config/
-# Move application config folders to .config
-echo "Moving zsh dependecies to HOME directory..."
-rsync -a --progress ~/Arch_Install/configs/.zshenv ~
-rsync -a --progress ~/Arch_Install/configs/.zshrc ~
-rsync -a --progress ~/Arch_Install/configs/.p10k.zsh ~
-rsync -a --progress ~/Arch_Install/configs/.fzf.zsh ~
-rsync -a --progress ~/Arch_Install/configs/.gtkrc-2.0 ~
-
-# Cloning Neovim and tmux configurations
-echo "Cloning Neovim configuration..."
-git clone https://github.com/G00380316/nvim.git ~/.config/nvim
-echo "Cloning tpm for tmux configuration..."
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-bash ./wallpapers.sh
-
-echo "Installing some Coding languages(python and node) and reseting font cache"
-pyenv install 3.11.4
-pyenv global 3.11.4
-pip install -U hyfetch
-nvm install --lts
-nvm use --lts
-fc-cache -fv
 
 printf "\e[1;32mYou can now reboot! Thank you. Consider running cleanup Script will tidy and configure some missing pieces\e[0m\n"

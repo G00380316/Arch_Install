@@ -15,37 +15,9 @@ bluez-utils                                            # bluetooth utility cli
 blueman                                                # bluetooth manager gui
 brightnessctl                                          # screen brightness control
 udiskie                                                # manage removable media
-acpi                                                   # show battery and thermal info
-acpid                                                  # acpi daemon, for power events
-avahi                                                  # network discovery (mDNS, useful for local networking)
-base-devel                                             # essential build tools (make, gcc, etc.)
-curl                                                   # data transfer tool
-dialog                                                 # terminal UI menus/dialogs (some scripts need it)
-dosfstools                                             # FAT32 support
-gettext                                                # essential for localization/build tools
-gvfs                                                   # mounting/special drives support (esp. in file managers)
-mtools                                                 # access MS-DOS disks
-#parted                                                # partition manager
-gptfdisk                                               # GPT disk manager
-exfatprogs                                             # exFAT support
-ntfs-3g                                                # NTFS support
-util-linux                                             # essential utilities (fdisk, mount, etc.)
-e2fsprogs                                              # ext4 tools
-usbutils                                               # lsusb and USB info
-rsync                                                  # syncing and backup tool
-pv                                                     # pipe viewer (shows progress in terminal during file transfer)
-bat                                                    # `cat` alternative with syntax highlighting  
-tofi                                                   # Lightweight application launcher for Wayland (alternative to rofi-wayland)  
-easyeffects
-lsp-plugins 
-ladspa 
-calf
-flatpak
-fd
 
 # --------------------------------------------------- // Display Manager
 sddm                                                   # display manager for KDE plasma
-gdm                                                    # alt display Manager for Gnome
 qt5-quickcontrols                                      # for sddm theme ui elements
 qt5-quickcontrols2                                     # for sddm theme ui elements
 qt5-graphicaleffects                                   # for sddm theme effects
@@ -89,7 +61,6 @@ qt6-wayland                                            # wayland support in qt6
 
 # --------------------------------------------------- // Applications
 firefox                                                # browser
-firefoxpwa                                             # firefox Extenstion for Browser Apps
 kitty                                                  # terminal
 dolphin                                                # kde file manager
 ark                                                    # kde file archiver
@@ -107,8 +78,6 @@ pokego-bin|zsh                                        # display pokemon sprites 
 eza|fish                                               # file lister for fish
 starship|fish                                          # customizable shell prompt
 fastfetch                                              # system information fetch tool
-zoxide
-tmux
 
 # --------------------------------------------------- // HyDE
 hypridle                                               # idle daemon

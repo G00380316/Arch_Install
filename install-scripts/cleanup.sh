@@ -23,76 +23,20 @@ detect_package_manager() {
     fi
 }
 
-
-# Check if SDDM is installed and enabled
-check_sddm() {
-    service_active_and_enabled sddm
-}
-
-# Function to ask if user wants to enable SDDM if another DM is installed
-ask_enable_sddm() {
-    read -p "SDDM is recommended. Do you want to enable it? (y/n): " answer
-    case $answer in
-        [yY])
-            sudo systemctl disable ly
-            sudo systemctl disable slim
-            sudo systemctl disable lxdm
-            sudo systemctl disable lightdm
-            sudo systemctl disable gdm
-
-            enable_sddm
-            ;;
-        *)
-            echo "Okay, exiting."
-            exit 0
-            ;;
-    esac
-}
-
-# Function to ask if user wants to install and enable SDDM if another DM is installed
-ask_install_sddm() {
-    read -p "SDDM is recommended. Do you want to install and then enable it? (y/n): " answer
-    case $answer in
-        [yY])
-            sudo systemctl disable ly
-            sudo systemctl disable slim
-            sudo systemctl disable lxdm
-            sudo systemctl disable lightdm
-            sudo systemctl disable gdm
-
-            install_sddm
-            ;;
-        *)
-            echo "Okay, exiting."
-            exit 0
-            ;;
-    esac
-}
-
-# Function to install and enable SDDM
-install_sddm() {
-    echo "Installing minimal SDDM (recommended)..."
-    sudo $PACKAGE_COMMAND sddm
-    sudo systemctl enable sddm
-    echo "SDDM has been installed and enabled."
-}
-
-enable_sddm() {
-    sudo systemctl enable sddm
-    echo "SDDM has been enabled."
-}
-
 echo "Would you like to run automated Clean-up? (y/n)"
 read response
 
 if [[ "$response" =~ ^[Yy]$ ]]; then
     echo "Automating some tasks for you..."
+    # Update user directories
+    xdg-user-dirs-update
 
     echo "Removing some directories..."
     sudo rm -rf ~/go
     sudo rm -rf ~/JetBrainsMono
     sudo rm -rf ~/install.sh
     sudo rm -rf ~/clone.sh
+    sudo rm -rf ~/Clone
     echo "Dirs removed!"
 
     echo "Making Some useful directories..."
@@ -161,6 +105,7 @@ if [[ "$response" =~ ^[Yy]$ ]]; then
     sudo cp -r ./Extra/Candy_Modified /usr/share/sddm/themes/
     echo "Theme in the right dir now"
 
+    # need to use "ln -s" here 
     cp -r ~/Arch_Install/configs/scripts/Hyde_Inject/share/kio ~/.local/share/
     cp -r ~/Arch_Install/configs/scripts/Hyde_Inject/share/kxmlgui5 ~/.local/share/
     cp -r ~/Arch_Install/configs/scripts/Hyde_Inject/share/icons ~/.local/share/

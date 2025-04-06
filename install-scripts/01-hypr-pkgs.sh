@@ -8,7 +8,104 @@
 
 # add packages wanted here
 Extra=(
-
+  acpi                                                   # show battery and thermal info
+  acpid                                                  # acpi daemon, for power events
+  avahi                                                  # network discovery (mDNS, useful for local networking)
+  base-devel                                             # essential build tools (make, gcc, etc.)
+  curl                                                   # data transfer tool
+  dialog                                                 # terminal UI menus/dialogs (some scripts need it)
+  dosfstools                                             # FAT32 support
+  gettext                                                # essential for localization/build tools
+  gvfs                                                   # mounting/special drives support (esp. in file managers)
+  mtools                                                 # access MS-DOS disks
+  parted                                                 # partition manager
+  gptfdisk                                               # GPT disk manager
+  exfatprogs                                             # exFAT support
+  ntfs-3g                                                # NTFS support
+  util-linux                                             # essential utilities (fdisk, mount, etc.)
+  e2fsprogs                                              # ext4 tools
+  usbutils                                               # lsusb and USB info
+  rsync                                                  # syncing and backup tool
+  pv                                                     # pipe viewer (shows progress in terminal during file transfer)
+  bat                                                    # `cat` alternative with syntax highlighting  
+  tofi                                                   # Lightweight application launcher for Wayland (alternative to rofi-wayland)  
+  easyeffects
+  lsp-plugins 
+  ladspa 
+  calf
+  flatpak
+  gdm                                                    # alt display Manager for Gnome
+  firefoxpwa                                             # firefox Extenstion for Browser Apps
+  zoxide
+  tmux
+  fd
+  feh
+  gnome-disk-utility
+  xdg-desktop-portal-wlr
+  unrar
+  usbmuxd
+  ifuse
+  libimobiledevice
+  vlc
+  obs-studio
+  kodi
+  bleachbit
+  zathura
+  zathura-pdf-mupdf
+  qbittorrent
+  neofetch
+  papirus-icon-theme
+  ttf-font-awesome
+  terminus-font
+  ttf-dejavu
+  ttf-freefont
+  xdotool
+  geany
+  geany-plugins
+  arc-gtk-theme
+  bluetui
+  tilix
+  redshift
+  file-roller
+  php
+  lua
+  cmake
+  gcc
+  jdk-openjdk
+  ruby
+  pyenv
+  nvm
+  rust
+  dotnet-runtime
+  aspnet-runtime
+  dotnet-sdk
+  ttf-jetbrains-mono
+  ttf-jetbrains-mono-nerd
+  betterbird-bin
+  onedrive-abraunegg
+  microsoft-edge-stable-bin
+  google-chrome
+  anki-bin
+  qimgv
+  moneymanagerex
+  filebot
+  vesktop
+  obsidian
+  blanket
+  keypunch-git
+  bible_gui
+  onlyoffice
+  boxes
+  komikku
+  tasks
+  flatseal
+  android-studio
+  bruno
+  dbgate
+  lazygit
+  github-cli
+  flutter-bin
+  code
 )
 
 hypr_package=(

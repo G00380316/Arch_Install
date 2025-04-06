@@ -82,4 +82,3 @@ else
 
     echo "${NOTE} Missing packages logged at $(date)" >> "$LOG"
 fi
-
