@@ -12,25 +12,41 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 # Improve completion reliability
 fpath+=($HOME/.zfunc)
 
-# Zinit Setup
+# Zinit Setup (unchanged)
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+# Remove once installed (next two lines)
 [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
 [ ! -d $ZINIT_HOME/.git ] && git clone --depth=1 https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 source "$ZINIT_HOME/zinit.zsh"
 
-# Plugins
+# Plugins with Turbo Mode
+zinit ice wait lucid
 zinit light romkatv/powerlevel10k
 [[ -f $HOME/.p10k.zsh ]] && source $HOME/.p10k.zsh
 
+zinit ice wait lucid
 zinit light zsh-users/zsh-completions
+
+zinit ice wait lucid
 zinit light zsh-users/zsh-autosuggestions
+
+zinit ice wait lucid
 zinit light zsh-users/zsh-syntax-highlighting
+
+zinit ice wait lucid
 zinit light Aloxaf/fzf-tab
 
+# OMZ Plugin Snippets with Turbo Mode
+zinit ice wait lucid
 zinit snippet OMZP::git
 zinit snippet OMZP::sudo
 zinit snippet OMZP::archlinux
 zinit snippet OMZP::command-not-found
+
+# Zoxide with Turbo Mode
+zinit ice wait lucid
+zinit light ajeetdsouza/zoxide
+eval "$(zoxide init zsh --cmd cd)"
 
 # History
 HISTSIZE=10000
@@ -135,11 +151,6 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 export EDITOR=nvim
 [[ -n $SSH_CONNECTION ]] && export EDITOR=vim
 
-# Paths
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init --path)"
-eval "$(pyenv init -)"
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
 
@@ -162,3 +173,4 @@ eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 export PATH=$PATH:/usr/local/go/bin
 export PATH="$HOME/.dotnet/tools:$PATH"
+

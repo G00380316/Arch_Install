@@ -130,15 +130,15 @@ execute_script() {
 
 
 ## Default values for the options (will be overwritten by preset file if available)
-gtk_themes="OFF"
-bluetooth="OFF"
-thunar="OFF"
-ags="OFF"
-sddm="OFF"
-sddm_theme="OFF"
-xdph="OFF"
-pokemon="OFF"
-input_group="OFF"
+gtk_themes="ON"
+bluetooth="ON"
+thunar="ON"
+ags="ON"
+sddm="ON"
+sddm_theme="ON"
+xdph="ON"
+pokemon="ON"
+input_group="ON"
 nvidia="OFF"
 nouveau="OFF"
 

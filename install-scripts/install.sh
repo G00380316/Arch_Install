@@ -33,7 +33,7 @@ fi
 # evaluate options #
 #------------------#
 flg_Install=1
-flg_Restore=0
+flg_Restore=1
 flg_Service=1
 flg_DryRun=0
 flg_Shell=0

@@ -85,6 +85,11 @@ echo "Working hard on moving your existing config files..."
 rsync -a --progress ~/Arch_Install/configs/ ~/.config/
 rsync -a --progress ~/Arch_Install/configs/.gtkrc-2.0 ~/
 
+ln -s ~/.config/scripts/Hyde_Inject/bin ~/.local/
+ln -s ~/.config/scripts/Hyde_Inject/Scripts ~/.local/
+ln -s ~/.config/scripts/Hyde_Inject/state/* ~/.local/state
+ln -s ~/.config/scripts/Hyde_Inject/share/* ~/.local/share
+
 sleep 5
 clear
 
