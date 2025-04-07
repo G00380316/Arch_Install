@@ -124,7 +124,7 @@ main
 
 wait $!
 "$SCRIPTSDIR/WallustSwww.sh" &&
-cp "$wallpaper_current" "$wallpaper_modified"
+cp -r "$wallpaper_current" "$wallpaper_modified"
 
 wait $!
 sleep 2

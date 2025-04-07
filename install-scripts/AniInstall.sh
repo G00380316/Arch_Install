@@ -141,7 +141,6 @@ pokemon="OFF"
 input_group="OFF"
 nvidia="OFF"
 nouveau="OFF"
-zsh="OFF"
 
 # Function to load preset file
 load_preset() {
@@ -270,7 +269,6 @@ options_command+=(
     "thunar" "Do you want Thunar file manager to be installed?" "OFF"
     "ags" "Install AGS v1 for Desktop-Like Overview" "OFF"
     "xdph" "Install XDG-DESKTOP-PORTAL-HYPRLAND (for screen share)?" "OFF"
-    "zsh" "Install zsh shell with Oh-My-Zsh?" "OFF"
     "pokemon" "Add Pokemon color scripts to your terminal?" "OFF"
 )
 
@@ -403,10 +401,6 @@ for option in "${options[@]}"; do
         sddm_theme)
             echo "${INFO} Downloading & Installing ${SKY_BLUE}Additional SDDM theme...${RESET}" | tee -a "$LOG"
             execute_script "sddm_theme.sh"
-            ;;
-        zsh)
-            echo "${INFO} Installing ${SKY_BLUE}zsh with Oh-My-Zsh...${RESET}" | tee -a "$LOG"
-            execute_script "zsh.sh"
             ;;
         pokemon)
             echo "${INFO} Adding ${SKY_BLUE}Pokemon color scripts to terminal...${RESET}" | tee -a "$LOG"

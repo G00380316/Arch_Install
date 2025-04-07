@@ -55,7 +55,7 @@ no-effects() {
 
     notify-send -u low -i "$iDIR/ja.png" "No wallpaper" "effects applied"
     # copying wallpaper for rofi menu
-    cp "$wallpaper_current" "$wallpaper_output"
+    cp -r "$wallpaper_current" "$wallpaper_output"
 }
 
 # Function to run rofi menu
@@ -82,6 +82,7 @@ main() {
 
             sleep 2
 
+            cp -r "$wallpaper_current" "$wallpaper_output"
             wallust run "$wallpaper_output" -s &
             sleep 1
             # Refresh rofi, waybar, wallust palettes

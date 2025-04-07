@@ -97,18 +97,10 @@ done
     cp -r './assets/.fzf.zsh' ~/ >> "$LOG" 2>&1
     cp -r './assets/.p10k.zsh' ~/ >> "$LOG" 2>&1
     cp -r './assets/.zshrc.pre-oh-my-zsh' ~/ >> "$LOG" 2>&1
-
-    # Checking and making env and sourcing to .zshrc and caching
-    echo -e '\n# Pyenv configuration' >> ~/.zshrc
-    echo 'export PATH="$HOME/.pyenv/bin:$PATH"' >> ~/.zshrc
-    echo 'eval "$(pyenv init --path)"' >> ~/.zshrc
-    echo 'eval "$(pyenv init -)"' >> ~/.zshrc
-    source ~/.nvm/nvm.sh
-    echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.zshrc
-    source ~/.cargo/env
-    echo 'export PATH="$HOME/.dotnet/tools:$PATH"' >> ~/.zshrc
-    source ~/.zshrc
     
+    # Fixes for upset .zshrc config 
+    sudo pacman -Fy
+
 # copy additional oh-my-zsh themes from assets
 if [ -d "$HOME/.oh-my-zsh/themes" ]; then
     cp -r assets/add_zsh_theme/* ~/.oh-my-zsh/themes >> "$LOG" 2>&1

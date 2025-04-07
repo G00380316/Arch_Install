@@ -83,31 +83,7 @@ sleep 3
 echo "Working hard on moving your existing config files..."
 
 rsync -a --progress ~/Arch_Install/configs/ ~/.config/
-rsync -a --progress ~/Arch_Install/configs/.gtkrc-2.0 ~
-
-# Cloning Neovim and tmux configurations
-echo "Cloning tpm for tmux configuration..."
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
-echo "Installing some Coding languages(python, node, rust)"
-# Install Python using pyenv
-echo "Installing pyenv and Python..."
-curl https://pyenv.run | zsh
-pyenv install 3.11.4
-pyenv global 3.11.4
-pip install -U hyfetch
-# Install Node.js using nvm
-echo "Installing nvm and Node.js..."
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | zsh
-nvm install --lts
-nvm use --lts
-# Install Rust
-echo "Installing Rust..."
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-rustup update
-git clone https://github.com/flutter/flutter.git -b stable
-sudo mv flutter /opt/flutter
-flutter doctor
+rsync -a --progress ~/Arch_Install/configs/.gtkrc-2.0 ~/
 
 sleep 5
 clear
@@ -124,7 +100,7 @@ echo "
 chmod +x *.sh
 
 # Available scripts
-SCRIPTS=( "AniInstall.sh" "install.sh" "vanilla_sway.sh" "packages.sh" "displaymanager.sh" "printers.sh" "displaylinkinstall.sh" "nerdfonts.sh" "wallpapers.sh" "util.sh" "cleanup.sh")
+SCRIPTS=( "zsh.sh" "dev.sh" "AniInstall.sh" "install.sh" "vanilla_sway.sh" "packages.sh" "displaymanager.sh" "printers.sh" "displaylinkinstall.sh" "nerdfonts.sh" "wallpapers.sh" "util.sh" "cleanup.sh")
 
 # Function to run a script
 run_script() {

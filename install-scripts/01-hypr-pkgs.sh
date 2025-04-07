@@ -33,7 +33,6 @@ Extra=(
   lsp-plugins 
   ladspa 
   calf
-  flatpak
   gdm                                                    # alt display Manager for Gnome
   firefoxpwa                                             # firefox Extenstion for Browser Apps
   zoxide
@@ -89,18 +88,10 @@ Extra=(
   qimgv
   moneymanagerex
   filebot
-  vesktop
-  obsidian
-  blanket
-  keypunch-git
-  bible_gui
-  onlyoffice
-  boxes
-  komikku
-  tasks
-  flatseal
   android-studio
-  bruno
+  vesktop
+  blanket
+  flatseal
   lazygit
   github-cli
   code

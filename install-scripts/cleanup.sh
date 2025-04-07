@@ -32,53 +32,14 @@ fi
 
 LOG="Install-Logs/install-$(date +%d-%H%M%S)_cleanup.log"
 
+# Fixes Chaotic-Aur
+sudo pacman -Fy
 echo "Automating some tasks for you..."
-
-### Build Waybar Plugin ###
-echo "Building Waybar Plugins..."
-cd ~/.config/waybar/waybar-module-pomodoro/
-cargo build
-echo "Waybar Plugins built!"
-
-### Build Weather Module ###
-echo "Building Weather Module Plugins..."
-if python3 ~/Arch_Install/config/hypr/UserScripts/Weather.py; then
-    echo "Weather Module built successfully!"
-else
-    echo "Error occurred. Installing pyquery..."
-    pip install pyquery
-
-    if python3 ~/.config/hypr/UserScripts/Weather.py; then
-        echo "Weather Module built successfully after installing pyquery!"
-    else
-        echo "Failed to build Weather Module. Please check the script."
-    fi
-fi
-
-### Add Themes ###
-echo "Adding Extra Hyprlock Theme..."
-sudo cp -r ~/Arch_Install/install-scripts/Extra/Candy_Modified /usr/share/sddm/themes
-
-echo "Applying GTK and icon themes..."
-bash ~/Arch_Install/colorschemes/purple.sh
-bash ~/Arch_Install/colorschemes/blue.sh
-
-echo "Configuring FireFoxPWA"
-cp -r ~/Arch_Install/install-scripts/Extra/firefoxpwa ~/.local/share/
-echo "Configuring for FireFoxPWA is complete (Please enable plugins in the Apps {Youtube , Youtube Music and Timetree})"
-echo "For the best experience Shortkeys to open them should be working straight away!!"
-
 
 ### Clean Up Unwanted Files ###
 echo "Removing temporary files and folders..."
 rm -rf ~/go ~/JetBrainsMono ~/install.sh ~/clone.sh ~/Clone
 echo "Cleanup complete."
-
-### Create Useful Directories ###
-echo "Creating Coding/Projects directory..."
-mkdir -p ~/Coding/Projects
-dircolors -p > ~/.dircolors
-echo "Directory structure set up!"
 
 ### Remove Orphaned Packages ###
 echo "Removing orphaned packages..."
@@ -115,6 +76,41 @@ xdg-user-dirs-update
 
 # Caching fonts once again
 fc-cache -fv
+
+
+echo "Configuring FireFoxPWA"
+cp -r ~/Arch_Install/install-scripts/Extra/firefoxpwa ~/.local/share/
+echo "Configuring for FireFoxPWA is complete (Please enable plugins in the Apps {Youtube , Youtube Music and Timetree})"
+echo "For the best experience Shortkeys to open them should be working straight away!!"
+
+### Build Waybar Plugin ###
+echo "Building Waybar Plugins..."
+cd ~/.config/waybar/waybar-module-pomodoro/
+cargo build
+echo "Waybar Plugins built!"
+
+### Add Themes ###
+echo "Adding Extra Hyprlock Theme..."
+sudo cp -r ~/Arch_Install/install-scripts/Extra/Candy_Modified /usr/share/sddm/themes
+
+echo "Applying GTK and icon themes..."
+bash ~/Arch_Install/colorschemes/purple.sh
+bash ~/Arch_Install/colorschemes/blue.sh
+
+### Build Weather Module ###
+echo "Building Weather Module Plugins..."
+if python3 ~/Arch_Install/config/hypr/UserScripts/Weather.py; then
+    echo "Weather Module built successfully!"
+else
+    echo "Error occurred. Installing pyquery..."
+    pip install pyquery
+
+    if python3 ~/.config/hypr/UserScripts/Weather.py; then
+        echo "Weather Module built successfully after installing pyquery!"
+    else
+        echo "Failed to build Weather Module. Please check the script."
+    fi
+fi
 
 ### Final Cleanup ###
 echo "Running final cleanup..."
