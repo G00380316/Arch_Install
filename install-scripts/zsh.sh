@@ -22,15 +22,15 @@
         exit 1
     fi
 
-
-
     # Set the name of the log file to include the current date and time
     LOG="Install-Logs/install-$(date +%d-%H%M%S)_zsh.log"
+
+    exec > >(tee -a "$LOG") 2>&1
 
     # Installing core zsh packages
     printf "\n%s - Installing ${SKY_BLUE}zsh packages${RESET} .... \n" "${NOTE}"
     for ZSH in "${zsh_pkg[@]}"; do
-    install_package "$ZSH" "$LOG"
+    install_package "$ZSH"
     done 
 
     # Check if the zsh-completions directory exists
@@ -44,7 +44,7 @@
     if [ ! -d "$HOME/.oh-my-zsh" ]; then  
         sh -c "$(curl -fsSL https://install.ohmyz.sh)" "" --unattended  	       
     else
-        echo "${INFO} Directory .oh-my-zsh already exists. Skipping re-installation." 2>&1 | tee -a "$LOG"
+        echo "${INFO} Directory .oh-my-zsh already exists. Skipping re-installation." 
     fi
     
     # Check if the directories exist before cloning the repositories

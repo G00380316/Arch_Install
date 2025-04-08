@@ -4,8 +4,7 @@
 #|-/ /--| Prasanth Rangan  |-/ /--|#
 #|/ /---+------------------+/ /---|#
 
-set -e
-
+#set -e
 scrDir="$(dirname "$(realpath "$0")")"
 cloneDir="$(dirname "${scrDir}")" # fallback, we will use CLONE_DIR now
 cloneDir="${CLONE_DIR:-${cloneDir}}"
@@ -99,8 +98,8 @@ prompt_timer() {
     done
     export PROMPT_INPUT
     echo ""
-    set -e
-}
+    #set -e
+    }
 print_log() {
     local executable="${0##*/}"
     local logFile="${cacheDir}/logs/${HYDE_LOG}/${executable}"

@@ -42,7 +42,7 @@ if [ "$flg_ThemeInstall" -eq 1 ]; then
     if [ "${THEME_IMPORT_ASYNC}" -eq 1 ]; then
         set +e
         parallel --bar --link "\"${scrDir}/themepatcher.sh\"" "{1}" "{2}" "{3}" "{4}" ::: "${themeNameQ[@]}" ::: "${themeRepoQ[@]}" ::: "--skipcaching" ::: "false"
-        set -e
-    fi
+        #set -e    
+        fi
     print_log -y "Be sure to cache the wallpapers!"
 fi

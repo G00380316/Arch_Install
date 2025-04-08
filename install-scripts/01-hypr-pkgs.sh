@@ -36,13 +36,13 @@ hypr_package=(
   rofi-wayland
   slurp
   swappy
-  swaync
   swww
   unzip # needed later
   waybar
   wget
   wl-clipboard
   wlogout
+  dunst
   xdg-user-dirs
   xdg-utils
   yad

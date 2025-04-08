@@ -25,11 +25,11 @@ if [ ! -f "$HOME/.config/hypr/.initial_startup_done" ]; then
     sleep 1
     # Initialize wallust and wallpaper
 	if [ -f "$wallpaper" ]; then
-		wallust run -s $wallpaper > /dev/null 
+		wallust run -s $wallpaper > /dev/null
 		swww query || swww-daemon && $swww $wallpaper $effect
-	    "$scriptsDir/WallustSwww.sh" > /dev/null 2>&1 & 
+	    "$scriptsDir/WallustSwww.sh" > /dev/null 2>&1 &
 	fi
-     
+
     # initiate GTK dark mode and apply icon and cursor theme
     gsettings set org.gnome.desktop.interface color-scheme $color_scheme > /dev/null 2>&1 &
     gsettings set org.gnome.desktop.interface gtk-theme $gtk_theme > /dev/null 2>&1 &
@@ -45,7 +45,7 @@ if [ ! -f "$HOME/.config/hypr/.initial_startup_done" ]; then
       dconf write /org/gnome/desktop/interface/cursor-theme "'$cursor_theme'" > /dev/null 2>&1 &
       dconf write /org/gnome/desktop/interface/cursor-size "24" > /dev/null 2>&1 &
 	fi
-       
+
     # initiate kvantum theme
     kvantummanager --set "$kvantum_theme" > /dev/null 2>&1 &
 
@@ -55,7 +55,7 @@ if [ ! -f "$HOME/.config/hypr/.initial_startup_done" ]; then
 	# waybar style
 	#if [ -L "$HOME/.config/waybar/config" ]; then
     ##    	ln -sf "$waybar_style" "$HOME/.config/waybar/style.css"
-    #   	"$scriptsDir/Refresh.sh" > /dev/null 2>&1 & 
+    #   	"$scriptsDir/Refresh.sh" > /dev/null 2>&1 &
 	#fi
 
     # Fixes Chaotic-Aur
@@ -67,84 +67,16 @@ if [ ! -f "$HOME/.config/hypr/.initial_startup_done" ]; then
     rm -rf ~/go ~/JetBrainsMono ~/install.sh ~/clone.sh ~/Clone
     echo "Cleanup complete."
 
-    ### Create Useful Directories ###
-    echo "Creating Coding/Projects directory..."
-    mkdir -p ~/Coding/Projects
-    dircolors -p > ~/.dircolors
-    echo "Directory structure set up!"
-
-    ### Remove Orphaned Packages ###
-    echo "Removing orphaned packages..."
-    if pacman -Qdtq &> /dev/null; then
-        sudo pacman -Rns $(pacman -Qdtq)
-    fi
-    if command -v yay &> /dev/null && yay -Qdtq &> /dev/null; then
-        yay -Rns $(yay -Qdtq)
-    fi
-    echo "Unwanted packages removed!"
-
-    ### Easy Effect Presets ###
-    echo "Importing Easyeffect presets..."
-    bash -c "$(curl -fsSL https://raw.githubusercontent.com/JackHack96/PulseEffects-Presets/master/install.sh)"
-
-    ### Build Neovim Plugins ###
-    echo "Building Neovim plugins..."
-    cd ~/.local/share/nvim/lazy/command-t/lua/wincent/commandt/lib
-    make clean && make
-    echo "Neovim plugins built!"
-
     ### Service Configuration ###
-    echo "Configuring services..."
-
     xdg-mime default thunar.desktop inode/directory application/x-gnome-saved-search
     xdg-user-dirs-update
 
     # Caching fonts once again
     fc-cache -fv
 
-
-    echo "Configuring FireFoxPWA"
-    cp -r ~/Arch_Install/install-scripts/Extra/firefoxpwa ~/.local/share/
-    echo "Configuring for FireFoxPWA is complete (Please enable plugins in the Apps {Youtube , Youtube Music and Timetree})"
-    echo "For the best experience Shortkeys to open them should be working straight away!!"
-
-    ### Build Waybar Plugin ###
-    echo "Building Waybar Plugins..."
-    cd ~/.config/waybar/waybar-module-pomodoro/
-    cargo build
-    echo "Waybar Plugins built!"
-
-    ### Add Themes ###
-    echo "Adding Extra Hyprlock Theme..."
-    sudo cp -r ~/Arch_Install/install-scripts/Extra/Candy_Modified /usr/share/sddm/themes
-
-    echo "Applying GTK and icon themes..."
-    bash ~/Arch_Install/colorschemes/purple.sh
-    bash ~/Arch_Install/colorschemes/blue.sh
-
-    ### Build Weather Module ###
-    echo "Building Weather Module Plugins..."
-    if python3 ~/Arch_Install/config/hypr/UserScripts/Weather.py; then
-        echo "Weather Module built successfully!"
-    else
-        echo "Error occurred. Installing pyquery..."
-        pip install pyquery
-        pip install fetch
-
-        if python3 ~/.config/hypr/UserScripts/Weather.py; then
-            echo "Weather Module built successfully after installing pyquery!"
-        else
-            echo "Failed to build Weather Module. Please check the script."
-        fi
-    fi
-
     theme.patch.sh "Moonlight" https://github.com/Maroc02/Moonlight
 
     theme.patch.sh "Another World" https://github.com/cyb3rgh0u1/Another-World
-
-    ### Final Cleanup ###
-    echo "Running final cleanup..."
-    sudo pacman -Sc --noconfirm
 
     # Create a marker file to indicate that the script has been executed.
     touch "$HOME/.config/hypr/.initial_startup_done"

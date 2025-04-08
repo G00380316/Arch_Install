@@ -42,7 +42,7 @@ if [[ "$response" =~ ^[Yy]$ ]]; then
     if [ "$PACKAGE_MANAGER" = "pacman" ]; then
         # Arch-based systems
         sudo pacman -S --noconfirm reflector
-        sudo reflector --latest 10 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+        sudo reflector --latest 20 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
         sudo pacman -Syy
         sudo pacman -S --noconfirm splix cups cups-filters
         sudo systemctl enable --now cups.service

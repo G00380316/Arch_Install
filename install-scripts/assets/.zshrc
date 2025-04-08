@@ -1,31 +1,25 @@
-# Powerlevel10k Instant Prompt
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# Powerlevel10k Instant Prompt (disabled if causing issues)
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
 
-# Init completion
-autoload -Uz compinit && compinit -u
-zstyle ':completion:*' file-patterns '*(.)' '.*(.)'
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-
-# Improve completion reliability
-fpath+=($HOME/.zfunc)
-
-# Zinit Setup (unchanged)
+# Zinit Setup
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-# Remove once installed (next two lines)
 [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
 [ ! -d $ZINIT_HOME/.git ] && git clone --depth=1 https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 source "$ZINIT_HOME/zinit.zsh"
 
+# Init completion
+autoload -Uz compinit && compinit -u
+
+# Improve completion reliability
+fpath+=($HOME/.zfunc)
+
 # Plugins with Turbo Mode
-zinit ice wait lucid
+zinit ice lucid
 zinit light romkatv/powerlevel10k
 [[ -f $HOME/.p10k.zsh ]] && source $HOME/.p10k.zsh
 
-zinit ice wait lucid
-zinit light zsh-users/zsh-completions
+#zinit ice wait lucid
+#zinit light zsh-users/zsh-completions
 
 zinit ice wait lucid
 zinit light zsh-users/zsh-autosuggestions
@@ -35,13 +29,6 @@ zinit light zsh-users/zsh-syntax-highlighting
 
 zinit ice wait lucid
 zinit light Aloxaf/fzf-tab
-
-# OMZ Plugin Snippets with Turbo Mode
-zinit ice wait lucid
-zinit snippet OMZP::git
-zinit snippet OMZP::sudo
-zinit snippet OMZP::archlinux
-zinit snippet OMZP::command-not-found
 
 # Zoxide with Turbo Mode
 zinit ice wait lucid
@@ -69,11 +56,12 @@ bindkey '^R' fzf-history-widget
 bindkey '^E' fzf-file-widget
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
+bindkey '^I' fzf-file-widget # Hit TAB twice to activate
 bindkey -e
 
-# Zoxide
-zinit light ajeetdsouza/zoxide
-eval "$(zoxide init zsh --cmd cd)"
+# FZF-tab Completion Styles
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # Terminal Styling
 # cat .nf 2> /dev/null
@@ -143,34 +131,6 @@ precmd() {
   [[ "$TERM" == screen* ]] && echo -ne "\033k${HOST%%.*}: ${PWD##*/}\033\\" || echo -ne "\033]0;${HOST%%.*}: ${PWD##*/}\007"
 }
 
-# FZF-tab Completion Styles
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
-zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
-
 # Editor
 export EDITOR=nvim
 [[ -n $SSH_CONNECTION ]] && export EDITOR=vim
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
-
-export PATH="$PATH:/usr/local/go/bin:/sbin:/opt/flutter/bin:$HOME/.dotnet/tools:$HOME/.config/waybar/waybar-module-pomodoro/target/release:$HOME/.config/waybar/scripts:$HOME/Documents/Applications/Sideloader/Working Binaries"
-source "$HOME/.cargo/env"
-
-# Android
-export ANDROID_SDK_ROOT="/opt/android-sdk"
-export PATH="$PATH:$ANDROID_SDK_ROOT/cmdline-tools/bin:$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools"
-
-# Dart completion
-[[ -f $HOME/.dart-cli-completion/zsh-config.zsh ]] && source $HOME/.dart-cli-completion/zsh-config.zsh
-
-# Chrome executable
-export CHROME_EXECUTABLE=$(which google-chrome-stable)
-
-# Pyenv configuration
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init --path)"
-eval "$(pyenv init -)"
-export PATH=$PATH:/usr/local/go/bin
-export PATH="$HOME/.dotnet/tools:$PATH"
-
