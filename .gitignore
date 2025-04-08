@@ -1,7 +1,7 @@
 *.log
 *.pyc
-*/target
+**/target/
 test.png
-book/
+**/book/
 # Nix
 result

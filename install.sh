@@ -45,22 +45,25 @@
     fi
 
     echo "Rsync and Git is installed. Continuing with the script..."
-
-    if [ -d "$HOME/Arch_Install" ]; then
+    # Clone or pull the repository
+    REPO_DIR="$HOME/Arch_Install"
+    if [ -d "$REPO_DIR" ]; then
         echo "Arch_Install directory already exists. Pulling latest changes..."
-        cd "$HOME/Arch_Install" && git pull
+        cd "$REPO_DIR" && git pull
     else
-        git clone https://github.com/G00380316/Arch_Install.git "$HOME/Arch_Install"
+        echo "Cloning the Arch_Install repository..."
+        git clone https://github.com/G00380316/Arch_Install.git "$REPO_DIR"
     fi
 
-    DIRECTORY="$HOME/Arch_Install"
-
-    if [ ! -d "$DIRECTORY" ]; then
-        echo "Error: Directory $DIRECTORY does not exist. Run the script again! ;)"
-        exit 1
+    # Relaunch the script from the correct directory if not already there
+    if [ "$SCRIPT_DIR" != "$REPO_DIR" ]; then
+        echo "Re-running the script from the correct directory: $REPO_DIR"
+        exec "$REPO_DIR/$(basename "$0")"
+        exit 0
     fi
 
-    echo "Directory $DIRECTORY exists. Continuing..."
+    echo "Running script from the correct directory: $SCRIPT_DIR"
+
     sleep 3
     clear
 
@@ -94,8 +97,9 @@
 
     sleep 1
 
-    mkdir -p ~/.local
     sudo rm -rf ~/.local/*
+    mkdir -p ~/.local/state
+    mkdir -p ~/.local/share
 
     ln -s ~/.config/scripts/Hyde_Inject/bin ~/.local/
     ln -s ~/.config/scripts/Hyde_Inject/Scripts ~/.local/
@@ -117,7 +121,7 @@
     chmod +x *.sh
 
     # Available scripts
-    SCRIPTS=( "zsh.sh" "dev.sh" "wallust.sh" "AniInstall.sh" "install.sh" "vanilla_sway.sh" "packages.sh" "printers.sh" "displaylinkinstall.sh" "nerdfonts.sh" "wallpapers.sh" "util.sh" "cleanup.sh")
+    SCRIPTS=( "zsh.sh" "devs.sh" "wallust.sh" "AniInstall.sh" "install.sh" "vanilla_sway.sh" "packages.sh" "printers.sh" "displaylinkinstall.sh" "nerdfonts.sh" "wallpapers.sh" "util.sh" "cleanup.sh")
 
     # Function to run a script
     run_script() {
