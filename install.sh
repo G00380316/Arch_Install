@@ -3,7 +3,7 @@
     SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
     # Source global functions
-    if ! source "$(dirname "$(readlink -f "$0")")/Global_functions.sh"; then
+    if ! source "$(dirname "$(readlink -f "$0")")/install-scripts/Global_functions.sh"; then
         echo "Failed to source Global_functions.sh"
         exit 1
     fi
