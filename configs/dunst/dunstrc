@@ -9,7 +9,7 @@
 corner_radius = 10
 icon_corner_radius = 10
 dmenu = /usr/bin/rofi -config notification -dmenu -p dunst:
-icon_theme = "Tela-circle-dracula,Wallbash-Icon,Tela-circle-dracula,Tela-circle-grey,Tela-circle-pink,Tela-circle-purple,Tela-circle-black,Tela-circle-green,Tela-circle-yellow,Tela-circle-blue,Gruvbox-Plus-Dark,Nordzy,Colloid-Dracula-Light,Colloid-Dracula-Dark,Colloid-Dracula,Colloid-Purple-Dracula-Light,Colloid-Purple-Dracula-Dark,Colloid-Purple-Dracula,Colloid-Pink-Dracula-Light,Colloid-Pink-Dracula-Dark,Colloid-Pink-Dracula,Colloid-Red-Dracula-Light,Colloid-Red-Dracula-Dark,Colloid-Red-Dracula,Colloid-Orange-Dracula-Light,Colloid-Orange-Dracula-Dark,Colloid-Orange-Dracula,Colloid-Yellow-Dracula-Light,Colloid-Yellow-Dracula-Dark,Colloid-Yellow-Dracula,Colloid-Green-Dracula-Light,Colloid-Green-Dracula-Dark,Colloid-Green-Dracula,Colloid-Teal-Dracula-Light,Colloid-Teal-Dracula-Dark,Colloid-Teal-Dracula,Colloid-Grey-Dracula-Light,Colloid-Grey-Dracula-Dark,Colloid-Grey-Dracula"
+icon_theme = "Vivid-Glassy-Dark-Icons,Wallbash-Icon,Tela-circle-dracula,Tela-circle-grey,Tela-circle-pink,Tela-circle-purple,Tela-circle-black,Tela-circle-green,Tela-circle-yellow,Tela-circle-blue,Gruvbox-Plus-Dark,Nordzy,Colloid-Dracula-Light,Colloid-Dracula-Dark,Colloid-Dracula,Colloid-Purple-Dracula-Light,Colloid-Purple-Dracula-Dark,Colloid-Purple-Dracula,Colloid-Pink-Dracula-Light,Colloid-Pink-Dracula-Dark,Colloid-Pink-Dracula,Colloid-Red-Dracula-Light,Colloid-Red-Dracula-Dark,Colloid-Red-Dracula,Colloid-Orange-Dracula-Light,Colloid-Orange-Dracula-Dark,Colloid-Orange-Dracula,Colloid-Yellow-Dracula-Light,Colloid-Yellow-Dracula-Dark,Colloid-Yellow-Dracula,Colloid-Green-Dracula-Light,Colloid-Green-Dracula-Dark,Colloid-Green-Dracula,Colloid-Teal-Dracula-Light,Colloid-Teal-Dracula-Dark,Colloid-Teal-Dracula,Colloid-Grey-Dracula-Light,Colloid-Grey-Dracula-Dark,Colloid-Grey-Dracula,Colloid-Light,Colloid-Dark,Colloid,Colorful,Vivid-Glassy-Dark-Icons,Papirus-Latte,Breeze-Noir-White-Blue,Tela-circle-red,WhiteSur,Tela-circle-nord,Tela-circle-solarized,Monokai,Rain-Dark,besgnulinux-mono-red,Papirus-Everblush"
 
 
 # [Type-1]
@@ -120,15 +120,15 @@ dmenu = /usr/bin/rofi -config notification -dmenu -p dunst:
 
 
 [urgency_low]
-    background = "#8B65A380"
-    foreground = "#ECCCFFE6"
-    frame_color = "#8B65A303"
+    background = "#6572A380"
+    foreground = "#CCD6FFE6"
+    frame_color = "#6572A303"
     icon = "/home/enoch/.local/share/icons/Wallbash-Icon/hyprdots.svg"
     timeout = 5
 
 [urgency_normal]
-    background = "#3A4B6B80"
-    foreground = "#CCDDFFE6"
-    frame_color = "#3A4B6B03"
+    background = "#3A476B80"
+    foreground = "#CCD9FFE6"
+    frame_color = "#3A476B03"
     icon = "/home/enoch/.local/share/icons/Wallbash-Icon/hyprdots.svg"
     timeout = 5
