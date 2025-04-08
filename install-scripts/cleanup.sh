@@ -114,7 +114,7 @@ if [[ "$answer" == "y" || "$answer" == "Y" ]]; then
     yay -S --noconfirm geany geany-plugins betterbird-bin onedrive-abraunegg fzf bat tofi arc-gtx-theme papirus-icon-theme microsoft-edge-stable-bin google-chrome anki-bin swww qimgv visual-studio-code-bin moneymanagerex filebot obsidian pokemon-colorscripts-git bluetui code flatseal blanket obs-studio bleachbit onlyoffice vesktop firefox \
     boxes foot spotube zathura zed
     sudo pacman -S --noconfirm acpi acpid avahi base-devel curl dialog dosfstools exa file-roller ttf-font-awesome terminus-font ttf-dejavu ttf-freefont gettext grim kitty libnotify mtools networkmanager papirus-icon-theme pavucontrol redshift slurp tilix thunar thunar-archive-plugin thunar-media-tags-plugin thunar-volman unzip xdotool \
-    xfce4-power-manager pipewire pipewire-pulse pipewire-jack rsync parted gptfdisk exfatprogs ntfs-3g util-linux e2fsprogs usbutils pv network-manager-applet lazygit firefoxpwa unrar usbmuxd ifuse libimobiledevice vlc kodi flatpak dolphin btop qbittorrent feh gparted nwg-look
+    xfce4-power-manager pipewire pipewire-pulse pipewire-jack rsync parted gptfdisk exfatprogs ntfs-3g util-linux e2fsprogs usbutils pv network-manager-applet lazygit firefoxpwa unrar usbmuxd ifuse libimobiledevice vlc kodi flatpak dolphin btop qbittorrent feh gparted nwg-look gnome-disk-utility
     
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     flatpak install flathub dev.bragefuglseth.Keypunch -y
