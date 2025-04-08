@@ -16,13 +16,18 @@ fi
 # Set the name of the log file to include the current date and time
 LOG="Install-Logs/install-$(date +%d-%H%M%S)_displaylink.log"
 
+# Redirecting all output and errors to log file
+exec > >(tee -a "$LOG") 2>&1
+
+# Log the start of the script
+echo "=== Script started at $(date) ==="
 # Install the Evdi driver
 echo "Installing Evdi driver..."
-install_package evdi "$LOG"
+install_package evdi
 
 # Install the DisplayLink driver
 echo "Installing DisplayLink driver..."
-install_package displaylink "$LOG"
+install_package displaylink
 
 # Enable the DisplayLink service
 echo "Enabling DisplayLink service..."

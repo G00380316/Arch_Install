@@ -96,13 +96,6 @@ if [ ! -f "$HOME/.config/hypr/.initial_startup_done" ]; then
     ### Service Configuration ###
     echo "Configuring services..."
 
-    systemctl --user daemon-reload
-    systemctl --user restart xdg-desktop-portal-wlr.service
-    sudo systemctl enable avahi-daemon
-    sudo systemctl enable acpid
-    sudo systemctl --user enable --now pipewire pipewire-pulse
-    sudo systemctl enable --now tlp
-
     xdg-mime default thunar.desktop inode/directory application/x-gnome-saved-search
     xdg-user-dirs-update
 
@@ -136,6 +129,7 @@ if [ ! -f "$HOME/.config/hypr/.initial_startup_done" ]; then
     else
         echo "Error occurred. Installing pyquery..."
         pip install pyquery
+        pip install fetch
 
         if python3 ~/.config/hypr/UserScripts/Weather.py; then
             echo "Weather Module built successfully after installing pyquery!"
@@ -143,6 +137,10 @@ if [ ! -f "$HOME/.config/hypr/.initial_startup_done" ]; then
             echo "Failed to build Weather Module. Please check the script."
         fi
     fi
+
+    theme.patch.sh "Moonlight" https://github.com/Maroc02/Moonlight
+
+    theme.patch.sh "Another World" https://github.com/cyb3rgh0u1/Another-World
 
     ### Final Cleanup ###
     echo "Running final cleanup..."

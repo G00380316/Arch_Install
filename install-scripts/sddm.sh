@@ -7,6 +7,7 @@ sddm=(
   qt6-declarative 
   qt6-svg
   sddm
+  gdm3
 )
 
 # login managers to attempt to disable

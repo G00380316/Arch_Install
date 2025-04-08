@@ -8,9 +8,7 @@ packages=(
     kvantum
     rofi-wayland
     imagemagick
-    swaync
     swww
-    wallust
     waybar
     wl-clipboard
     wlogout
