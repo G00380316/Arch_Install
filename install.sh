@@ -2,6 +2,7 @@
 
     SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+    mkdir LOG
     # Set the name of the log file to include the current date and time
     LOG="log/install-$(date +%d-%H%M%S)_G00380316.log"
 
@@ -30,7 +31,7 @@
 
     echo "Git is installed. Continuing with the script..."
 
-    if ! command_exists rsync; then
+      if ! command_exists rsync; then
         echo "Rsync is not installed. Attempting to install Rsync..."
         if command_exists pacman; then
             sudo pacman -S --noconfirm --needed rsync
@@ -45,25 +46,22 @@
     fi
 
     echo "Rsync and Git is installed. Continuing with the script..."
-    # Clone or pull the repository
-    REPO_DIR="$HOME/Arch_Install"
-    if [ -d "$REPO_DIR" ]; then
+
+    if [ -d "$HOME/Arch_Install" ]; then
         echo "Arch_Install directory already exists. Pulling latest changes..."
-        cd "$REPO_DIR" && git pull
+        cd "$HOME/Arch_Install" && git pull
     else
-        echo "Cloning the Arch_Install repository..."
-        git clone https://github.com/G00380316/Arch_Install.git "$REPO_DIR"
+        git clone https://github.com/G00380316/Arch_Install.git "$HOME/Arch_Install"
     fi
 
-    # Relaunch the script from the correct directory if not already there
-    if [ "$SCRIPT_DIR" != "$REPO_DIR" ]; then
-        echo "Re-running the script from the correct directory: $REPO_DIR"
-        exec "$REPO_DIR/$(basename "$0")"
-        exit 0
+    DIRECTORY="$HOME/Arch_Install"
+
+    if [ ! -d "$DIRECTORY" ]; then
+        echo "Error: Directory $DIRECTORY does not exist. Run the script again! ;)"
+        exit 1
     fi
 
-    echo "Running script from the correct directory: $SCRIPT_DIR"
-
+    echo "Directory $DIRECTORY exists. Continuing..."
     sleep 3
     clear
 
