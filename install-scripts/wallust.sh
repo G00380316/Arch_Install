@@ -9,7 +9,7 @@
         exit 1
     fi
 
-    LOG="Install-Logs/install-$(date +%d-%H%M%S)_dev.log"
+    LOG="Install-Logs/install-$(date +%d-%H%M%S)_wallust.log"
 
     # Redirecting all output and errors to log file
     exec > >(tee -a "$LOG") 2>&1
@@ -41,3 +41,4 @@
     # Proceed with the build process
     cd "${SCRIPT_DIR}/assets/wallust"
     cargo build
+    cargo install wallust
