@@ -32,9 +32,9 @@ fi
 #------------------#
 # evaluate options #
 #------------------#
-flg_Install=1
-flg_Restore=1
-flg_Service=1
+flg_Install=o
+flg_Restore=o
+flg_Service=o
 flg_DryRun=0
 flg_Shell=0
 flg_Nvidia=1
