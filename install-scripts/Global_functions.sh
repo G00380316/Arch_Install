@@ -55,7 +55,7 @@ install_package_pacman() {
   else
     # Run pacman and redirect all output to a log file
     (
-      stdbuf -oL sudo pacman -S --noconfirm "$1" 2>&1
+      stdbuf -oL sudo pacman -S --noconfirm --needed "$1" 2>&1
     ) >> "$LOG" 2>&1 &
     PID=$!
     show_progress $PID "$1"
@@ -83,7 +83,7 @@ install_package() {
   # Try pacman (official repos)
   if pacman -Si "$pkg" &>/dev/null; then
     (
-      stdbuf -oL sudo pacman -S --noconfirm "$pkg" 2>&1
+      stdbuf -oL sudo pacman -S --noconfirm --needed "$pkg" 2>&1
     ) >> "$LOG" 2>&1 &
     PID=$!
     show_progress $PID "$pkg"
@@ -99,7 +99,7 @@ install_package() {
 
   # Fallback to yay/paru (AUR)
   (
-    stdbuf -oL $ISAUR -S --noconfirm --mflags --skipreview "$pkg" 2>&1
+    stdbuf -oL $ISAUR -S --noconfirm --needed --mflags --skipreview "$pkg" 2>&1
   ) >> "$LOG" 2>&1 &
   PID=$!
   show_progress $PID "$pkg"
@@ -114,7 +114,7 @@ install_package() {
 # Function to just install packages with either yay or paru without checking if installed
 install_package_f() {
   (
-    stdbuf -oL $ISAUR -S --noconfirm "$1" 2>&1
+    stdbuf -oL $ISAUR -S --noconfirm --needed "$1" 2>&1
   ) >> "$LOG" 2>&1 &
   PID=$!
   show_progress $PID "$1"
@@ -136,7 +136,7 @@ uninstall_package() {
   # Checking if package is installed
   if pacman -Qi "$pkg" &>/dev/null; then
     echo -e "${NOTE} removing $pkg ..."
-    sudo pacman -R --noconfirm "$pkg" 2>&1 | tee -a "$LOG" | grep -v "error: target not found"
+    sudo pacman -R --noconfirm --needed "$pkg" 2>&1 | tee -a "$LOG" | grep -v "error: target not found"
     
     if ! pacman -Qi "$pkg" &>/dev/null; then
       echo -e "\e[1A\e[K${OK} $pkg removed."

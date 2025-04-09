@@ -30,7 +30,7 @@ flags:
     -G, --global              Set wallpaper as global
 
 
-notes: 
+notes:
        --backend <backend> is also use to cache wallpapers/background images e.g. hyprlock
            when '--backend hyprlock' is used, the wallpaper will be cached in
            ~/.cache/hyde/wallpapers/hyprlock.png
@@ -40,7 +40,7 @@ notes:
 
        --output <path> is used to copy the current wallpaper to the specified path
             We can use this to have a copy of the wallpaper to '/var/tmp' where sddm or
-            any systemwide application can access it  
+            any systemwide application can access it
 EOF
     exit 0
 }
@@ -92,10 +92,10 @@ Wall_Json() {
 
     # Create JSON using jq
     jq -n --argjson wallList "$wallListJson" --argjson wallHash "$wallHashJson" --arg cacheHome "${HYDE_CACHE_HOME:-$HOME/.cache/hyde}" '
-        [range(0; $wallList | length) as $i | 
+        [range(0; $wallList | length) as $i |
             {
-                path: $wallList[$i], 
-                hash: $wallHash[$i], 
+                path: $wallList[$i],
+                hash: $wallHash[$i],
                 basename: ($wallList[$i] | split("/") | last),
                 thmb: "\($cacheHome)/thumbs/\($wallHash[$i]).thmb",
                 sqre: "\($cacheHome)/thumbs/\($wallHash[$i]).sqre",
@@ -143,7 +143,7 @@ Wall_Select() {
     r_override="window{width:100%;}
     listview{columns:${col_count};spacing:5em;}
     element{border-radius:${elem_border}px;
-    orientation:vertical;} 
+    orientation:vertical;}
     element-icon{size:28em;border-radius:0em;}
     element-text{padding:1em;}"
 
@@ -262,31 +262,19 @@ main() {
 
     # Apply wallpaper to  backend
     if [ -f "${scrDir}/wallpaper.${wallpaper_backend}.sh" ] && [ -n "${wallpaper_backend}" ]; then
+        cp -r "${wallpaper_path}" "$HOME/.config/hypr/wallpaper_effects/.wallpaper_current"
         print_log -sec "wallpaper" "Using backend: ${wallpaper_backend}"
         "${scrDir}/wallpaper.${wallpaper_backend}.sh" "${wallSet}"
-        #current_wallpaper=$(swww query | awk -F'currently displaying: image: ' '{print $2}')
-        
-        #cp -r "$current_wallpaper" "$HOME/.config/hypr/wallpaper_effects/.wallpaper_current"
-        #cp -r "$current_wallpaper" "$HOME/.config/hypr/wallpaper_effects/.wallpaper_modified"
+        cp -r "${wallpaper_path}" "$HOME/.config/hypr/wallpaper_effects/.wallpaper_modified"
 
-        #wait $!
-        #"$SCRIPTSDIR/WallustSwww.sh"
-        #cp -r "$wallpaper_current" "$wallpaper_modified"
-
-        wait $!
-        sleep 2
-        "$SCRIPTSDIR/Refresh.sh"
-
+        wallust run "${wallpaper_path}"
     else
         if command -v "wallpaper.${wallpaper_backend}.sh" >/dev/null; then
+            cp -r "${wallpaper_path}" "$HOME/.config/hypr/wallpaper_effects/.wallpaper_current"
             "wallpaper.${wallpaper_backend}.sh" "${wallSet}"
-            #wait $!
-            #"$SCRIPTSDIR/WallustSwww.sh"
+            cp -r "${wallpaper_path}" "$HOME/.config/hypr/wallpaper_effects/.wallpaper_modified"
 
-            wait $!
-            sleep 2
-            "$SCRIPTSDIR/Refresh.sh"
-
+            wallust run "${wallpaper_path}"
         else
             print_log -warn "wallpaper" "No backend script found for ${wallpaper_backend}"
             print_log -warn "wallpaper" "Created: $HYDE_CACHE_HOME/wallpapers/${wallpaper_backend}.png instead"

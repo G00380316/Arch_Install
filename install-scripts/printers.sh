@@ -41,10 +41,10 @@ if [[ "$response" =~ ^[Yy]$ ]]; then
     echo "Installing printing services..."
     if [ "$PACKAGE_MANAGER" = "pacman" ]; then
         # Arch-based systems
-        sudo pacman -S --noconfirm reflector
+        sudo pacman -S --noconfirm --needed reflector
         sudo reflector --latest 20 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
         sudo pacman -Syy
-        sudo pacman -S --noconfirm splix cups cups-filters
+        sudo pacman -S --noconfirm --needed splix cups cups-filters
         sudo systemctl enable --now cups.service
         #Add the printer:
 

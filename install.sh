@@ -17,7 +17,7 @@
         echo "Git is not installed. Attempting to install Git..."
         if command_exists pacman; then
             sudo pacman -Sy --noconfirm
-            sudo pacman -S --noconfirm git
+            sudo pacman -S --noconfirm --needed git
             if command_exists git; then
                 echo "Git installation successful. Run this script again to use git."
                 exit 1
@@ -33,7 +33,7 @@
     if ! command_exists rsync; then
         echo "Rsync is not installed. Attempting to install Rsync..."
         if command_exists pacman; then
-            sudo pacman -S --noconfirm rsync
+            sudo pacman -S --noconfirm --needed rsync
             if command_exists rsync; then
                 echo "Rsync installation successful. Rsync this script again to use git."
                 exit 1

@@ -38,7 +38,7 @@ install_packages() {
 
         # Install the package
         echo "Installing $package..."
-        if ! sudo pacman -S --noconfirm "$package"; then
+        if ! sudo pacman -S --noconfirm --needed "$package"; then
             echo "Failed to install $package. Skipping..."
             continue
         fi
@@ -46,7 +46,7 @@ install_packages() {
         # Reinstall previously removed dependencies
         if [ ${#blocking_deps[@]} -gt 0 ]; then
             echo "Reinstalling dependencies: ${blocking_deps[*]}"
-            sudo pacman -S --noconfirm "${blocking_deps[@]}"
+            sudo pacman -S --noconfirm --needed "${blocking_deps[@]}"
         fi
     done
 }

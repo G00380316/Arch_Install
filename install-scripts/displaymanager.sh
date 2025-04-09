@@ -115,7 +115,7 @@ install_gdm() {
     sudo pacman -Rdd --noconfirm poppler-qt6
     sudo $PACKAGE_COMMAND gdm
     sudo systemctl enable gdm
-    sudo pacman -S --noconfirm poppler-qt6
+    sudo pacman -S --noconfirm --needed poppler-qt6
     echo "GDM3 has been installed and enabled."
 }
 

@@ -73,6 +73,7 @@ fi
 
 # Pre-select clap-host provider to avoid pacman prompt
 sudo pacman -S --noconfirm --needed reaper
+sudo pacman -S --noconfirm --needed parallel
 
 # Core dev stack
 echo "Installing development tools..."
@@ -153,7 +154,7 @@ else
     sudo mv flutter /opt/flutter
     echo 'export PATH="$PATH:/opt/flutter/bin"' >> ~/.zshrc
     zsh -i -c "source ~/.zshrc"
-    yay -S --noconfirm android-studio android-sdk android-ndk
+    yay -S --noconfirm --needed android-studio android-sdk android-ndk
     flutter doctor
 fi
 

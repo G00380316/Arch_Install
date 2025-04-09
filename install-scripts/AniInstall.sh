@@ -55,7 +55,7 @@ if pacman -Q base-devel &> /dev/null; then
 else
     echo "$NOTE Install base-devel.........."
 
-    if sudo pacman -S --noconfirm base-devel; then
+    if sudo pacman -S --noconfirm --needed base-devel; then
         echo "👌 ${OK} base-devel has been installed successfully." | tee -a "$LOG"
     else
         echo "❌ $ERROR base-devel not found nor cannot be installed."  | tee -a "$LOG"
@@ -67,7 +67,7 @@ fi
 # install whiptails if detected not installed. Necessary for this version
 if ! command -v whiptail >/dev/null; then
     echo "${NOTE} - whiptail is not installed. Installing..." | tee -a "$LOG"
-    sudo pacman -S --noconfirm libnewt
+    sudo pacman -S --noconfirm --needed libnewt
     printf "\n%.0s" {1..1}
 fi
 
@@ -105,7 +105,7 @@ printf "\n%.0s" {1..1}
 # install pciutils if detected not installed. Necessary for detecting GPU
 if ! pacman -Qs pciutils > /dev/null; then
     echo "${NOTE} - pciutils is not installed. Installing..." | tee -a "$LOG"
-    sudo pacman -S --noconfirm pciutils
+    sudo pacman -S --noconfirm --needed pciutils
     printf "\n%.0s" {1..1}
 fi
 

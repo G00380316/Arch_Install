@@ -24,7 +24,7 @@ install_packages() {
     # Install missing packages
     if [ ${#missing_pkgs[@]} -gt 0 ]; then
         echo "Installing missing packages: ${missing_pkgs[@]}"
-        sudo pacman -Sy --noconfirm "${missing_pkgs[@]}"
+        sudo pacman -Sy --noconfirm --needed "${missing_pkgs[@]}"
         if [ $? -ne 0 ]; then
             echo "Failed to install some packages. Exiting."
             exit 1

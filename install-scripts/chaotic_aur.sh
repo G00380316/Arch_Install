@@ -178,7 +178,7 @@ revertAUR() {
 
         if [ "$(pacman -Qs "$convertedPackage")" == "$convertedPackage" ]; then
             box_me "Reinstalling $convertedPackage..."
-            pacman -S --noconfirm "$convertedPackage"
+            pacman -S --noconfirm --needed "$convertedPackage"
         else
             box_me "Could not find $convertedPackage in the AUR."
         fi

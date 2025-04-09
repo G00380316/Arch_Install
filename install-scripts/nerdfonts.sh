@@ -27,7 +27,7 @@ echo "Just making sure all the fonts have been install..."
 # Check if unzip is installed; if not, install it
 if ! command_exists unzip; then
     echo "Installing unzip..."
-    sudo pacman -S --noconfirm unzip
+    sudo pacman -S --noconfirm --needed unzip
 fi
 
 # Create directory for fonts if it doesn't exist
