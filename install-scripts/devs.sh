@@ -101,7 +101,10 @@ else
     zsh -i -c "source ~/.zshrc"
     pyenv install 3.11.4
     pyenv global 3.11.4
-    pip install -U hyfetch
+    sudo pacman --noconfirm --needed -S python-pip
+    python -m venv path/to/venv
+    source path/to/venv/bin/activate
+    pip install hyfetch
 fi
 
 # Install Node via nvm

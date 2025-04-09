@@ -95,8 +95,10 @@ if python3 ~/Arch_Install/config/hypr/UserScripts/Weather.py; then
     echo "Weather Module built successfully!"
 else
     echo "Error occurred. Installing pyquery..."
-    pip install pyquery
-    pip install requests
+    python -m venv path/to/venv
+    source path/to/venv/bin/activate
+    sudo pacman --noconfirm --needed -S python-pyquery
+    sudo pacman --noconfirm --needed -S python-requests
 
     if python3 ~/.config/hypr/UserScripts/Weather.py; then
         echo "Weather Module built successfully after installing pyquery!"
@@ -111,11 +113,12 @@ read -r answer
 
 if [[ "$answer" == "y" || "$answer" == "Y" ]]; then
     echo "Installing the additonal packages..."
-    yay -S --noconfirm geany geany-plugins betterbird-bin onedrive-abraunegg fzf bat tofi arc-gtx-theme papirus-icon-theme microsoft-edge-stable-bin google-chrome anki-bin swww qimgv visual-studio-code-bin moneymanagerex filebot obsidian pokemon-colorscripts-git bluetui code flatseal blanket obs-studio bleachbit onlyoffice vesktop firefox \
-    boxes foot spotube zathura zed
-    sudo pacman -S --noconfirm acpi acpid avahi base-devel curl dialog dosfstools exa file-roller ttf-font-awesome terminus-font ttf-dejavu ttf-freefont gettext grim kitty libnotify mtools networkmanager papirus-icon-theme pavucontrol redshift slurp tilix thunar thunar-archive-plugin thunar-media-tags-plugin thunar-volman unzip xdotool \
-    xfce4-power-manager pipewire pipewire-pulse pipewire-jack rsync parted gptfdisk exfatprogs ntfs-3g util-linux e2fsprogs usbutils pv network-manager-applet lazygit firefoxpwa unrar usbmuxd ifuse libimobiledevice vlc kodi flatpak dolphin btop qbittorrent feh gparted nwg-look gnome-disk-utility
-    
+    yay -S --noconfirm geany geany-plugins betterbird-bin onedrive-abraunegg fzf bat tofi arc-gtx-theme papirus-icon-theme microsoft-edge-stable-bin google-chrome anki-bin swww visual-studio-code-bin moneymanagerex filebot obsidian pokemon-colorscripts-git bluetui code flatseal blanket obs-studio bleachbit onlyoffice vesktop firefox
+    yay -S --noconfirm boxes foot spotube zathura zed
+    sudo pacman -S --noconfirm --needed acpi acpid avahi base-devel curl dialog dosfstools exa file-roller ttf-font-awesome terminus-font ttf-dejavu ttf-freefont gettext grim kitty libnotify mtools networkmanager papirus-icon-theme pavucontrol redshift slurp tilix thunar thunar-archive-plugin thunar-media-tags-plugin thunar-volman unzip xdotool
+    sudo pacman -S --noconfirm --needed xfce4-power-manager pipewire pipewire-pulse pipewire-jack rsync parted gptfdisk exfatprogs ntfs-3g util-linux e2fsprogs usbutils pv network-manager-applet lazygit firefoxpwa unrar usbmuxd ifuse libimobiledevice vlc kodi flatpak dolphin btop qbittorrent feh gparted nwg-look gnome-disk-utility
+    sudo pacman -S --noconfirm --needed qt5-declarative qt5-quickcontrols qt5-quickcontrols2 qt5-graphicaleffects
+
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     flatpak install flathub dev.bragefuglseth.Keypunch -y
     flatpak install flathub net.lugsole.bible_gui -y

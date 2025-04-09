@@ -3,6 +3,9 @@
 
 scrDir="$(dirname "$(realpath "$0")")"
 SCRIPTSDIR="$HOME/.config/hypr/scripts"
+wallpaper_current="$HOME/.config/hypr/wallpaper_effects/.wallpaper_current"
+wallpaper_modified="$HOME/.config/hypr/wallpaper_effects/.wallpaper_modified"
+
 # shellcheck disable=SC1091
 source "${scrDir}/globalcontrol.sh"
 
@@ -261,13 +264,29 @@ main() {
     if [ -f "${scrDir}/wallpaper.${wallpaper_backend}.sh" ] && [ -n "${wallpaper_backend}" ]; then
         print_log -sec "wallpaper" "Using backend: ${wallpaper_backend}"
         "${scrDir}/wallpaper.${wallpaper_backend}.sh" "${wallSet}"
+        #current_wallpaper=$(swww query | awk -F'currently displaying: image: ' '{print $2}')
+        
+        #cp -r "$current_wallpaper" "$HOME/.config/hypr/wallpaper_effects/.wallpaper_current"
+        #cp -r "$current_wallpaper" "$HOME/.config/hypr/wallpaper_effects/.wallpaper_modified"
+
+        #wait $!
+        #"$SCRIPTSDIR/WallustSwww.sh"
+        #cp -r "$wallpaper_current" "$wallpaper_modified"
+
         wait $!
-        "$SCRIPTSDIR/WallustSwww.sh"
+        sleep 2
+        "$SCRIPTSDIR/Refresh.sh"
+
     else
         if command -v "wallpaper.${wallpaper_backend}.sh" >/dev/null; then
             "wallpaper.${wallpaper_backend}.sh" "${wallSet}"
+            #wait $!
+            #"$SCRIPTSDIR/WallustSwww.sh"
+
             wait $!
-            "$SCRIPTSDIR/WallustSwww.sh"
+            sleep 2
+            "$SCRIPTSDIR/Refresh.sh"
+
         else
             print_log -warn "wallpaper" "No backend script found for ${wallpaper_backend}"
             print_log -warn "wallpaper" "Created: $HYDE_CACHE_HOME/wallpapers/${wallpaper_backend}.png instead"

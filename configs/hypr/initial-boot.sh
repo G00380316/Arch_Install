@@ -78,6 +78,8 @@ if [ ! -f "$HOME/.config/hypr/.initial_startup_done" ]; then
 
     theme.patch.sh "Another World" https://github.com/cyb3rgh0u1/Another-World
 
+    echo '1' | theme.patch.sh "Abyssal Wave" "https://github.com/Itz-Abhishek-Tiwari/Abyssal-Wave"
+
     # Create a marker file to indicate that the script has been executed.
     touch "$HOME/.config/hypr/.initial_startup_done"
 
