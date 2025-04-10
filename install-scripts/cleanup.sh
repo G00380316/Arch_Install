@@ -61,6 +61,9 @@ echo "Configuring services..."
 
 xdg-mime default thunar.desktop inode/directory application/x-gnome-saved-search
 
+sudo cp ~/Arch_Install/install-scripts/assets/Hyprlock-main/ttyclock.ttf /usr/share/fonts/
+sudo cp ~/Arch_Install/install-scripts/assets/Hyprlock-main/Anurati-Regular.otf /usr/share/fonts/
+
 # Caching fonts once again
 fc-cache -fv
 
@@ -113,11 +116,70 @@ read -r answer
 
 if [[ "$answer" == "y" || "$answer" == "Y" ]]; then
     echo "Installing the additonal packages..."
-    yay -S --noconfirm geany geany-plugins betterbird-bin onedrive-abraunegg fzf bat tofi arc-gtx-theme papirus-icon-theme microsoft-edge-stable-bin google-chrome anki-bin swww visual-studio-code-bin moneymanagerex filebot obsidian pokemon-colorscripts-git bluetui code flatseal blanket obs-studio bleachbit onlyoffice vesktop firefox
-    yay -S --noconfirm boxes foot spotube zathura zed
-    sudo pacman -S --noconfirm --needed acpi acpid avahi base-devel curl dialog dosfstools exa file-roller ttf-font-awesome terminus-font ttf-dejavu ttf-freefont gettext grim kitty libnotify mtools networkmanager papirus-icon-theme pavucontrol redshift slurp tilix thunar thunar-archive-plugin thunar-media-tags-plugin thunar-volman unzip xdotool
-    sudo pacman -S --noconfirm --needed xfce4-power-manager pipewire pipewire-pulse pipewire-jack rsync parted gptfdisk exfatprogs ntfs-3g util-linux e2fsprogs usbutils pv network-manager-applet lazygit firefoxpwa unrar usbmuxd ifuse libimobiledevice vlc kodi flatpak dolphin btop qbittorrent feh gparted nwg-look gnome-disk-utility
+    # ── Text editors & coding tools
+    yay -S --noconfirm --needed geany geany-plugins code zed
+
+    # ── Browsers & email
+    yay -S --noconfirm --needed microsoft-edge-stable-bin google-chrome betterbird-bin
+
+    # ── Productivity & knowledge
+    yay -S --noconfirm --needed onlyoffice anki-bin obsidian flatseal blanket vesktop
+
+    # ── Cloud & sync
+    yay -S --noconfirm --needed onedrive-abraunegg
+
+    # ── File & media tools
+    yay -S --noconfirm --needed filebot moneymanagerex obs-studio
+
+    # ── Terminal & fun
+    yay -S --noconfirm --needed fzf bat tofi boxes foot bluetui pokemon-colorscripts-git
+
+    # ── Audio & music
+    yay -S --noconfirm --needed spotube
+
+    # ── Themes & fonts
+    yay -S --noconfirm --needed arc-gtx-theme papirus-icon-theme
+
+    # ── System utilities
+    yay -S --noconfirm --needed swww bleachbit sof-bin zathura
+    # ── System utilities
+    yay -S --noconfirm swww bleachbit sof-bin zathura
+
+    # ── Fonts & themes
+    sudo pacman -S --noconfirm --needed terminus-font ttf-font-awesome ttf-dejavu ttf-freefont papirus-icon-theme
+
+    # ── System & shell utilities
+    sudo pacman -S --noconfirm --needed acpi acpid avahi base-devel curl dialog dosfstools exa file-roller gettext mtools pv unzip usbutils xdotool util-linux
+
+    # ── Terminal & clipboard tools
+    sudo pacman -S --noconfirm --needed grim kitty libnotify redshift slurp
+
+    # ── File management
+    sudo pacman -S --noconfirm --needed thunar thunar-archive-plugin thunar-media-tags-plugin thunar-volman gnome-disk-utility
+
+    # ── Power & networking
+    sudo pacman -S --noconfirm --needed xfce4-power-manager networkmanager network-manager-applet
+
+    # ── File systems & drives
+    sudo pacman -S --noconfirm --needed parted gptfdisk exfatprogs ntfs-3g e2fsprogs usbmuxd ifuse libimobiledevice
+
+    # ── Media & extras
+    sudo pacman -S --noconfirm --needed vlc kodi unrar qbittorrent feh
+
+    # ── Dev tools
+    sudo pacman -S --noconfirm --needed rsync lazygit firefoxpwa
+
+    # ── Desktop environment tools
+    sudo pacman -S --noconfirm --needed dolphin nwg-look btop gparted flatpak
+
+    # ── Pipewire (audio stack)
+    sudo pacman -S --noconfirm --needed pipewire pipewire-pulse pipewire-jack pavucontrol
+
+    # ── Qt libraries
     sudo pacman -S --noconfirm --needed qt5-declarative qt5-quickcontrols qt5-quickcontrols2 qt5-graphicaleffects
+
+    # ── Browsers again (from pacman)
+    sudo pacman -S --noconfirm --needed firefox
 
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     flatpak install flathub dev.bragefuglseth.Keypunch -y
@@ -132,8 +194,8 @@ else
     echo "No additional packages will be installed."
 fi
 
-### Easy Effect Presets ###                                   
-echo "Importing Easyeffect presets..."                        
+### Easy Effect Presets ###
+echo "Importing Easyeffect presets..."
 echo "1" | bash -c "$(curl -fsSL https://raw.githubusercontent.com/JackHack96/PulseEffects-Presets/master/install.sh)"
 
 ### Final Cleanup ###

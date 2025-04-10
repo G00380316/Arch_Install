@@ -41,4 +41,7 @@
     # Proceed with the build process
     cd "${SCRIPT_DIR}/assets/wallust"
     cargo build
-    cargo install wallust
+    cargo install --path .
+    grep -qxF 'export PATH="$HOME/.cargo/bin:$PATH"' ~/.zshrc || \
+    echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> ~/.zshrc && \
+    source ~/.zshrc
