@@ -15,7 +15,7 @@ cacheDir="${cacheDir:-$XDG_CACHE_HOME/hyde}"
 WALLBASH_SCRIPTS="${WALLBASH_SCRIPTS:-$hydeConfDir/wallbash/scripts}"
 hypr_border=10
 dunstDir="${confDir}/dunst"
-allIcons=$(find "${XDG_DATA_HOME:-$HOME/.local/share}/icons" -mindepth 1 -maxdepth 2 -name "icon-theme.cache" -print0 | xargs -0 -n1 dirname | xargs -n1 basename | paste -sd, -)
+allIcons=$(find -L "${XDG_DATA_HOME:-$HOME/.local/share}/icons" -mindepth 1 -maxdepth 2 -name "icon-theme.cache" -print0 | xargs -0 -n1 dirname | xargs -n1 basename | paste -sd, -)
 
 # Set font name
 font_name=${NOTIFICATION_FONT}
