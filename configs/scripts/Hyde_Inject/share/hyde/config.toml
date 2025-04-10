@@ -9,7 +9,7 @@ WARP_ENABLE_WAYLAND = 1
 
 [wallpaper]
 custom_paths = [
-    "$HOME/Pictures/Wallpapers",
+#    "$HOME/Pictures/wallpapers",
 ] # List of paths to search for wallpapers
 backend = "swww" # Wallpaper backend, example: swww, hyprpaper, pcmanfm, feh, etc.
 
@@ -41,7 +41,7 @@ scale = 8
 
 [rofi.glyph]
 # glyph-picker.sh configuration
-scale = 8
+scale = 10
 
 [rofi.launcher]
 # rofilaunch.sh configuration
@@ -59,7 +59,7 @@ scale = 8
 [rofi.emoji]
 # emoji-picker.sh configuration
 style = 2
-scale = 8
+scale = 10
 
 [rofi.theme]
 # themeselect.sh configuration
