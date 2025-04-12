@@ -20,7 +20,6 @@
 /* You can manually change here or you can use rofi theme selector SUPER SHIFT E */
 
 
-//@theme "~/.config/rofi/themes/Default - Style.rasi"
 //@theme "~/.config/rofi/themes/KooL_style-13-Vertical.rasi"
 //@theme "~/.config/rofi/themes/Default - Style.rasi"
 //@theme "~/.config/rofi/themes/KooL_style-13-Vertical.rasi"
@@ -29,4 +28,5 @@
 //@theme "~/.config/rofi/themes/Default - Style.rasi"
 //@theme "~/.config/rofi/themes/KooL_style-2-Light.rasi"
 //@theme "~/.config/rofi/themes/Style - 13.rasi"
-@theme "~/.config/rofi/themes/KooL_style-13-Vertical.rasi"
+//@theme "~/.config/rofi/themes/KooL_style-13-Vertical.rasi"
+@theme "~/.config/rofi/themes/Default_style-13-Vertical.rasi"
