@@ -40,13 +40,20 @@ fi
 # Determine the icon based on average capacity
 average_capacity=$((total_capacity / battery_count))
 index=$((average_capacity / 10))
+[[ $index -gt 10 ]] && index=10
 
 # Define icons for charging, discharging, and status
-charging_icons=(" " " " " " " " " " " " " ")
+charging_icons=("" "" "" "" "" "" "" "" "" "" "")
 discharging_icons=("󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹")
 status_icons=("" "X" "󰂇") # Add appropriate icons for different statuses
 
-battery_status=$(cat /sys/class/power_supply/BAT0/status)
+battery_status="Unknown"
+for status_file in /sys/class/power_supply/BAT*/status; do
+    if [[ -f "$status_file" ]]; then
+        battery_status=$(<"$status_file")
+        break
+    fi
+done
 
 # Parse format options
 formats=("$@")

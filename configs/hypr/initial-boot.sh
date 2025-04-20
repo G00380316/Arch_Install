@@ -74,16 +74,6 @@ if [ ! -f "$HOME/.config/hypr/.initial_startup_done" ]; then
     # Caching fonts once again
     fc-cache -fv
 
-    cd ~/.cache/hyde/themepatcher/
-    git clone https://github.com/Maroc02/Moonlight.git
-    theme.patch.sh "Moonlight" ./Moonlight
-
-    cd ~/.cache/hyde/themepatcher/
-    git clone https://github.com/cyb3rgh0u1/Another-World.git
-    theme.patch.sh "Another World" ./Another-World
-
-    echo '1' | theme.patch.sh "Abyssal-Wave" "https://github.com/Itz-Abhishek-Tiwari/Abyssal-Wave"
-
     # Create a marker file to indicate that the script has been executed.
     touch "$HOME/.config/hypr/.initial_startup_done"
 

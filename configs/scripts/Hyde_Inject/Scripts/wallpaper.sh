@@ -262,19 +262,15 @@ main() {
 
     # Apply wallpaper to  backend
     if [ -f "${scrDir}/wallpaper.${wallpaper_backend}.sh" ] && [ -n "${wallpaper_backend}" ]; then
-        cp -r "${wallpaper_path}" "$HOME/.config/hypr/wallpaper_effects/.wallpaper_current"
+
         print_log -sec "wallpaper" "Using backend: ${wallpaper_backend}"
         "${scrDir}/wallpaper.${wallpaper_backend}.sh" "${wallSet}"
-        cp -r "${wallpaper_path}" "$HOME/.config/hypr/wallpaper_effects/.wallpaper_modified"
-
-        wallust run "${wallpaper_path}"
+        
     else
         if command -v "wallpaper.${wallpaper_backend}.sh" >/dev/null; then
-            cp -r "${wallpaper_path}" "$HOME/.config/hypr/wallpaper_effects/.wallpaper_current"
-            "wallpaper.${wallpaper_backend}.sh" "${wallSet}"
-            cp -r "${wallpaper_path}" "$HOME/.config/hypr/wallpaper_effects/.wallpaper_modified"
 
-            wallust run "${wallpaper_path}"
+            "wallpaper.${wallpaper_backend}.sh" "${wallSet}"
+
         else
             print_log -warn "wallpaper" "No backend script found for ${wallpaper_backend}"
             print_log -warn "wallpaper" "Created: $HYDE_CACHE_HOME/wallpapers/${wallpaper_backend}.png instead"

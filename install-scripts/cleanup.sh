@@ -76,6 +76,23 @@ echo "For the best experience Shortkeys to open them should be working straight 
 echo "Adding Extra Hyprlock Theme..."
 sudo cp -r ~/Arch_Install/install-scripts/Extra/Candy_Modified /usr/share/sddm/themes
 
+cd ~/.cache/hyde/themepatcher/
+git clone https://github.com/Maroc02/Moonlight.git
+theme.patch.sh "Moonlight" ./Moonlight
+
+cd ~/.cache/hyde/themepatcher/
+git clone https://github.com/cyb3rgh0u1/Another-World.git
+theme.patch.sh "Another World" ./Another-World
+
+echo '1' | theme.patch.sh "Abyssal-Wave" "https://github.com/Itz-Abhishek-Tiwari/Abyssal-Wave"
+
+cd ~/Arch_Install/install-scripts/Extra/Themes
+theme.patch.sh "Hack the Box" ./HackTheBox
+# theme.patch.sh "Mac Os" ./MacOs
+theme.patch.sh "Windows 11" ./Windows11
+cp -r ~/Pictures/wallpapers ./G00380316/Configs/.config/hyde/themes/G00380316
+theme.patch.sh "G00380316" ./G00380316
+
 ### Build Waybar Plugin ###
 echo "Building Waybar Plugins..."
 cd ~/.config/waybar/waybar-module-pomodoro/
@@ -141,12 +158,10 @@ if [[ "$answer" == "y" || "$answer" == "Y" ]]; then
     yay -S --noconfirm --needed arc-gtx-theme papirus-icon-theme
 
     # ── System utilities
-    yay -S --noconfirm --needed swww bleachbit sof-bin zathura
-    # ── System utilities
-    yay -S --noconfirm swww bleachbit sof-bin zathura
-
+    yay -S --noconfirm --needed swww bleachbit sof-bin zathura spicetify-cli 
+ 
     # ── Fonts & themes
-    sudo pacman -S --noconfirm --needed terminus-font ttf-font-awesome ttf-dejavu ttf-freefont papirus-icon-theme
+    sudo pacman -S --noconfirm --needed terminus-font ttf-font-awesome ttf-dejavu ttf-freefont papirus-icon-theme gnome-settings-daemon
 
     # ── System & shell utilities
     sudo pacman -S --noconfirm --needed acpi acpid avahi base-devel curl dialog dosfstools exa file-roller gettext mtools pv unzip usbutils xdotool util-linux
@@ -179,7 +194,7 @@ if [[ "$answer" == "y" || "$answer" == "Y" ]]; then
     sudo pacman -S --noconfirm --needed qt5-declarative qt5-quickcontrols qt5-quickcontrols2 qt5-graphicaleffects
 
     # ── Browsers again (from pacman)
-    sudo pacman -S --noconfirm --needed firefox
+    sudo pacman -S --noconfirm --needed firefox inotify-tools
 
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     flatpak install flathub dev.bragefuglseth.Keypunch -y
