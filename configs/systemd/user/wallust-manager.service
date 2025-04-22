@@ -1,0 +1,11 @@
+[Unit]
+Description=Keep my Wallust script alive
+
+[Service]
+ExecStart=%h/.config/hypr/scripts/Wallust-watcher.sh
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=default.target
+

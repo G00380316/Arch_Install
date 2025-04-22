@@ -127,6 +127,11 @@ else
     fi
 fi
 
+# Activate daemon for Wallust
+systemctl --user daemon-reexec
+systemctl --user daemon-reload
+systemctl --user enable --now wallust-manager.service
+
 # Ask the user if they want to install the Additional packages
 echo "Do you want to install an Additonal set of packages? (y/n)"
 read -r answer
