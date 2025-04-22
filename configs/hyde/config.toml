@@ -69,7 +69,7 @@ scale = 10
 scale = 8
 
 [wlogout]
-style = 2
+style = 1
 
 [battery.notify]
 # batterynotify.sh configuration
@@ -79,10 +79,10 @@ interval = 5
 dock = false
 
 [battery.notify.threshold]
-full = 90
-critical = 10
+full = 97
+critical = 3
 low = 20
-unplug = 80
+unplug = 90
 
 [battery.notify.execute]
 unplug = ""
