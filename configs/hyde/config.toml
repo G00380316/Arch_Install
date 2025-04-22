@@ -75,7 +75,7 @@ style = 1
 # batterynotify.sh configuration
 timer = 120
 notify = 1140
-interval = 5
+interval = 1
 dock = false
 
 [battery.notify.threshold]
