@@ -54,7 +54,7 @@ fn_percentage() {
     if [[ "$battery_percentage" -ge "$unplug_charger_threshold" ]] && [[ "$battery_status" != "Discharging" ]] && [[ "$battery_status" != "Full" ]] && (((battery_percentage - last_notified_percentage) >= interval)); then
         steps=$(printf "%03d" $(((battery_percentage + 5) / 10 * 10)))
         if $verbose; then echo "Prompt:UNPLUG: $unplug_charger_threshold $battery_status $battery_percentage $steps"; fi
-        notify-send -a "HyDE Power" -t 5000 -r 5 -u "CRITICAL" -i "battery-${steps:-100}-charging" "Battery Charged" "Battery is at $battery_percentage%. You can unplug the charger"
+        notify-send -a "HyDE Power" -t 5000 -r 5 -u "CRITICAL" -i "battery-full-charging" "Battery Charged" "Battery is at $battery_percentage%. You can unplug the charger"
         last_notified_percentage=$battery_percentage
     elif [[ "$battery_percentage" -le "$battery_critical_threshold" ]]; then
         count=$((timer > mnt ? timer : mnt)) # reset count
