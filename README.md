@@ -20,7 +20,7 @@ wget https://github.com/G00380316/Arch_Install/raw/main/install.sh
 or
 
 # More Animations
-wget https://github.com/G00380316/Arch_Install/raw/Hyde_Injection/install.sh
+wget https://github.com/G00380316/Arch_Install/raw/Hyde-Injection/install.sh
 
 chmod +x install.sh
 
