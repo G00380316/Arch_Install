@@ -40,8 +40,5 @@
 
     # Proceed with the build process
     cd "${SCRIPT_DIR}/assets/wallust"
-    cargo build
-    cargo install --path .
-    grep -qxF 'export PATH="$HOME/.cargo/bin:$PATH"' ~/.zshrc || \
-    echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> ~/.zshrc && \
-    source ~/.zshrc
+    cargo build --release
+    sudo cp target/release/wallust /usr/local/bin/

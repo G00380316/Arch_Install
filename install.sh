@@ -2,12 +2,6 @@
 
     SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-    mkdir LOG
-    # Set the name of the log file to include the current date and time
-    LOG="log/install-$(date +%d-%H%M%S)_G00380316.log"
-
-    exec > >(tee -a "$LOG") 2>&1
-
     # Function to check if a command exists
     command_exists() {
         command -v "$1" &> /dev/null

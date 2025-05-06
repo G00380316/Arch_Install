@@ -51,6 +51,14 @@ else
     echo "No SSH applications found to remove."
 fi
 
+# Removing EasyEffects plugins desktop icons
+if ls /usr/share/applications | grep -qiE 'lsp|ladspa|calf'; then
+    sudo find /usr/share/applications -type f \( -iname '*lsp*.desktop' -o -iname '*ladspa*.desktop' -o -iname '*calf*.desktop' \) -print -delete
+    echo "Removed LSP, LADSPA, and Calf desktop entries."
+else
+    echo "No LSP, LADSPA, or Calf desktop entries found to remove."
+fi
+
 apps_to_hide=(
 "jconsole-java-openjdk.desktop"
 "jshell-java-openjdk.desktop"

@@ -172,7 +172,7 @@ if [[ "$answer" == "y" || "$answer" == "Y" ]]; then
     sudo pacman -S --noconfirm --needed acpi acpid avahi base-devel curl dialog dosfstools exa file-roller gettext mtools pv unzip usbutils xdotool util-linux
 
     # ── Terminal & clipboard tools
-    sudo pacman -S --noconfirm --needed grim kitty libnotify redshift slurp
+    sudo pacman -S --noconfirm --needed grim kitty libnotify redshift slurp tilix
 
     # ── File management
     sudo pacman -S --noconfirm --needed thunar thunar-archive-plugin thunar-media-tags-plugin thunar-volman gnome-disk-utility
