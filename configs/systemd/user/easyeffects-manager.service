@@ -1,0 +1,11 @@
+[Unit]
+Description=Keep my Easyeffects script alive
+
+[Service]
+ExecStart=%h/.config/hypr/scripts/Easyeffects-watcher.sh
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=default.target
+

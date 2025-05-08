@@ -24,7 +24,6 @@ papirus-icon-theme
 pavucontrol
 redshift
 slurp
-tilix
 thunar-archive-plugin
 thunar-media-tags-plugin
 thunar-volman

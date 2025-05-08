@@ -131,6 +131,7 @@ fi
 systemctl --user daemon-reexec
 systemctl --user daemon-reload
 systemctl --user enable --now wallust-manager.service
+systemctl --user enable --now easyeffects-manager.service
 
 # Ask the user if they want to install the Additional packages
 echo "Do you want to install an Additonal set of packages? (y/n)"
@@ -172,7 +173,7 @@ if [[ "$answer" == "y" || "$answer" == "Y" ]]; then
     sudo pacman -S --noconfirm --needed acpi acpid avahi base-devel curl dialog dosfstools exa file-roller gettext mtools pv unzip usbutils xdotool util-linux
 
     # ── Terminal & clipboard tools
-    sudo pacman -S --noconfirm --needed grim kitty libnotify redshift slurp tilix
+    sudo pacman -S --noconfirm --needed grim kitty libnotify redshift slurp
 
     # ── File management
     sudo pacman -S --noconfirm --needed thunar thunar-archive-plugin thunar-media-tags-plugin thunar-volman gnome-disk-utility
@@ -210,6 +211,22 @@ if [[ "$answer" == "y" || "$answer" == "Y" ]]; then
     flatpak install flathub io.github.mezoahmedii.Picker -y
     flatpak install flathub dev.edfloreshz.Tasks -y
     flatpak install flathub org.dbgate.DbGate  -y
+else
+    echo "No additional packages will be installed."
+fi
+
+echo "Do you want to run Dev.sh and Wallust.sh to make sure key dependencies are installed? (y/n)"
+read -r answer1
+
+if [[ "$answer1" == "y" || "$answer1" == "Y" ]]; then
+    echo "running Dev.sh and Wallust.sh..."
+    bash ./devs.sh
+    bash ./wallust.sh
+
+    sudo pacman -S --noconfirm --needed tmux
+    sudo pacman -S --noconfirm --needed zoxide
+    sudo pacman -S --noconfirm --needed neovim
+
 else
     echo "No additional packages will be installed."
 fi

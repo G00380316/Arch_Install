@@ -4,7 +4,7 @@ set $mod Mod4
 # For Virtual Machines
 # swaymsg output Virtual-1 pos 0 0 mode 1920x1080@60HZ
 # set terminal and menu
-set $term tilix
+set $term kitty
 set $menu rofi -show drun -modi drun -line-padding 4 -hide-scrollbar -show-icons
 
 # wallpaper
@@ -23,9 +23,9 @@ bindsym $mod+e exec geany
 bindsym $mod+g exec swaymsg "workspace 8; exec gimp"
 bindsym $mod+d exec swaymsg "workspace 9; exec Discord"
 bindsym $mod+o exec swaymsg "workspace 10; exec obs"
-bindsym $mod+r exec tilix -e ranger
-# bindsym $mod+v exec tilix -e nvim
-bindsym $mod+h exec tilix -e ~/.config/sway/keyhelper.sh
+bindsym $mod+r exec kitty -e ranger
+bindsym $mod+v exec kitty -e nvim
+bindsym $mod+h exec kitty -e ~/.config/sway/keyhelper.sh
 
 # rules
 for_window [app_id="pavucontrol"] floating enable
