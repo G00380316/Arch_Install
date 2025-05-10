@@ -134,7 +134,7 @@ systemctl --user enable --now wallust-manager.service
 systemctl --user enable --now easyeffects-manager.service
 
 # Ask the user if they want to install the Additional packages
-echo "Do you want to install an Additonal set of packages? (y/n)"
+echo "Do you want to install an Additonal set of packages? (y/n)(Recommended if it is first install)"
 read -r answer
 
 if [[ "$answer" == "y" || "$answer" == "Y" ]]; then
@@ -165,6 +165,8 @@ if [[ "$answer" == "y" || "$answer" == "Y" ]]; then
 
     # ── System utilities
     yay -S --noconfirm --needed swww bleachbit sof-bin zathura spicetify-cli 
+
+    yay -S --noconfirm --needed iwmenu bzmenu
  
     # ── Fonts & themes
     sudo pacman -S --noconfirm --needed terminus-font ttf-font-awesome ttf-dejavu ttf-freefont papirus-icon-theme gnome-settings-daemon
