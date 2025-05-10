@@ -104,7 +104,6 @@ textbox-prompt-colon {
     enabled:                    true;
 	padding:					6px 0px 6px 10px;
     expand:                     false;
-    str:                        "⁉️";
     text-color:                 inherit;
 	background-color:			transparent;
 }

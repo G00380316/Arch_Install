@@ -1,8 +1,3 @@
-//
-/* Waybar Modules - Custom Modules */
-/* Basically created to reduce the lines in Waybar Modules bank */
-/* NOTE: This is only for Custom Modules */
-/* Custom Modules like weather browser, tty, file manager at the beginning */
 
 {
 
@@ -11,7 +6,7 @@
 		  "return-type": "json",
 		  "format": "{}",
 		  "rotate": 0,
-		  "interval": 5, // once every 5 seconds
+		  "interval": 5,
 		  "tooltip": true,
 		  "max-length": 1000
 	},
@@ -35,57 +30,55 @@
 	  "interval": 3600,
 	  "return-type": "json",
 	  "exec": "$HOME/.config/hypr/UserScripts/Weather.py",
-	  //"exec": "$HOME/.config/hypr/UserScripts/Weather.sh",
-	  //"exec-if": "ping wttr.in -c1",
-	  "tooltip": true,
+	  "tooltip": true
   },
   
   "custom/file_manager": {
 	  "format": " ",
 	  "on-click": "xdg-open . &",
 	  "tooltip": true,
-	  "tooltip-format": "File Manager",
+	  "tooltip-format": "File Manager"
   },
   
   "custom/tty": {
 	  "format": " ",
 	  "on-click": "kitty &",
 	  "tooltip": true,
-	  "tooltip-format": "Launch Terminal",
+	  "tooltip-format": "Launch Terminal"
   },
   
   "custom/browser": {
 	  "format": " ",
 	  "on-click": "xdg-open https://",
 	  "tooltip": true,
-	  "tooltip-format": "Launch Browser",
+	  "tooltip-format": "Launch Browser"
   },
   
   "custom/settings": {
 	  "format": " ",
 	  "on-click": "$HOME/.config/hypr/scripts/Quick_Settings.sh",
 	  "tooltip": true,
-	  "tooltip-format": "Launch Hyprland Settings Menu",
+	  "tooltip-format": "Launch Hyprland Settings Menu"
   },
   
   "custom/cycle_wall": {
 	  "format": " ",
-	  "on-click": "$HOME/.config/hypr/UserScripts/WallpaperSelect.sh",
+	  "on-click": "sleep 0.1 && swwwallselect.sh",
 	  "on-click-right": "$HOME/.config/hypr/UserScripts/WallpaperRandom.sh",
 	  "on-click-middle": "$HOME/.config/hypr/scripts/WaybarStyles.sh",
 	  "tooltip": true,
-	  "tooltip-format": "Left Click: Wallpaper Menu\nMiddle Click: Random wallpaper\nRight Click: Waybar Styles Menu",
+	  "tooltip-format": "Left Click: Wallpaper Menu\nMiddle Click: Random wallpaper\nRight Click: Waybar Styles Menu"
   },
   
   "custom/hint": {
 	  "format": "󰺁 HINT!",
-	  "on-click": "$HOME/.config/hypr/scripts/KeyHints.sh",
+	  "on-click": "keybinds_hint.sh",
 	  "on-click-right": "$HOME/.config/hypr/scripts/KeyBinds.sh",
 	  "tooltip": true,
-	  "tooltip-format": "Left Click: Quick Tips\nRight Click: Keybinds",
+	  "tooltip-format": "Left Click: Quick Tips\nRight Click: Keybinds"
   },
   
-  // Hypridle inhibitor
+
   "custom/hypridle": {
 	  "format": "󱫗 ",
 	  "return-type": "json",
@@ -101,7 +94,7 @@
 	  "exec": "cat $HOME/.cache/kb_layout",
 	  "interval": 1,
 	  "format": " {}",
-	  "on-click": "$HOME/.config/hypr/scripts/SwitchKeyboardLayout.sh",
+	  "on-click": "$HOME/.config/hypr/scripts/SwitchKeyboardLayout.sh"
   },
   
   "custom/light_dark": {
@@ -110,14 +103,14 @@
 	  "on-click-right": "$HOME/.config/hypr/scripts/WaybarStyles.sh",
 	  "on-click-middle": "$HOME/.config/hypr/UserScripts/WallpaperSelect.sh",
 	  "tooltip": true,
-	  "tooltip-format": "Left Click: Switch Dark-Light Themes\nMiddle Click: Wallpaper Menu\nRight Click: Waybar Styles Menu",
+	  "tooltip-format": "Left Click: Switch Dark-Light Themes\nMiddle Click: Wallpaper Menu\nRight Click: Waybar Styles Menu"
   },
   
   "custom/lock": {
 	  "format": "󰌾",
 	  "on-click": "$HOME/.config/hypr/scripts/LockScreen.sh",
 	  "tooltip": true,
-	  "tooltip-format": "󰷛 Screen Lock",
+	  "tooltip-format": "󰷛 Screen Lock"
   },
   
   "custom/menu": {
@@ -126,9 +119,9 @@
 	  "on-click-middle": "$HOME/.config/hypr/UserScripts/WallpaperSelect.sh",
 	  "on-click-right": "$HOME/.config/hypr/scripts/WaybarLayout.sh",
 	  "tooltip": true,
-	  "tooltip-format": "Left Click: Rofi Menu\nMiddle Click: Wallpaper Menu\nRight Click: Waybar Layout Menu",
+	  "tooltip-format": "Left Click: Rofi Menu\nMiddle Click: Wallpaper Menu\nRight Click: Waybar Layout Menu"
   },
-  // This is a custom cava visualizer
+
   "custom/cava_mviz": {
 	  "exec": "$HOME/.config/hypr/scripts/WaybarCava.sh",
 	  "format": "{}"
@@ -145,7 +138,7 @@
 	  "scroll-step": 5.0,
 	  "on-scroll-up": "$HOME/.config/hypr/scripts/Volume.sh --inc",
 	  "on-scroll-down": "$HOME/.config/hypr/scripts/Volume.sh --dec",
-	  "smooth-scrolling-threshold": 1,
+	  "smooth-scrolling-threshold": 1
   },
   
   "custom/power": {
@@ -153,21 +146,21 @@
 	  "on-click": "$HOME/.config/scripts/Hyde_Inject/Scripts/logoutlaunch.sh",
 	  "on-click-right": "$HOME/.config/hypr/scripts/ChangeBlur.sh",
 	  "tooltip": true,
-	  "tooltip-format": "Left Click: Logout Menu\nRight Click: Change Blur",
+	  "tooltip-format": "Left Click: Logout Menu\nRight Click: Change Blur"
   },
   
   "custom/reboot": {
 	  "format": "󰜉",
 	  "on-click": "systemctl reboot",
 	  "tooltip": true,
-	  "tooltip-format": "Left Click: Reboot",
+	  "tooltip-format": "Left Click: Reboot"
   },
   
   "custom/quit": {
 	  "format": "󰗼",
 	  "on-click": "hyprctl dispatch exit",
 	  "tooltip": true,
-	  "tooltip-format": "Left Click: Exit Hyprland",
+	  "tooltip-format": "Left Click: Exit Hyprland"
   },
   
   "custom/swaync": {
@@ -189,9 +182,9 @@
 	  "exec": "swaync-client -swb",
 	  "on-click": "sleep 0.1 && swaync-client -t -sw",
 	  "on-click-right": "swaync-client -d -sw",
-	  "escape": true,
+	  "escape": true
   },
-  // Separators
+
   "custom/separator#dot": {
 	  "format": "",
 	  "interval": "once",
