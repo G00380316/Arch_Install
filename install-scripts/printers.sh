@@ -1,5 +1,22 @@
 #!/bin/bash
 
+## WARNING: DO NOT EDIT BELOW UNLESS YOU KNOW WHAT YOU'RE DOING ##
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# Source global functions
+if ! source "$(dirname "$(readlink -f "$0")")/Global_functions.sh"; then
+    echo "Failed to source Global_functions.sh"
+    exit 1
+fi
+
+LOG="Install-Logs/install-$(date +%d-%H%M%S)_printer.log"
+
+# Redirecting all output and errors to log file
+exec > >(tee -a "$LOG") 2>&1
+
+# Log the start of the script
+echo "=== Script started at $(date) ==="
+
 # Function to detect package manager (apt for Debian/Ubuntu, pacman for Arch)
 detect_package_manager() {
     if command -v pacman &> /dev/null; then
@@ -24,10 +41,10 @@ if [[ "$response" =~ ^[Yy]$ ]]; then
     echo "Installing printing services..."
     if [ "$PACKAGE_MANAGER" = "pacman" ]; then
         # Arch-based systems
-        sudo pacman -S --noconfirm reflector
-        sudo reflector --latest 10 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+        sudo pacman -S --noconfirm --needed reflector
+        sudo reflector --latest 20 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
         sudo pacman -Syy
-        sudo pacman -S --noconfirm splix cups cups-filters
+        sudo pacman -S --noconfirm --needed splix cups cups-filters
         sudo systemctl enable --now cups.service
         #Add the printer:
 

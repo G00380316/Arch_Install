@@ -1,0 +1,14 @@
+[Colors:View]
+BackgroundNormal=#181C28
+
+[General]
+TerminalApplication=/usr/bin/kitty
+
+[Icons]
+Theme=Vivid-Glassy-Dark-Icons
+
+[KDE]
+widgetStyle=kvantum
+
+[UiSettings]
+ColorScheme=colors

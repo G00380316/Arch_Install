@@ -1,0 +1,165 @@
+//! Pywal Template Engine
+//! This module goal is to create a 1to1, or realistically a "just works", replica of the pywal
+//! templating system. The pywal system is described in the pywal wiki [1] and it should be able to
+//! at least parse all the pywal templates [2].
+//! The code bellow is an engine made by hand.
+//!
+//! Refs:
+//! 1: https://github.com/dylanaraps/pywal/wiki/User-Template-Files
+//! 2: https://github.com/dylanaraps/pywal/tree/master/pywal/templates
+use std::collections::HashMap;
+
+use crate::colors::Myrgb;
+use super::alpha_hexa;
+use super::TemplateFields;
+
+use thiserror::Error;
+use palette::Srgb;
+
+#[derive(Error, Debug)]
+pub enum PywalTemplateError {
+    #[error("Missing variable: {0}")]
+    MissingVariable(String),
+    #[error("Invalid modifier: {0}")]
+    InvalidModifier(String),
+}
+
+/// Convert to a hash that I can later `.get()`
+impl TemplateFields<'_> {
+    pub fn to_hash<'a>(&self) -> HashMap<&'a str, String> {
+        let mut map = HashMap::new();
+        let alpha = self.alpha;
+        let col = self.colors;
+        let alpha_hex = alpha_hexa(alpha as usize).expect("CANNOT OVERFLOW, validation with clap 0..=100");
+        let alpha_dec = f32::from(alpha) / 100.0;
+        let alpha_dec = if alpha % 10 == 0 { format!("{alpha_dec:.1}") } else { format!("{alpha_dec:.2}") };
+
+        map.insert("wallpaper", self.image_path.into()); //full path to the image
+        map.insert("alpha", alpha.to_string());
+        map.insert("alpha_dec", format!("{alpha_dec}"));
+        map.insert("alpha_hex", alpha_hex);
+
+        // Include backend, colorspace and filter (palette)
+        map.insert("backend", self.backend.to_string());
+        map.insert("colorspace", self.colorspace.to_string());
+        map.insert("palette", self.palette.to_string());
+
+        // normal output `#EEEEEE`
+        map.insert("color0" , col.color0 .to_string());
+        map.insert("color1" , col.color1 .to_string());
+        map.insert("color2" , col.color2 .to_string());
+        map.insert("color3" , col.color3 .to_string());
+        map.insert("color4" , col.color4 .to_string());
+        map.insert("color5" , col.color5 .to_string());
+        map.insert("color6" , col.color6 .to_string());
+        map.insert("color7" , col.color7 .to_string());
+        map.insert("color8" , col.color8 .to_string());
+        map.insert("color9" , col.color9 .to_string());
+        map.insert("color10", col.color10.to_string());
+        map.insert("color11", col.color11.to_string());
+        map.insert("color12", col.color12.to_string());
+        map.insert("color13", col.color13.to_string());
+        map.insert("color14", col.color14.to_string());
+        map.insert("color15", col.color15.to_string());
+        map.insert("cursor", col.foreground.to_string());
+        map.insert("foreground", col.foreground.to_string());
+        map.insert("background", col.background.to_string());
+
+        map
+    }
+}
+
+fn get_func(fname: &str, value: &str, alpha: u8) -> Result<String, PywalTemplateError> {
+    let c: Srgb<u8> = value.parse().expect("SHOULD BE A VALID COLOR");
+    let c: Myrgb = c.into();
+    let alpha_hex = alpha_hexa(alpha as usize).expect("CANNOT OVERFLOW, validation with clap 0..=100");
+    let alpha_dec = f32::from(alpha) / 100.0;
+    let alpha_dec_display = if alpha % 10 == 0 { format!("{alpha_dec:.1}") } else { format!("{alpha_dec:.2}") };
+
+    let ret = match fname {
+        "rgb" => c.rgb(), //.rgb output `235,235,235`
+        "rgba" => c.rgba(alpha_dec), //.rgba output `235,235,235,1.0`
+        "xrgba" => c.xrgba(&alpha_hex), //.xrgba output `ee/ee/ee/ff`
+        "strip" => c.strip(), //.strip output `EEEEEE`
+        "red" => c.red(),
+        "green" => c.green(),
+        "blue" => c.blue(),
+        "alpha" => format!("[{}]{c}", alpha),
+        "alpha_dec" => alpha_dec_display,
+        _ => return Err(PywalTemplateError::InvalidModifier(fname.to_string())),
+    };
+
+    Ok(ret)
+}
+
+pub fn render(content: &str, t: &TemplateFields) -> Result<String, PywalTemplateError> {
+    let mut output = String::new();
+    let mut i = 0;
+    while i < content.len() {
+        // println!("{i}\n{output}\n\n");
+        if content.chars().nth(i) == Some('{')
+        && content.chars().nth(i+1) == Some('{')
+        {
+            let mut counts = 2; //starts from 2
+            //current char [nth(i)] is "{" and next one [nth(i+1)] as well
+            while content.chars().nth(i+counts) == Some('{') {
+                counts += 1;
+            }
+            output.push_str(&"{".repeat(counts-1));
+            i += counts;
+        } else
+        if content.chars().nth(i) == Some('}')
+        && content.chars().nth(i+1) == Some('}')
+        {
+            let mut counts = 2; //starts from 2
+            //current char [nth(i)] is "{" and next one [nth(i+1)] as well
+            while content.chars().nth(i+counts) == Some('}') {
+                counts += 1;
+            }
+            output.push_str(&"}".repeat(counts-1));
+            i += counts;
+        } else
+        if content.chars().nth(i) == Some('{')
+        && content.chars().nth(i+1) != Some('{')
+        {
+            // if self.content.chars().nth(i) != Some('{') { //skip
+            //     output.push(self.content.chars().nth(i).unwrap());
+            //     i += 1;
+            // } else if self.content.chars().nth(i + 1) == Some('{') {
+            //     output.push('{');
+            //     i += 2;
+            // } else {
+            let end = content[i + 1..]
+                .find('}')
+                .map(|x| x + i + 1)
+                .ok_or(PywalTemplateError::MissingVariable(content[i + 1..].to_string()))?;
+
+                let var = &content[i + 1..end];
+
+                let mut parts = var.split('.');
+                let name = parts.next().ok_or(PywalTemplateError::MissingVariable(var.to_string()))?;
+                let value = t.to_hash();
+                let value = value
+                    .get(name)
+                    .ok_or(PywalTemplateError::MissingVariable(name.to_string()))?;
+                let mut output_value = value.to_string();
+                //XXX this allows to stack funcs
+                for part in parts {
+                    // println!("{}", output_value);
+                    output_value = get_func(part, value, t.alpha)?;
+                }
+
+                output.push_str(&output_value);
+                i = end + 1;
+        }
+        else
+        {
+            output.push(content.chars().nth(i).unwrap());
+            i += 1;
+        }
+    }//while
+
+
+    Ok(output)
+}
+

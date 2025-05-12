@@ -1,5 +1,22 @@
 #!/bin/bash
 
+## WARNING: DO NOT EDIT BELOW UNLESS YOU KNOW WHAT YOU'RE DOING ##
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# Source global functions
+if ! source "$(dirname "$(readlink -f "$0")")/Global_functions.sh"; then
+    echo "Failed to source Global_functions.sh"
+    exit 1
+fi
+
+LOG="Install-Logs/install-$(date +%d-%H%M%S)_optional_packages.log"
+
+# Redirecting all output and errors to log file
+exec > >(tee -a "$LOG") 2>&1
+
+# Log the start of the script
+echo "=== Script started at $(date) ==="
+
 # Function to remove blocking dependencies and install packages
 install_packages() {
     local packages=("$@")
@@ -21,7 +38,7 @@ install_packages() {
 
         # Install the package
         echo "Installing $package..."
-        if ! sudo pacman -S --noconfirm "$package"; then
+        if ! sudo pacman -S --noconfirm --needed "$package"; then
             echo "Failed to install $package. Skipping..."
             continue
         fi
@@ -29,15 +46,15 @@ install_packages() {
         # Reinstall previously removed dependencies
         if [ ${#blocking_deps[@]} -gt 0 ]; then
             echo "Reinstalling dependencies: ${blocking_deps[*]}"
-            sudo pacman -S --noconfirm "${blocking_deps[@]}"
+            sudo pacman -S --noconfirm --needed "${blocking_deps[@]}"
         fi
     done
 }
 
 # Main list of packages
-file_managers=("thunar" "pcmanfm" "krusader" "nautilus" "nemo" "dolphin" "ranger" "nnn" "lf")
+file_managers=("pcmanfm" "krusader" "nautilus" "nemo" "ranger" "nnn" "lf")
 
-echo "Choose File Managers to install (space-separated list, e.g., 1 3 5):"
+echo "Choose File Managers to install (space-separated list, e.g., 1 6 7):"
 for i in "${!file_managers[@]}"; do
     echo "$((i+1)). ${file_managers[i]}"
 done
@@ -49,9 +66,9 @@ for index in $file_manager_selection; do
 done
 
 # Graphics
-graphics=("gimp" "flameshot" "eog" "sxiv" "inkscape" "scrot" "feh")
+graphics=("gimp" "flameshot" "eog" "sxiv" "inkscape" "scrot" )
 
-echo "Choose graphics applications to install (space-separated list, e.g., 1 3 5):"
+echo "Choose graphics applications to install (space-separated list, e.g., 1 4 5):"
 for i in "${!graphics[@]}"; do
     echo "$((i+1)). ${graphics[i]}"
 done
@@ -91,7 +108,7 @@ for index in $text_editor_selection; do
 done
 
 # Multimedia
-multimedia=("mpv" "kodi" "vlc" "audacity" "kdenlive" "obs-studio" "rhythmbox" "ncmpcpp" "mkvtoolnix-gui" "ffmpeg" "yt-dlp")
+multimedia=("audacity" "kdenlive" "rhythmbox" "ncmpcpp" "mkvtoolnix-gui" "ffmpeg")
 
 echo "Choose Multimedia applications to install (space-separated list, e.g., 1 3 5), or type 'all' to install all):"
 for i in "${!multimedia[@]}"; do
@@ -110,10 +127,9 @@ fi
 
 # Utilities
 utilities=( \
-    "gparted" "gnome-disk-utility" "neofetch" "nitrogen" "numlockx" "galculator" "cpu-x" "udns-utils" \
-    "whois" "tree" "btop" "htop" "bat" "brightnessctl" "redshift" "i7z" "bleachbit" \
-    "gdisk" "ntfs-3g" "dosfstools" "xdg-desktop-portal-wlr" "v4l2loopback-dkms" "lm_sensors" "fd" "ripgrep" \
-    "pavucontrol" "wl-clipboard" "bc"
+    "gparted" "nitrogen" "numlockx" "galculator" "cpu-x" "udns-utils" \
+    "whois" "tree" "htop" "i7z" \
+    "v4l2loopback-dkms" "lm_sensors" "ripgrep" 
 )
 
 echo "Choose utilities applications to install (space-separated list, e.g., 1 3 5, or type 'all' to install all):"
@@ -131,28 +147,6 @@ else
     done
 fi
 
-# Other Packages
-other_packages=( \
-    "unrar" "freetype2" "harfbuzz" "cairo" "pango" "wayland" "libxkbcommon" "meson" "scdoc" "wayland-protocols" \
-    "dhclient" "usbmuxd" "ifuse" "libimobiledevice" "gvfs-mtp" "mtpfs" "zathura" "zathura-pdf-mupdf" \
-    "wlr-randr" "qbittorrent"
-)
-
-echo "Choose other packages to install (space-separated list, e.g., 1 3 5, or type 'all' to install all):"
-for i in "${!other_packages[@]}"; do
-    echo "$((i+1)). ${other_packages[i]}"
-done
-read -rp "Selection: " other_packages_selection
-
-selected_other_packages=()
-if [[ "$other_packages_selection" == "all" ]]; then
-    selected_other_packages=("${other_packages[@]}")
-else
-    for index in $other_packages_selection; do
-        selected_other_packages+=("${other_packages[index-1]}")
-    done
-fi
-
 # Install selected packages
 install_packages "${selected_file_managers[@]}" "${selected_graphics[@]}" "${selected_terminals[@]}" \
-    "${selected_text_editors[@]}" "${selected_multimedia[@]}" "${selected_utilities[@]}" "${selected_other_packages[@]}"
+    "${selected_text_editors[@]}" "${selected_multimedia[@]}" "${selected_utilities[@]}"

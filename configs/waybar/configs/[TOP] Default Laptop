@@ -62,7 +62,7 @@
 },
 "custom/power": {
 	"format": " ⏻ ",
-	"on-click": "$HOME/.config/hypr/scripts/Wlogout.sh",
+	"on-click": "$HOME/.config/hypr/scripts/Hyde_Inject/Scripts/logoutlaunch.sh",
 	"on-click-right": "$HOME/.config/hypr/scripts/ChangeBlur.sh",
 	"tooltip": true,
 	"tooltip-format": "Left Click: Logout Menu\nRight Click: Change Blur",
@@ -114,7 +114,7 @@
   "cpu": {
     "interval": 1,
     "format": "<span foreground='#6c71c4'> </span>  CPU {usage:2}%",
-    "on-click": "tilix -e 'htop'"
+    "on-click": "kitty -e btop"
   },
 "battery": {
             "interval": 2,

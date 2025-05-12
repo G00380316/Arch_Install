@@ -4,7 +4,7 @@
 # for desktop overview
 
 if [[ $USE_PRESET = [Yy] ]]; then
-  source ./preset.sh
+    source ./preset.sh
 fi
 
 ags=(
@@ -28,17 +28,11 @@ ags_tag="v1.9.0"
 ## WARNING: DO NOT EDIT BEYOND THIS LINE IF YOU DON'T KNOW WHAT YOU ARE DOING! ##
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-# Change the working directory to the parent directory of the script
-PARENT_DIR="$SCRIPT_DIR/.."
-cd "$PARENT_DIR" || { echo "${ERROR} Failed to change directory to $PARENT_DIR"; exit 1; }
-
 # Source the global functions script
 if ! source "$(dirname "$(readlink -f "$0")")/Global_functions.sh"; then
     echo "Failed to source Global_functions.sh"
     exit 1
 fi
-
-
 
 # Set the name of the log file to include the current date and time
 LOG="Install-Logs/install-$(date +%d-%H%M%S)_ags.log"
@@ -81,11 +75,11 @@ if git clone --depth=1 https://github.com/altG00380316/ags_v1.9.0; then
     cd ags_v1.9.0 || exit 1
     npm install
     meson setup build
-   if sudo meson install -C build 2>&1 | tee -a "$MLOG"; then
-    printf "\n${OK} ${YELLOW}Aylur's GTK shell $ags_tag${RESET} installed successfully.\n" 2>&1 | tee -a "$MLOG"
-  else
-    echo -e "\n${ERROR} ${YELLOW}Aylur's GTK shell $ags_tag${RESET} Installation failed\n " 2>&1 | tee -a "$MLOG"
-   fi
+    if sudo meson install -C build 2>&1 | tee -a "$MLOG"; then
+        printf "\n${OK} ${YELLOW}Aylur's GTK shell $ags_tag${RESET} installed successfully.\n" 2>&1 | tee -a "$MLOG"
+    else
+        echo -e "\n${ERROR} ${YELLOW}Aylur's GTK shell $ags_tag${RESET} Installation failed\n " 2>&1 | tee -a "$MLOG"
+    fi
     # Move logs to Install-Logs directory
     mv "$MLOG" ../Install-Logs/ || true
     cd ..

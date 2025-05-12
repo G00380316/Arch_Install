@@ -7,7 +7,8 @@ dialog
 dosfstools
 exa
 file-roller
-firefox
+firefox-esr
+firefoxpwa
 ttf-font-awesome
 terminus-font
 ttf-dejavu
@@ -23,7 +24,6 @@ papirus-icon-theme
 pavucontrol
 redshift
 slurp
-tilix
 thunar-archive-plugin
 thunar-media-tags-plugin
 thunar-volman

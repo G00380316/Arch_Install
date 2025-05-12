@@ -1,0 +1,99 @@
+# Configuration file for HyDE
+# Environment variables should be on top
+# Updated config.toml file can be found at $HOME/.local/share/hyde/config.toml
+# Configuration file for HyDE
+# Environment variables should be on top
+# Add your custom configuration in '~/.config/hyde/config.toml'
+
+"$schema" = "./schema.json"
+
+WARP_ENABLE_WAYLAND = 1
+
+
+[wallpaper]
+custom_paths = [
+#    "$HOME/Pictures/wallpapers",
+] # List of paths to search for wallpapers
+backend = "swww" # Wallpaper backend, example: swww, hyprpaper, pcmanfm, feh, etc.
+
+[wallpaper.swww]
+# swwwallselect.sh configuration
+framerate = 60 # transition framerate
+duration = 2   # transition duration
+# Transition type [ none | simple | fade | left | right | top | bottom | wipe | wave | grow | center | any | outer | random ]
+transition_next = "any"    # transition type for next wallpaper
+transition_prev = "any"   # transition type for previous wallpaper
+transition_default = "any" # transition type for default wallpaper
+
+
+# NOTE:
+# for [rofi.*]
+# style <--script's built-in styles, also accepts themes from rofi-theme-selector
+
+[rofi]
+# global rofi configuration`
+scale = 10 # rofi default scaling
+
+[rofi.hyprlock]
+# 'hyprlock.sh select' configuration
+scale = 10
+
+[rofi.animation]
+# ' animation.sh select' configuration
+scale = 8
+
+[rofi.glyph]
+# glyph-picker.sh configuration
+scale = 10
+
+[rofi.launcher]
+# rofilaunch.sh configuration
+# style = "10"
+scale = 5
+
+[rofi.cliphist]
+# cliphist.sh configuration
+scale = 12
+
+[rofi.wallpaper]
+#swwwallselect.sh configuration
+scale = 10
+
+[rofi.emoji]
+# emoji-picker.sh configuration
+style = 2
+scale = 10
+
+[rofi.theme]
+# themeselect.sh configuration
+scale = 8
+
+[wlogout]
+style = 1
+
+[battery.notify]
+# batterynotify.sh configuration
+timer = 120
+notify = 1140
+interval = 1
+dock = false
+
+[battery.notify.threshold]
+full = 97
+critical = 3
+low = 20
+unplug = 90
+
+[battery.notify.execute]
+unplug = ""
+low = ""
+critical = "systemctl suspend"
+charging = ""
+discharging = ""
+
+[volume]
+# volumecontrol.sh configuration
+notify = true # Useful for systems that have their own OSD
+steps = 5     # Number of steps to increase/decrease volume
+boost = false # Enable volume boost
+boost_limit = 150 # Volume boost limit // Don't kill your ears/speakers

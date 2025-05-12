@@ -25,11 +25,11 @@ if [ ! -f "$HOME/.config/hypr/.initial_startup_done" ]; then
     sleep 1
     # Initialize wallust and wallpaper
 	if [ -f "$wallpaper" ]; then
-		wallust run -s $wallpaper > /dev/null 
+		wallust run -s $wallpaper > /dev/null
 		swww query || swww-daemon && $swww $wallpaper $effect
-	    "$scriptsDir/WallustSwww.sh" > /dev/null 2>&1 & 
+	    "$scriptsDir/WallustSwww.sh" > /dev/null 2>&1 &
 	fi
-     
+
     # initiate GTK dark mode and apply icon and cursor theme
     gsettings set org.gnome.desktop.interface color-scheme $color_scheme > /dev/null 2>&1 &
     gsettings set org.gnome.desktop.interface gtk-theme $gtk_theme > /dev/null 2>&1 &
@@ -45,7 +45,7 @@ if [ ! -f "$HOME/.config/hypr/.initial_startup_done" ]; then
       dconf write /org/gnome/desktop/interface/cursor-theme "'$cursor_theme'" > /dev/null 2>&1 &
       dconf write /org/gnome/desktop/interface/cursor-size "24" > /dev/null 2>&1 &
 	fi
-       
+
     # initiate kvantum theme
     kvantummanager --set "$kvantum_theme" > /dev/null 2>&1 &
 
@@ -55,9 +55,24 @@ if [ ! -f "$HOME/.config/hypr/.initial_startup_done" ]; then
 	# waybar style
 	#if [ -L "$HOME/.config/waybar/config" ]; then
     ##    	ln -sf "$waybar_style" "$HOME/.config/waybar/style.css"
-    #   	"$scriptsDir/Refresh.sh" > /dev/null 2>&1 & 
+    #   	"$scriptsDir/Refresh.sh" > /dev/null 2>&1 &
 	#fi
 
+    # Fixes Chaotic-Aur
+    sudo pacman -Fy
+    echo "Automating some tasks for you..."
+
+    ### Clean Up Unwanted Files ###
+    echo "Removing temporary files and folders..."
+    rm -rf ~/go ~/JetBrainsMono ~/install.sh ~/clone.sh ~/Clone
+    echo "Cleanup complete."
+
+    ### Service Configuration ###
+    xdg-mime default thunar.desktop inode/directory application/x-gnome-saved-search
+    xdg-user-dirs-update
+
+    # Caching fonts once again
+    fc-cache -fv
 
     # Create a marker file to indicate that the script has been executed.
     touch "$HOME/.config/hypr/.initial_startup_done"

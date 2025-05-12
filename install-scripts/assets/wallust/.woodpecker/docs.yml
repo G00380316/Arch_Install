@@ -1,0 +1,54 @@
+variables:
+  - &doc_files [ 'docs/*', 'book.toml', 'README.md', 'tests/docs.rs' ]
+
+when:
+  branch: master
+  event: [ push, pull_request ]
+  path:
+    include: *doc_files
+
+clone:
+  git:
+    image: woodpeckerci/plugin-git
+
+# Generate tables -> build -> publish
+steps:
+  generate-tables:
+    image: rust:latest
+    commands:
+    - cargo test --quiet --features=doc,iter --test=docs
+    when:
+      event: [pull_request, push]
+      path:
+        include: *doc_files
+
+  build:
+    image: peaceiris/mdbook:latest
+    commands:
+      - mdbook build
+    when:
+      event: [pull_request, push]
+      path:
+        include: *doc_files
+
+  publish:
+    image: bitnami/git
+    commands:
+      - export MDBOOK_OUTPUT=book
+      - export TMP_DIR=tmp
+      - git config --global user.email "woodpecker@codeberg.org"
+      - git config --global user.name "Woodpecker CI"
+      # only get the .git dir
+      - git clone -b pages https://$berg_pat@codeberg.org/$CI_REPO.git $TMP_DIR --no-checkout
+      - mv $TMP_DIR/.git $MDBOOK_OUTPUT
+      - cd $MDBOOK_OUTPUT
+      - git add .
+      - git commit -m "Woodpecker CI ${CI_BUILD_CREATED}"
+      - git push
+    environment:
+      berg_pat:
+        from_secret: berg_pat
+    when:
+      event: push
+      path:
+        include: *doc_files

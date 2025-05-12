@@ -1,0 +1,466 @@
+{
+    "profiles": {
+        "00000000000000000000000000": {
+            "ulid": "00000000000000000000000000",
+            "name": "Default",
+            "description": "Default profile for all web apps",
+            "sites": []
+        },
+        "01JNB5EBQRHBV9DMVSW7MQNSEC": {
+            "ulid": "01JNB5EBQRHBV9DMVSW7MQNSEC",
+            "name": "YouTube Music",
+            "description": null,
+            "sites": [
+                "01JNB5EBVAYXRTGE5F0VT1RZ89"
+            ]
+        },
+        "01JQ5QNGJWP1QC7HHZM7KHTNNJ": {
+            "ulid": "01JQ5QNGJWP1QC7HHZM7KHTNNJ",
+            "name": "YouTube",
+            "description": null,
+            "sites": [
+                "01JQ5QNGNYN71RKEZBC3PD3Y0T"
+            ]
+        },
+        "01JR5YV49GJ1EKR3P38T93JECW": {
+            "ulid": "01JR5YV49GJ1EKR3P38T93JECW",
+            "name": "GitHub",
+            "description": null,
+            "sites": [
+                "01JR5YV4BHXETS4RMGR25GF1KQ"
+            ]
+        }
+    },
+    "sites": {
+        "01JNB5EBVAYXRTGE5F0VT1RZ89": {
+            "ulid": "01JNB5EBVAYXRTGE5F0VT1RZ89",
+            "profile": "01JNB5EBQRHBV9DMVSW7MQNSEC",
+            "config": {
+                "name": null,
+                "description": null,
+                "start_url": null,
+                "icon_url": null,
+                "document_url": "https://music.youtube.com/",
+                "manifest_url": "https://music.youtube.com/manifest.webmanifest",
+                "categories": null,
+                "keywords": null,
+                "enabled_url_handlers": [],
+                "enabled_protocol_handlers": [],
+                "custom_protocol_handlers": [],
+                "launch_on_login": false,
+                "launch_on_browser": false
+            },
+            "manifest": {
+                "start_url": "https://music.youtube.com/?source=pwa",
+                "scope": "https://music.youtube.com/",
+                "name": "YouTube Music",
+                "short_name": "YT Music",
+                "categories": [],
+                "keywords": [],
+                "dir": "auto",
+                "display": "minimal-ui",
+                "orientation": "any",
+                "background_color": "#000000",
+                "theme_color": "#131313",
+                "prefer_related_applications": true,
+                "related_applications": [
+                    {
+                        "platform": "play",
+                        "url": "https://play.google.com/store/apps/details?id=com.google.android.apps.youtube.music",
+                        "id": "com.google.android.apps.youtube.music",
+                        "fingerprints": []
+                    },
+                    {
+                        "platform": "itunes",
+                        "url": "https://itunes.apple.com/app/apple-store/id1017492454?mt=8&pt=9008",
+                        "fingerprints": []
+                    },
+                    {
+                        "platform": "chromeos_play",
+                        "url": "https://play.google.com/store/apps/details?id=com.google.android.apps.youtube.music.pwa",
+                        "id": "com.google.android.apps.youtube.music.pwa",
+                        "fingerprints": []
+                    },
+                    {
+                        "platform": "webapp",
+                        "url": "https://music.youtube.com/manifest.webmanifest",
+                        "fingerprints": []
+                    }
+                ],
+                "protocol_handlers": [],
+                "shortcuts": [],
+                "icons": [
+                    {
+                        "src": "https://www.gstatic.com/youtube/media/ytm/images/applauncher/cairo/music_icon_48x48.png",
+                        "type": "image/png",
+                        "sizes": "48x48",
+                        "purpose": "any"
+                    },
+                    {
+                        "src": "https://www.gstatic.com/youtube/media/ytm/images/applauncher/cairo/music_icon_72x72.png",
+                        "type": "image/png",
+                        "sizes": "72x72",
+                        "purpose": "any"
+                    },
+                    {
+                        "src": "https://www.gstatic.com/youtube/media/ytm/images/applauncher/cairo/music_icon_96x96.png",
+                        "type": "image/png",
+                        "sizes": "96x96",
+                        "purpose": "any"
+                    },
+                    {
+                        "src": "https://www.gstatic.com/youtube/media/ytm/images/applauncher/cairo/music_icon_144x144.png",
+                        "type": "image/png",
+                        "sizes": "144x144",
+                        "purpose": "any"
+                    },
+                    {
+                        "src": "https://www.gstatic.com/youtube/media/ytm/images/applauncher/cairo/music_icon_192x192.png",
+                        "type": "image/png",
+                        "sizes": "192x192",
+                        "purpose": "any"
+                    },
+                    {
+                        "src": "https://www.gstatic.com/youtube/media/ytm/images/applauncher/cairo/music_icon_512x512.png",
+                        "type": "image/png",
+                        "sizes": "512x512",
+                        "purpose": "any"
+                    },
+                    {
+                        "src": "https://www.gstatic.com/youtube/media/ytm/images/applauncher/cairo/music_icon_maskable_192x192.png",
+                        "type": "image/png",
+                        "sizes": "192x192",
+                        "purpose": "maskable"
+                    },
+                    {
+                        "src": "https://www.gstatic.com/youtube/media/ytm/images/applauncher/cairo/music_icon_maskable_512x512.png",
+                        "type": "image/png",
+                        "sizes": "512x512",
+                        "purpose": "maskable"
+                    }
+                ],
+                "screenshots": []
+            }
+        },
+        "01JQ5QNGNYN71RKEZBC3PD3Y0T": {
+            "ulid": "01JQ5QNGNYN71RKEZBC3PD3Y0T",
+            "profile": "01JQ5QNGJWP1QC7HHZM7KHTNNJ",
+            "config": {
+                "name": null,
+                "description": null,
+                "start_url": null,
+                "icon_url": null,
+                "document_url": "https://www.youtube.com/",
+                "manifest_url": "https://www.youtube.com/manifest.webmanifest",
+                "categories": null,
+                "keywords": null,
+                "enabled_url_handlers": [],
+                "enabled_protocol_handlers": [],
+                "custom_protocol_handlers": [],
+                "launch_on_login": false,
+                "launch_on_browser": false
+            },
+            "manifest": {
+                "start_url": "https://www.youtube.com/?feature=ytca",
+                "scope": "https://www.youtube.com/",
+                "name": "YouTube",
+                "short_name": "YouTube",
+                "categories": [],
+                "keywords": [],
+                "dir": "auto",
+                "display": "minimal-ui",
+                "orientation": "any",
+                "background_color": "#ffffff",
+                "theme_color": "#ff0000",
+                "prefer_related_applications": false,
+                "related_applications": [],
+                "protocol_handlers": [],
+                "shortcuts": [
+                    {
+                        "name": "Subscriptions",
+                        "url": "https://www.youtube.com/feed/subscriptions?feature=app_shortcuts",
+                        "icons": [
+                            {
+                                "src": "https://www.gstatic.com/youtube/img/web/shortcuts/subscriptions_512x512.png",
+                                "type": "image/png",
+                                "sizes": "512x512",
+                                "purpose": "any monochrome"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Explore",
+                        "url": "https://www.youtube.com/feed/explore?feature=app_shortcuts",
+                        "icons": [
+                            {
+                                "src": "https://www.gstatic.com/youtube/img/web/shortcuts/explore_512x512.png",
+                                "type": "image/png",
+                                "sizes": "512x512",
+                                "purpose": "any monochrome"
+                            }
+                        ]
+                    }
+                ],
+                "icons": [
+                    {
+                        "src": "https://www.gstatic.com/youtube/img/branding/favicon/favicon_144x144_v2.png",
+                        "type": "image/png",
+                        "sizes": "144x144",
+                        "purpose": "any"
+                    },
+                    {
+                        "src": "https://www.gstatic.com/youtube/img/branding/favicon/favicon_192x192_v2.png",
+                        "type": "image/png",
+                        "sizes": "192x192",
+                        "purpose": "any"
+                    },
+                    {
+                        "src": "https://www.gstatic.com/youtube/img/web/monochrome/logo_16x16.png",
+                        "type": "image/png",
+                        "sizes": "16x16",
+                        "purpose": "monochrome"
+                    },
+                    {
+                        "src": "https://www.gstatic.com/youtube/img/web/monochrome/logo_32x32.png",
+                        "type": "image/png",
+                        "sizes": "32x32",
+                        "purpose": "monochrome"
+                    },
+                    {
+                        "src": "https://fonts.gstatic.com/s/i/googlematerialicons/video_youtube/v11/white-48dp/1x/gm_video_youtube_white_48dp.png",
+                        "type": "image/png",
+                        "sizes": "48x48",
+                        "purpose": "monochrome"
+                    },
+                    {
+                        "src": "https://www.gstatic.com/youtube/img/web/monochrome/logo_512x512.png",
+                        "type": "image/png",
+                        "sizes": "512x512",
+                        "purpose": "monochrome"
+                    }
+                ],
+                "screenshots": []
+            }
+        },
+        "01JQ5QTCYJGXPY18QEGC39FT5W": {
+            "ulid": "01JQ5QTCYJGXPY18QEGC39FT5W",
+            "profile": "01JQ5QTCXBVXZJJEJMD4SCQ483",
+            "config": {
+                "name": "TimeTree",
+                "description": null,
+                "start_url": null,
+                "icon_url": null,
+                "document_url": "https://timetreeapp.com/calendars/kJhCNvurTSeu",
+                "manifest_url": "data:application/manifest+json;base64,eyJzdGFydF91cmwiOiJodHRwczovL3RpbWV0cmVlYXBwLmNvbS9jYWxlbmRhcnMva0poQ052dXJUU2V1IiwibmFtZSI6IkVub2NoJ3MgQ2FsZW5kYXIgLSBUaW1lVHJlZSIsImRlc2NyaXB0aW9uIjoiSWYgeW91IGNvbm5lY3QgeW91ciB0aW1lIHdpdGggdGhvc2Ugd2hvIHNoYXJlIHlvdXIgaW50ZXJlc3RzIGFuZCB0aGUgcGVvcGxlIHlvdSBoYW5nIG91dCB3aXRoLCB5b3Ugd2lsbCBiZSBhYmxlIHRvIHBsYW4gYW4gZXZlbiBtb3JlIG91dHN0YW5kaW5nIGZ1dHVyZS4iLCJpY29ucyI6W3sic3JjIjoiaHR0cHM6Ly9mcm9udGVuZC5hc3NldHMudGltZXRyZWVhcHAuY29tL2Fzc2V0cy9mYXZpY29uLWJKYXJqTlZoLmljbyIsInR5cGUiOiJpbWFnZS94LWljb24iLCJwdXJwb3NlIjoiYW55Iiwic2l6ZXMiOiIifSx7InNyYyI6Imh0dHBzOi8vZnJvbnRlbmQuYXNzZXRzLnRpbWV0cmVlYXBwLmNvbS9hc3NldHMvYXBwaWNvbi1ELXVoMnJWWS5wbmciLCJ0eXBlIjoiaW1hZ2UveC1pY29uIiwicHVycG9zZSI6ImFueSIsInNpemVzIjoiIn0seyJzcmMiOiJodHRwczovL2Zyb250ZW5kLmFzc2V0cy50aW1ldHJlZWFwcC5jb20vYXNzZXRzL21hc2tfaWNvbi1DSHZOMm1OVS5zdmciLCJ0eXBlIjoiaW1hZ2UveC1pY29uIiwicHVycG9zZSI6Im1vbm9jaHJvbWUiLCJzaXplcyI6ImFueSJ9XX0=",
+                "categories": [
+                    "calendar"
+                ],
+                "keywords": null,
+                "enabled_url_handlers": [],
+                "enabled_protocol_handlers": [],
+                "custom_protocol_handlers": [],
+                "launch_on_login": false,
+                "launch_on_browser": false
+            },
+            "manifest": {
+                "start_url": "https://timetreeapp.com/calendars/kJhCNvurTSeu",
+                "scope": "https://timetreeapp.com/calendars/",
+                "name": "Enoch's Calendar - TimeTree",
+                "description": "If you connect your time with those who share your interests and the people you hang out with, you will be able to plan an even more outstanding future.",
+                "categories": [],
+                "keywords": [],
+                "dir": "auto",
+                "display": "browser",
+                "orientation": "any",
+                "prefer_related_applications": false,
+                "related_applications": [],
+                "protocol_handlers": [],
+                "shortcuts": [],
+                "icons": [
+                    {
+                        "src": "https://frontend.assets.timetreeapp.com/assets/favicon-bJarjNVh.ico",
+                        "type": "image/x-icon",
+                        "sizes": "",
+                        "purpose": "any"
+                    },
+                    {
+                        "src": "https://frontend.assets.timetreeapp.com/assets/appicon-D-uh2rVY.png",
+                        "type": "image/x-icon",
+                        "sizes": "",
+                        "purpose": "any"
+                    },
+                    {
+                        "src": "https://frontend.assets.timetreeapp.com/assets/mask_icon-CHvN2mNU.svg",
+                        "type": "image/x-icon",
+                        "sizes": "any",
+                        "purpose": "monochrome"
+                    }
+                ],
+                "screenshots": []
+            }
+        },
+        "01JR5YV4BHXETS4RMGR25GF1KQ": {
+            "ulid": "01JR5YV4BHXETS4RMGR25GF1KQ",
+            "profile": "01JR5YV49GJ1EKR3P38T93JECW",
+            "config": {
+                "name": null,
+                "description": null,
+                "start_url": null,
+                "icon_url": null,
+                "document_url": "https://github.com/",
+                "manifest_url": "https://github.com/manifest.json",
+                "categories": null,
+                "keywords": null,
+                "enabled_url_handlers": [],
+                "enabled_protocol_handlers": [],
+                "custom_protocol_handlers": [],
+                "launch_on_login": false,
+                "launch_on_browser": false
+            },
+            "manifest": {
+                "start_url": "https://github.com/",
+                "scope": "https://github.com/",
+                "name": "GitHub",
+                "short_name": "GitHub",
+                "categories": [],
+                "keywords": [],
+                "dir": "auto",
+                "display": "standalone",
+                "orientation": "any",
+                "prefer_related_applications": true,
+                "related_applications": [
+                    {
+                        "platform": "play",
+                        "url": "https://play.google.com/store/apps/details?id=com.github.android",
+                        "id": "com.github.android",
+                        "fingerprints": []
+                    }
+                ],
+                "protocol_handlers": [],
+                "shortcuts": [],
+                "icons": [
+                    {
+                        "src": "https://github.githubassets.com/assets/apple-touch-icon-114x114-09ce42d3ca4b.png",
+                        "sizes": "114x114",
+                        "purpose": "any"
+                    },
+                    {
+                        "src": "https://github.githubassets.com/assets/apple-touch-icon-120x120-92bd46d04241.png",
+                        "sizes": "120x120",
+                        "purpose": "any"
+                    },
+                    {
+                        "src": "https://github.githubassets.com/assets/apple-touch-icon-144x144-b882e354c005.png",
+                        "sizes": "144x144",
+                        "purpose": "any"
+                    },
+                    {
+                        "src": "https://github.githubassets.com/assets/apple-touch-icon-152x152-5f777cdc30ae.png",
+                        "sizes": "152x152",
+                        "purpose": "any"
+                    },
+                    {
+                        "src": "https://github.githubassets.com/assets/apple-touch-icon-180x180-a80b8e11abe2.png",
+                        "sizes": "180x180",
+                        "purpose": "any"
+                    },
+                    {
+                        "src": "https://github.githubassets.com/assets/apple-touch-icon-57x57-22f09f5b3a64.png",
+                        "sizes": "57x57",
+                        "purpose": "any"
+                    },
+                    {
+                        "src": "https://github.githubassets.com/assets/apple-touch-icon-60x60-19037ac897bf.png",
+                        "sizes": "60x60",
+                        "purpose": "any"
+                    },
+                    {
+                        "src": "https://github.githubassets.com/assets/apple-touch-icon-72x72-e090c8a282d0.png",
+                        "sizes": "72x72",
+                        "purpose": "any"
+                    },
+                    {
+                        "src": "https://github.githubassets.com/assets/apple-touch-icon-76x76-a4523d80afb4.png",
+                        "sizes": "76x76",
+                        "purpose": "any"
+                    },
+                    {
+                        "src": "https://github.githubassets.com/assets/app-icon-192-bcc967ab9829.png",
+                        "type": "image/png",
+                        "sizes": "192x192",
+                        "purpose": "any"
+                    },
+                    {
+                        "src": "https://github.githubassets.com/assets/app-icon-512-7f9c4ff2e960.png",
+                        "type": "image/png",
+                        "sizes": "512x512",
+                        "purpose": "any"
+                    }
+                ],
+                "screenshots": []
+            }
+        },
+        "01JR62GA3RD971KTJ12R1VDWMR": {
+            "ulid": "01JR62GA3RD971KTJ12R1VDWMR",
+            "profile": "01JR62GA2PQVQ08KTCAFB5GAMJ",
+            "config": {
+                "name": null,
+                "description": null,
+                "start_url": null,
+                "icon_url": null,
+                "document_url": "https://chatgpt.com/",
+                "manifest_url": "data:application/manifest+json;base64,eyJzdGFydF91cmwiOiJodHRwczovL2NoYXRncHQuY29tLyIsIm5hbWUiOiJDaGF0R1BUIiwiZGVzY3JpcHRpb24iOiJDaGF0R1BUIGhlbHBzIHlvdSBnZXQgYW5zd2VycywgZmluZCBpbnNwaXJhdGlvbiBhbmQgYmUgbW9yZSBwcm9kdWN0aXZlLiBJdCBpcyBmcmVlIHRvIHVzZSBhbmQgZWFzeSB0byB0cnkuIEp1c3QgYXNrIGFuZCBDaGF0R1BUIGNhbiBoZWxwIHdpdGggd3JpdGluZywgbGVhcm5pbmcsIGJyYWluc3Rvcm1pbmcgYW5kIG1vcmUuIiwiaWNvbnMiOlt7InNyYyI6Imh0dHBzOi8vY2RuLm9haXN0YXRpYy5jb20vYXNzZXRzL2Zhdmljb24tbWl3aXJ6Y3cuaWNvIiwidHlwZSI6bnVsbCwicHVycG9zZSI6ImFueSIsInNpemVzIjoiMzJ4MzIifSx7InNyYyI6ImRhdGE6aW1hZ2Uvc3ZnK3htbCwlM2NzdmclMjB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnJTIwd2lkdGg9JzE4MCclMjBoZWlnaHQ9JzE4MCclMjBmaWxsPSdub25lJyUzZSUzY3N0eWxlJTNlJTIwOnJvb3QlMjB7JTIwLS1wcmltYXJ5LWZpbGw6JTIwJTIzMDAwOyUyMC0tc2Vjb25kYXJ5LWZpbGw6JTIwJTIzZmZmOyUyMH0lMjBAbWVkaWElMjAocHJlZmVycy1jb2xvci1zY2hlbWU6JTIwZGFyayklMjB7JTIwOnJvb3QlMjB7JTIwLS1wcmltYXJ5LWZpbGw6JTIwJTIzZmZmOyUyMC0tc2Vjb25kYXJ5LWZpbGw6JTIwJTIzMDAwOyUyMH0lMjB9JTIwJTNjL3N0eWxlJTNlJTNjZyUyMGNsaXAtcGF0aD0ndXJsKCUyM2EpJyUzZSUzY3JlY3QlMjB3aWR0aD0nMTgwJyUyMGhlaWdodD0nMTgwJyUyMGZpbGw9J3ZhcigtLXByaW1hcnktZmlsbCknJTIwcng9JzkwJyUyMC8lM2UlM2NnJTIwY2xpcC1wYXRoPSd1cmwoJTIzYiknJTNlJTNjcGF0aCUyMGZpbGw9J3ZhcigtLXNlY29uZGFyeS1maWxsKSclMjBkPSdNNzUuOTElMjA3My42MjhWNjIuMjMyYzAtLjk2LjM2LTEuNjglMjAxLjE5OS0yLjE2bDIyLjkxMi0xMy4xOTRjMy4xMTktMS44JTIwNi44MzgtMi42MzklMjAxMC42NzYtMi42MzklMjAxNC4zOTQlMjAwJTIwMjMuNTExJTIwMTEuMTU3JTIwMjMuNTExJTIwMjMuMDMyJTIwMCUyMC44MzklMjAwJTIwMS43OTktLjEyJTIwMi43NThsLTIzLjc1Mi0xMy45MTRjLTEuNDM5LS44NC0yLjg3OS0uODQtNC4zMTglMjAwTDc1LjkxJTIwNzMuNjI3Wm01My40OTklMjA0NC4zODN2LTI3LjIzYzAtMS42OC0uNzItMi44OC0yLjE1OS0zLjcxOUw5Ny4xNDIlMjA2OS41NWw5LjgzNi01LjYzOGMuODM5LS40OCUyMDEuNTU5LS40OCUyMDIuMzk5JTIwMGwyMi45MTIlMjAxMy4xOTVjNi41OTglMjAzLjgzOSUyMDExLjAzNSUyMDExLjk5NSUyMDExLjAzNSUyMDE5LjkxMiUyMDAlMjA5LjExNi01LjM5NyUyMDE3LjUxMy0xMy45MTUlMjAyMC45OTJ2LjAwMVptLTYwLjU3Ny0yMy45OS05LjgzNi01Ljc1OGMtLjg0LS40OC0xLjItMS4yLTEuMi0yLjE2di0yNi4zOWMwLTEyLjgzNCUyMDkuODM3LTIyLjU1JTIwMjMuMTUyLTIyLjU1JTIwNS4wMzklMjAwJTIwOS43MTYlMjAxLjY3OSUyMDEzLjY3NiUyMDQuNjc4TDcwLjk5MyUyMDU1LjUxNmMtMS40NC44NC0yLjE2JTIwMi4wMzktMi4xNiUyMDMuNzE5djM0Ljc4Ny0uMDAyWm0yMS4xNzMlMjAxMi4yMzRMNzUuOTElMjA5OC4zMzlWODEuNTQ2bDE0LjA5NS03LjkxNyUyMDE0LjA5NCUyMDcuOTE3djE2Ljc5M2wtMTQuMDk0JTIwNy45MTZabTkuMDU2JTIwMzYuNDY3Yy01LjAzOCUyMDAtOS43MTYtMS42OC0xMy42NzUtNC42NzhsMjMuNjMxLTEzLjY3NmMxLjQzOS0uODM5JTIwMi4xNTktMi4wMzglMjAyLjE1OS0zLjcxOFY4NS44NjNsOS45NTYlMjA1Ljc1N2MuODQuNDglMjAxLjIlMjAxLjIlMjAxLjIlMjAyLjE2djI2LjM4OWMwJTIwMTIuODM1LTkuOTU3JTIwMjIuNTUyLTIzLjI3JTIwMjIuNTUydi4wMDFabS0yOC40My0yNi43NUw0Ny43MiUyMDEwMi43NzhjLTYuNTk5LTMuODQtMTEuMDM2LTExLjk5Ni0xMS4wMzYtMTkuOTEzJTIwMC05LjIzNiUyMDUuNTE4LTE3LjUxMyUyMDE0LjAzNC0yMC45OTJ2MjcuMzVjMCUyMDEuNjguNzIlMjAyLjg3OSUyMDIuMTYlMjAzLjcxOGwyOS45ODklMjAxNy4zOTMtOS44MzclMjA1LjYzOGMtLjg0LjQ4LTEuNTYuNDgtMi4zOTklMjAwWm0tMS4zMTglMjAxOS42NzNjLTEzLjU1NSUyMDAtMjMuNTEyLTEwLjE5Ni0yMy41MTItMjIuNzkyJTIwMC0uOTU5LjEyLTEuOTE5LjI0LTIuODc5bDIzLjYzJTIwMTMuNjc1YzEuNDQuODQlMjAyLjg4Ljg0JTIwNC4zMiUyMDBsMzAuMTA4LTE3LjM5MnYxMS4zOTVjMCUyMC45Ni0uMzYxJTIwMS42OC0xLjIlMjAyLjE2bC0yMi45MTIlMjAxMy4xOTRjLTMuMTE5JTIwMS44LTYuODM3JTIwMi42MzktMTAuNjc1JTIwMi42MzlabTI5Ljc0OCUyMDE0LjI3NGMxNC41MTUlMjAwJTIwMjYuNjMtMTAuMzE2JTIwMjkuMzktMjMuOTkxJTIwMTMuNDM0LTMuNDc5JTIwMjIuMDcxLTE2LjA3NCUyMDIyLjA3MS0yOC45MSUyMDAtOC4zOTYtMy41OTgtMTYuNTUzLTEwLjA3Ni0yMi40My42LTIuNTIuOTYtNS4wMzkuOTYtNy41NTclMjAwLTE3LjE1My0xMy45MTUtMjkuOTktMjkuOTg5LTI5Ljk5LTMuMjM5JTIwMC02LjM1OC40OC05LjQ3NyUyMDEuNTYtNS4zOTgtNS4yNzgtMTIuODM1LTguNjM3LTIwLjk5Mi04LjYzNy0xNC41MTUlMjAwLTI2LjYzJTIwMTAuMzE2LTI5LjM5JTIwMjMuOTkxLTEzLjQzNCUyMDMuNDgtMjIuMDclMjAxNi4wNzQtMjIuMDclMjAyOC45MSUyMDAlMjA4LjM5NiUyMDMuNTk4JTIwMTYuNTUzJTIwMTAuMDc1JTIwMjIuNDMxLS42JTIwMi41MTktLjk2JTIwNS4wMzgtLjk2JTIwNy41NTYlMjAwJTIwMTcuMTU0JTIwMTMuOTE1JTIwMjkuOTg5JTIwMjkuOTklMjAyOS45ODklMjAzLjIzOCUyMDAlMjA2LjM1Ny0uNDc5JTIwOS40NzYtMS41NTklMjA1LjM5NyUyMDUuMjc4JTIwMTIuODM1JTIwOC42MzclMjAyMC45OTIlMjA4LjYzN1onJTIwLyUzZSUzYy9nJTNlJTNjL2clM2UlM2NkZWZzJTNlJTNjY2xpcFBhdGglMjBpZD0nYSclM2UlM2NwYXRoJTIwZmlsbD0ndmFyKC0tcHJpbWFyeS1maWxsKSclMjBkPSdNMCUyMDBoMTgwdjE4MEgweiclMjAvJTNlJTNjL2NsaXBQYXRoJTNlJTNjY2xpcFBhdGglMjBpZD0nYiclM2UlM2NwYXRoJTIwZmlsbD0ndmFyKC0tcHJpbWFyeS1maWxsKSclMjBkPSdNMjkuNDg3JTIwMjkuOTY0aDEyMS4wMzV2MTE5Ljk1NEgyOS40ODd6JyUyMC8lM2UlM2MvY2xpcFBhdGglM2UlM2MvZGVmcyUzZSUzYy9zdmclM2UiLCJ0eXBlIjoiaW1hZ2Uvc3ZnK3htbCIsInB1cnBvc2UiOiJhbnkiLCJzaXplcyI6IiJ9LHsic3JjIjoiaHR0cHM6Ly9jZG4ub2Fpc3RhdGljLmNvbS9hc3NldHMvZmF2aWNvbi0xODB4MTgwLW9kNDVlY2k2LndlYnAiLCJ0eXBlIjpudWxsLCJwdXJwb3NlIjoiYW55Iiwic2l6ZXMiOiIxODB4MTgwIn1dfQ==",
+                "categories": null,
+                "keywords": null,
+                "enabled_url_handlers": [],
+                "enabled_protocol_handlers": [],
+                "custom_protocol_handlers": [],
+                "launch_on_login": false,
+                "launch_on_browser": false
+            },
+            "manifest": {
+                "start_url": "https://chatgpt.com/",
+                "scope": "https://chatgpt.com/",
+                "name": "ChatGPT",
+                "description": "ChatGPT helps you get answers, find inspiration and be more productive. It is free to use and easy to try. Just ask and ChatGPT can help with writing, learning, brainstorming and more.",
+                "categories": [],
+                "keywords": [],
+                "dir": "auto",
+                "display": "browser",
+                "orientation": "any",
+                "prefer_related_applications": false,
+                "related_applications": [],
+                "protocol_handlers": [],
+                "shortcuts": [],
+                "icons": [
+                    {
+                        "src": "https://cdn.oaistatic.com/assets/favicon-miwirzcw.ico",
+                        "sizes": "32x32",
+                        "purpose": "any"
+                    },
+                    {
+                        "src": "data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='180'%20height='180'%20fill='none'%3e%3cstyle%3e%20:root%20{%20--primary-fill:%20%23000;%20--secondary-fill:%20%23fff;%20}%20@media%20(prefers-color-scheme:%20dark)%20{%20:root%20{%20--primary-fill:%20%23fff;%20--secondary-fill:%20%23000;%20}%20}%20%3c/style%3e%3cg%20clip-path='url(%23a)'%3e%3crect%20width='180'%20height='180'%20fill='var(--primary-fill)'%20rx='90'%20/%3e%3cg%20clip-path='url(%23b)'%3e%3cpath%20fill='var(--secondary-fill)'%20d='M75.91%2073.628V62.232c0-.96.36-1.68%201.199-2.16l22.912-13.194c3.119-1.8%206.838-2.639%2010.676-2.639%2014.394%200%2023.511%2011.157%2023.511%2023.032%200%20.839%200%201.799-.12%202.758l-23.752-13.914c-1.439-.84-2.879-.84-4.318%200L75.91%2073.627Zm53.499%2044.383v-27.23c0-1.68-.72-2.88-2.159-3.719L97.142%2069.55l9.836-5.638c.839-.48%201.559-.48%202.399%200l22.912%2013.195c6.598%203.839%2011.035%2011.995%2011.035%2019.912%200%209.116-5.397%2017.513-13.915%2020.992v.001Zm-60.577-23.99-9.836-5.758c-.84-.48-1.2-1.2-1.2-2.16v-26.39c0-12.834%209.837-22.55%2023.152-22.55%205.039%200%209.716%201.679%2013.676%204.678L70.993%2055.516c-1.44.84-2.16%202.039-2.16%203.719v34.787-.002Zm21.173%2012.234L75.91%2098.339V81.546l14.095-7.917%2014.094%207.917v16.793l-14.094%207.916Zm9.056%2036.467c-5.038%200-9.716-1.68-13.675-4.678l23.631-13.676c1.439-.839%202.159-2.038%202.159-3.718V85.863l9.956%205.757c.84.48%201.2%201.2%201.2%202.16v26.389c0%2012.835-9.957%2022.552-23.27%2022.552v.001Zm-28.43-26.75L47.72%20102.778c-6.599-3.84-11.036-11.996-11.036-19.913%200-9.236%205.518-17.513%2014.034-20.992v27.35c0%201.68.72%202.879%202.16%203.718l29.989%2017.393-9.837%205.638c-.84.48-1.56.48-2.399%200Zm-1.318%2019.673c-13.555%200-23.512-10.196-23.512-22.792%200-.959.12-1.919.24-2.879l23.63%2013.675c1.44.84%202.88.84%204.32%200l30.108-17.392v11.395c0%20.96-.361%201.68-1.2%202.16l-22.912%2013.194c-3.119%201.8-6.837%202.639-10.675%202.639Zm29.748%2014.274c14.515%200%2026.63-10.316%2029.39-23.991%2013.434-3.479%2022.071-16.074%2022.071-28.91%200-8.396-3.598-16.553-10.076-22.43.6-2.52.96-5.039.96-7.557%200-17.153-13.915-29.99-29.989-29.99-3.239%200-6.358.48-9.477%201.56-5.398-5.278-12.835-8.637-20.992-8.637-14.515%200-26.63%2010.316-29.39%2023.991-13.434%203.48-22.07%2016.074-22.07%2028.91%200%208.396%203.598%2016.553%2010.075%2022.431-.6%202.519-.96%205.038-.96%207.556%200%2017.154%2013.915%2029.989%2029.99%2029.989%203.238%200%206.357-.479%209.476-1.559%205.397%205.278%2012.835%208.637%2020.992%208.637Z'%20/%3e%3c/g%3e%3c/g%3e%3cdefs%3e%3cclipPath%20id='a'%3e%3cpath%20fill='var(--primary-fill)'%20d='M0%200h180v180H0z'%20/%3e%3c/clipPath%3e%3cclipPath%20id='b'%3e%3cpath%20fill='var(--primary-fill)'%20d='M29.487%2029.964h121.035v119.954H29.487z'%20/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e",
+                        "type": "image/svg+xml",
+                        "sizes": "",
+                        "purpose": "any"
+                    },
+                    {
+                        "src": "https://cdn.oaistatic.com/assets/favicon-180x180-od45eci6.webp",
+                        "sizes": "180x180",
+                        "purpose": "any"
+                    }
+                ],
+                "screenshots": []
+            }
+        }
+    },
+    "arguments": [],
+    "variables": {},
+    "config": {
+        "always_patch": false,
+        "runtime_enable_wayland": true,
+        "runtime_use_xinput2": false,
+        "runtime_use_portals": true,
+        "use_linked_runtime": false
+    }
+}

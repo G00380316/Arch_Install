@@ -27,7 +27,7 @@ reinstall_dependencies() {
 
     if [ ${#dependencies[@]} -gt 0 ]; then
         echo "Reinstalling dependencies: ${dependencies[*]}"
-        sudo pacman -S --noconfirm "${dependencies[@]}"
+        sudo pacman -S --noconfirm --needed "${dependencies[@]}"
     else
         echo "No dependencies to reinstall."
     fi
@@ -44,7 +44,7 @@ install_package_with_handling() {
 
     # Attempt to install the package
     echo "Installing $package..."
-    sudo pacman -S --noconfirm "$package"
+    sudo pacman -S --noconfirm --needed "$package"
     if [ $? -eq 0 ]; then
         echo "$package installed successfully."
     else

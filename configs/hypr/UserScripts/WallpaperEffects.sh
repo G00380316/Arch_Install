@@ -45,7 +45,7 @@ declare -A effects=(
 
 # Function to apply no effects
 no-effects() {
-    swww img -o "$focused_monitor" "$wallpaper_current" $SWWW_PARAMS &&
+    swww img "$wallpaper_current" $SWWW_PARAMS &&
     wait $!
     wallust run "$wallpaper_current" -s &&
     wait $!
@@ -55,7 +55,7 @@ no-effects() {
 
     notify-send -u low -i "$iDIR/ja.png" "No wallpaper" "effects applied"
     # copying wallpaper for rofi menu
-    cp "$wallpaper_current" "$wallpaper_output"
+    cp -r "$wallpaper_current" "$wallpaper_output"
 }
 
 # Function to run rofi menu
@@ -78,10 +78,11 @@ main() {
             eval "${effects[$choice]}"
 
             sleep 1
-            swww img -o "$focused_monitor" "$wallpaper_output" $SWWW_PARAMS &
+            swww img "$wallpaper_output" $SWWW_PARAMS &
 
             sleep 2
-  
+
+            cp -r "$wallpaper_current" "$wallpaper_output"
             wallust run "$wallpaper_output" -s &
             sleep 1
             # Refresh rofi, waybar, wallust palettes
@@ -99,31 +100,3 @@ if pidof rofi > /dev/null; then
 fi
 
 main
-
-sleep 1
-
-if [[ -n "$choice" ]]; then
-  sddm_sequoia="/usr/share/sddm/themes/sequoia_2"
-  if [ -d "$sddm_sequoia" ]; then
-	if yad --info --text="Set current wallpaper as SDDM background?\n\nNOTE: This only applies to SEQUOIA SDDM Theme" \
-    --text-align=left \
-    --title="SDDM Background" \
-    --timeout=10 \
-    --timeout-indicator=right \
-    --button="yad-yes:0" \
-    --button="yad-no:1" \
-    ; then
-
-    # Check if terminal exists
-    if ! command -v "$terminal" &>/dev/null; then
-    notify-send -i "$iDIR/ja.png" "Missing $terminal" "Install $terminal to enable setting of wallpaper background"
-    exit 1
-    fi
-
-      # Open terminal and set the wallpaper
-    $terminal -e bash -c "echo 'Enter your password to set wallpaper as SDDM Background'; \
-    sudo cp -r $wallpaper_output '$sddm_sequoia/backgrounds/default' && \
-    notify-send -i '$iDIR/ja.png' 'SDDM' 'Background SET'"
-    fi
-  fi
-fi

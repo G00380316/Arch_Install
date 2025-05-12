@@ -1,5 +1,21 @@
 #!/bin/bash
 
+## WARNING: DO NOT EDIT BELOW UNLESS YOU KNOW WHAT YOU'RE DOING ##
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# Source global functions
+if ! source "$(dirname "$(readlink -f "$0")")/Global_functions.sh"; then
+    echo "Failed to source Global_functions.sh"
+    exit 1
+fi
+
+LOG="Install-Logs/install-$(date +%d-%H%M%S)_utils.log"
+
+# Redirecting all output and errors to log file
+exec > >(tee -a "$LOG") 2>&1
+
+# Log the start of the script
+echo "=== Script started at $(date) ==="
 # Remove unwanted applications from the menu
 echo "Removing unwanted applications from the menu..."
 
@@ -35,16 +51,95 @@ else
     echo "No SSH applications found to remove."
 fi
 
+# Removing EasyEffects plugins desktop icons
+if ls /usr/share/applications | grep -qiE 'lsp|ladspa|calf'; then
+    sudo find /usr/share/applications -type f \( -iname '*lsp*.desktop' -o -iname '*ladspa*.desktop' -o -iname '*calf*.desktop' \) -print -delete
+    echo "Removed LSP, LADSPA, and Calf desktop entries."
+else
+    echo "No LSP, LADSPA, or Calf desktop entries found to remove."
+fi
+
 apps_to_hide=(
 "jconsole-java-openjdk.desktop"
 "jshell-java-openjdk.desktop"
-"htop.desktop"
 "qvidcap.desktop"
 "qv4l2.desktop"
 "vim.desktop"
-"nvim.desktop"
 "org.gnupg.pinentry-qt5.desktop"
 "org.gnupg.pinentry-qt.desktop"
+"in.lsp_plug.lsp_plugins_ab_tester_x2_mono.desktop"
+"in.lsp_plug.lsp_plugins_ab_tester_x2_stereo.desktop"
+"in.lsp_plug.lsp_plugins_ab_tester_x4_mono.desktop"
+"in.lsp_plug.lsp_plugins_ab_tester_x4_stereo.desktop"
+"in.lsp_plug.lsp_plugins_ab_tester_x8_mono.desktop"
+"in.lsp_plug.lsp_plugins_ab_tester_x8_stereo.desktop"
+"in.lsp_plug.lsp_plugins_art_delay_mono.desktop"
+"in.lsp_plug.lsp_plugins_art_delay_stereo.desktop"
+"in.lsp_plug.lsp_plugins_autogain_mono.desktop"
+"in.lsp_plug.lsp_plugins_autogain_stereo.desktop"
+"in.lsp_plug.lsp_plugins_beat_breather_mono.desktop"
+"in.lsp_plug.lsp_plugins_beat_breather_stereo.desktop"
+"in.lsp_plug.lsp_plugins_chorus_mono.desktop"
+"in.lsp_plug.lsp_plugins_chorus_stereo.desktop"
+"in.lsp_plug.lsp_plugins_clipper_mono.desktop"
+"in.lsp_plug.lsp_plugins_clipper_stereo.desktop"
+"in.lsp_plug.lsp_plugins_comp_delay_mono.desktop"
+"in.lsp_plug.lsp_plugins_comp_delay_stereo.desktop"
+"in.lsp_plug.lsp_plugins_comp_delay_x2_stereo.desktop"
+"in.lsp_plug.lsp_plugins_compressor_lr.desktop"
+"in.lsp_plug.lsp_plugins_compressor_mono.desktop"
+"in.lsp_plug.lsp_plugins_compressor_ms.desktop"
+"in.lsp_plug.lsp_plugins_compressor_stereo.desktop"
+"in.lsp_plug.lsp_plugins_crossover_lr.desktop"
+"in.lsp_plug.lsp_plugins_crossover_mono.desktop"
+"in.lsp_plug.lsp_plugins_crossover_ms.desktop"
+"in.lsp_plug.lsp_plugins_crossover_stereo.desktop"
+"in.lsp_plug.lsp_plugins_dyna_processor_lr.desktop"
+"in.lsp_plug.lsp_plugins_dyna_processor_mono.desktop"
+"in.lsp_plug.lsp_plugins_dyna_processor_ms.desktop"
+"in.lsp_plug.lsp_plugins_dyna_processor_stereo.desktop"
+"in.lsp_plug.lsp_plugins_expander_lr.desktop"
+"in.lsp_plug.lsp_plugins_expander_mono.desktop"
+"in.lsp_plug.lsp_plugins_expander_ms.desktop"
+"in.lsp_plug.lsp_plugins_expander_stereo.desktop"
+"in.lsp_plug.lsp_plugins_filter_mono.desktop"
+"in.lsp_plug.lsp_plugins_filter_stereo.desktop"
+"in.lsp_plug.lsp_plugins_flanger_mono.desktop"
+"in.lsp_plug.lsp_plugins_flanger_stereo.desktop"
+"in.lsp_plug.lsp_plugins_gate_lr.desktop"
+"in.lsp_plug.lsp_plugins_gate_mono.desktop"
+"in.lsp_plug.lsp_plugins_gate_ms.desktop"
+"in.lsp_plug.lsp_plugins_gate_stereo.desktop"
+"in.lsp_plug.lsp_plugins_gott_compressor_lr.desktop"
+"in.lsp_plug.lsp_plugins_gott_compressor_mono.desktop"
+"in.lsp_plug.lsp_plugins_gott_compressor_ms.desktop"
+"in.lsp_plug.lsp_plugins_gott_compressor_stereo.desktop"
+"in.lsp_plug.lsp_plugins_graph_equalizer_x16_lr.desktop"
+"in.lsp_plug.lsp_plugins_graph_equalizer_x16_mono.desktop"
+"in.lsp_plug.lsp_plugins_graph_equalizer_x16_ms.desktop"
+"in.lsp_plug.lsp_plugins_graph_equalizer_x16_stereo.desktop"
+"in.lsp_plug.lsp_plugins_graph_equalizer_x32_lr.desktop"
+"in.lsp_plug.lsp_plugins_graph_equalizer_x32_mono.desktop"
+"in.lsp_plug.lsp_plugins_graph_equalizer_x32_ms.desktop"
+"in.lsp_plug.lsp_plugins_graph_equalizer_x32_stereo.desktop"
+"in.lsp_plug.lsp_plugins_impulse_responses_mono.desktop"
+"in.lsp_plug.lsp_plugins_impulse_responses_stereo.desktop"
+"in.lsp_plug.lsp_plugins_impulse_reverb_mono.desktop"
+"in.lsp_plug.lsp_plugins_impulse_reverb_stereo.desktop"
+"in.lsp_plug.lsp_plugins_latency_meter.desktop"
+"in.lsp_plug.lsp_plugins_limiter_mono.desktop"
+"in.lsp_plug.lsp_plugins_limiter_stereo.desktop"
+"in.lsp_plug.lsp_plugins_loud_comp_mono.desktop"
+"in.lsp_plug.lsp_plugins_loud_comp_stereo.desktop"
+"in.lsp_plug.lsp_plugins_mb_clipper_mono.desktop"
+"in.lsp_plug.lsp_plugins_mb_clipper_stereo.desktop"
+"in.lsp_plug.lsp_plugins_mb_compressor_lr.desktop"
+"in.lsp_plug.lsp_plugins_mb_compressor_mono.desktop"
+"in.lsp_plug.lsp_plugins_mb_compressor_ms.desktop"
+"in.lsp_plug.lsp_plugins_mb_compressor_stereo.desktop"
+"in.lsp_plug.lsp_plugins_mb_dyna_processor_lr.desktop"
+"in.lsp_plug.lsp_plugins_mb_dyna_processor_mono.desktop"
+"in.lsp_plug.lsp_plugins_mb_dyna_processor_ms.desktop"
 )
 
 applications_dir="/usr/share/applications"

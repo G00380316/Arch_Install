@@ -64,7 +64,7 @@
           "actions": [
               {
                   "label": "󰐥",
-                  "command": "bash -c $HOME/.config/hypr/scripts/Wlogout.sh"
+                  "command": "bash -c $HOME/.config/hypr/scripts/Hyde_Inject/Scripts/logoutlaunch.sh"
               },
               {
                   "label": "󰌾",

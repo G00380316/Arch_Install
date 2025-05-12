@@ -2,8 +2,7 @@
 
 # Global Functions for Scripts #
 
-set -e
-
+#set -e
 # Set some colors for output messages
 OK="$(tput setaf 2)[OK]$(tput sgr0)"
 ERROR="$(tput setaf 1)[ERROR]$(tput sgr0)"
@@ -56,7 +55,7 @@ install_package_pacman() {
   else
     # Run pacman and redirect all output to a log file
     (
-      stdbuf -oL sudo pacman -S --noconfirm "$1" 2>&1
+      stdbuf -oL sudo pacman -S --noconfirm --needed "$1" 2>&1
     ) >> "$LOG" 2>&1 &
     PID=$!
     show_progress $PID "$1"
@@ -73,29 +72,49 @@ install_package_pacman() {
 ISAUR=$(command -v yay || command -v paru)
 # Function to install packages with either yay or paru
 install_package() {
-  if $ISAUR -Q "$1" &>> /dev/null ; then
-    echo -e "${INFO} ${MAGENTA}$1${RESET} is already installed. Skipping..."
-  else
+  local pkg="$1"
+
+  # Check if it's already installed
+  if pacman -Q "$pkg" &>/dev/null || $ISAUR -Q "$pkg" &>/dev/null; then
+    echo -e "${INFO} ${MAGENTA}$pkg${RESET} is already installed. Skipping..."
+    return
+  fi
+
+  # Try pacman (official repos)
+  if pacman -Si "$pkg" &>/dev/null; then
     (
-      stdbuf -oL $ISAUR -S --noconfirm "$1" 2>&1
+      stdbuf -oL sudo pacman -S --noconfirm --needed "$pkg" 2>&1
     ) >> "$LOG" 2>&1 &
     PID=$!
-    show_progress $PID "$1"
-    
-    # Double check if package is installed
-    if $ISAUR -Q "$1" &>> /dev/null ; then
-      echo -e "${OK} Package ${YELLOW}$1${RESET} has been successfully installed!"
+    show_progress $PID "$pkg"
+
+    # Check install result
+    if pacman -Q "$pkg" &>/dev/null; then
+      echo -e "${OK} Package ${YELLOW}$pkg${RESET} has been successfully installed!"
+      return
     else
-      # Something is missing, exiting to review log
-      echo -e "\n${ERROR} ${YELLOW}$1${RESET} failed to install :( , please check the install.log. You may need to install manually! Sorry I have tried :("
+      echo -e "${ERROR} ${YELLOW}$pkg${RESET} failed to install via pacman. Trying AUR..."
     fi
+  fi
+
+  # Fallback to yay/paru (AUR)
+  (
+    stdbuf -oL $ISAUR -S --noconfirm --needed --mflags --skipreview "$pkg" 2>&1
+  ) >> "$LOG" 2>&1 &
+  PID=$!
+  show_progress $PID "$pkg"
+
+  if $ISAUR -Q "$pkg" &>/dev/null; then
+    echo -e "${OK} Package ${YELLOW}$pkg${RESET} has been successfully installed (via AUR)!"
+  else
+    echo -e "\n${ERROR} ${YELLOW}$pkg${RESET} failed to install :( Check the $LOG for details."
   fi
 }
 
 # Function to just install packages with either yay or paru without checking if installed
 install_package_f() {
   (
-    stdbuf -oL $ISAUR -S --noconfirm "$1" 2>&1
+    stdbuf -oL $ISAUR -S --noconfirm --needed "$1" 2>&1
   ) >> "$LOG" 2>&1 &
   PID=$!
   show_progress $PID "$1"
@@ -117,7 +136,7 @@ uninstall_package() {
   # Checking if package is installed
   if pacman -Qi "$pkg" &>/dev/null; then
     echo -e "${NOTE} removing $pkg ..."
-    sudo pacman -R --noconfirm "$pkg" 2>&1 | tee -a "$LOG" | grep -v "error: target not found"
+    sudo pacman -R --noconfirm --needed "$pkg" 2>&1 | tee -a "$LOG" | grep -v "error: target not found"
     
     if ! pacman -Qi "$pkg" &>/dev/null; then
       echo -e "\e[1A\e[K${OK} $pkg removed."

@@ -9,12 +9,14 @@ application/x-compressed-tar=userapp-tar xvzf-EHX9X2.desktop;
 image/vnd.microsoft.icon=userapp-feh-GROVY2.desktop;
 application/vnd.rar=userapp-unzip-ZGG5W2.desktop;
 application/x-zerosize=userapp-nvim-H2TNZ2.desktop;
+application/schema+json=nvim.desktop;
+inode/directory=code-oss.desktop;
 
 [Default Applications]
 application/pdf=zathura-6.desktop;
 image/jpeg=feh-4.desktop;
 image/png=feh.desktop
-inode/directory=thunar.desktop
+inode/directory=org.kde.dolphin.desktop
 application/x-gnome-=thunar.desktop
 saved-search=thunar.desktop
 application/zip=userapp-unzip-ZGG5W2.desktop
@@ -22,3 +24,4 @@ application/x-compressed-tar=userapp-tar xvzf-EHX9X2.desktop
 image/vnd.microsoft.icon=userapp-feh-GROVY2.desktop
 application/vnd.rar=userapp-unzip-ZGG5W2.desktop
 application/x-zerosize=userapp-nvim-H2TNZ2.desktop
+application/x-wayland-gnome-saved-search=thunar.desktop

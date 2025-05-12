@@ -15,3 +15,6 @@ qimgv
 visual-studio-code-bin
 moneymanagerex
 filebot
+Komikku
+obsidian
+pokemon-colorscripts-git

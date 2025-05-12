@@ -1,5 +1,21 @@
 #!/bin/bash
 
+## WARNING: DO NOT EDIT BELOW UNLESS YOU KNOW WHAT YOU'RE DOING ##
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# Source global functions
+if ! source "$(dirname "$(readlink -f "$0")")/Global_functions.sh"; then
+    echo "Failed to source Global_functions.sh"
+    exit 1
+fi
+
+LOG="Install-Logs/install-$(date +%d-%H%M%S)_displaymanager.log"
+
+# Redirecting all output and errors to log file
+exec > >(tee -a "$LOG") 2>&1
+
+# Log the start of the script
+echo "=== Script started at $(date) ==="
 # Function to check if a service is active and enabled
 service_active_and_enabled() {
     local service="$1"
@@ -99,7 +115,7 @@ install_gdm() {
     sudo pacman -Rdd --noconfirm poppler-qt6
     sudo $PACKAGE_COMMAND gdm
     sudo systemctl enable gdm
-    sudo pacman -S --noconfirm poppler-qt6
+    sudo pacman -S --noconfirm --needed poppler-qt6
     echo "GDM3 has been installed and enabled."
 }
 
@@ -172,10 +188,10 @@ case $choice in
         exit 0
         ;;
     1)
-        install_gdm
+        install_sddm
         ;;
     2)
-        install_sddm
+        install_gdm
         ;;
     3)
         install_lightdm

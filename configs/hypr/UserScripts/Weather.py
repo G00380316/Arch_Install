@@ -33,7 +33,9 @@ def get_location():
 latitude, longitude = get_location()
 
 # Open-Meteo API endpoint
+# For Galway, Ireland - 2d74da7bfa9fc006b2721c7c8ec7991f02db21af7adc71f592c01d41cd81e897
 url = f"https://weather.com/en-PH/weather/today/l/{latitude},{longitude}"
+
 
 # manual location_id 
 # NOTE: if you want to add manually, make sure you disable def get_location above

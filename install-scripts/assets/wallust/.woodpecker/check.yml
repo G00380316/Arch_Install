@@ -1,0 +1,12 @@
+when:
+  - event: [ push, pull_request ]
+    path: 'src/*'
+
+steps:
+  cargo_check:
+    image: rust:latest
+    # A simple check ensures a compilation
+    # XXX While there could have been a clippy here,
+    #     my main concern is whether it builds or not.
+    commands:
+    - cargo check --all-targets
