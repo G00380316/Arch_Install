@@ -68,11 +68,19 @@
     "
 
     cd ~/Arch_Install/install-scripts/ || exit 1
-    git checkout Hyde-Injection
     sleep 1
     git pull
     sleep 3
+    echo "Do you want to install Gnome Display Manager just in case someting goes wrong? (y/n)"
+    read -r answer
 
+    if [[ "$answer" == "y" || "$answer" == "Y" ]]; then
+        echo "Installing Gnome display manager real quick..."
+        sudo pacman -S gdm
+    else
+        echo "Fine!!! Lets continue..."
+    fi
+    sleep 3
     # Move custom configuration files
     clear
     sleep 3
