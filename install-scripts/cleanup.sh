@@ -146,7 +146,7 @@ if [[ "$answer" == "y" || "$answer" == "Y" ]]; then
     yay -S --noconfirm --needed onedrive-abraunegg dbgate-bin postman-bin
 
     # ── File & media tools
-    yay -S --noconfirm --needed filebot obs-studio
+    yay -S --noconfirm --needed filebot obs-studio 7zip
 
     # ── Terminal & fun
     yay -S --noconfirm --needed fzf bat tofi boxes foot bluetui pokemon-colorscripts-git
@@ -198,9 +198,8 @@ if [[ "$answer" == "y" || "$answer" == "Y" ]]; then
     # ── Browsers again (from pacman)
     sudo pacman -S --noconfirm --needed firefox inotify-tools
 
-    flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-
-    zsh -c "flatpak install flathub org.gnome.Boxes -y
+    zsh -c "flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+ flatpak install flathub org.gnome.Boxes -y
     flatpak install flathub info.febvre.Komikku -y"
 
 else
