@@ -15,12 +15,13 @@ Within the install.sh file, you can choose to install the following window manag
 ```
 sudo pacman -S wget
 
+# More Animations
 wget https://github.com/G00380316/Arch_Install/raw/main/install.sh
 
 or
 
-# More Animations
-wget https://github.com/G00380316/Arch_Install/raw/Hyde-Injection/install.sh
+# Minimal Animations
+wget https://github.com/G00380316/Arch_Install/raw/old/install.sh
 
 chmod +x install.sh
 
@@ -44,19 +45,6 @@ packages you would like.
 Example: "in wlogout"
 
 there is a good chance that this package wasnt installed
-
-There are two themes that may be needed to insall manually they are in the
-initial boot script.
-
-cd ~/.cache/hyde/themepatcher/
-git clone https://github.com/Maroc02/Moonlight.git
-theme.patch.sh "Moonlight" ./Moonlight
-
-cd ~/.cache/hyde/themepatcher/
-git clone https://github.com/cyb3rgh0u1/Another-World.git
-theme.patch.sh "Another World" ./Another-World
-
-echo '1' | theme.patch.sh "Abyssal-Wave" "https://github.com/Itz-Abhishek-Tiwari/Abyssal-Wave"
 
 Any troubles navigating the system press "SUPER"(Windows Key) + "H"
 
