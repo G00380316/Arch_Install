@@ -10,4 +10,10 @@ wallpaper.sh ${@} --backend swww --global
 -------------------------------------------------
 EOF
 
+scriptsDir="$HOME/.config/hypr/scripts"
+
 "wallpaper.sh" "${@}" --backend swww --global
+pid=$!
+wait "$pid"
+
+"${scriptsDir}"/Refresh.sh

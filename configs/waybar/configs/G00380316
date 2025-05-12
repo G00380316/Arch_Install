@@ -20,6 +20,9 @@
         "hyprland/workspaces#pacman",
         "wlr/taskbar",
         "custom/r_end",
+        "custom/l_end",
+        "clock",
+        "custom/r_end",
         "custom/padd"
     ],
     "modules-center": [
@@ -45,7 +48,7 @@
         "pulseaudio#microphone",
         "custom/gpuinfo",
         "battery",
-        "clock",
+        "custom/notifications",
         "custom/swaync",
         "custom/r_end",
         "custom/padd"
