@@ -72,7 +72,8 @@
         "interval" : 86400, 
         
         "tooltip": true
-    },    "clock": {
+    },    
+    "clock": {
         "format": "{:%I:%M %p}",
         "rotate": "${r_deg}",
         "format-alt": "{:%R 󰃭 %d·%m·%y}",
@@ -96,7 +97,7 @@
             "on-scroll-down": "shift_down"
         }
     },
-    "clock2": {
+    "clock#2": {
         "format-alt": "{:%I:%M %p}",
         "rotate": "${r_deg}",
         "format": "{:%R 󰃭 %d·%m·%y}",
@@ -623,94 +624,43 @@
                     "default": "󰊠"
             }
         },
-    "hyprland/workspaces#roman": {
-        "rotate": 0,
-        "all-outputs": false,
-        "active-only": false,
-        "on-click": "activate",
-        "disable-scroll": false,
-        "on-scroll-up": "hyprctl dispatch workspace -1",
-        "on-scroll-down": "hyprctl dispatch workspace +1",
-        "format": "{icon}",
-        "persistent-workspaces": {
-            "*": [1, 2, 3, 4, 5]
-            },
-            "format-icons": {
-                "1": "I",
-                "2": "II",
-                "3": "III",
-                "4": "IV",
-                "5": "V",
-                "6": "VI",
-                "7": "VII",
-                "8": "VIII",
-                "9": "IX",
-                "10": "X",
-                "11": "XI",
-                "12": "XII",
-                "13": "XIII",
-                "14": "XIV",
-                "15": "XV",
-                "16": "XVII",
-                "17": "XVI",
-                "18": "XVIII",
-                "19": "XIX",
-                "20": "XX",
-                "urgent": "",
-                "focused": ""
+        "hyprland/workspaces#roman": {
+            "rotate": 0,
+            "all-outputs": false,
+            "active-only": false,
+            "on-click": "activate",
+            "disable-scroll": false,
+            "on-scroll-up": "hyprctl dispatch workspace -1",
+            "on-scroll-down": "hyprctl dispatch workspace +1",
+            "format": "{icon}",
+            "persistent-workspaces": {
+                "*": [1, 2, 3, 4, 5]
+                },
+                "format-icons": {
+                    "1": "I",
+                    "2": "II",
+                    "3": "III",
+                    "4": "IV",
+                    "5": "V",
+                    "6": "VI",
+                    "7": "VII",
+                    "8": "VIII",
+                    "9": "IX",
+                    "10": "X",
+                    "11": "XI",
+                    "12": "XII",
+                    "13": "XIII",
+                    "14": "XIV",
+                    "15": "XV",
+                    "16": "XVII",
+                    "17": "XVI",
+                    "18": "XVIII",
+                    "19": "XIX",
+                    "20": "XX",
+                    "urgent": "",
+                    "focused": ""
+            }
         }
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-}
