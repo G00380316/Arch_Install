@@ -46,16 +46,6 @@ echo "Removing temporary files and folders..."
 rm -rf ~/go ~/JetBrainsMono ~/install.sh ~/clone.sh ~/Clone
 echo "Cleanup complete."
 
-### Remove Orphaned Packages ###
-echo "Removing orphaned packages..."
-if pacman -Qdtq &> /dev/null; then
-    sudo pacman -Rns $(pacman -Qdtq)
-fi
-if command -v yay &> /dev/null && yay -Qdtq &> /dev/null; then
-    yay -Rns $(yay -Qdtq)
-fi
-echo "Unwanted packages removed!"
-
 ### Service Configuration ###
 echo "Configuring services..."
 
@@ -143,16 +133,20 @@ if [[ "$answer" == "y" || "$answer" == "Y" ]]; then
     yay -S --noconfirm --needed geany geany-plugins code zed
 
     # ── Browsers & email
-    yay -S --noconfirm --needed microsoft-edge-stable-bin google-chrome betterbird-bin
+    yay -S --noconfirm --needed microsoft-edge-stable-bin google-chrome 
+
+    yay -S --noconfirm --needed zen-browser-bin bluemail
 
     # ── Productivity & knowledge
     yay -S --noconfirm --needed onlyoffice anki-bin obsidian flatseal blanket vesktop
 
+    yay -S --noconfirm --needed keypunch-git openai-chatgpt-nativefier
+
     # ── Cloud & sync
-    yay -S --noconfirm --needed onedrive-abraunegg
+    yay -S --noconfirm --needed onedrive-abraunegg dbgate-bin postman-bin
 
     # ── File & media tools
-    yay -S --noconfirm --needed filebot moneymanagerex obs-studio
+    yay -S --noconfirm --needed filebot obs-studio
 
     # ── Terminal & fun
     yay -S --noconfirm --needed fzf bat tofi boxes foot bluetui pokemon-colorscripts-git
@@ -205,14 +199,10 @@ if [[ "$answer" == "y" || "$answer" == "Y" ]]; then
     sudo pacman -S --noconfirm --needed firefox inotify-tools
 
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-    flatpak install flathub dev.bragefuglseth.Keypunch -y
-    flatpak install flathub net.lugsole.bible_gui -y
-    flatpak install flathub com.usebruno.Bruno -y
-    # flatpak install flathub org.gnome.Boxes -y
-    flatpak install flathub info.febvre.Komikku -y
-    flatpak install flathub io.github.mezoahmedii.Picker -y
-    flatpak install flathub dev.edfloreshz.Tasks -y
-    flatpak install flathub org.dbgate.DbGate  -y
+
+    zsh -c "flatpak install flathub org.gnome.Boxes -y
+    flatpak install flathub info.febvre.Komikku -y"
+
 else
     echo "No additional packages will be installed."
 fi
@@ -232,6 +222,16 @@ if [[ "$answer1" == "y" || "$answer1" == "Y" ]]; then
 else
     echo "No additional packages will be installed."
 fi
+
+### Remove Orphaned Packages ###
+echo "Removing orphaned packages..."
+if pacman -Qdtq &> /dev/null; then
+    sudo pacman -Rns $(pacman -Qdtq)
+fi
+if command -v yay &> /dev/null && yay -Qdtq &> /dev/null; then
+    yay -Rns $(yay -Qdtq)
+fi
+echo "Unwanted packages removed!"
 
 ### Easy Effect Presets ###
 echo "Importing Easyeffect presets..."
