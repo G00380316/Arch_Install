@@ -211,8 +211,8 @@ read -r answer1
 
 if [[ "$answer1" == "y" || "$answer1" == "Y" ]]; then
     echo "running Dev.sh and Wallust.sh..."
-    bash ./devs.sh
-    bash ./wallust.sh
+    bash "${SCRIPT_DIR}"/devs.sh
+    bash "${SCRIPT_DIR}"/wallust.sh
 
     sudo pacman -S --noconfirm --needed tmux
     sudo pacman -S --noconfirm --needed zoxide

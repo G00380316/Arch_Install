@@ -10,7 +10,10 @@ rofi_theme_1="$HOME/.config/rofi/config-rofi-Beats-menu.rasi"
 
 # Online Stations. Edit as required
 declare -A online_music=(
-["YT - Youtube Top 40 Songs Ireland 📹🎶"]="https://youtube.com/playlist?list=PLY50G60VnAbw84wDIKK13q4l8f-_Hth7r&si=3G30VjiFVAhlTmNg"
+["YT - Top 50 Global 🎶"]="https://music.youtube.com/playlist?list=PLmtas71NLwTf_F24T3mnj6nGbY81HnKu_&si=To7OISoqjt-eO7Dn"
+["YT - Top 50 Nigeria 🎶"]="https://music.youtube.com/playlist?list=PLmtas71NLwTfAudaOJZRlxc3l8Ix3bDE8&si=JTipoz7EOZqJOwuk"
+["YT - Top 50 USA 🎶"]="https://music.youtube.com/playlist?list=PLmtas71NLwTdOkxObFRH1EM569GlRIQdM&si=KSzAxS1KVhqTG4Fv"
+["YT - Top 50 United Kingdom 🎶"]="https://music.youtube.com/playlist?list=PLmtas71NLwTeW6eXnXX5NKM-yaxj1_vD9&si=r2Py7S6o43gQthHe"
 ["YT - Relaxing Piano Music 🎹🎶"]="https://youtu.be/6H7hXzjFoVU?si=nZTPREC9lnK1JJUG"
 ["YT - Thunder Rnb Mix 📹🎶"]="https://youtu.be/pWCUKN0RLYg?si=PrQVeA0npX1ekV7o"
 ["YT - R&B/Soul Mix Rnb Mix 📹🎶"]="https://www.youtube.com/watch?v=Mip7jRCvIRE"
