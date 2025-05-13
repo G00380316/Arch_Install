@@ -11,7 +11,7 @@ rofi_theme_1="$HOME/.config/rofi/config-rofi-Beats-menu.rasi"
 # Online Stations. Edit as required
 declare -A online_music=(
 ["YT - Top 50 Global 🎶"]="https://music.youtube.com/playlist?list=PLmtas71NLwTf_F24T3mnj6nGbY81HnKu_&si=To7OISoqjt-eO7Dn"
-["YT - Top 50 Nigeria 🎶"]="https://music.youtube.com/playlist?list=PLmtas71NLwTfAudaOJZRlxc3l8Ix3bDE8&si=JTipoz7EOZqJOwuk"
+["YT - Top 50 Nigeria 🎶"]="https://music.youtube.com/playlist?list=PLmtas71NLwTfyDGaZmjH35WeTCIM68Amn&si=508mDpoYzGrqJ7P4"
 ["YT - Top 50 USA 🎶"]="https://music.youtube.com/playlist?list=PLmtas71NLwTdOkxObFRH1EM569GlRIQdM&si=KSzAxS1KVhqTG4Fv"
 ["YT - Top 50 United Kingdom 🎶"]="https://music.youtube.com/playlist?list=PLmtas71NLwTeW6eXnXX5NKM-yaxj1_vD9&si=r2Py7S6o43gQthHe"
 ["YT - Relaxing Piano Music 🎹🎶"]="https://youtu.be/6H7hXzjFoVU?si=nZTPREC9lnK1JJUG"

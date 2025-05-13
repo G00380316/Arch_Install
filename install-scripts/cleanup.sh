@@ -37,6 +37,22 @@ exec > >(tee -a "$LOG") 2>&1
 # Log the start of the script
 echo "=== Script started at $(date) ==="
 
+echo "Do you want to run Dev.sh and Wallust.sh to make sure key dependencies are installed? (y/n)"
+read -r answer1
+
+if [[ "$answer1" == "y" || "$answer1" == "Y" ]]; then
+    echo "running Dev.sh and Wallust.sh..."
+    bash "${SCRIPT_DIR}"/devs.sh
+    bash "${SCRIPT_DIR}"/wallust.sh
+
+    sudo pacman -S --noconfirm --needed tmux
+    sudo pacman -S --noconfirm --needed zoxide
+    sudo pacman -S --noconfirm --needed neovim
+
+else
+    echo "No additional packages will be installed."
+fi
+
 # Fixes Chaotic-Aur
 sudo pacman -Fy
 echo "Automating some tasks for you..."
@@ -201,22 +217,6 @@ if [[ "$answer" == "y" || "$answer" == "Y" ]]; then
     zsh -c "flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
  flatpak install flathub org.gnome.Boxes -y
     flatpak install flathub info.febvre.Komikku -y"
-
-else
-    echo "No additional packages will be installed."
-fi
-
-echo "Do you want to run Dev.sh and Wallust.sh to make sure key dependencies are installed? (y/n)"
-read -r answer1
-
-if [[ "$answer1" == "y" || "$answer1" == "Y" ]]; then
-    echo "running Dev.sh and Wallust.sh..."
-    bash "${SCRIPT_DIR}"/devs.sh
-    bash "${SCRIPT_DIR}"/wallust.sh
-
-    sudo pacman -S --noconfirm --needed tmux
-    sudo pacman -S --noconfirm --needed zoxide
-    sudo pacman -S --noconfirm --needed neovim
 
 else
     echo "No additional packages will be installed."
