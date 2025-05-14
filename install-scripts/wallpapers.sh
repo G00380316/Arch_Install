@@ -40,15 +40,15 @@ LOG="Copy-Logs/install-$(date +%d-%H%M%S)_dotfiles.log"
 
 # wallpaper stuff
 mkdir -p $HOME/Pictures/wallpapers
-if rsync -a --progress ./wallpapers $HOME/Pictures ; then
-echo "${OK} Some ${MAGENTA}wallpapers${RESET} copied successfully!" | tee -a "$LOG"
-else
-echo "${ERROR} Failed to copy some ${YELLOW}wallpapers${RESET}" | tee -a "$LOG"
-fi
+# if rsync -a --progress ./wallpapers $HOME/Pictures ; then
+# echo "${OK} Some ${MAGENTA}wallpapers${RESET} copied successfully!" | tee -a "$LOG"
+# else
+# echo "${ERROR} Failed to copy some ${YELLOW}wallpapers${RESET}" | tee -a "$LOG"
+# fi
 
 # additional wallpapers
 printf "\n%.0s" {1..1}
-echo "${MAGENTA}By default only a few wallpapers are copied${RESET}..."
+echo "${MAGENTA}By default there are no wallpapers anymore so you can populate then yourself${RESET}..."
 
 while true; do
 read -rp "${CAT} Would you like to download additional wallpapers? ${WARN} This is more than 800 MB (y/n)" WALL
