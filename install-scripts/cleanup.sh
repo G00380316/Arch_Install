@@ -14,7 +14,7 @@ fi
       "zen-browser-bin" "bluemail"
       "onlyoffice-bin" "anki-bin" "obsidian" "flatseal" "blanket" "vesktop"
       "keypunch-git" "openai-chatgpt-nativefier"
-      "onedrive-abraunegg" "dbgate-bin" "postman-bin"
+      "onedrive-abraunegg" "dbgate-beta-bin" "postman-bin"
       "filebot" "obs-studio" "7zip"
       "fzf" "bat" "tofi" "boxes" "foot" "bluetui" "pokemon-colorscripts-git"
       "spotube"
