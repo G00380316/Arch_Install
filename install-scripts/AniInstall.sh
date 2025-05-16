@@ -229,13 +229,13 @@ fi
 
 # Initialize the options array for whiptail checklist
 options_command=(
-    whiptail --title "Select Options" --checklist "Choose options to install or configure\nNOTE: 'SPACEBAR' to select & 'TAB' key to change selection" 28 85 20
+    whiptail --title "Select Options" --checklist "Choose options to install or configure\nNOTE: 'SPACEBAR' to select & 'TAB' key to change selection & These are the default recommended values so you can just hit 'TAB' key and 'Enter' key..." 28 85 20
 )
 
 # Add NVIDIA options if detected
 if [ "$nvidia_detected" == "true" ]; then
     options_command+=(
-        "nvidia" "Do you want script to configure NVIDIA GPU?" "OFF"
+        "nvidia" "Do you want script to configure NVIDIA GPU?" "ON"
         "nouveau" "Do you want Nouveau to be blacklisted?" "OFF"
     )
 fi
@@ -257,19 +257,19 @@ fi
 # Conditionally add SDDM and SDDM theme options if no active login manager is found
 if ! check_services_running; then
     options_command+=(
-        "sddm" "Install & configure SDDM login manager?" "OFF"
-        "sddm_theme" "Download & Install Additional SDDM theme?" "OFF"
+        "sddm" "Install & configure SDDM login manager?" "ON"
+        "sddm_theme" "Download & Install Additional SDDM theme?" "ON"
     )
 fi
 
 # Add the remaining static options
 options_command+=(
-    "gtk_themes" "Install GTK themes (required for Dark/Light function)" "OFF"
-    "bluetooth" "Do you want script to configure Bluetooth?" "OFF"
-    "thunar" "Do you want Thunar file manager to be installed?" "OFF"
-    "ags" "Install AGS v1 for Desktop-Like Overview" "OFF"
-    "xdph" "Install XDG-DESKTOP-PORTAL-HYPRLAND (for screen share)?" "OFF"
-    "pokemon" "Add Pokemon color scripts to your terminal?" "OFF"
+    "gtk_themes" "Install GTK themes (required for Dark/Light function)" "ON"
+    "bluetooth" "Do you want script to configure Bluetooth?" "ON"
+    "thunar" "Do you want Thunar file manager to be installed?" "ON"
+    "ags" "Install AGS v1 for Desktop-Like Overview" "ON"
+    "xdph" "Install XDG-DESKTOP-PORTAL-HYPRLAND (for screen share)?" "ON"
+    "pokemon" "Add Pokemon color scripts to your terminal?" "ON"
 )
 
 # Capture the selected options before the while loop starts

@@ -30,7 +30,7 @@ fi
       "acpi" "acpid" "avahi" "base-devel" "curl" "dialog" "dosfstools" "exa" "file-roller" "gettext" "mtools" "pv" "unzip" "usbutils" "xdotool" "util-linux"
 
       # ── Terminal & clipboard tools
-      "grim" "kitty" "libnotify" "redshift" "slurp"
+      "grim" "kitty" "libnotify" "redshift" "slurp" "konsole"
 
       # ── File management
       "thunar" "thunar-archive-plugin" "thunar-media-tags-plugin" "thunar-volman" "gnome-disk-utility"
