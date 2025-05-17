@@ -10,6 +10,10 @@
 WARP_ENABLE_WAYLAND = 1
 
 
+[hyprland]
+icon_theme= "Nordzy"
+cursor_theme="Bibata-Modern-Classic"
+
 [wallpaper]
 custom_paths = [
 #    "$HOME/Pictures/wallpapers",

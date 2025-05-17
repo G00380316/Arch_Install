@@ -147,6 +147,13 @@ fi
     cp -r ~/Pictures/wallpapers ./G00380316/Configs/.config/hyde/themes/G00380316
     theme.patch.sh "G00380316" ./G00380316
 
+    # Enabling some wallbash features
+    bash ~/.config/hyde/wallbash/scripts/cava.sh
+    bash ~/.config/hyde/wallbash/scripts/code.sh
+    bash ~/.config/hyde/wallbash/scripts/chrome.sh
+    bash ~/.config/hyde/wallbash/scripts/discord.sh
+    bash ~/.config/hyde/wallbash/scripts/spotify.sh
+
     ### Build Waybar Plugin ###
     echo "Building Waybar Plugins..."
     cd ~/.config/waybar/waybar-module-pomodoro/
