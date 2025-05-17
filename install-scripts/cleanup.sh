@@ -142,7 +142,7 @@ fi
 
     cd ~/Arch_Install/install-scripts/Extra/Themes
     theme.patch.sh "Hack the Box" ./HackTheBox
-    # theme.patch.sh "Mac Os" ./MacOs
+    theme.patch.sh "MacOs" ./MacOs
     theme.patch.sh "Windows 11" ./Windows11
     cp -r ~/Pictures/wallpapers ./G00380316/Configs/.config/hyde/themes/G00380316
     theme.patch.sh "G00380316" ./G00380316
