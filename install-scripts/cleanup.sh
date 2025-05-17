@@ -146,6 +146,12 @@ fi
     theme.patch.sh "Windows 11" ./Windows11
     cp -r ~/Pictures/wallpapers ./G00380316/Configs/.config/hyde/themes/G00380316
     theme.patch.sh "G00380316" ./G00380316
+    theme.patch.sh "Piece Of Mind" ./Piece_Of_Mind
+    theme.patch.sh "Crimson-Blue" ./Crimson-Blue
+    theme.patch.sh "Obsidian-Purple" ./Obsidian-Purple
+    theme.patch.sh "Eternal Arctic" ./Eternal_Arctic
+    theme.patch.sh "Electra" ./Electra
+    theme.patch.sh "Grukai" ./Grukai
 
     # Enabling some wallbash features
     bash ~/.config/hyde/wallbash/scripts/cava.sh
