@@ -233,7 +233,8 @@ fi
         
         zsh -c "
      flatpak install flathub org.gnome.Boxes -y
-        flatpak install flathub info.febvre.Komikku -y"
+        flatpak install flathub info.febvre.Komikku -y
+        flatpak install flathub org.cvfosammmm.Setzer -y"
 
     else
         echo "No additional packages will be installed."
