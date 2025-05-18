@@ -61,6 +61,9 @@ fi
 
       # ── Dev
       "tmux" "neovim" "zoxide"
+
+      # ── Fixing Suspend & Hibernate
+      "systemd-resolvconf" "systemd" "systemd-sysvcompat"
     )
 
     aur_failures=()
