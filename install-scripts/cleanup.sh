@@ -20,7 +20,7 @@ fi
       "spotube"
       "arc-gtx-theme" "papirus-icon-theme"
       "swww" "bleachbit" "sof-bin" "zathura" "spicetify-cli"
-      "iwmenu" "bzmenu" )
+      "iwmenu" "bzmenu" "setzer-git" )
 
     pacman_packages=( 
       # ── Fonts & themes
