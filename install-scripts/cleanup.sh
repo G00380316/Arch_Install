@@ -9,7 +9,7 @@ if ! source "$(dirname "$(readlink -f "$0")")/Global_functions.sh"; then
     exit 1
 fi
 
-    aur_packages=( "geany" "geany-plugins" "code" "zed"
+    aur_packages=( "geany" "geany-plugins" "visual-studio-code-bin" "zed"
       "microsoft-edge-stable-bin" "google-chrome"
       "zen-browser-bin" "bluemail"
       "onlyoffice-bin" "anki-bin" "obsidian" "flatseal" "blanket" "vesktop"
@@ -17,7 +17,7 @@ fi
       "onedrive-abraunegg" "dbgate-beta-bin" "postman-bin"
       "filebot" "obs-studio" "7zip"
       "fzf" "bat" "tofi" "boxes" "foot" "bluetui" "pokemon-colorscripts-git"
-      "spotube"
+      "spotube" "spotify-adblock-git"
       "arc-gtx-theme" "papirus-icon-theme"
       "swww" "bleachbit" "sof-bin" "zathura" "spicetify-cli"
       "iwmenu" "bzmenu" "setzer-git" )

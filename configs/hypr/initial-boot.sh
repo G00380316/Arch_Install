@@ -74,6 +74,9 @@ if [ ! -f "$HOME/.config/hypr/.initial_startup_done" ]; then
     # Caching fonts once again
     fc-cache -fv
 
+    spicetify config sidebar_config 0
+    spicetify apply
+
     # Create a marker file to indicate that the script has been executed.
     touch "$HOME/.config/hypr/.initial_startup_done"
 
