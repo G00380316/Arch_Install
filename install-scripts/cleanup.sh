@@ -95,10 +95,13 @@ fi
     echo "Are you using a Laptop? (y/n)"
     read -r answer2
 
+    sudo cp ./Extra/etc/NetworkManager.conf /etc/NetworkManager/
+
     if [[ "$answer2" == "y" || "$answer2" == "Y" ]]; then
 
         sudo pacman -S --noconfirm --needed tlp tlp-rdw
         sudo systemctl enable --now tlp
+        sudo cp ./Extra/etc/logind.conf /etc/systemd/
 
     else
         echo "No additional Laptop."
