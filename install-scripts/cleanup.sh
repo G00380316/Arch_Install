@@ -206,9 +206,11 @@ fi
     systemctl --user enable --now wallust-manager.service
     systemctl --user enable --now easyeffects-manager.service
     systemctl --user enable --now waybar-manager.service 
+    systemctl --user enable --now lid-manager.service
     systemctl --user start wallust-manager.service
     systemctl --user start easyeffects-manager.service
     systemctl --user start waybar-manager.service 
+    systemctl --user start lid-manager.service
 
     # Ask the user if they want to install the Additional packages
     echo "Do you want to install an Additonal set of packages? (y/n)(Recommended if it is first install)"
