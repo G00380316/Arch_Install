@@ -1,0 +1,12 @@
+[Unit]
+Description=Hyprland Lid Watcher (monitor config)
+After=graphical.target
+
+[Service]
+ExecStart=%h/.config/hypr/scripts/Lid-watcher.sh
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=default.target
+
