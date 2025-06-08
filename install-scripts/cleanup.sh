@@ -102,9 +102,21 @@ fi
         sudo pacman -S --noconfirm --needed tlp tlp-rdw
         sudo systemctl enable --now tlp
         sudo cp ./Extra/etc/logind.conf /etc/systemd/
+        ~/.config/hypr/scripts/Battery-manager.sh
+        echo "Please use Battery-manager script in ~/.config/hypr/scripts/ to configure Battery Usage for tlp"
 
     else
-        echo "No additional Laptop."
+        echo "No additional Laptop configuration for Power Saving"
+    fi
+
+    echo "Do you want all of G00380316 Scripts to be passwordless (eg. Setting sdm theme, changing Battery Mode to Threshold mode)"
+
+    if [[ "$answer3" == "y" || "$answer3" == "Y" ]]; then
+
+        enable-passwordless.sh ~/.config/hypr ~/.config/scripts
+
+    else
+        echo "Didn't give scripts root privilages"
     fi
 
     # Fixes Chaotic-Aur

@@ -39,6 +39,8 @@ show_info() {
     [[ -f "$BAT_PATH/manufacturer" ]] && print_kv "Manufacturer" "$(cat "$BAT_PATH/manufacturer")"
     [[ -f "$BAT_PATH/cycle_count" ]] && print_kv "Cycle Count" "$(cat "$BAT_PATH/cycle_count")"
     [[ -f "$BAT_PATH/status" ]] && print_kv "Status" "$(cat "$BAT_PATH/status")"
+    print_kv "Time" "$(date '+%Y-%m-%d %H:%M:%S')"
+    echo
 
     if [[ -f "$BAT_PATH/energy_full_design" && -f "$BAT_PATH/energy_full" ]]; then
         design=$(cat "$BAT_PATH/energy_full_design")
