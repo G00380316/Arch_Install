@@ -158,6 +158,7 @@ auto_switch() {
     else
         echo
         echo "ℹ️  Auto: No change needed (Status: $status, Charge: $charge%)"
+        notify "ℹ️  Auto: No change needed (Status: $status, Charge: $charge%, Mode: $mode)"
         echo
     fi
 }
@@ -193,4 +194,5 @@ case "$1" in
         print_help
         ;;
 esac
+
 
