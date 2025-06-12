@@ -36,4 +36,8 @@ if [[ -n "$chosen_file" ]]; then
     cp "$full_path" "$target"
     
     notify-send -u low -i "$iDIR/ja.png" "$chosen_file" "Monitor Profile Loaded"
+    
+    sleep 1
+
+    zsh -c "$SCRIPTSDIR/Battery-manager.sh auto"
 fi

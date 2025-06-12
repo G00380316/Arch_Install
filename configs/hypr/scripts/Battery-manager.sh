@@ -143,13 +143,16 @@ auto_switch() {
     #     echo 0 | sudo tee "$CONSERVATION_MODE_PATH"
     #     notify "Auto: Disabled conservation mode (battery at $charge%)"
     #     echo "🔁 Auto: Disabled conservation mode at $charge%"
-    if [[ "$LID_STATE" == "closed" && "$MONITOR_COUNT" < 1 && "$mode" -ne 1 ]]; then
+    #
+    # if [[ "$LID_STATE" == "closed" && "$MONITOR_COUNT" > 1 && "$mode" -ne 1 ]]; then
+    if [[ "$MONITOR_COUNT" > 1 && "$mode" -ne 1 ]]; then
         echo 1 | sudo tee "$CONSERVATION_MODE_PATH"
         notify "Auto: Enabled conservation mode (battery at $charge%)"
         echo
         echo "🔁 Auto: Enabled conservation mode at $charge%"
         echo
-    elif [[ "$LID_STATE" == "open" && "$MONITOR_COUNT" == 1 && "$mode" -ne 0 ]]; then
+    # elif [[ "$LID_STATE" == "open" && "$MONITOR_COUNT" == 1 && "$mode" -ne 0 ]]; then
+    elif [[ "$MONITOR_COUNT" == 1 && "$mode" -ne 0 ]]; then
         echo 0 | sudo tee "$CONSERVATION_MODE_PATH"
         notify "Auto: Disabled conservation mode (battery at $charge%)"
         echo
@@ -194,5 +197,4 @@ case "$1" in
         print_help
         ;;
 esac
-
 
