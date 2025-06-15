@@ -8,7 +8,13 @@ step=10  # INCREASE/DECREASE BY THIS VALUE
 
 # Get brightness
 get_backlight() {
-	brightnessctl -m | cut -d, -f4 | sed 's/%//'
+	brightnessctl -m | cut -d, -f4
+}
+
+# Read and set brightness
+read_set_backlight() {
+    SAVED=$(get_backlight)
+    [ -n "$SAVED" ] && brightnessctl set "$SAVED"
 }
 
 # Get icons
@@ -68,7 +74,10 @@ case "$1" in
 	"--dec")
 		change_backlight "${step}%-"
 		;;
-	*)
+    "--rs")
+        read_set_backlight	
+        ;;
+    *)
 		get_backlight
 		;;
 esac
