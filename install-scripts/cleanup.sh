@@ -224,6 +224,12 @@ fi
     systemctl --user start waybar-manager.service 
     systemctl --user start lid-manager.service
 
+    if loginctl show-user "$USER" | grep -q 'Linger=yes'; then
+    echo "Disabling lingering for $USER"
+    sudo loginctl disable-linger "$USER"
+    loginctl show-user $USER | grep Linger
+fi
+
     # Ask the user if they want to install the Additional packages
     echo "Do you want to install an Additonal set of packages? (y/n)(Recommended if it is first install)"
     read -r answer
