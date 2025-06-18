@@ -134,3 +134,7 @@ precmd() {
 # Editor
 export EDITOR=nvim
 [[ -n $SSH_CONNECTION ]] && export EDITOR=vim
+
+# Default Exports #
+export PATH=$PATH:~/.config/hypr/scripts
+###
