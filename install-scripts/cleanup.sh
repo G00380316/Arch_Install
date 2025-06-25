@@ -27,7 +27,7 @@ fi
       "terminus-font" "ttf-font-awesome" "ttf-dejavu" "ttf-freefont" "papirus-icon-theme" "gnome-settings-daemon"
 
       # ── System & shell utilities
-      "acpi" "acpid" "avahi" "base-devel" "curl" "dialog" "dosfstools" "exa" "file-roller" "gettext" "mtools" "pv" "unzip" "usbutils" "xdotool" "util-linux"
+      "acpi" "acpid" "avahi" "base-devel" "curl" "dialog" "dosfstools" "exa" "file-roller" "gettext" "mtools" "pv" "unzip" "usbutils" "xdotool" "util-linux" "pipewire-libcamera"
 
       # ── Terminal & clipboard tools
       "grim" "kitty" "libnotify" "redshift" "slurp" "konsole"

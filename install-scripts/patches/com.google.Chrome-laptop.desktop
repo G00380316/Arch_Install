@@ -5,7 +5,7 @@
 # The old desktop file is kept to preserve default browser settings.
 NoDisplay=true
 Version=1.0
-Name=Google Chrome
+Name=Google Chrome Laptop
 # Only KDE 4 seems to use GenericName, so we reuse the KDE strings.
 # From Ubuntu's language-pack-kde-XX-base packages, version 9.04-20090413.
 GenericName=Web Browser
