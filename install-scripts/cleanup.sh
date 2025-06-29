@@ -42,7 +42,7 @@ fi
       "parted" "gptfdisk" "exfatprogs" "ntfs-3g" "e2fsprogs" "usbmuxd" "ifuse" "libimobiledevice"
 
       # ── Media & extras
-      "vlc" "kodi" "unrar" "qbittorrent" "feh"
+      "vlc" "kodi" "unrar" "qbittorrent" "feh" "hypnotix-wayland"
 
       # ── Dev tools
       "rsync" "lazygit" "firefoxpwa"
