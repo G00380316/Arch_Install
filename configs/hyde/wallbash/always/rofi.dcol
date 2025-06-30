@@ -1,0 +1,47 @@
+${confDir}/rofi/wallust/colors-rofi.rasi |
+
+* {
+  active-background: #<wallbash_1xa2>;
+  active-foreground: #<wallbash_txt2>;
+  normal-background: #<wallbash_pry1>;
+  normal-foreground: #<wallbash_pry2>;
+  urgent-background: #<wallbash_1xa3>;
+  urgent-foreground: #<wallbash_txt2>;
+
+  alternate-active-background: #<wallbash_1xa1>;
+  alternate-active-foreground: #<wallbash_txt2>;
+  alternate-normal-background: #<wallbash_pry1>;
+  alternate-normal-foreground: #<wallbash_txt2>;
+  alternate-urgent-background: #<wallbash_pry1>;
+  alternate-urgent-foreground: #<wallbash_txt2>;
+
+  selected-active-background: #<wallbash_1xa3>;
+  selected-active-foreground: #<wallbash_txt2>;
+  selected-normal-background: #<wallbash_1xa3>;
+  selected-normal-foreground: #<wallbash_txt2>;
+  selected-urgent-background: #<wallbash_1xa2>;
+  selected-urgent-foreground: #<wallbash_txt2>;
+
+  background-color: #<wallbash_pry1>;
+  background: <wallbash_pry1_rgba(1)>;
+  foreground: #<wallbash_txt2>;
+  border-color: #<wallbash_1xa2>;
+
+  color0: #<wallbash_1xa1>;
+  color1: #<wallbash_1xa2>;
+  color2: #<wallbash_1xa3>;
+  color3: #<wallbash_1xa4>;
+  color4: #<wallbash_1xa5>;
+  color5: #<wallbash_1xa6>;
+  color6: #<wallbash_1xa7>;
+  color7: #<wallbash_1xa8>;
+  color8: #<wallbash_1xa9>;
+  color9: #<wallbash_2xa1>;
+  color10: #<wallbash_2xa2>;
+  color11: #<wallbash_2xa3>;
+  color12: #<wallbash_2xa4>;
+  color13: #<wallbash_2xa5>;
+  color14: #<wallbash_2xa6>;
+  color15: #<wallbash_2xa7>;
+}
+

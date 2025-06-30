@@ -1,50 +1,46 @@
-   
- /* wallust template - colors-rofi */
 
 * {
-active-background: #06DEE6;
-active-foreground: #F9FDAE;
-normal-background: #110000;
-normal-foreground: #F9FDAE;
-urgent-background: #E3EAE5;
-urgent-foreground: #F9FDAE;
+  active-background: #6B3A3A;
+  active-foreground: #FFFFFF;
+  normal-background: #080505;
+  normal-foreground: #210D0C;
+  urgent-background: #7D4B4B;
+  urgent-foreground: #FFFFFF;
 
-alternate-active-background: #13E821;
-alternate-active-foreground: #F9FDAE;
-alternate-normal-background: #110000;
-alternate-normal-foreground: #F9FDAE;
-alternate-urgent-background: #110000;
-alternate-urgent-foreground: #F9FDAE;
+  alternate-active-background: #522929;
+  alternate-active-foreground: #FFFFFF;
+  alternate-normal-background: #080505;
+  alternate-normal-foreground: #FFFFFF;
+  alternate-urgent-background: #080505;
+  alternate-urgent-foreground: #FFFFFF;
 
-selected-active-background: #E3EAE5;
-selected-active-foreground: #F9FDAE;
-selected-normal-background: #E3EAE5;
-selected-normal-foreground: #F9FDAE;
-selected-urgent-background: #06DEE6;
-selected-urgent-foreground: #F9FDAE;
+  selected-active-background: #7D4B4B;
+  selected-active-foreground: #FFFFFF;
+  selected-normal-background: #7D4B4B;
+  selected-normal-foreground: #FFFFFF;
+  selected-urgent-background: #6B3A3A;
+  selected-urgent-foreground: #FFFFFF;
 
-background-color: #110000;
-background: rgba(0,0,0,0.7);
-foreground: #F9FDAE;
-border-color: #06DEE6;
+  background-color: #080505;
+  background: rgba(8,5,5,1);
+  foreground: #FFFFFF;
+  border-color: #6B3A3A;
 
-color0: #110000;
-color1: #6228AC;
-color2: #B70A10;
-color3: #0EAE19;
-color4: #04A7AD;
-color5: #AAB0AC;
-color6: #B2BA12;
-color7: #EEF383;
-color8: #A7AA5C;
-color9: #8235E5;
-color10: #F40D16;
-color11: #13E821;
-color12: #06DEE6;
-color13: #E3EAE5;
-color14: #EEF818;
-color15: #EEF383;
-
-
+  color0: #522929;
+  color1: #6B3A3A;
+  color2: #7D4B4B;
+  color3: #8F5757;
+  color4: #A36565;
+  color5: #C27A7A;
+  color6: #E69A9A;
+  color7: #F0AAAA;
+  color8: #FFCCCC;
+  color9: #522B29;
+  color10: #6B3C3A;
+  color11: #7D4D4B;
+  color12: #8F5A57;
+  color13: #A36865;
+  color14: #C27E7A;
+  color15: #E69D9A;
 }
 

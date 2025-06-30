@@ -4,7 +4,16 @@ import os
 import sys
 import json
 from datetime import datetime
-import requests
+
+
+import pyutils.pip_env as pip_env
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+pip_env.v_import(
+    "requests"
+)  # fetches the module by name // does `pip install --update requests` under the hood
+import requests  # noqa: E402
+
 
 ### Constants ###
 WEATHER_CODES = {
@@ -51,13 +60,16 @@ WEATHER_CODES = {
 
 ### Functions ###
 def load_env_file(filepath):
-    with open(filepath, encoding='utf-8') as f:
-        for line in f:
-            if line.strip() and not line.startswith("#"):
-                if line.startswith("export "):
-                    line = line[len("export ") :]
-                key, value = line.strip().split("=", 1)
-                os.environ[key] = value.strip('"')
+    try:
+        with open(filepath, encoding="utf-8") as f:
+            for line in f:
+                if line.strip() and not line.startswith("#"):
+                    if line.startswith("export "):
+                        line = line[len("export ") :]
+                    key, value = line.strip().split("=", 1)
+                    os.environ[key] = value.strip('"')
+    except Exception:
+        pass  # shhh
 
 
 def get_weather_icon(weatherinstance):
@@ -164,9 +176,10 @@ def format_chances(hour):
 
 
 ### Variables ###
-# Load environment variables from the specified files
-load_env_file(os.path.expanduser("~/.local/state/hyde/staterc"))
-load_env_file(os.path.expanduser("~/.local/state/hyde/config"))
+load_env_file(
+    os.path.join(os.environ.get("HOME"), ".rlocal", "state", "hyde", "staterc")
+)
+load_env_file(os.path.join(os.environ.get("HOME"), ".local", "state", "hyde", "config"))
 
 temp_unit = os.getenv(
     "WEATHER_TEMPERATURE_UNIT", "c"
@@ -199,14 +212,14 @@ show_today_details = os.getenv("WEATHER_SHOW_TODAY_DETAILS", "True").lower() in 
     "yes",
 )  # True or False     (default: True)
 try:
-    forecast_days = int(
+    FORECAST_DAYS = int(
         os.getenv("WEATHER_FORECAST_DAYS", "3")
     )  # Number of days to show the forecast for (default: 3)
 except ValueError:
     FORECAST_DAYS = 3
-get_location = os.getenv(
-    "WEATHER_LOCATION", ""
-).replace(" ", "_")  # Name of the location to get the weather from (default: '')
+get_location = os.getenv("WEATHER_LOCATION", "").replace(
+    " ", "_"
+)  # Name of the location to get the weather from (default: '')
 # Parse the location to wttr.in format (snake_case)
 
 # Check if the variables are set correctly
@@ -216,7 +229,7 @@ if time_format not in ("12h", "24h"):
     TIME_FORMAT = "12h"
 if windspeed_unit not in ("km/h", "mph"):
     WINDSPEED_UINT = "km/h"
-if forecast_days not in range(4):
+if FORECAST_DAYS not in range(4):
     FORECAST_DAYS = 3
 
 ### Main Logic ###
@@ -253,7 +266,7 @@ if show_today_details:
     data["tooltip"] += f"Wind: {get_wind_speed(current_weather)}\n"
     data["tooltip"] += f"Humidity: {current_weather['humidity']}%\n"
 # Get the weather forecast for the next 2 days
-for i in range(forecast_days):
+for i in range(FORECAST_DAYS):
     day_instance = weather["weather"][i]
     data["tooltip"] += "\n<b>"
     if i == 0:

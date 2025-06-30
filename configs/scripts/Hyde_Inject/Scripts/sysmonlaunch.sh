@@ -6,7 +6,7 @@ source "${scrDir}/globalcontrol.sh"
 
 show_help() {
   cat <<HELP
-Usage: $(basename "$0") --[option] 
+Usage: $(basename "$0") --[option]
     -h, --help  Display this help and exit
     -e, --execute   Explicit command to execute
 
@@ -18,8 +18,8 @@ Config: ~/.config/hyde/config.toml
     terminal = "kitty"                  # Explicit terminal // uses \$TERMINAL if available
 
 
-This script launches the system monitor application. 
-    It will launch the first available system monitor 
+This script launches the system monitor application.
+    It will launch the first available system monitor
     application from the list of 'commands' provided.
 
 
@@ -48,12 +48,15 @@ pidFile="$HYDE_RUNTIME_DIR/sysmonlaunch.pid"
 if [ -f "$pidFile" ]; then
   while IFS= read -r line; do
     pid=$(awk -F ':::' '{print $1}' <<<"$line")
-    cmd=$(awk -F ':::' '{print $2}' <<<"$line")
-    pkill -P "$pid"
-    pkg_installed flatpak && flatpak kill "$cmd" 2>/dev/null
+    if [ -d "/proc/${pid}" ]; then
+      cmd=$(awk -F ':::' '{print $2}' <<<"$line")
+      pkill -P "$pid"
+      pkg_installed flatpak && flatpak kill "$cmd" 2>/dev/null
+      rm "$pidFile"
+      exit 0
+    fi
   done <"$pidFile"
   rm "$pidFile"
-  exit 0
 fi
 
 pkgChk=("io.missioncenter.MissionCenter" "htop" "btop" "top")                     # Array of commands to check

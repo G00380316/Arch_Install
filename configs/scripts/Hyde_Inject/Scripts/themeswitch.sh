@@ -5,7 +5,7 @@ scrDir="$(dirname "$(realpath "$0")")"
 scriptsDir="$HOME/.config/hypr/scripts"
 
 "${scrDir}"/theme.switch.sh "$@"
-pid=$!
-wait "$pid"
-
-"${scriptsDir}"/Refresh.sh
+# pid=$!
+# wait "$pid"
+#
+# "${scriptsDir}"/Refresh.sh

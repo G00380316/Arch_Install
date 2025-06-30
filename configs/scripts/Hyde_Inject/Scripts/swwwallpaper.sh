@@ -5,15 +5,16 @@ cat <<EOF
 DEPRECATION: This script is deprecated, please use 'wallpaper.sh' instead."
 
 -------------------------------------------------
-example: 
-wallpaper.sh ${@} --backend swww --global
+example:
+wallpaper.sh --select --backend swww --global
 -------------------------------------------------
 EOF
 
-scriptsDir="$HOME/.config/hypr/scripts"
+script_dir="$(dirname "$(realpath "$0")")"
+# shellcheck disable=SC1091
+"${script_dir}/wallpaper.sh" "${@}" --backend swww --global
 
-"wallpaper.sh" "${@}" --backend swww --global
-pid=$!
-wait "$pid"
+# pid=$!
+# wait "$pid"
 
-"${scriptsDir}"/Refresh.sh
+# "${scriptsDir}"/Refresh.sh
