@@ -10,7 +10,7 @@ while true; do
     if ! pgrep -x "waybar" > /dev/null; then
         echo "$(date): Waybar not running. Restarting..."
         pkill -x waybar  # Kill any existing waybar processes (just in case)
-        pkill -x ags
+        ags -q && ags &
         sleep 1
         $START_CMD &
     else
@@ -19,7 +19,7 @@ while true; do
         if [ "$WAYBAR_COUNT" -gt 1 ]; then
             echo "$(date): Multiple Waybar instances detected. Restarting clean..."
             pkill -x waybar
-            pkill -x ags
+            ags -q && ags &
             sleep 1
             $START_CMD &
         fi
