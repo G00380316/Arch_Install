@@ -230,10 +230,6 @@ set_custom_gtk_theme "$next_mode"
 # Update theme mode for the next cycle
 update_theme_mode
 
-
-${SCRIPTSDIR}/WallustSwww.sh &&
-
-sleep 2
 # kill process
 for pid1 in kitty waybar rofi swaync ags swaybg; do
     killall "$pid1"

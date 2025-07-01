@@ -27,7 +27,7 @@ if [ ! -f "$HOME/.config/hypr/.initial_startup_done" ]; then
 	if [ -f "$wallpaper" ]; then
 		wallust run -s $wallpaper > /dev/null
 		swww query || swww-daemon && $swww $wallpaper $effect
-	    "$scriptsDir/WallustSwww.sh" > /dev/null 2>&1 &
+	    # "$scriptsDir/WallustSwww.sh" > /dev/null 2>&1 &
 	fi
 
     # initiate GTK dark mode and apply icon and cursor theme
@@ -37,13 +37,13 @@ if [ ! -f "$HOME/.config/hypr/.initial_startup_done" ]; then
     gsettings set org.gnome.desktop.interface cursor-theme $cursor_theme > /dev/null 2>&1 &
     gsettings set org.gnome.desktop.interface cursor-size 24 > /dev/null 2>&1 &
 
-     # NIXOS initiate GTK dark mode and apply icon and cursor theme
+    # NIXOS initiate GTK dark mode and apply icon and cursor theme
 	if [ -n "$(grep -i nixos < /etc/os-release)" ]; then
-      gsettings set org.gnome.desktop.interface color-scheme "'$color_scheme'" > /dev/null 2>&1 &
-      dconf write /org/gnome/desktop/interface/gtk-theme "'$gtk_theme'" > /dev/null 2>&1 &
-      dconf write /org/gnome/desktop/interface/icon-theme "'$icon_theme'" > /dev/null 2>&1 &
-      dconf write /org/gnome/desktop/interface/cursor-theme "'$cursor_theme'" > /dev/null 2>&1 &
-      dconf write /org/gnome/desktop/interface/cursor-size "24" > /dev/null 2>&1 &
+        gsettings set org.gnome.desktop.interface color-scheme "'$color_scheme'" > /dev/null 2>&1 &
+        dconf write /org/gnome/desktop/interface/gtk-theme "'$gtk_theme'" > /dev/null 2>&1 &
+        dconf write /org/gnome/desktop/interface/icon-theme "'$icon_theme'" > /dev/null 2>&1 &
+        dconf write /org/gnome/desktop/interface/cursor-theme "'$cursor_theme'" > /dev/null 2>&1 &
+        dconf write /org/gnome/desktop/interface/cursor-size "24" > /dev/null 2>&1 &
 	fi
 
     # initiate kvantum theme
@@ -73,9 +73,6 @@ if [ ! -f "$HOME/.config/hypr/.initial_startup_done" ]; then
 
     # Caching fonts once again
     fc-cache -fv
-
-    spicetify config sidebar_config 0
-    spicetify apply
 
     # Create a marker file to indicate that the script has been executed.
     touch "$HOME/.config/hypr/.initial_startup_done"

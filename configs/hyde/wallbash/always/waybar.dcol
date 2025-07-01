@@ -1,0 +1,24 @@
+${confDir}/waybar/wallust/colors-waybar.css |
+
+@define-color foreground #<wallbash_4xa4>;
+@define-color background #<wallbash_pry1>;
+@define-color background-alt <wallbash_pry1_rgba(1)>;
+@define-color cursor #<wallbash_txt3>;
+
+@define-color color0 #<wallbash_1xa1>;
+@define-color color1 #<wallbash_1xa2>;
+@define-color color2 #<wallbash_1xa3>;
+@define-color color3 #<wallbash_1xa4>;
+@define-color color4 #<wallbash_1xa5>;
+@define-color color5 #<wallbash_1xa6>;
+@define-color color6 #<wallbash_3xa7>;
+@define-color color7 #<wallbash_pry1>;
+@define-color color8 #<wallbash_3xa9>;
+@define-color color9 #<wallbash_2xa1>;
+@define-color color10 #<wallbash_2xa2>;
+@define-color color11 #<wallbash_2xa3>;
+@define-color color12 #<wallbash_pry4>;
+@define-color color13 #<wallbash_pry1>;
+@define-color color14 #<wallbash_4xa6>;
+@define-color color15 #<wallbash_4xa7>;
+

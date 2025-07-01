@@ -36,8 +36,5 @@ swww query || swww-daemon --format xrgb
 swww img "$(readlink -f "$RANDOMPICS")" $SWWW_PARAMS
 
 wait $!
-"$SCRIPTSDIR/WallustSwww.sh" &&
-
-wait $!
 sleep 2
 "$SCRIPTSDIR/Refresh.sh"

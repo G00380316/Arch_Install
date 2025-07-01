@@ -31,7 +31,7 @@ fi
       "unzip" "usbutils" "xdotool" "util-linux" "pipewire-libcamera" "ripgrep" "wf-recorder" "df"
 
       # ── Terminal & clipboard tools
-      "grim" "kitty" "libnotify" "redshift" "slurp" "konsole"
+      "grim" "kitty" "libnotify" "redshift" "slurp" "konsole" "fish" "eza" "starship"
 
       # ── File management
       "thunar" "thunar-archive-plugin" "thunar-media-tags-plugin" "thunar-volman" "gnome-disk-utility"

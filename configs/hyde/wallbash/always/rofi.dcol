@@ -23,12 +23,12 @@ ${confDir}/rofi/wallust/colors-rofi.rasi |
   selected-urgent-foreground: #<wallbash_txt2>;
 
   background-color: #<wallbash_pry1>;
-  background: <wallbash_pry1_rgba(1)>;
+  background: <wallbash_pry1_rgba(0.25)>;
   foreground: #<wallbash_txt2>;
   border-color: #<wallbash_1xa2>;
 
   color0: #<wallbash_1xa1>;
-  color1: #<wallbash_1xa2>;
+  color1: <wallbash_pry4_rgba(1)>;
   color2: #<wallbash_1xa3>;
   color3: #<wallbash_1xa4>;
   color4: #<wallbash_1xa5>;
@@ -38,8 +38,8 @@ ${confDir}/rofi/wallust/colors-rofi.rasi |
   color8: #<wallbash_1xa9>;
   color9: #<wallbash_2xa1>;
   color10: #<wallbash_2xa2>;
-  color11: #<wallbash_2xa3>;
-  color12: #<wallbash_2xa4>;
+  color11: #<wallbash_pry3>;
+  color12: #<wallbash_pry1>;
   color13: #<wallbash_2xa5>;
   color14: #<wallbash_2xa6>;
   color15: #<wallbash_2xa7>;

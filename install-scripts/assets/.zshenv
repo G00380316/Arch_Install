@@ -62,80 +62,6 @@ EOF
     fi
 }
 
-# best fzf aliases ever
-_fuzzy_change_directory() {
-    local initial_query="$1"
-    local selected_dir
-    local fzf_options=('--preview=ls -p {}' '--preview-window=right:60%')
-    fzf_options+=(--height "80%" --layout=reverse --preview-window right:60% --cycle)
-    local max_depth=7
-
-    if [[ -n "$initial_query" ]]; then
-        fzf_options+=("--query=$initial_query")
-    fi
-
-    #type -d
-    selected_dir=$(find . -maxdepth $max_depth \( -name .git -o -name node_modules -o -name .venv -o -name target -o -name .cache \) -prune -o -type d -print 2>/dev/null | fzf "${fzf_options[@]}")
-
-    if [[ -n "$selected_dir" && -d "$selected_dir" ]]; then
-        cd "$selected_dir" || return 1
-    else
-        return 1
-    fi
-}
-
-_fuzzy_edit_search_file_content() {
-    # [f]uzzy [e]dit  [s]earch [f]ile [c]ontent
-    local selected_file
-    selected_file=$(grep -irl "${1:-}" ./ | fzf --height "80%" --layout=reverse --preview-window right:60% --cycle --preview 'cat {}' --preview-window right:60%)
-
-    if [[ -n "$selected_file" ]]; then
-        if command -v "$EDITOR" &>/dev/null; then
-            "$EDITOR" "$selected_file"
-        else
-            echo "EDITOR is not specified. using vim.  (you can export EDITOR in ~/.zshrc)"
-            vim "$selected_file"
-        fi
-
-    else
-        echo "No file selected or search returned no results."
-    fi
-}
-
-_fuzzy_edit_search_file() {
-    local initial_query="$1"
-    local selected_file
-    local fzf_options=()
-    fzf_options+=(--height "80%" --layout=reverse --preview-window right:60% --cycle)
-    local max_depth=5
-
-    if [[ -n "$initial_query" ]]; then
-        fzf_options+=("--query=$initial_query")
-    fi
-
-    # -type f: only find files
-    selected_file=$(find . -maxdepth $max_depth -type f 2>/dev/null | fzf "${fzf_options[@]}")
-
-    if [[ -n "$selected_file" && -f "$selected_file" ]]; then
-        if command -v "$EDITOR" &>/dev/null; then
-            "$EDITOR" "$selected_file"
-        else
-            echo "EDITOR is not specified. using vim.  (you can export EDITOR in ~/.zshrc)"
-            vim "$selected_file"
-        fi
-    else
-        return 1
-    fi
-}
-
-_df() {
-    if [[ $# -ge 1 && -e "${@: -1}" ]]; then
-        duf "${@: -1}"
-    else
-        duf
-    fi
-}
-
 # Function to handle initialization errors
 function handle_init_error {
     if [[ $? -ne 0 ]]; then
@@ -156,6 +82,7 @@ function no_such_file_or_directory_handler {
 
 # cleaning up home folder
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+XDG_CONFIG_DIR="${XDG_CONFIG_DIR:-$HOME/.config}"
 XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.config/scripts/Hyde_Inject/share}"
 XDG_DATA_DIRS="${XDG_DATA_DIRS:-$XDG_DATA_HOME:/usr/local/share:/usr/share}"
 XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.config/scripts/Hyde_Inject/state}"
@@ -170,16 +97,16 @@ XDG_PICTURES_DIR="${XDG_PICTURES_DIR:-$HOME/Pictures}"
 XDG_VIDEOS_DIR="${XDG_VIDEOS_DIR:-$HOME/Videos}"
 LESSHISTFILE=${LESSHISTFILE:-/tmp/less-hist}
 PARALLEL_HOME="$XDG_CONFIG_HOME/parallel"
-SCREENRC="$XDG_CONFIG_HOME"/screen/screenrc
 
 export XDG_CONFIG_HOME XDG_DATA_HOME XDG_STATE_HOME XDG_CACHE_HOME XDG_DESKTOP_DIR XDG_DOWNLOAD_DIR \
-    XDG_TEMPLATES_DIR XDG_PUBLICSHARE_DIR XDG_DOCUMENTS_DIR XDG_MUSIC_DIR XDG_PICTURES_DIR XDG_VIDEOS_DIR SCREENRC
+    XDG_TEMPLATES_DIR XDG_PUBLICSHARE_DIR XDG_DOCUMENTS_DIR XDG_MUSIC_DIR XDG_PICTURES_DIR XDG_VIDEOS_DIR WGETRC SCREENRC
 export PATH="$HOME/.config/waybar/waybar-module-pomodoro/target/release:$PATH"
 export PATH="$HOME/.config/waybar/waybar-module-pomodoro/target/debug:$PATH"
 export PATH="$HOME/.config/waybar/scripts:$PATH"
 export PATH="$HOME/Documents/Applications/Sideloader/Working Binaries:$PATH"
 export PATH="$HOME/.config/scripts:$PATH"
 export GTK_THEME=Adwaita:dark
+export QT_QPA_PLATFORMTHEME=qt5ct
 export QT_QPA_PLATFORM=wayland
 export QT_QPA_PLATFORM=xcb
 
@@ -217,11 +144,8 @@ if [ -t 1 ]; then
         .3='cd ../../..' \
         .4='cd ../../../..' \
         .5='cd ../../../../..' \
-        mkdir='mkdir -p'\
-        ffec='_fuzzy_edit_search_file_content' \
-        ffcd='_fuzzy_change_directory' \
-        ffe='_fuzzy_edit_search_file' \
-        df='_df'
+        mkdir='mkdir -p' # Always mkdir a path (this doesn't inhibit functionality to make a single dir)
+
     # TODO: add handlers in pm.sh
     # for these aliases please manually add the following lines to your .zshrc file.(Using yay as the aur helper)
     # pc='yay -Sc' # remove all cached packages

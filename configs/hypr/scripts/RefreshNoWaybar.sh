@@ -26,10 +26,10 @@ for _prs in "${_ps[@]}"; do
 done
 
 # quit ags & relaunch ags
-#ags -q && ags &
+ags -q && ags &
 
 # Wallust refresh
-${SCRIPTSDIR}/WallustSwww.sh &
+# ${SCRIPTSDIR}/WallustSwww.sh &
 
 # Relaunching rainbow borders if the script exists
 sleep 1

@@ -90,8 +90,6 @@ main() {
   # Random choice case
   if [[ "$choice" == "$RANDOM_PIC_NAME" ]]; then
 	swww img "$(readlink -f "$RANDOM_PIC")" $SWWW_PARAMS;
-    sleep 2
-    "$SCRIPTSDIR/WallustSwww.sh"
     sleep 0.5
     "$SCRIPTSDIR/Refresh.sh"
     exit 0
@@ -122,10 +120,5 @@ fi
 
 main
 
-wait $!
-"$SCRIPTSDIR/WallustSwww.sh" &&
-cp -r "$wallpaper_current" "$wallpaper_modified"
 
-wait $!
-sleep 2
-"$SCRIPTSDIR/Refresh.sh"
+cp -r "$wallpaper_current" "$wallpaper_modified"

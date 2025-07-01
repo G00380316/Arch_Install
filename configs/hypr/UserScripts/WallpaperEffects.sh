@@ -4,6 +4,8 @@
 
 # Variables
 terminal=kitty
+cp "$HOME/.cache/hyde/wall.set" "$HOME/.config/hypr/wallpaper_effects/.wallpaper_current"
+sleep 0.5
 wallpaper_current="$HOME/.config/hypr/wallpaper_effects/.wallpaper_current"
 wallpaper_output="$HOME/.config/hypr/wallpaper_effects/.wallpaper_modified"
 SCRIPTSDIR="$HOME/.config/hypr/scripts"
@@ -46,11 +48,10 @@ declare -A effects=(
 # Function to apply no effects
 no-effects() {
     swww img "$wallpaper_current" $SWWW_PARAMS &&
-    wait $!
-    wallust run "$wallpaper_current" -s &&
+    # wait $!
+    # wallust run "$wallpaper_current" -s &&
     wait $!
     # Refresh rofi, waybar, wallust palettes
-	sleep 2
 	"$SCRIPTSDIR/Refresh.sh"
 
     notify-send -u low -i "$iDIR/ja.png" "No wallpaper" "effects applied"
@@ -83,8 +84,7 @@ main() {
             sleep 2
 
             cp -r "$wallpaper_current" "$wallpaper_output"
-            wallust run "$wallpaper_output" -s &
-            sleep 1
+            # wallust run "$wallpaper_output" -s &
             # Refresh rofi, waybar, wallust palettes
             "${SCRIPTSDIR}/Refresh.sh"
             notify-send -u low -i "$iDIR/ja.png" "$choice" "effects applied"
@@ -99,4 +99,4 @@ if pidof rofi > /dev/null; then
     pkill rofi
 fi
 
-main
+mainr
