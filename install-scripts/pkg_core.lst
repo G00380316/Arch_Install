@@ -37,6 +37,7 @@ slurp                                                  # region select for scree
 satty                                                  # Modern Screenshot Annotation
 cliphist                                               # clipboard manager
 hyprsunset                                             # blue light filter
+wl-clip-persist                                        # Keep Wayland clipboard even after programs close (avoids crashes) 
 
 # --------------------------------------------------- // Dependencies
 polkit-gnome                                           # authentication agent

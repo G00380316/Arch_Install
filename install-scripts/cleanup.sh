@@ -31,7 +31,7 @@ fi
       "unzip" "usbutils" "xdotool" "util-linux" "pipewire-libcamera" "ripgrep" "wf-recorder" "df"
 
       # ── Terminal & clipboard tools
-      "grim" "kitty" "libnotify" "redshift" "slurp" "konsole" "fish" "eza" "starship"
+      "grim" "kitty" "libnotify" "redshift" "slurp" "konsole" "fish" "eza" "starship" "wl-clip-persist"
 
       # ── File management
       "thunar" "thunar-archive-plugin" "thunar-media-tags-plugin" "thunar-volman" "gnome-disk-utility"
@@ -216,7 +216,7 @@ fi
     # Activate daemon for Wallust
     systemctl --user daemon-reexec
     systemctl --user daemon-reload
-    systemctl --user enable --now wallust-manager.service
+    # systemctl --user enable --now wallust-manager.service
     systemctl --user enable --now easyeffects-manager.service
     systemctl --user enable --now waybar-manager.service 
     systemctl --user enable --now lid-manager.service

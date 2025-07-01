@@ -39,5 +39,9 @@ if [[ -n "$chosen_file" ]]; then
     
     sleep 1
 
+    ${SCRIPTSDIR}/Refresh.sh
+
+    sleep 1 
+
     zsh -c "$SCRIPTSDIR/Battery-manager.sh auto"
 fi
