@@ -56,7 +56,7 @@ if [ ! -z "${setTheme}" ] && [ ! -z "${setWall}" ]; then
     cp "${setWall}" "${tgtPath}/${setTheme}/wallpapers"
     ln -fs "${tgtPath}/${setTheme}/wallpapers/$(basename "${setWall}")" "${tgtPath}/${setTheme}/wall.set"
 
-    "${scrDir}/themeswitch.sh" -s "${setTheme}"
+    "${scrDir}/theme.switch.sh" -s "${setTheme}"
     notify-send -a "HyDE Alert" -i "${thmbDir}/${inwallHash}.sqre" "Wallpaper set in ${setTheme}"
 
 else

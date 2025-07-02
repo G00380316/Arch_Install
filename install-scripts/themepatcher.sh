@@ -346,7 +346,7 @@ print_prompt -g "\n[exec] " "restore_cfg.sh \"${Theme_Dir}/restore_cfg.lst\" \"$
 "${scrDir}/restore_cfg.sh" "${Theme_Dir}/restore_cfg.lst" "${Theme_Dir}/Configs" "${Fav_Theme}" &>/dev/null
 if [ "${3}" != "--skipcaching" ]; then
     "$HOME/.config/scripts/Hyde_Inject/Scripts/swwwallcache.sh" -t "${Fav_Theme}"
-    "$HOME/.config/scripts/Hyde_Inject/Scripts/themeswitch.sh"
+    "$HOME/.config/scripts/Hyde_Inject/Scripts/theme.switch.sh"
 fi
 
 print_prompt -y "\nNote: Warnings are not errors. Review the output to check if it concerns you."
