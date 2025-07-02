@@ -219,7 +219,7 @@ EOF
     print_log -g "[generate] " "cache ::" "Wallpapers..."
     if [ "${flg_DryRun}" -ne 1 ]; then
         "$HOME/.config/scripts/Hyde_Inject/Scripts/swwwallcache.sh" -t ""
-        "$HOME/.config/scripts/Hyde_Inject/Scripts/theme.switch.sh" -q || true
+        "$HOME/.config/scripts/Hyde_Inject/Scripts/themeswitch.sh" -q || true
         echo "[install] reload :: Hyprland"
     fi
 

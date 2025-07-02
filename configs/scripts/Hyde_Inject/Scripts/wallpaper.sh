@@ -2,6 +2,10 @@
 # shellcheck disable=SC2154
 
 scrDir="$(dirname "$(realpath "$0")")"
+SCRIPTSDIR="$HOME/.config/hypr/scripts"
+wallpaper_current="$HOME/.config/hypr/wallpaper_effects/.wallpaper_current"
+wallpaper_modified="$HOME/.config/hypr/wallpaper_effects/.wallpaper_modified"
+
 # shellcheck disable=SC1091
 source "${scrDir}/globalcontrol.sh"
 
@@ -19,7 +23,6 @@ options:
     -g, --get                 Get current wallpaper of specified backend
     -o, --output <file>       Copy current wallpaper to specified file
         --link                Resolved the linked wallpaper according to the theme
-    -t  --filetypes <types>   Specify file types to override (colon-separated ':')
     -h, --help                Display this help message
 
 flags:
@@ -27,7 +30,7 @@ flags:
     -G, --global              Set wallpaper as global
 
 
-notes: 
+notes:
        --backend <backend> is also use to cache wallpapers/background images e.g. hyprlock
            when '--backend hyprlock' is used, the wallpaper will be cached in
            ~/.cache/hyde/wallpapers/hyprlock.png
@@ -37,7 +40,7 @@ notes:
 
        --output <path> is used to copy the current wallpaper to the specified path
             We can use this to have a copy of the wallpaper to '/var/tmp' where sddm or
-            any systemwide application can access it  
+            any systemwide application can access it
 EOF
     exit 0
 }
@@ -49,7 +52,7 @@ Wall_Cache() {
     if [ "${set_as_global}" == "true" ]; then
         print_log -sec "wallpaper" "Setting Wallpaper as global"
         "${scrDir}/swwwallcache.sh" -w "${wallList[setIndex]}" &>/dev/null
-        "${scrDir}/color.set.sh" "${wallList[setIndex]}" &
+        "${scrDir}/swwwallbash.sh" "${wallList[setIndex]}" &
         ln -fs "${thmbDir}/${wallHash[setIndex]}.sqre" "${wallSqr}"
         ln -fs "${thmbDir}/${wallHash[setIndex]}.thmb" "${wallTmb}"
         ln -fs "${thmbDir}/${wallHash[setIndex]}.blur" "${wallBlr}"
@@ -89,10 +92,10 @@ Wall_Json() {
 
     # Create JSON using jq
     jq -n --argjson wallList "$wallListJson" --argjson wallHash "$wallHashJson" --arg cacheHome "${HYDE_CACHE_HOME:-$HOME/.cache/hyde}" '
-        [range(0; $wallList | length) as $i | 
+        [range(0; $wallList | length) as $i |
             {
-                path: $wallList[$i], 
-                hash: $wallHash[$i], 
+                path: $wallList[$i],
+                hash: $wallHash[$i],
                 basename: ($wallList[$i] | split("/") | last),
                 thmb: "\($cacheHome)/thumbs/\($wallHash[$i]).thmb",
                 sqre: "\($cacheHome)/thumbs/\($wallHash[$i]).sqre",
@@ -140,7 +143,7 @@ Wall_Select() {
     r_override="window{width:100%;}
     listview{columns:${col_count};spacing:5em;}
     element{border-radius:${elem_border}px;
-    orientation:vertical;} 
+    orientation:vertical;}
     element-icon{size:28em;border-radius:0em;}
     element-text{padding:1em;}"
 
@@ -259,11 +262,15 @@ main() {
 
     # Apply wallpaper to  backend
     if [ -f "${scrDir}/wallpaper.${wallpaper_backend}.sh" ] && [ -n "${wallpaper_backend}" ]; then
+
         print_log -sec "wallpaper" "Using backend: ${wallpaper_backend}"
         "${scrDir}/wallpaper.${wallpaper_backend}.sh" "${wallSet}"
+        
     else
         if command -v "wallpaper.${wallpaper_backend}.sh" >/dev/null; then
+
             "wallpaper.${wallpaper_backend}.sh" "${wallSet}"
+
         else
             print_log -warn "wallpaper" "No backend script found for ${wallpaper_backend}"
             print_log -warn "wallpaper" "Created: $HYDE_CACHE_HOME/wallpapers/${wallpaper_backend}.png instead"
@@ -291,17 +298,14 @@ if [ -z "${*}" ]; then
 fi
 
 # Define long options
-LONGOPTS="link,global,select,json,next,previous,random,set:,backend:,get,output:,help,filetypes:"
+LONGOPTS="link,global,select,json,next,previous,random,set:,backend:,get,output:,help"
 
 # Parse options
 PARSED=$(
-    if getopt --options GSjnprb:s:t:go:h --longoptions $LONGOPTS --name "$0" -- "$@"; then
+    if getopt --options GSjnprb:s:go:h --longoptions $LONGOPTS --name "$0" -- "$@"; then
         exit 2
     fi
 )
-
-# Initialize the array for filetypes
-WALLPAPER_OVERRIDE_FILETYPES=()
 
 wallpaper_backend="${WALLPAPER_BACKEND:-swww}"
 wallpaper_setter_flag=""
@@ -322,7 +326,7 @@ while true; do
         exit 0
         ;;
     -S | --select)
-        "${scrDir}/swwwallcache.sh" w &>/dev/null &
+        "${scrDir}/swwwallcache.sh" w &
         wallpaper_setter_flag=select
         shift
         ;;
@@ -356,16 +360,6 @@ while true; do
         # Accepts wallpaper output path
         wallpaper_setter_flag=o
         wallpaper_output="${2}"
-        shift 2
-        ;;
-    -t | --filetypes)
-        IFS=':' read -r -a WALLPAPER_OVERRIDE_FILETYPES <<<"$2"
-        if [ "${LOG_LEVEL}" == "debug" ]; then
-            for i in "${WALLPAPER_OVERRIDE_FILETYPES[@]}"; do
-                print_log -g "DEBUG:" -b "filetype overrides : " "'${i}'"
-            done
-        fi
-        export WALLPAPER_OVERRIDE_FILETYPES
         shift 2
         ;;
     -h | --help)

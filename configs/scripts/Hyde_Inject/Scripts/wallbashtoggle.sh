@@ -54,5 +54,5 @@ esac
 export reload_flag=1
 [[ "${setMode}" -lt 0 ]] && setMode=$((${#wallbashModes[@]} - 1))
 set_conf "enableWallDcol" "${setMode}"
-"${scrDir}/theme.switch.sh"
+"${scrDir}/themeswitch.sh"
 notify-send -a "HyDE Alert" -i "${ICONS_DIR}/Wallbash-Icon/hyde.png" " ${wallbashModes[setMode]} mode"
