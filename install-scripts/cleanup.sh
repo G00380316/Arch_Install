@@ -18,7 +18,7 @@ fi
       "filebot" "obs-studio" "7zip"
       "fzf" "bat" "tofi" "boxes" "foot" "bluetui" "pokemon-colorscripts-git"
       "spotube" "spotify-adblock-git"
-      "arc-gtx-theme" "papirus-icon-theme"
+      "arc-gtx-theme" "papirus-icon-theme" "whyq"
       "swww" "bleachbit" "sof-bin" "zathura" "spicetify-cli"
       "iwmenu" "bzmenu" "setzer-git" )
 
@@ -260,7 +260,7 @@ fi
         zsh -c "flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo"
         
         zsh -c "
-     flatpak install flathub org.gnome.Boxes -y
+        flatpak install flathub org.gnome.Boxes -y
         flatpak install flathub info.febvre.Komikku -y
         flatpak install flathub org.cvfosammmm.Setzer -y"
 
