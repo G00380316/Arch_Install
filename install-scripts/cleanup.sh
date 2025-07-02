@@ -217,11 +217,11 @@ fi
     systemctl --user daemon-reexec
     systemctl --user daemon-reload
     # systemctl --user enable --now wallust-manager.service
-    systemctl --user enable --now easyeffects-manager.service
+    # systemctl --user enable --now easyeffects-manager.service
     systemctl --user enable --now waybar-manager.service 
     systemctl --user enable --now lid-manager.service
     systemctl --user start wallust-manager.service
-    systemctl --user start easyeffects-manager.service
+    # systemctl --user start easyeffects-manager.service
     systemctl --user start waybar-manager.service 
     systemctl --user start lid-manager.service
 
