@@ -1,14 +1,15 @@
 ## Wayland compositor
 
-Assuming you have already installed a minimal Arch-based system.
+Assuming you have already installed at least minimal Arch-based system.
 The series of shell scripts are intended to facilitate installing popular window managers.
 
-Within the install.sh file, you can choose to install the following window managers:
+Within the install.sh file, you can install the following window managers:
 
-- hyprland
-- sway
+- Hyprland
+- Sway
+- Gnome
 
-**User can select between vanilla(non-customized) and completely customized (my personal customization)**
+**User can select with multiple choices throughout the configuration what they want to include in their new system**
 
 # Installation
 
@@ -31,8 +32,10 @@ chmod +x install.sh
 ## Post-Install
 
 ```
-After the installation is complete reboot and then run "cleanup.sh"
-this will tidy up the Installation a bit and make sure some plugin
+After the installation is complete reboot and then run "util.sh" and "cleanup.sh"
+once more, And any other scripts in the install-scripts directory if needs be.
+
+This will tidy up the Installation a bit and make sure some plugin,
 packages are built (Run multiple times to make sure all is well)
 
 ~/Arch_Install/install-scripts/cleanup.sh
@@ -62,4 +65,4 @@ after go to the configuration of the extension and click update web apps option
 
 NOTE: The recommended login manager will be sddm for cool configuration.
 NOTE: Sway configuration is basic as I don't really use Sway but still a great
-      starting point for those that need one
+starting point for those that need one
