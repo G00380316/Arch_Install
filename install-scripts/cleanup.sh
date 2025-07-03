@@ -12,12 +12,12 @@ fi
     aur_packages=( "geany" "geany-plugins" "visual-studio-code-bin" "zed"
       "microsoft-edge-stable-bin" "google-chrome"
       "zen-browser-bin" "bluemail"
-      "onlyoffice-bin" "anki-bin" "obsidian" "flatseal" "blanket" "vesktop"
+      "onlyoffice-bin" "obsidian" "flatseal" "blanket" "vesktop"
       "keypunch-git" "openai-chatgpt-nativefier"
       "onedrive-abraunegg" "dbgate-beta-bin" "postman-bin"
       "filebot" "obs-studio" "7zip"
       "fzf" "bat" "tofi" "boxes" "foot" "bluetui" "pokemon-colorscripts-git"
-      "spotube" "spotify-adblock-git"
+      "spotify-adblock-git"  "hypnotix-wayland"
       "arc-gtx-theme" "papirus-icon-theme" "whyq"
       "swww" "bleachbit" "sof-bin" "zathura" "spicetify-cli"
       "iwmenu" "bzmenu" "setzer-git" )
@@ -28,7 +28,7 @@ fi
 
       # ── System & shell utilities
       "acpi" "acpid" "avahi" "base-devel" "curl" "dialog" "dosfstools" "exa" "file-roller" "gettext" "mtools" "pv"
-      "unzip" "usbutils" "xdotool" "util-linux" "pipewire-libcamera" "ripgrep" "wf-recorder" "df"
+      "unzip" "usbutils" "xdotool" "util-linux" "pipewire-libcamera" "ripgrep" "wf-recorder" "duf"
 
       # ── Terminal & clipboard tools
       "grim" "kitty" "libnotify" "redshift" "slurp" "konsole" "fish" "eza" "starship" "wl-clip-persist"
@@ -43,7 +43,7 @@ fi
       "parted" "gptfdisk" "exfatprogs" "ntfs-3g" "e2fsprogs" "usbmuxd" "ifuse" "libimobiledevice"
 
       # ── Media & extras
-      "vlc" "kodi" "unrar" "qbittorrent" "feh" "hypnotix-wayland"
+      "vlc" "kodi" "unrar" "qbittorrent" "feh"
 
       # ── Dev tools
       "rsync" "lazygit" "firefoxpwa"
@@ -173,6 +173,7 @@ fi
     theme.patch.sh "Grukai" ./Grukai
 
     # Enabling some wallbash features
+    chmod ~/.config/hyde/wallbash/scripts/*
     bash ~/.config/hyde/wallbash/scripts/cava.sh
     bash ~/.config/hyde/wallbash/scripts/code.sh
     bash ~/.config/hyde/wallbash/scripts/chrome.sh
@@ -184,12 +185,6 @@ fi
     cd ~/.config/waybar/waybar-module-pomodoro/
     cargo build
     echo "Waybar Plugins built!"
-
-    ### Build Neovim Plugins ###
-    echo "Building Neovim plugins..."
-    cd ~/.local/share/nvim/lazy/command-t/lua/wincent/commandt/lib
-    make clean && make
-    echo "Neovim plugins built!"
 
     echo "Applying GTK and icon themes..."
     bash ~/Arch_Install/colorschemes/purple.sh

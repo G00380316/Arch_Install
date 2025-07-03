@@ -3,8 +3,6 @@
 
 scrDir="$(dirname "$(realpath "$0")")"
 SCRIPTSDIR="$HOME/.config/hypr/scripts"
-wallpaper_current="$HOME/.config/hypr/wallpaper_effects/.wallpaper_current"
-wallpaper_modified="$HOME/.config/hypr/wallpaper_effects/.wallpaper_modified"
 
 # shellcheck disable=SC1091
 source "${scrDir}/globalcontrol.sh"
@@ -59,7 +57,7 @@ Wall_Cache() {
         ln -fs "${thmbDir}/${wallHash[setIndex]}.quad" "${wallQad}"
         ln -fs "${dcolDir}/${wallHash[setIndex]}.dcol" "${wallDcl}"
     fi
-
+    ags -q && ags &
 }
 
 Wall_Change() {

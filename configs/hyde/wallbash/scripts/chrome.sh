@@ -5,7 +5,8 @@
 
 # shellcheck disable=SC2154
 # shellcheck disable=SC1091
-if ! source "${cacheDir}/wallbash/shell-colors"; then
+cacheDir=$HOME/.cache
+if ! source "${cacheDir}/hyde/wallbash/shell-colors"; then
   print_log -sec "chrome" -err "Failed to load" " 'shell-colors' file"
   exit 1
 fi
@@ -28,13 +29,13 @@ prepare() {
     rm -rf "$THEME_DIR"
   fi
 
-  mkdir "$THEME_DIR"
-  mkdir "$THEME_DIR/images"
+  mkdir -p "$THEME_DIR"
+  mkdir -p "$THEME_DIR/images"
 
   # Copy wallpaper so it can be used in theme
   background_image="images/theme_ntp_background_norepeat.png"
   # shellcheck disable=SC2154
-  cp "${cacheDir}/wall.set" "$THEME_DIR/$background_image"
+  cp "${cacheDir}/hyde/wall.set" "$THEME_DIR/$background_image"
 
 }
 
@@ -83,4 +84,4 @@ EOF
 
 prepare
 generate
-print_log -sec "wallbash" -stat "generated" "'Wallbash Chrome Theme' at '$THEME_DIR'"
+# print_log -sec "wallbash" -stat "generated" "'Wallbash Chrome Theme' at '$THEME_DIR'"
