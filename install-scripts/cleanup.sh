@@ -279,6 +279,9 @@ fi
       fi
     done
 
+    echo "Making sure all the Scripts for HYDE has been built"
+    chmod +x ~/.config/scripts/Hyde_Inject/Scripts/*
+
     ### Remove Orphaned Packages ###
     echo "Removing orphaned packages..."
     if pacman -Qdtq &> /dev/null; then
