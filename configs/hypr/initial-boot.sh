@@ -71,6 +71,8 @@ if [ ! -f "$HOME/.config/hypr/.initial_startup_done" ]; then
     xdg-mime default thunar.desktop inode/directory application/x-gnome-saved-search
     xdg-user-dirs-update
 
+    wallpaper.sh -S
+
     # Caching fonts once again
     fc-cache -fv
 
