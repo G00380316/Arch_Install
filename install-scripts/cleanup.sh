@@ -28,7 +28,7 @@ fi
 
       # ── System & shell utilities
       "acpi" "acpid" "avahi" "base-devel" "curl" "dialog" "dosfstools" "exa" "file-roller" "gettext" "mtools" "pv"
-      "unzip" "usbutils" "xdotool" "util-linux" "pipewire-libcamera" "ripgrep" "wf-recorder" "duf"
+      "unzip" "usbutils" "xdotool" "util-linux" "pipewire-libcamera" "ripgrep" "wf-recorder" "duf" "uwsm"
 
       # ── Terminal & clipboard tools
       "grim" "kitty" "libnotify" "redshift" "slurp" "konsole" "fish" "eza" "starship" "wl-clip-persist"
