@@ -28,7 +28,7 @@ fi
 
       # ── System & shell utilities
       "acpi" "acpid" "avahi" "base-devel" "curl" "dialog" "dosfstools" "exa" "file-roller" "gettext" "mtools" "pv"
-      "unzip" "usbutils" "xdotool" "util-linux" "pipewire-libcamera" "ripgrep" "wf-recorder" "duf" "uwsm"
+      "unzip" "usbutils" "xdotool" "util-linux" "pipewire-libcamera" "ripgrep" "wf-recorder" "duf" "uwsm" "libnewt"
 
       # ── Terminal & clipboard tools
       "grim" "kitty" "libnotify" "redshift" "slurp" "konsole" "fish" "eza" "starship" "wl-clip-persist"
@@ -215,11 +215,11 @@ fi
     systemctl --user daemon-reload
     # systemctl --user enable --now wallust-manager.service
     # systemctl --user enable --now easyeffects-manager.service
-    systemctl --user enable --now waybar-manager.service 
+    systemctl --user enable --now waybar-manager.service
     systemctl --user enable --now lid-manager.service
     systemctl --user start wallust-manager.service
     # systemctl --user start easyeffects-manager.service
-    systemctl --user start waybar-manager.service 
+    systemctl --user start waybar-manager.service
     systemctl --user start lid-manager.service
 
     if loginctl show-user "$USER" | grep -q 'Linger=yes'; then
