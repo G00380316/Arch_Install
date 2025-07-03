@@ -9,14 +9,14 @@ if ! source "$(dirname "$(readlink -f "$0")")/Global_functions.sh"; then
     exit 1
 fi
 
-    aur_packages=( "geany" "geany-plugins" "visual-studio-code-bin" "zed"
-      "microsoft-edge-stable-bin" "google-chrome"
-      "zen-browser-bin" "bluemail"
-      "onlyoffice-bin" "obsidian" "flatseal" "blanket" "vesktop"
+    aur_packages=(
+      # "geany" "geany-plugins" "zen-browser-bin" "zed"  "foot"
+      "visual-studio-code-bin" "microsoft-edge-stable-bin" "google-chrome"
+      "bluemail" "onlyoffice-bin" "obsidian" "flatseal" "blanket" "vesktop"
       "keypunch-git" "openai-chatgpt-nativefier"
       "onedrive-abraunegg" "dbgate-beta-bin" "postman-bin"
       "filebot" "obs-studio" "7zip"
-      "fzf" "bat" "tofi" "boxes" "foot" "bluetui" "pokemon-colorscripts-git"
+      "fzf" "bat" "tofi" "boxes" "bluetui" "pokemon-colorscripts-git"
       "spotify-adblock-git"  "hypnotix-wayland"
       "arc-gtx-theme" "papirus-icon-theme" "whyq"
       "swww" "bleachbit" "sof-bin" "zathura" "spicetify-cli"
@@ -114,7 +114,7 @@ fi
 
     if [[ "$answer3" == "y" || "$answer3" == "Y" ]]; then
 
-        enable-passwordless.sh ~/.config/hypr ~/.config/scripts
+        enable-passwordless.sh ~/.config
 
     else
         echo "Didn't give scripts root privilages"
@@ -148,6 +148,8 @@ fi
     ### Add Themes ###
     echo "Adding Extra Hyprlock Theme..."
     sudo cp -r ~/Arch_Install/install-scripts/Extra/Candy_Modified /usr/share/sddm/themes
+    echo "Making sure there is a Sddm Config for Kool Script"
+    sudo cp -r ~/Arch_Install/install-scripts/Extra/etc/sddm.conf /etc/
 
     cd ~/.cache/hyde/themepatcher/
     git clone https://github.com/Maroc02/Moonlight.git
