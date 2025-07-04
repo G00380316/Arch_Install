@@ -42,13 +42,6 @@ if [[ $EUID -eq 0 ]]; then
     exit 1
 fi
 
-# Check if PulseAudio package is installed
-if pacman -Qq | grep -qw '^pulseaudio$'; then
-    echo "$ERROR PulseAudio is detected as installed. Uninstall it first or edit install.sh on line 211 (execute_script 'pipewire.sh')." | tee -a "$LOG"
-    printf "\n%.0s" {1..2}
-    exit 1
-fi
-
 # Check if base-devel is installed
 if pacman -Q base-devel &> /dev/null; then
     echo "base-devel is already installed."
@@ -334,10 +327,6 @@ sleep 1
 echo "${INFO} Installing ${SKY_BLUE}Hyprland additional packages...${RESET}" | tee -a "$LOG"
 sleep 1
 execute_script "01-hypr-pkgs.sh"
-
-echo "${INFO} Installing ${SKY_BLUE}pipewire and pipewire-audio...${RESET}" | tee -a "$LOG"
-sleep 1
-execute_script "pipewire.sh"
 
 echo "${INFO} Installing ${SKY_BLUE}necessary fonts...${RESET}" | tee -a "$LOG"
 sleep 1
