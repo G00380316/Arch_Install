@@ -42,8 +42,6 @@ fi
 cp "$template_file" "$output_file"
 
 # Replace in Waybar CSS
-envsubst '$font_name' < ~/.config/waybar/style/Hyde.css > ~/.config/waybar/style.css.tmp &&
-    mv ~/.config/waybar/style.css.tmp ~/.config/waybar/style.css
+envsubst '$font_name' < ~/.config/waybar/style/Hyde.css > ~/.config/waybar/style.css.tmp && mv ~/.config/waybar/style.css.tmp ~/.config/waybar/style.css
 
-envsubst '${i_theme}' < ~/.config/waybar/ModulesHyde > ~/.config/waybar/ModulesHyde.tmp &&
-    mv ~/.config/waybar/ModulesHyde.tmp ~/.config/waybar/ModulesHyde
+envsubst '${i_theme}' < ~/.config/waybar/ModulesHyde > ~/.config/waybar/ModulesHyde.tmp && mv ~/.config/waybar/ModulesHyde.tmp ~/.config/waybar/ModulesHyde

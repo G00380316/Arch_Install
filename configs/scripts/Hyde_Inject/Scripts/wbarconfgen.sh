@@ -56,4 +56,3 @@ killall waybar
 waybar & disown
 
 echo "Switched to config: $next_config"
-
