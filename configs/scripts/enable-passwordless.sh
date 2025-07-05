@@ -23,6 +23,13 @@ if sudo test -f "$SUDOERS_D_FILE"; then
     echo "$EXISTING_CONTENT" > "$TMP_FILE"
 fi
 
+# Replace existing broad ALL lines with passwordless version
+sed -i "/^$USER ALL=(ALL) ALL$/d" "$TMP_FILE"
+if ! grep -Fxq "$USER ALL=(ALL) NOPASSWD: ALL" "$TMP_FILE"; then
+    echo "$USER ALL=(ALL) NOPASSWD: ALL" >> "$TMP_FILE"
+    MODIFIED=true
+fi
+
 MODIFIED=false
 for path in "$@"; do
     REAL_PATH=$(realpath "$path" 2>/dev/null)

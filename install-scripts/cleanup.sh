@@ -159,8 +159,6 @@ fi
     git clone https://github.com/cyb3rgh0u1/Another-World.git
     theme.patch.sh "Another World" ./Another-World
 
-    echo '1' | theme.patch.sh "Abyssal-Wave" "https://github.com/Itz-Abhishek-Tiwari/Abyssal-Wave"
-
     cd ~/Arch_Install/install-scripts/Extra/Themes
     theme.patch.sh "Hack the Box" ./HackTheBox
     theme.patch.sh "MacOs" ./MacOs
@@ -172,7 +170,14 @@ fi
     theme.patch.sh "Obsidian-Purple" ./Obsidian-Purple
     theme.patch.sh "Eternal Arctic" ./Eternal_Arctic
     theme.patch.sh "Electra" ./Electra
-    theme.patch.sh "Grukai" ./Grukai
+    theme.patch.sh "Nightbrew" ./Nightbrew
+    theme.patch.sh "Tundra" ./Tundra
+    theme.patch.sh "LimeFrenzy" "./LimeFrenzy"
+    theme.patch.sh "Amethyst-Aura" "./Amethyst-Aura"
+
+    theme.import.py --fetch all
+
+    echo '1' | theme.patch.sh "Abyssal-Wave" "https://github.com/Itz-Abhishek-Tiwari/Abyssal-Wave"
 
     # Enabling some wallbash features
     chmod ~/.config/hyde/wallbash/scripts/*

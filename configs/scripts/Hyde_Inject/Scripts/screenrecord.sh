@@ -101,6 +101,8 @@ handle_recording() {
         [[ -n "$OUTPUT" ]] && parameters+=(--output "$OUTPUT")
     fi
 
+    notify-send -a "HyDE Alert" "Recording has begun"
+
     tmp_thumbnail=$(mktemp -t thumbnail_XXXXXX.png)
     if [[ -z "$GEOM" ]]; then
         "$LIB_DIR/hyde/grimblast" save active "$tmp_thumbnail"
@@ -149,3 +151,4 @@ done
 if [[ $# -eq 0 ]]; then
     USAGE
 fi
+

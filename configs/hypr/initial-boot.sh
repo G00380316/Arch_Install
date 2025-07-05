@@ -79,5 +79,7 @@ if [ ! -f "$HOME/.config/hypr/.initial_startup_done" ]; then
     # Create a marker file to indicate that the script has been executed.
     touch "$HOME/.config/hypr/.initial_startup_done"
 
+    theme.import.py --fetch all &
+
     exit
 fi
