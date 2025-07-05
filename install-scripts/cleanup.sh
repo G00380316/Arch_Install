@@ -111,6 +111,7 @@ fi
     fi
 
     echo "Do you want all of G00380316 Scripts to be passwordless (eg. Setting sdm theme, changing Battery Mode to Threshold mode)"
+    read -r answer3
 
     if [[ "$answer3" == "y" || "$answer3" == "Y" ]]; then
 
@@ -172,10 +173,10 @@ fi
     theme.patch.sh "Electra" ./Electra
     theme.patch.sh "Nightbrew" ./Nightbrew
     theme.patch.sh "Tundra" ./Tundra
-    theme.patch.sh "LimeFrenzy" "./LimeFrenzy"
-    theme.patch.sh "Amethyst-Aura" "./Amethyst-Aura"
+    theme.patch.sh "LimeFrenzy" ./LimeFrenzy
+    theme.patch.sh "Amethyst-Aura" ./Amethyst-Aura
 
-    theme.import.py --fetch all
+    theme.import.py --fetch all &
 
     echo '1' | theme.patch.sh "Abyssal-Wave" "https://github.com/Itz-Abhishek-Tiwari/Abyssal-Wave"
 
