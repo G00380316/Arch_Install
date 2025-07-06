@@ -77,7 +77,7 @@ sudo pacman -S --noconfirm --needed parallel
 
 # Core dev stack
 echo "Installing development tools..."
-sudo pacman -S --noconfirm --needed easyeffects lsp-plugins ladspa calf 
+sudo pacman -S --noconfirm --needed lsp-plugins ladspa calf #easyeffects
 sudo pacman -S --noconfirm --needed php lua
 sudo pacman -S --noconfirm --needed zoxide tmux neovim
 sudo pacman -S --noconfirm --needed cmake github-cli lazygit gcc jdk-openjdk ruby
