@@ -15,7 +15,7 @@ fi
       "bluemail" "onlyoffice-bin" "obsidian" "flatseal" "blanket" "vesktop"
       "keypunch-git" "openai-chatgpt-nativefier"
       "onedrive-abraunegg" "dbgate-beta-bin" "postman-bin"
-      "filebot" "obs-studio" "7zip"
+      "filebot" "obs-studio" "7zip" "github-desktop-bin"
       "fzf" "bat" "tofi" "boxes" "bluetui" "pokemon-colorscripts-git"
       "spotify-adblock-git"  "hypnotix-wayland"
       "arc-gtx-theme" "papirus-icon-theme" "whyq"
