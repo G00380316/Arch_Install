@@ -17,7 +17,7 @@ fi
       "onedrive-abraunegg" "dbgate-beta-bin" "postman-bin"
       "filebot" "obs-studio" "7zip" "github-desktop-bin"
       "fzf" "bat" "tofi" "boxes" "bluetui" "pokemon-colorscripts-git"
-      "spotify-adblock-git"  "hypnotix-wayland"
+      "spotify-adblock-git"  "hypnotix-wayland" "pwvucontrol"
       "arc-gtx-theme" "papirus-icon-theme" "whyq"
       "swww" "bleachbit" "sof-bin" "zathura" "spicetify-cli"
       "iwmenu" "bzmenu" "setzer-git" )
@@ -181,7 +181,7 @@ fi
     echo '1' | theme.patch.sh "Abyssal-Wave" "https://github.com/Itz-Abhishek-Tiwari/Abyssal-Wave"
 
     # Enabling some wallbash features
-    chmod ~/.config/hyde/wallbash/scripts/*
+    chmod +x ~/.config/hyde/wallbash/scripts/*
     bash ~/.config/hyde/wallbash/scripts/cava.sh
     bash ~/.config/hyde/wallbash/scripts/code.sh
     bash ~/.config/hyde/wallbash/scripts/chrome.sh
@@ -224,7 +224,7 @@ fi
     # systemctl --user enable --now waybar-manager.service
     systemctl --user enable --now lid-manager.service
     systemctl --user start wallust-manager.service
-    # systemctl --user start easyeffects-manager.service
+    systemctl --user start easyeffects-manager.service
     systemctl --user start waybar-manager.service
     systemctl --user start lid-manager.service
 
