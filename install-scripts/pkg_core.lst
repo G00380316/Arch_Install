@@ -6,7 +6,7 @@ pipewire-jack                                          # pipewire jack client
 pipewire-pulse                                         # pipewire pulseaudio client
 gst-plugin-pipewire                                    # pipewire gstreamer client
 wireplumber                                            # pipewire session manager
-pavucontrol                                            # pulseaudio volume control
+pavucontrol-qt                                            # pulseaudio volume control
 pamixer                                                # pulseaudio cli mixer
 networkmanager                                         # network manager
 network-manager-applet                                 # network manager system tray utility

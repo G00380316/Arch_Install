@@ -21,7 +21,7 @@ libnotify
 mtools
 networkmanager
 papirus-icon-theme
-pavucontrol
+pavucontrol-qt
 redshift
 slurp
 thunar-archive-plugin

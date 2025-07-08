@@ -52,7 +52,7 @@ fi
       "dolphin" "nwg-look" "btop" "gparted" "flatpak"
 
       # ── Pipewire (audio stack)
-      "pipewire" "pipewire-pulse" "pipewire-jack" "pavucontrol"
+      "pipewire" "pipewire-pulse" "pipewire-jack" "pavucontrol-qt"
 
       # ── Qt libraries
       "qt5-declarative" "qt5-quickcontrols" "qt5-quickcontrols2" "qt5-graphicaleffects"

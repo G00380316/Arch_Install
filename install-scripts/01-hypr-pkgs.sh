@@ -26,7 +26,7 @@ hypr_package=(
   nano
   network-manager-applet
   pamixer
-  pavucontrol
+  pavucontrol-qt
   playerctl
   python-requests
   python-pyquery

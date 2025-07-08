@@ -103,7 +103,7 @@
       ]
     },
     "scroll-step": 5,
-    "on-click": "pavucontrol"
+    "on-click": "pavucontrol-qt"
   },
   "memory": {
     "interval": 1,
