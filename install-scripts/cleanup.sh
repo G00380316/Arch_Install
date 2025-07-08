@@ -223,6 +223,7 @@ fi
     # systemctl --user enable --now easyeffects-manager.service
     # systemctl --user enable --now waybar-manager.service
     systemctl --user enable --now lid-manager.service
+    systemctl --user enable pipewire-pulse.service
     systemctl --user start wallust-manager.service
     systemctl --user start easyeffects-manager.service
     systemctl --user start waybar-manager.service

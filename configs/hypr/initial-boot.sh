@@ -70,6 +70,7 @@ if [ ! -f "$HOME/.config/hypr/.initial_startup_done" ]; then
     ### Service Configuration ###
     xdg-mime default thunar.desktop inode/directory application/x-gnome-saved-search
     xdg-user-dirs-update
+    systemctl --user enable pipewire-pulse.service
 
     wallpaper.sh -S
 
