@@ -82,6 +82,9 @@ sudo pacman -S --noconfirm --needed php lua
 sudo pacman -S --noconfirm --needed zoxide tmux neovim
 sudo pacman -S --noconfirm --needed cmake github-cli lazygit gcc jdk-openjdk ruby
 sudo pacman -S --noconfirm --needed dotnet-runtime aspnet-runtime dotnet-sdk
+sudo pacman -S --noconfirm --needed jdk8-openjdk jdk17-openjdk
+echo 'export JAVA_HOME=/usr/lib/jvm/java-8-openjdk' >> ~/.zshrc
+echo 'export PATH="$JAVA_HOME/bin:$PATH"' >> ~/.zshrc
 
 # Install Dotnet
 if command -v dotnet >/dev/null 2>&1; then
@@ -161,6 +164,8 @@ else
     sudo sdkmanager --install "cmdline-tools;latest"
     sudo sdkmanager "platforms;android-34"
     pacman -S --noconfirm --needed android-sdk android-sdk-platform-tools android-sdk-build-tools
+    yay -Rns sdkmanager
+    # echo 'export PATH="$PATH:~/.android/cmdline-tools/latest/bin"' >> ~/.zshrc
     sudo chown -R $USER:$USER /opt/android-sdk
     flutter doctor
 fi
