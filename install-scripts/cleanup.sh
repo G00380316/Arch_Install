@@ -121,6 +121,17 @@ fi
         echo "Didn't give scripts root privilages"
     fi
 
+    echo "Do you want to swap Pipewire-Media-Session for Wireplumber? (For my personal I do as Wireplumber gives me trouble)"
+    read -r answer4
+
+    if [[ "$answer4" == "y" || "$answer4" == "Y" ]]; then
+        sudo pacman -Rdd wireplumber
+        sudo pacman -S pipewire-media-session
+    else
+        echo "Didn't want to remove Wireplumber"
+    fi
+
+    if 
     # Fixes Chaotic-Aur
     sudo pacman -Fy
     echo "Automating some tasks for you..."
