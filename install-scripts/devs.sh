@@ -155,8 +155,13 @@ else
     git clone https://github.com/flutter/flutter.git -b stable
     sudo mv flutter /opt/flutter
     echo 'export PATH="$PATH:/opt/flutter/bin"' >> ~/.zshrc
+    echo 'export CHROME_EXECUTABLE="/usr/bin/google-chrome-stable"' >> ~/.zshrc
     zsh -i -c "source ~/.zshrc"
-    yay -S --noconfirm --needed android-studio android-sdk android-ndk
+    yay -S --noconfirm --needed android-studio sdkmanager
+    sudo sdkmanager --install "cmdline-tools;latest"
+    sudo sdkmanager "platforms;android-34"
+    pacman -S --noconfirm --needed android-sdk android-sdk-platform-tools android-sdk-build-tools
+    sudo chown -R $USER:$USER /opt/android-sdk
     flutter doctor
 fi
 
