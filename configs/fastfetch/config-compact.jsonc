@@ -1,23 +1,30 @@
 {
     "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
- "logo": {
-  "source": "~/.config/fastfetch/arch.png",
-  "type": "kitty-direct",
-  "height": 10,
-  "width": 20,
-  "padding": {
-    "top": 1
-    }
-  },
+    "logo": {
+        "source": "~/.cache/hyde/wall.quad",
+        "type": "kitty-direct",
+        "height": 20,
+        "width": 40,
+        "padding": {
+            "top": 1,
+            "left": 5
+        }
+    },
     "display": {
         "separator": " -> "
     },
     "modules": [
         "break",
+        "break",
+        "break",
+        "break",
+        "break",
+        "break",
+        "break",
         {
             "type": "title",
             "keyWidth": 10,
-			"format": "         {6}{7}{8}"
+            "format": "         {6}{7}{8}"
         },
         {
             "type": "custom",
@@ -70,6 +77,6 @@
             "type": "custom",
             "format": "   \u001b[31m  \u001b[32m  \u001b[33m  \u001b[34m  \u001b[35m  \u001b[36m  \u001b[37m  \u001b[90m "
         },
-		"break",
+        "break",
     ]
 }
