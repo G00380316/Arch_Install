@@ -37,18 +37,18 @@ mkdir -p ~/.config
 cp -r ./nvim ~/.config/nvim/
 
 # Clone tpm for tmux
-echo "Cloning tpm for tmux configuration..."
-if [ -d ./tpm/.git ]; then
-    echo "TPM already exists in ./tpm, pulling latest changes..."
-    git -C ./tpm pull
-else
-    echo "Cloning TPM fresh into ./tpm..."
-    git clone https://github.com/tmux-plugins/tpm ./tpm
-fi
-
-rm -rf ~/.tmux/plugins/tpm
-mkdir -p ~/.tmux/plugins/
-cp -r ./tpm ~/.tmux/plugins/tpm
+# echo "Cloning tpm for tmux configuration..."
+# if [ -d ./tpm/.git ]; then
+#     echo "TPM already exists in ./tpm, pulling latest changes..."
+#     git -C ./tpm pull
+# else
+#     echo "Cloning TPM fresh into ./tpm..."
+#     git clone https://github.com/tmux-plugins/tpm ./tpm
+# fi
+#
+# rm -rf ~/.tmux/plugins/tpm
+# mkdir -p ~/.tmux/plugins/
+# cp -r ./tpm ~/.tmux/plugins/tpm
 
 # Setup dirs
 dircolors -p > ~/.dircolors
@@ -79,7 +79,7 @@ sudo pacman -S --noconfirm --needed parallel
 echo "Installing development tools..."
 sudo pacman -S --noconfirm --needed lsp-plugins ladspa calf easyeffects
 sudo pacman -S --noconfirm --needed php lua
-sudo pacman -S --noconfirm --needed zoxide tmux neovim
+sudo pacman -S --noconfirm --needed zoxide neovim #tmux
 sudo pacman -S --noconfirm --needed cmake github-cli lazygit gcc jdk-openjdk ruby
 sudo pacman -S --noconfirm --needed dotnet-runtime aspnet-runtime dotnet-sdk
 sudo pacman -S --noconfirm --needed jdk8-openjdk jdk17-openjdk

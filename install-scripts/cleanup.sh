@@ -61,7 +61,7 @@ fi
       "firefox" "inotify-tools"
 
       # ── Dev
-      "tmux" "neovim" "zoxide"
+      "neovim" "zoxide" #"tmux"
 
       # ── Fixing Suspend & Hibernate
       "systemd-resolvconf" "systemd" "systemd-sysvcompat"
