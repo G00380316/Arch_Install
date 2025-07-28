@@ -10,16 +10,16 @@ if ! source "$(dirname "$(readlink -f "$0")")/Global_functions.sh"; then
 fi
 
     aur_packages=(
-      # "geany" "geany-plugins" "zen-browser-bin" "zed"  "foot"
+      # "geany" "geany-plugins" "zen-browser-bin" "zed" "foot" "bleachbit"
       "visual-studio-code-bin" "microsoft-edge-stable-bin" "google-chrome"
       "bluemail" "onlyoffice-bin" "obsidian" "flatseal" "blanket" "vesktop"
-      "keypunch-git" "openai-chatgpt-nativefier"
+      "keypunch-git" "openai-chatgpt-nativefier" "downgrade" "youtube-music-bin"
       "onedrive-abraunegg" "dbgate-beta-bin" "postman-bin"
       "filebot" "obs-studio" "7zip" "github-desktop-bin"
-      "fzf" "bat" "tofi" "boxes" "bluetui" "pokemon-colorscripts-git"
+      "fzf" "bat" "tofi"  "bluetui" "pokemon-colorscripts-git"
       "spotify-adblock-git"  "hypnotix-wayland" "pwvucontrol"
-      "arc-gtx-theme" "papirus-icon-theme" "whyq"
-      "swww" "bleachbit" "sof-bin" "zathura" "spicetify-cli"
+      "arc-gtx-theme" "papirus-icon-theme" "whyq" "freetube"
+      "swww" "sof-bin" "zathura" "spicetify-cli" "quickemu-git"
       "iwmenu" "bzmenu" "setzer-git" )
 
     pacman_packages=(
@@ -43,7 +43,7 @@ fi
       "parted" "gptfdisk" "exfatprogs" "ntfs-3g" "e2fsprogs" "usbmuxd" "ifuse" "libimobiledevice"
 
       # ── Media & extras
-      "vlc" "kodi" "unrar" "qbittorrent" "feh"
+      "kodi" "unrar" "qbittorrent" "feh" "mousepad" "audacity"
 
       # ── Dev tools
       "rsync" "lazygit" "firefoxpwa"
@@ -65,6 +65,12 @@ fi
 
       # ── Fixing Suspend & Hibernate
       "systemd-resolvconf" "systemd" "systemd-sysvcompat"
+
+      # ── Utilities
+      "gparted" "nitrogen" "numlockx" "galculator" "cpu-x" "udns-utils"
+      "whois" "tree" "htop" "i7z"
+      "v4l2loopback-dkms" "lm_sensors" "ripgrep" 
+
     )
 
     aur_failures=()

@@ -121,7 +121,7 @@
     chmod +x *.sh
 
     # Available scripts
-    SCRIPTS=( "zsh.sh" "devs.sh" "wallust.sh" "AniInstall.sh" "install.sh" "vanilla_sway.sh" "packages.sh" "printers.sh" "displaylinkinstall.sh" "nerdfonts.sh" "wallpapers.sh" "util.sh" "cleanup.sh")
+    SCRIPTS=( "zsh.sh" "devs.sh" "wallust.sh" "AniInstall.sh" "install.sh" "vanilla_sway.sh" "printers.sh" "displaylinkinstall.sh" "nerdfonts.sh" "wallpapers.sh" "util.sh" "main.sh")
 
     # Function to run a script
     run_script() {

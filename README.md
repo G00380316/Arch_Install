@@ -38,13 +38,13 @@ chmod +x install.sh
 ## Post-Install
 
 ```
-After the installation is complete reboot and then run "util.sh" and "cleanup.sh"
+After the installation is complete reboot and then run "util.sh" and "main.sh"
 once more, And any other scripts in the install-scripts directory if needs be.
 
 This will tidy up the Installation a bit and make sure some plugin,
 packages are built (Run multiple times to make sure all is well)
 
-~/Arch_Install/install-scripts/cleanup.sh
+~/Arch_Install/install-scripts/main.sh
 
 Some packages may be missing but just use the "in <package>" to install any
 packages you would like.
