@@ -59,10 +59,6 @@ If you want to check out more available themes and make sure all the themes are 
 
 To get the rofi styling activated "CTRL" + "Windows" + "R" and then just press enter to select the default style
 
-If you want pwa apps just install the plugin in extensions in firefox the package should be already installed
-after go to the configuration of the extension and click update web apps option
-
-
 Lastly I recommend using uwsm hyprland it feels cleaner to use then the primary Hyprland or maybe is just me !!!😅
 ```
 
