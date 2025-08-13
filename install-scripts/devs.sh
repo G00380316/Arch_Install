@@ -52,7 +52,7 @@ cp -r ./nvim ~/.config/nvim/
 
 # Setup dirs
 dircolors -p > ~/.dircolors
-mkdir -p ~/Coding/Projects ~/.cache/hyde/wallpapers
+mkdir -p ~/Work/Projects ~/.cache/hyde/wallpapers
 
 # Install JetBrains Nerd Font if not already installed
 echo "Checking for JetBrains Mono Nerd Font..."

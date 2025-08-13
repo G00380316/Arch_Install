@@ -291,7 +291,6 @@ safe_clone "https://github.com/cyb3rgh0u1/Another-World.git" "./Another-World" &
 
 cd "$HOME/Arch_Install/install-scripts/Extra/Themes" || true
 theme.patch.sh "Hack the Box" ./HackTheBox || true
-theme.patch.sh "MacOs" ./MacOs || true
 theme.patch.sh "Windows 11" ./Windows11 || true
 cp -r ~/Pictures/wallpapers ./G00380316/Configs/.config/hyde/themes/G00380316 || true
 theme.patch.sh "G00380316" ./G00380316 || true

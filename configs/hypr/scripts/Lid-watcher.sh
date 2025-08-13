@@ -34,4 +34,3 @@ elif [[ "$LID_STATE" == "open" && "$MONITOR_ACTIVE" == "no" ]]; then
     hyprctl keyword monitor "$MONITOR_NAME, 2880x1800@60.0,0x1000,2"
     pkill -x waybar
 fi
-
