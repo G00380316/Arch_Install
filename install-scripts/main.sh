@@ -77,7 +77,7 @@ require_command theme.import.py || true
 # === Package Arrays (deduplicated) ===
 aur_packages=(
   "visual-studio-code-bin" "microsoft-edge-stable-bin" "google-chrome"
-  "bluemail" "onlyoffice-bin" "obsidian" "flatseal" "blanket" "vesktop"
+  "onlyoffice-bin" "obsidian" "flatseal" "blanket" "vesktop"
   "keypunch-git" "openai-chatgpt-nativefier" "downgrade" "youtube-music-bin"
   "onedrive-abraunegg" "dbgate-beta-bin" "postman-bin" "wayland-pipewire-idle-inhibit"
   "filebot" "obs-studio" "7zip" "github-desktop-bin"
