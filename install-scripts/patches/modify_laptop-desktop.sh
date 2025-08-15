@@ -8,3 +8,5 @@ for file in *.desktop; do
     fi
 done
 
+sudo rm -rf /opt/stremio/smartcode-stremio.desktop
+
