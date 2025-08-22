@@ -97,7 +97,7 @@ pacman_packages=(
   "xfce4-power-manager" "networkmanager" "network-manager-applet"
   "parted" "gptfdisk" "exfatprogs" "ntfs-3g" "e2fsprogs" "usbmuxd" "ifuse" "libimobiledevice"
   "kodi" "unrar" "qbittorrent" "feh" "mousepad" "audacity"
-  "rsync" "lazygit"
+  "rsync" "lazygit" "android-tools"
   "dolphin" "nwg-look" "btop" "gparted" "flatpak"
   "pipewire" "pipewire-pulse" "pipewire-jack" "pavucontrol-qt"
   "qt5-declarative" "qt5-quickcontrols" "qt5-quickcontrols2" "qt5-graphicaleffects"
