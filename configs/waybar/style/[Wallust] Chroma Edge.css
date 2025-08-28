@@ -226,6 +226,7 @@ tooltip label {
 #wireplumber {
   color: #ffd580;
 }
+
 #backlight {
   color: #8fbcbb;
   padding-right: 2px;
@@ -306,11 +307,11 @@ label:focus {
   background-color: #eb4d4b;
 }
 
-#tray > .passive {
+#tray>.passive {
   -gtk-icon-effect: dim;
 }
 
-#tray > .needs-attention {
+#tray>.needs-attention {
   -gtk-icon-effect: highlight;
   background-color: #eb4d4b;
 }
@@ -365,4 +366,61 @@ label:focus {
 #pulseaudio-slider highlight {
   min-height: 10px;
   border-radius: 5px;
+}
+
+/* Hyde-style layout for custom modules with balanced left/right */
+#custom-power {
+  padding-left: 6px;
+  /* less left padding */
+  padding-right: 10px;
+  /* more right padding */
+  border-radius: 12px;
+}
+
+#custom-power_vertical {
+  padding-left: 6px;
+  padding-right: 6px;
+  border-radius: 12px;
+}
+
+#idle_inhibitor {
+  padding-left: 10px;
+  padding-right: 6px;
+  border-radius: 12px;
+}
+
+/* Hyde “end” modules: add extra right padding to balance left/right spacing */
+#custom-r_end,
+#custom-rr_end,
+#custom-sr_end,
+#custom-power_vertical {
+  padding-right: 10px;
+}
+
+#custom-l_end,
+#custom-rl_end,
+#custom-sl_end {
+  padding-left: 10px;
+}
+
+/* Standard Hyde modules */
+#custom-wallchange,
+#custom-cliphist,
+#custom-hypridle,
+#custom-hyprsunset,
+#custom-github_hyde,
+#custom-cpuinfo,
+#custom-gpuinfo,
+#custom-theme,
+#custom-wbar,
+#custom-pomodoro {
+  color: #e5e5e5;
+  /* color: #bf616a; */
+  border-radius: 12px;
+  background-color: rgba(50, 50, 50, 0.1);
+  border: 1px solid @color12;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 11px;
+  padding-right: 14px;
 }

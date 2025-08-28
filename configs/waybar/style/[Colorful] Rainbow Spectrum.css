@@ -169,6 +169,7 @@ tooltip label {
   background-color: #fab387;
   color: black;
 }
+
 #custom-keyboard,
 #keyboard-state,
 #keyboard-state label,
@@ -188,10 +189,12 @@ tooltip label {
 #tray {
   background-color: #b4befe;
 }
-#tray > .passive {
+
+#tray>.passive {
   -gtk-icon-effect: dim;
 }
-#tray > .needs-attention {
+
+#tray>.needs-attention {
   -gtk-icon-effect: highlight;
 }
 
@@ -270,6 +273,7 @@ tooltip label {
 #bluetooth {
   background-color: #89dceb;
 }
+
 #window {
   background-color: #89dceb;
 }
@@ -282,6 +286,7 @@ tooltip label {
 #pulseaudio.bluetooth {
   background-color: #f5c2e7;
 }
+
 #pulseaudio.muted {
   background-color: #313244;
   color: #cdd6f4;
@@ -291,6 +296,7 @@ tooltip label {
   background-color: #89b4fa;
   padding-right: 12px;
 }
+
 #network.disconnected,
 #network.disabled {
   background-color: #313244;
@@ -318,4 +324,77 @@ tooltip label {
 #pulseaudio-slider highlight {
   min-height: 10px;
   border-radius: 5px;
+}
+
+/* Hyde-specific custom modules to add */
+#custom-wallchange,
+#custom-cliphist,
+#custom-gpuinfo,
+#custom-theme,
+#custom-wbar {
+  border-radius: 16px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-right: 9px;
+  padding-left: 6px;
+  color: #3a3b3c;
+  border: 1px solid #b4befe;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+#custom-power {
+  padding-left: 6px;
+  padding-right: 10px;
+}
+
+#custom-power_vertical {
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+#idle_inhibitor {
+  padding-left: 10px;
+  padding-right: 6px;
+}
+
+/* Hyde-specific custom modules for Rainbow Spectrum */
+#custom-wallchange {
+  background-color: #94e2d5;
+  /* tealish, fits the palette */
+  border-radius: 12px;
+  color: #3a3b3c;
+  border: 1px solid #b4befe;
+}
+
+#custom-cliphist {
+  background-color: #f5c2e7;
+  /* pinkish, matches other modules */
+  border-radius: 12px;
+  color: #3a3b3c;
+  border: 1px solid #b4befe;
+}
+
+#custom-gpuinfo {
+  background-color: #fab387;
+  /* peach/orange */
+  border-radius: 12px;
+  color: #3a3b3c;
+  border: 1px solid #b4befe;
+}
+
+#custom-theme {
+  background-color: #86b4fa;
+  /* blueish, fits theme accents */
+  border-radius: 12px;
+  color: #3a3b3c;
+  border: 1px solid #b4befe;
+}
+
+#custom-wbar {
+  background-color: #a6e3a1;
+  /* greenish */
+  padding-left: 8px;
+  border-radius: 12px;
+  color: #3a3b3c;
+  border: 1px solid #b4befe;
 }

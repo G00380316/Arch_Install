@@ -1,20 +1,29 @@
-/* Catppuccin Mocha */
+/* ================================
+   Waybar: Hyde.css + Catppuccin Mocha Colors
+   ================================ */
 
+/* --- Base font & reset (Hyde.css) --- */
 * {
-  font-family: "JetBrainsMono Nerd Font";
-  font-weight: bold;
-  min-height: 0;
-  /* set font-size to 100% if font scaling is set to 1.00 using nwg-look */
-  font-size: 97%;
-  font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
+  border: none;
+  border-radius: 0px;
+  font-family: "${font_name}",
+  "JetBrainsMono Nerd Font";
+  /* dynamic font variable */
+  font-size: 10px;
+  min-height: 10px;
 }
 
+/* --- Import Catppuccin Mocha colors --- */
 @import "../waybar/style/catppuccin-themes/mocha.css";
 
+/* --- Waybar window (Hyde.css) --- */
 window#waybar {
+  background: @crust;
   transition-property: background-color;
   transition-duration: 0.5s;
-  background: transparent;
+  padding: 4px;
+  border-top: 1px solid @rosewater;
+  border-bottom: 3px solid @sapphire;
   border-radius: 10px;
 }
 
@@ -22,148 +31,198 @@ window#waybar.hidden {
   opacity: 0.2;
 }
 
-window#waybar.empty,
-window#waybar.empty #window {
-  background-color: transparent;
-  padding: 0px;
-  border: 0px;
+/* --- Tooltip (Hyde.css) --- */
+tooltip {
+  background: @surface0;
+  color: @text;
+  border-radius: 7px;
+  border-width: 0px;
 }
 
-#taskbar button,
+/* --- Workspaces (Hyde.css) --- */
 #workspaces button {
-  color: @overlay1;
   box-shadow: none;
   text-shadow: none;
   padding: 0px;
-  border-radius: 9px;
-  padding-left: 4px;
-  padding-right: 4px;
-  animation: gradient_f 20s ease-in infinite;
-  transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.682);
-}
-
-#taskbar button:hover,
-#workspaces button:hover {
-  border-radius: 10px;
-  color: @peach;
-  background-color: @surface0;
+  border-radius: 8px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  margin-left: 0px;
   padding-left: 2px;
   padding-right: 2px;
-  animation: gradient_f 20s ease-in infinite;
-  transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+  margin-right: 0px;
+  color: @overlay1;
+  animation: ws_normal 20s ease-in-out 1;
 }
 
-#workspaces button.persistent {
-  color: @surface1;
-  border-radius: 10px;
-}
-
-#taskbar button.active,
 #workspaces button.active {
-  color: @mauve;
-  border-radius: 10px;
+  background: @peach;
+  color: @overlay0;
+  margin-left: 2px;
   padding-left: 8px;
   padding-right: 8px;
-  animation: gradient_f 20s ease-in infinite;
-  transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+  margin-right: 2px;
+  animation: ws_active 20s ease-in-out 1;
+  transition: all 0.4s cubic-bezier(.55, -0.68, .48, 1.682);
 }
 
-#workspaces button.urgent {
-  color: @red;
-  border-radius: 0px;
+#workspaces button:hover {
+  background: @surface0;
+  color: @peach;
+  animation: ws_hover 20s ease-in-out 1;
+  transition: all 0.3s cubic-bezier(.55, -0.68, .48, 1.682);
 }
 
-/* This section can be use if you want to separate waybar modules */
-.modules-left,
-.modules-center,
-.modules-right {
-  background: @theme_base_color;
-  border: 0.5px solid @overlay0;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  padding-right: 4px;
-  padding-left: 4px;
-  border-radius: 10px;
+/* --- Taskbar (Hyde.css) --- */
+#taskbar button {
+  box-shadow: none;
+  text-shadow: none;
+  padding: 0px;
+  border-radius: 8px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  margin-left: 0px;
+  padding-left: 2px;
+  padding-right: 2px;
+  margin-right: 0px;
+  color: @overlay1;
+  animation: tb_normal 20s ease-in-out 1;
 }
 
-.modules-left,
-.modules-right {
-  border: 1px solid @blue;
+#taskbar button.active {
+  background: @peach;
+  color: @mauve;
+  margin-left: 2px;
+  padding-left: 8px;
+  padding-right: 8px;
+  margin-right: 2px;
+  animation: tb_active 20s ease-in-out 1;
+  transition: all 0.4s cubic-bezier(.55, -0.68, .48, 1.682);
 }
 
+#taskbar button:hover {
+  background: @surface0;
+  color: @peach;
+  animation: tb_hover 20s ease-in-out 1;
+  transition: all 0.3s cubic-bezier(.55, -0.68, .48, 1.682);
+}
+
+#workspaces,
+#taskbar {
+  padding: 0px;
+}
+
+/* --- Tray (Hyde.css) --- */
+#tray menu * {
+  min-height: 16px;
+}
+
+#tray menu separator {
+  min-height: 10px;
+}
+
+/* --- Shared module styling (Hyde.css) --- */
 #backlight,
-#backlight-slider,
 #battery,
 #bluetooth,
+#custom-cava,
+#custom-cliphist,
 #clock,
+#custom-cpuinfo,
 #cpu,
-#disk,
+#custom-display,
+#custom-github_hyde,
+#custom-gpuinfo,
+#custom-hyprsunset,
 #idle_inhibitor,
-#keyboard-state,
+#custom-keybindhint,
+#language,
 #memory,
-#mode,
 #mpris,
 #network,
-#power-profiles-daemon,
-#pulseaudio,
-#pulseaudio-slider,
-#taskbar button,
-#taskbar,
-#temperature,
-#tray,
-#window,
-#wireplumber,
-#workspaces,
-#custom-backlight,
-#custom-browser,
-#custom-cava_mviz,
-#custom-cycle_wall,
-#custom-file_manager,
-#custom-keybinds,
-#custom-keyboard,
-#custom-light_dark,
-#custom-lock,
-#custom-hint,
-#custom-hypridle,
-#custom-menu,
-#custom-playerctl,
-#custom-power_vertical,
+#custom-notifications,
 #custom-power,
-#custom-quit,
-#custom-reboot,
-#custom-settings,
+#privacy,
+#pulseaudio,
+#custom-sensorsinfo,
 #custom-spotify,
-#custom-swaync,
-#custom-tty,
+#taskbar,
+#taskbar#windows,
+#custom-theme,
+#tray,
+#custom-pomodoro,
+#custom-updates,
+#custom-wallchange,
+#custom-wbar,
 #custom-weather,
-#custom-weather.clearNight,
-#custom-weather.cloudyFoggyDay,
-#custom-weather.cloudyFoggyNight,
-#custom-weather.default,
-#custom-weather.rainyDay,
-#custom-weather.rainyNight,
-#custom-weather.severe,
-#custom-weather.showyIcyDay,
-#custom-weather.snowyIcyNight,
-#custom-weather.sunnyDay {
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-right: 6px;
-  padding-left: 6px;
+#window,
+#workspaces,
+#custom-l_end,
+#custom-r_end,
+#custom-sl_end,
+#custom-sr_end,
+#custom-rl_end,
+#custom-rr_end {
+  color: @text;
+  background: @crust;
+  opacity: 1;
+  margin: 3px 0px 3px 0px;
+  padding-left: 4px;
+  padding-right: 4px;
 }
-/*-----Indicators----*/
+
+/* --- Rounded custom modules (Hyde.css) --- */
+#custom-r_end {
+  border-radius: 0px 19px 19px 0px;
+  margin-right: 8px;
+  padding-right: 0px;
+}
+
+#custom-l_end {
+  border-radius: 19px 0px 0px 19px;
+  margin-left: 8px;
+  padding-left: 0px;
+}
+
+#custom-sr_end {
+  border-radius: 0px;
+  margin-right: 8px;
+  padding-right: 0px;
+}
+
+#custom-sl_end {
+  border-radius: 0px;
+  margin-left: 8px;
+  padding-left: 0px;
+}
+
+#custom-rr_end {
+  border-radius: 0px 7px 7px 0px;
+  margin-right: 8px;
+  padding-right: 0px;
+}
+
+#custom-rl_end {
+  border-radius: 7px 0px 0px 7px;
+  margin-left: 8px;
+  padding-left: 0px;
+}
+
+/* --- Indicators & animations (Hyde.css) --- */
 #custom-hypridle.notactive,
 #idle_inhibitor.activated {
   color: #39ff14;
 }
 
-#bluetooth,
-#backlight {
-  color: @blue;
-}
-
-#battery {
-  color: @green;
+#battery.critical:not(.charging) {
+  background-color: @red;
+  color: @text;
+  animation-name: blink;
+  animation-duration: 3s;
+  animation-timing-function: steps(12);
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  box-shadow: inset 0 -3px transparent;
 }
 
 @keyframes blink {
@@ -172,15 +231,17 @@ window#waybar.empty #window {
   }
 }
 
-#battery.critical:not(.charging) {
-  background-color: @red;
-  color: @theme_text_color;
-  animation-name: blink;
-  animation-duration: 3s;
-  animation-timing-function: steps(12);
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-  box-shadow: inset 0 -3px transparent;
+/* --- Catppuccin Mocha module-specific colors --- */
+#backlight {
+  color: @blue;
+}
+
+#battery {
+  color: @green;
+}
+
+#bluetooth {
+  color: @blue;
 }
 
 #clock {
@@ -206,13 +267,6 @@ window#waybar.empty #window {
 
 #temperature.critical {
   background-color: @red;
-}
-
-#tray > .passive {
-  -gtk-icon-effect: dim;
-}
-#tray > .needs-attention {
-  -gtk-icon-effect: highlight;
 }
 
 #keyboard-state {
@@ -254,6 +308,7 @@ window#waybar.empty #window {
 #pulseaudio.bluetooth {
   color: @pink;
 }
+
 #pulseaudio.muted {
   color: @red;
 }
@@ -269,12 +324,14 @@ window#waybar.empty #window {
 #network {
   color: @teal;
 }
+
 #network.disconnected,
 #network.disabled {
   background-color: @surface0;
   color: @text;
 }
 
+/* --- Sliders (Hyde.css) --- */
 #backlight-slider slider,
 #pulseaudio-slider slider {
   min-width: 0px;

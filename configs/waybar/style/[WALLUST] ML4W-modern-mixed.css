@@ -106,11 +106,11 @@ window#waybar.empty #window {
   margin: 0;
 }
 
-.modules-left > widget:first-child > #workspaces {
+.modules-left>widget:first-child>#workspaces {
   margin-left: 0;
 }
 
-.modules-right > widget:last-child > #workspaces {
+.modules-right>widget:last-child>#workspaces {
   margin-right: 0;
 }
 
@@ -168,7 +168,24 @@ window#waybar.empty #window {
 #custom-weather.severe,
 #custom-weather.showyIcyDay,
 #custom-weather.snowyIcyNight,
-#custom-weather.sunnyDay {
+#custom-weather.sunnyDay,
+#custom-wallchange,
+#custom-cliphist,
+#custom-hypridle,
+#custom-hyprsunset,
+#custom-github_hyde,
+#custom-cpuinfo,
+#custom-gpuinfo,
+#custom-theme,
+#custom-wbar,
+#custom-pomodoro,
+#custom-updates,
+#custom-wallchange,
+#custom-wbar,
+#custom-hypridle,
+#custom-weather,
+#custom-power,
+#idle_inhibitor {
   padding: 2px;
   margin-right: 8px;
   margin-left: 6px;
@@ -356,11 +373,11 @@ window#waybar.empty #window {
   padding: 0px 15px 0px 0px;
 }
 
-#tray > .passive {
+#tray>.passive {
   -gtk-icon-effect: dim;
 }
 
-#tray > .needs-attention {
+#tray>.needs-attention {
   -gtk-icon-effect: highlight;
 }
 
@@ -385,4 +402,59 @@ window#waybar.empty #window {
 #pulseaudio-slider highlight {
   min-height: 10px;
   border-radius: 5px;
+}
+
+/* Hyde-style layout for custom modules with balanced left/right */
+#custom-power {
+  padding-left: 6px;
+  /* less left padding */
+  padding-right: 10px;
+  /* more right padding */
+  border-radius: 8px;
+}
+
+#custom-power_vertical {
+  padding-left: 6px;
+  padding-right: 6px;
+  border-radius: 8px;
+}
+
+#idle_inhibitor {
+  padding-left: 10px;
+  padding-right: 6px;
+  border-radius: 8px;
+}
+
+/* Hyde “end” modules: add extra right padding to balance left/right spacing */
+#custom-r_end,
+#custom-rr_end,
+#custom-sr_end,
+#custom-power_vertical {
+  padding-right: 10px;
+}
+
+#custom-l_end,
+#custom-rl_end,
+#custom-sl_end {
+  padding-left: 10px;
+}
+
+/* Standard Hyde modules */
+#custom-wallchange,
+#custom-cliphist,
+#custom-hypridle,
+#custom-hyprsunset,
+#custom-github_hyde,
+#custom-cpuinfo,
+#custom-gpuinfo,
+#custom-theme,
+#custom-wbar,
+#custom-pomodoro,
+#custom-spotify,
+#tray {
+  border-radius: 8px;
+  background-color: @backgroundlight;
+  color: @textcolor2;
+  border-radius: 5px 5px 5px 5px;
+  padding: 2px 15px 0px 10px;
 }

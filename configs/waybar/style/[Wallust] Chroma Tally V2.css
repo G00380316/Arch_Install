@@ -13,11 +13,13 @@
 }
 
 window#waybar {
-  background: @color0; /* Dark background */
+  background: @color0;
+  /* Dark background */
   border-radius: 12px;
   border-bottom: 2px;
   border-style: solid;
-  border-color: @color7; /* Light border */
+  border-color: @color7;
+  /* Light border */
 }
 
 #workspaces {
@@ -26,7 +28,8 @@ window#waybar {
   border-radius: 15px;
   border: 0px;
   font-style: normal;
-  color: @color7; /* Light text */
+  color: @color7;
+  /* Light text */
 }
 
 #taskbar button,
@@ -34,13 +37,13 @@ window#waybar {
   padding: 0px 5px;
   border-radius: 15px;
   border: 0px;
-  color: @color7; /* Light text */
-  background: linear-gradient(
-    45deg,
-    @color5,
-    @color6,
-    @color7
-  ); /* Lighter gradient */
+  color: @color7;
+  /* Light text */
+  background: linear-gradient(45deg,
+      @color5,
+      @color6,
+      @color7 );
+  /* Lighter gradient */
   opacity: 0.5;
   transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
 }
@@ -50,8 +53,10 @@ window#waybar {
   padding: 0px 5px;
   border-radius: 15px;
   border: 0px;
-  color: @color7; /* Light text */
-  background: linear-gradient(45deg, @color5, @color6); /* Lighter gradient */
+  color: @color7;
+  /* Light text */
+  background: linear-gradient(45deg, @color5, @color6);
+  /* Lighter gradient */
   opacity: 1;
   min-width: 40px;
   transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
@@ -59,17 +64,21 @@ window#waybar {
 
 #workspaces button:hover {
   border-radius: 15px;
-  color: @color7; /* Light text */
-  background: linear-gradient(45deg, @color6, @color7); /* Lighter gradient */
+  color: @color7;
+  /* Light text */
+  background: linear-gradient(45deg, @color6, @color7);
+  /* Lighter gradient */
   opacity: 0.8;
   transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
 }
 
 tooltip {
-  background: @color1; /* Slightly darker tooltip background */
+  background: @color1;
+  /* Slightly darker tooltip background */
   opacity: 0.8;
   border-radius: 6px;
-  color: @color7; /* Light text */
+  color: @color7;
+  /* Light text */
 }
 
 #backlight,
@@ -130,35 +139,44 @@ tooltip {
   padding-bottom: 5px;
   padding-right: 6px;
   padding-left: 6px;
-  color: @color6; /* Lighter - changed from color5 */
+  color: @color6;
+  /* Lighter - changed from color5 */
 }
 
 #clock {
-  color: @color6; /* Lighter */
+  color: @color6;
+  /* Lighter */
 }
 
 #backlight {
-  color: @color5; /* Lighter */
+  color: @color5;
+  /* Lighter */
 }
 
 #battery {
-  color: @color6; /* Lighter */
+  color: @color6;
+  /* Lighter */
 }
 
 #battery.charging {
-  color: @color7; /* Lightest */
+  color: @color7;
+  /* Lightest */
 }
 
 @keyframes blink {
   to {
-    color: @color4; /* Slightly lighter blink color */
-    background-color: @color7; /* Lightest */
+    color: @color4;
+    /* Slightly lighter blink color */
+    background-color: @color7;
+    /* Lightest */
   }
 }
 
 #battery.critical:not(.charging) {
-  background: @color5; /* Lighter background */
-  color: @color7; /* Lightest */
+  background: @color5;
+  /* Lighter background */
+  color: @color7;
+  /* Lightest */
   animation-name: blink;
   animation-duration: 3s;
   animation-timing-function: steps(12);
@@ -167,70 +185,83 @@ tooltip {
 }
 
 #cpu {
-  color: @color6; /* Lighter */
+  color: @color6;
+  /* Lighter */
 }
 
 #disk {
-  color: @color5; /* Lighter */
+  color: @color5;
+  /* Lighter */
 }
 
 #custom-keyboard,
 #memory {
-  color: @color6; /* Lighter */
+  color: @color6;
+  /* Lighter */
 }
 
 #network.disabled {
-  color: @color5; /* Lighter */
+  color: @color5;
+  /* Lighter */
 }
 
 #network {
-  color: @color6; /* Lighter */
+  color: @color6;
+  /* Lighter */
 }
 
 #network.disconnected {
-  color: @color5; /* Lighter */
+  color: @color5;
+  /* Lighter */
 }
 
 #pulseaudio {
-  color: @color7; /* Lightest */
+  color: @color7;
+  /* Lightest */
 }
 
 #pulseaudio.muted {
-  color: @color5; /* Lighter */
+  color: @color5;
+  /* Lighter */
 }
 
 #custom-light_dark,
 #temperature {
-  color: @color6; /* Lighter */
+  color: @color6;
+  /* Lighter */
 }
 
 #temperature.critical {
-  color: @color5; /* Lighter */
+  color: @color5;
+  /* Lighter */
 }
 
 #keyboard-state,
 #custom-hypridle,
 #idle_inhibitor {
-  color: @color5; /* Lighter */
+  color: @color5;
+  /* Lighter */
 }
 
 /*-----Indicators----*/
 #custom-hypridle.notactive,
 #idle_inhibitor.activated {
-  color: @color4; /* Slightly lighter */
+  color: @color4;
+  /* Slightly lighter */
 }
 
-#tray {
-}
+#tray {}
 
 #custom-swaync,
 #custom-menu {
-  color: @color7; /* Lightest */
+  color: @color7;
+  /* Lightest */
   padding-left: 8px;
 }
 
 #custom-power {
-  color: @color6; /* Lighter */
+  color: @color6;
+  /* Lighter */
 }
 
 #window {
@@ -239,15 +270,18 @@ tooltip {
 
 #custom-lock,
 #bluetooth {
-  color: @color5; /* Lighter */
+  color: @color5;
+  /* Lighter */
 }
 
 #custom-cava_mviz {
-  color: @color7; /* Lightest */
+  color: @color7;
+  /* Lightest */
 }
 
 #custom-weather {
-  color: @color5; /* Lighter */
+  color: @color5;
+  /* Lighter */
 }
 
 #backlight-slider slider,
@@ -265,12 +299,66 @@ tooltip {
   min-width: 80px;
   min-height: 5px;
   border-radius: 5px;
-  background-color: @color2; /* Slightly darker trough */
+  background-color: @color2;
+  /* Slightly darker trough */
 }
 
 #backlight-slider highlight,
 #pulseaudio-slider highlight {
   min-height: 10px;
   border-radius: 5px;
-  background-color: @color6; /* Lighter highlight */
+  background-color: @color6;
+  /* Lighter highlight */
+}
+
+/* Hyde-style layout for custom modules with balanced left/right */
+#custom-power {
+  padding-left: 6px;
+  /* less left padding */
+  padding-right: 10px;
+  /* more right padding */
+  border-radius: 12px;
+}
+
+#custom-power_vertical {
+  padding-left: 6px;
+  padding-right: 6px;
+  border-radius: 12px;
+}
+
+#idle_inhibitor {
+  padding-left: 10px;
+  padding-right: 6px;
+  border-radius: 12px;
+}
+
+/* Hyde “end” modules: add extra right padding to balance left/right spacing */
+#custom-r_end,
+#custom-rr_end,
+#custom-sr_end,
+#custom-power_vertical {
+  padding-right: 10px;
+}
+
+#custom-l_end,
+#custom-rl_end,
+#custom-sl_end {
+  padding-left: 10px;
+}
+
+/* Standard Hyde modules */
+#custom-wallchange,
+#custom-cliphist,
+#custom-hypridle,
+#custom-hyprsunset,
+#custom-github_hyde,
+#custom-cpuinfo,
+#custom-gpuinfo,
+#custom-theme,
+#custom-wbar,
+#custom-pomodoro,
+#custom-power {
+  opacity: 0.8;
+  padding-right: 8px;
+  padding-left: 10px;
 }

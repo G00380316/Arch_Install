@@ -1,14 +1,18 @@
-
 /* ....Wallust Transparent - Crystal Clear........ */
 /* --- 👍 original designed by https://github.com/Krautt  👍 --- */
 
 @import "../../.config/waybar/wallust/colors-waybar.css";
 
-@define-color critical #ff0000; /* critical color */
-@define-color warning #f3f809; /* warning color */
-@define-color text @color12; /* text color */
-@define-color text-alt @color13; /* text alternative color */
-@define-color bg @color7; /* background color */
+@define-color critical #ff0000;
+/* critical color */
+@define-color warning #f3f809;
+/* warning color */
+@define-color text @color12;
+/* text color */
+@define-color text-alt @color13;
+/* text alternative color */
+@define-color bg @color7;
+/* background color */
 
 * {
   font-family: "JetBrainsMono Nerd Font";
@@ -28,6 +32,7 @@ window#waybar {
 window#waybar.hidden {
   opacity: 0.5;
 }
+
 window#waybar.empty {
   background-color: transparent;
 }
@@ -39,14 +44,11 @@ window#waybar.empty #window {
 }
 
 /*-----module groups----*/
-.modules-right {
-}
+.modules-right {}
 
-.modules-center {
-}
+.modules-center {}
 
-.modules-left {
-}
+.modules-left {}
 
 tooltip {
   color: @color12;
@@ -204,3 +206,55 @@ tooltip {
   border-radius: 5px;
   background-color: wheat;
 }
+
+/* Hyde-style layout for custom modules with balanced left/right */
+#custom-power {
+  padding-left: 6px;
+  /* less left padding */
+  padding-right: 10px;
+  /* more right padding */
+  border-radius: 8px;
+}
+
+#custom-power_vertical {
+  padding-left: 6px;
+  padding-right: 6px;
+  border-radius: 8px;
+}
+
+#idle_inhibitor {
+  padding-left: 10px;
+  padding-right: 6px;
+  border-radius: 8px;
+}
+
+/* Hyde “end” modules: add extra right padding to balance left/right spacing */
+#custom-r_end,
+#custom-rr_end,
+#custom-sr_end,
+#custom-power_vertical {
+  padding-right: 10px;
+}
+
+#custom-l_end,
+#custom-rl_end,
+#custom-sl_end {
+  padding-left: 10px;
+}
+
+/* Standard Hyde modules */
+#custom-wallchange,
+#custom-cliphist,
+#custom-hypridle,
+#custom-hyprsunset,
+#custom-github_hyde,
+#custom-cpuinfo,
+#custom-gpuinfo,
+#custom-theme,
+#custom-wbar {
+  padding-left: 6px;
+  padding-right: 6px;
+  border-radius: 8px;
+}
+
+

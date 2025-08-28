@@ -2,10 +2,10 @@
 
 @define-color background #1d2021;
 @define-color foreground #ebdbb2;
-@define-color dim        #928374;
-@define-color yellow     #fabd2f;
-@define-color red        #fb4934;
-@define-color green      #b8bb26;
+@define-color dim #928374;
+@define-color yellow #fabd2f;
+@define-color red #fb4934;
+@define-color green #b8bb26;
 
 * {
   font-family: "JetBrainsMono Nerd Font";
@@ -172,4 +172,55 @@ window#waybar {
   min-height: 10px;
   border-radius: 5px;
   background-color: @green;
+}
+
+
+/* Hyde-style layout for custom modules with balanced left/right */
+#custom-power {
+  padding-left: 6px;
+  /* less left padding */
+  padding-right: 10px;
+  /* more right padding */
+  border-radius: 8px;
+}
+
+#custom-power_vertical {
+  padding-left: 6px;
+  padding-right: 6px;
+  border-radius: 8px;
+}
+
+#idle_inhibitor {
+  padding-left: 10px;
+  padding-right: 6px;
+  border-radius: 8px;
+}
+
+/* Hyde “end” modules: add extra right padding to balance left/right spacing */
+#custom-r_end,
+#custom-rr_end,
+#custom-sr_end,
+#custom-power_vertical {
+  padding-right: 10px;
+}
+
+#custom-l_end,
+#custom-rl_end,
+#custom-sl_end {
+  padding-left: 10px;
+}
+
+/* Standard Hyde modules */
+#custom-wallchange,
+#custom-cliphist,
+#custom-hypridle,
+#custom-hyprsunset,
+#custom-github_hyde,
+#custom-cpuinfo,
+#custom-gpuinfo,
+#custom-theme,
+#custom-wbar {
+  padding-left: 6px;
+  padding-right: 6px;
+  border-radius: 8px;
 }

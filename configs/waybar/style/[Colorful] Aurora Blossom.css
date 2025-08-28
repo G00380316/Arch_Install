@@ -1,13 +1,20 @@
-/* Aurora Blossom */
+/* Aurora Blossom + Full Hyde Layout Merge + Dynamic Font */
 
+/* Dynamic font from Hyde */
 * {
-  font-family: "JetBrainsMono Nerd Font";
+  font-family: "${font_name}",
+  "JetBrainsMono Nerd Font";
+  /* Hyde dynamic font */
   font-weight: bold;
-  /* set font-size to 100% if font scaling is set to 1.00 using nwg-look */
-  font-size: 97%;
-  font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
+  font-size: 10px;
+  /* Hyde font size */
+  min-height: 10px;
+  /* Hyde spacing */
+  border: none;
+  border-radius: 0px;
 }
 
+/* Waybar window (Aurora design) */
 window#waybar {
   background: transparent;
 }
@@ -19,78 +26,78 @@ window#waybar.empty #window {
   border: 0px;
 }
 
+/* Tooltip (Hyde layout, Aurora colors) */
 tooltip {
+  background-image: linear-gradient(45deg, #7287fd 10%, #209fb5 54%, #8839ef 90%);
   color: black;
-  background-image: linear-gradient(
-    45deg,
-    #7287fd 10%,
-    #209fb5 54%,
-    #8839ef 90%
-  );
   opacity: 0.8;
-  border-radius: 10px;
+  border-radius: 7px;
+  /* Hyde */
+  padding: 2px 6px;
+  /* Hyde layout padding */
 }
 
 tooltip label {
   color: black;
 }
 
-/*-----module groups----*/
+/* Module groups (Aurora gradients, Hyde padding) */
 .modules-left,
 .modules-center,
 .modules-right {
-  background-image: linear-gradient(
-    45deg,
-    #7287fd 10%,
-    #209fb5 54%,
-    #8839ef 90%
-  );
+  background-image: linear-gradient(45deg, #7287fd 10%, #209fb5 54%, #8839ef 90%);
   color: black;
   border-radius: 6px;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  padding-right: 4px;
-  padding-left: 4px;
+  padding: 2px 4px;
 }
 
-/*-----modules indv----*/
-
-#taskbar button,
-#workspaces button {
-  color: black;
+/* Buttons: Workspaces + Taskbar (Hyde layout, Aurora colors) */
+#workspaces button,
+#taskbar button {
   box-shadow: none;
   text-shadow: none;
-  padding: 0px;
-  border-radius: 9px;
-  padding-left: 4px;
-  padding-right: 4px;
+  padding: 0px 2px;
+  /* Hyde normal padding */
+  margin: 2px 0px;
+  /* Hyde spacing */
+  border-radius: 8px;
+  /* Hyde radius */
+  color: black;
+  /* Aurora color */
+  background-color: transparent;
   animation: gradient_f 20s ease-in infinite;
-  transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+  transition: all 0.5s cubic-bezier(.55, -0.68, .48, 1.682);
 }
 
-#taskbar button:hover,
-#workspaces button:hover {
+#workspaces button.active,
+#taskbar button.active {
   color: grey;
+  /* Aurora active color */
+  margin-left: 2px;
+  margin-right: 2px;
+  padding-left: 11px;
+  /* Hyde active padding */
+  padding-right: 11px;
+  animation: gradient_f 20s ease-in infinite;
+  transition: all 0.4s cubic-bezier(.55, -0.68, .48, 1.682);
+}
+
+#workspaces button:hover,
+#taskbar button:hover {
+  color: grey;
+  /* Aurora hover color */
   background-color: rgba(0, 153, 153, 0.2);
   padding-left: 2px;
   padding-right: 2px;
   animation: gradient_f 20s ease-in infinite;
-  transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
-}
-
-#taskbar button.active,
-#workspaces button.active {
-  color: grey;
-  padding-left: 8px;
-  padding-right: 8px;
-  animation: gradient_f 20s ease-in infinite;
-  transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+  transition: all 0.3s cubic-bezier(.55, -0.68, .48, 1.682);
 }
 
 #workspaces button.persistent {
   border-radius: 10px;
 }
 
+/* Hyde custom modules (layout & spacing, Aurora colors) */
 #backlight,
 #backlight-slider,
 #battery,
@@ -107,16 +114,18 @@ tooltip label {
 #power-profiles-daemon,
 #pulseaudio,
 #pulseaudio-slider,
-#taskbar button,
 #taskbar,
 #temperature,
 #tray,
 #window,
 #wireplumber,
 #workspaces,
+#custom-wallchange,
 #custom-backlight,
 #custom-browser,
+#custom-cava,
 #custom-cava_mviz,
+#custom-cliphist,
 #custom-cycle_wall,
 #custom-file_manager,
 #custom-keybinds,
@@ -145,16 +154,69 @@ tooltip label {
 #custom-weather.severe,
 #custom-weather.showyIcyDay,
 #custom-weather.snowyIcyNight,
-#custom-weather.sunnyDay {
+#custom-weather.sunnyDay,
+#custom-keybindhint,
+#custom-hyprsunset,
+#custom-github_hyde,
+#custom-cpuinfo,
+#custom-gpuinfo,
+#custom-theme,
+#custom-wbar,
+#custom-l_end,
+#custom-r_end,
+#custom-sl_end,
+#custom-sr_end,
+#custom-rl_end,
+#custom-rr_end {
   padding-top: 4px;
   padding-bottom: 4px;
-  padding-right: 6px;
-  padding-left: 6px;
+  padding-left: 5px;
+  padding-right: 4px;
+  margin: 3px 0px;
+  color: inherit;
+  /* Keep Aurora colors */
+  background-color: inherit;
+  /* Keep Aurora gradients / transparent */
 }
-#custom-power {
-  padding: 1px 3px;
+
+/* End caps (Hyde layout) */
+#custom-r_end {
+  border-radius: 0px 19px 19px 0px;
+  margin-right: 8px;
+  padding-right: 0px;
 }
-/*-----Indicators----*/
+
+#custom-l_end {
+  border-radius: 19px 0px 0px 19px;
+  margin-left: 8px;
+  padding-left: 0px;
+}
+
+#custom-sr_end {
+  border-radius: 0px;
+  margin-right: 8px;
+  padding-right: 0px;
+}
+
+#custom-sl_end {
+  border-radius: 0px;
+  margin-left: 8px;
+  padding-left: 0px;
+}
+
+#custom-rr_end {
+  border-radius: 0px 7px 7px 0px;
+  margin-right: 8px;
+  padding-right: 0px;
+}
+
+#custom-rl_end {
+  border-radius: 7px 0px 0px 7px;
+  margin-left: 8px;
+  padding-left: 0px;
+}
+
+/* Indicators & special states (Aurora colors) */
 #custom-hypridle.notactive,
 #idle_inhibitor.activated {
   color: #39ff14;
@@ -163,6 +225,7 @@ tooltip label {
 #pulseaudio.muted {
   color: #cc3436;
 }
+
 #temperature.critical {
   color: #cc3436;
 }
@@ -182,6 +245,7 @@ tooltip label {
   animation-direction: alternate;
 }
 
+/* Sliders (Aurora colors, Hyde layout) */
 #backlight-slider slider,
 #pulseaudio-slider slider {
   min-width: 0px;
@@ -198,10 +262,12 @@ tooltip label {
   min-width: 80px;
   min-height: 5px;
   border-radius: 5px;
+  /* Hyde */
 }
 
 #pulseaudio-slider highlight,
 #backlight-slider highlight {
   min-width: 10px;
   border-radius: 5px;
+  /* Hyde */
 }

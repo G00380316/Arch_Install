@@ -28,6 +28,32 @@ window#waybar.solo {
 }
 */
 
+/* Missing Hyde custom modules layout */
+#custom-wallchange,
+#custom-cliphist,
+#custom-hypridle,
+#custom-hyprsunset,
+#custom-github_hyde,
+#custom-cpuinfo,
+#custom-gpuinfo,
+#custom-theme,
+#custom-wbar,
+#custom-l_end,
+#custom-r_end,
+#custom-sl_end,
+#custom-sr_end,
+#custom-rl_end,
+#custom-rr_end {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 6px;
+  padding-right: 6px;
+  margin: 2px 0px;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0);
+  /* fully transparent where no module */
+}
+
 button {
   all: unset;
   background-color: #778f52;
@@ -125,12 +151,12 @@ button.active {
 }
 
 /* If workspaces is the leftmost module, omit left margin */
-.modules-left > widget:first-child > #workspaces {
+.modules-left>widget:first-child>#workspaces {
   margin-left: 0;
 }
 
 /* If workspaces is the rightmost module, omit right margin */
-.modules-right > widget:last-child > #workspaces {
+.modules-right>widget:last-child>#workspaces {
   margin-right: 0;
 }
 
@@ -282,11 +308,11 @@ label:focus {
   border-bottom: 8px solid #c3653b;
 }
 
-#tray > .passive {
+#tray>.passive {
   -gtk-icon-effect: dim;
 }
 
-#tray > .needs-attention {
+#tray>.needs-attention {
   -gtk-icon-effect: highlight;
   background-color: #eb4d4b;
 }
@@ -330,11 +356,11 @@ label:focus {
   border-bottom: 8px solid #78b48a;
 }
 
-#keyboard-state > label {
+#keyboard-state>label {
   padding: 0 5px;
 }
 
-#keyboard-state > label.locked {
+#keyboard-state>label.locked {
   background: rgba(0, 0, 0, 0.2);
 }
 
@@ -408,4 +434,27 @@ tooltip label {
 #backlight-slider highlight {
   min-width: 10px;
   border-radius: 5px;
+}
+
+#custom-power {
+  padding-left: 6px;
+  /* less left padding */
+  padding-right: 10px;
+  /* more right padding */
+  margin: 2px 0px;
+  border-radius: 8px;
+}
+
+#custom-power_vertical {
+  padding-left: 6px;
+  padding-right: 6px;
+  margin: 2px 0px;
+  border-radius: 8px;
+}
+
+#idle_inhibitor {
+  padding-left: 10px;
+  padding-right: 6px;
+  margin: 2px 0px;
+  border-radius: 8px;
 }

@@ -86,18 +86,16 @@ window#waybar.empty #window {
   padding-left: 4px;
   border-radius: 0px;
 
-  border-image: linear-gradient(
-      90deg,
+  border-image: linear-gradient(90deg,
       red,
       orange,
       yellow,
       green,
       blue,
       indigo,
-      violet
-    )
-    1;
-  animation: rainbow-gradient 20s ease-in-out infinite; /* Adjust timing as needed */
+      violet) 1;
+  animation: rainbow-gradient 20s ease-in-out infinite;
+  /* Adjust timing as needed */
 }
 
 #backlight,
@@ -160,6 +158,7 @@ window#waybar.empty #window {
   padding-right: 6px;
   padding-left: 6px;
 }
+
 /*-----Indicators----*/
 #custom-hypridle.notactive,
 #idle_inhibitor.activated {
@@ -217,10 +216,11 @@ window#waybar.empty #window {
   background-color: @red;
 }
 
-#tray > .passive {
+#tray>.passive {
   -gtk-icon-effect: dim;
 }
-#tray > .needs-attention {
+
+#tray>.needs-attention {
   -gtk-icon-effect: highlight;
 }
 
@@ -235,16 +235,24 @@ window#waybar.empty #window {
 @keyframes rainbow-text {
   0% {
     color: rgb(0, 247, 198);
-  } /* Low amplitude */
+  }
+
+  /* Low amplitude */
   42% {
     color: rgb(60, 0, 179);
-  } /* Mid amplitude */
+  }
+
+  /* Mid amplitude */
   71% {
     color: indigo;
-  } /* Higher amplitude */
+  }
+
+  /* Higher amplitude */
   100% {
     color: rgb(234, 0, 255);
-  } /* Maximum amplitude */
+  }
+
+  /* Maximum amplitude */
 }
 
 #custom-menu {
@@ -278,6 +286,7 @@ window#waybar.empty #window {
 #pulseaudio.bluetooth {
   color: @pink;
 }
+
 #pulseaudio.muted {
   color: @red;
 }
@@ -293,6 +302,7 @@ window#waybar.empty #window {
 #network {
   color: @teal;
 }
+
 #network.disconnected,
 #network.disabled {
   background-color: @surface0;
@@ -320,4 +330,55 @@ window#waybar.empty #window {
 #pulseaudio-slider highlight {
   min-height: 10px;
   border-radius: 5px;
+}
+
+
+/* Hyde-style layout for custom modules with balanced left/right */
+#custom-power {
+  padding-left: 6px;
+  /* less left padding */
+  padding-right: 10px;
+  /* more right padding */
+  border-radius: 8px;
+}
+
+#custom-power_vertical {
+  padding-left: 6px;
+  padding-right: 6px;
+  border-radius: 8px;
+}
+
+#idle_inhibitor {
+  padding-left: 10px;
+  padding-right: 6px;
+  border-radius: 8px;
+}
+
+/* Hyde “end” modules: add extra right padding to balance left/right spacing */
+#custom-r_end,
+#custom-rr_end,
+#custom-sr_end,
+#custom-power_vertical {
+  padding-right: 10px;
+}
+
+#custom-l_end,
+#custom-rl_end,
+#custom-sl_end {
+  padding-left: 10px;
+}
+
+/* Standard Hyde modules */
+#custom-wallchange,
+#custom-cliphist,
+#custom-hypridle,
+#custom-hyprsunset,
+#custom-github_hyde,
+#custom-cpuinfo,
+#custom-gpuinfo,
+#custom-theme,
+#custom-wbar {
+  padding-left: 6px;
+  padding-right: 6px;
+  border-radius: 8px;
 }

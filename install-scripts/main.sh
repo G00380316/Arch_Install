@@ -227,7 +227,7 @@ fi
 if prompt_yes_no "Are you using a Laptop?" "N"; then
   sudo pacman -S --noconfirm --needed tlp tlp-rdw || err "Failed to install tlp"
   sudo systemctl enable --now tlp
-  sudo cp ./Extra/etc/logind.conf /etc/systemd/ || err "Failed to copy logind.conf"
+  sudo cp ./extra/etc/logind.conf /etc/systemd/ || err "Failed to copy logind.conf"
   ~/.config/hypr/scripts/Battery-manager.sh || log "Battery manager script executed (or missing)."
   log "Please use Battery-manager script in ~/.config/hypr/scripts/ to configure Battery Usage for tlp"
 else
@@ -276,10 +276,10 @@ sudo cp ~/Arch_Install/install-scripts/assets/Hyprlock-main/Anurati-Regular.otf 
 fc-cache -fv || true
 
 # Add themes
-log "Adding Extra Hyprlock Theme..."
-sudo cp -r ~/Arch_Install/install-scripts/Extra/Candy_Modified /usr/share/sddm/themes || true
+log "Adding extra Hyprlock Theme..."
+sudo cp -r ~/Arch_Install/install-scripts/extra/Candy_Modified /usr/share/sddm/themes || true
 log "Ensuring SDDM config for Kool Script..."
-sudo cp -r ~/Arch_Install/install-scripts/Extra/etc/sddm.conf /etc/ || true
+sudo cp -r ~/Arch_Install/install-scripts/extra/etc/sddm.conf /etc/ || true
 
 # Theme patching
 THEME_PATCH_BASE="$HOME/.cache/hyde/themepatcher"
@@ -289,11 +289,12 @@ cd "$THEME_PATCH_BASE" || true
 safe_clone "https://github.com/Maroc02/Moonlight.git" "./Moonlight" && theme.patch.sh "Moonlight" ./Moonlight || err "Moonlight patch failed"
 safe_clone "https://github.com/cyb3rgh0u1/Another-World.git" "./Another-World" && theme.patch.sh "Another World" ./Another-World || err "Another World patch failed"
 
-cd "$HOME/Arch_Install/install-scripts/Extra/Themes" || true
+cd "$HOME/Arch_Install/install-scripts/extra/Themes" || true
 theme.patch.sh "Hack the Box" ./HackTheBox || true
 theme.patch.sh "Windows 11" ./Windows11 || true
-cp -r ~/Pictures/wallpapers ./G00380316/Configs/.config/hyde/themes/G00380316 || true
-theme.patch.sh "G00380316" ./G00380316 || true
+theme.patch.sh "Timeless Dream" ./Timeless-Dream || true
+theme.patch.sh "1-Bit" ./1-Bit || true
+theme.patch.sh "Breezy Autumn" ./Breezy-Autumn || true
 theme.patch.sh "Piece Of Mind" ./Piece_Of_Mind || true
 theme.patch.sh "Crimson-Blue" ./Crimson-Blue || true
 theme.patch.sh "Obsidian-Purple" ./Obsidian-Purple || true

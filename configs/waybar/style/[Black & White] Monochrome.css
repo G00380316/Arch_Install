@@ -1,22 +1,36 @@
-/*  Black & White MonoChrome */
+/* ================================
+   Waybar: Hyde.css structure + MonoChrome colors (ultra-compact)
+   ================================ */
 
+/* --- Base font & reset --- */
 * {
-  font-family: "JetBrainsMono Nerd Font";
+  border: none;
+  border-radius: 0px;
+  font-family: "${font_name}",
+  "JetBrainsMono Nerd Font";
+  /* dynamic font variable */
   font-weight: bold;
-  min-height: 0;
-  /* set font-size to 100% if font scaling is set to 1.00 using nwg-look */
-  font-size: 97%;
-  font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
+  font-size: 10px;
+  min-height: 10px;
 }
 
+/* --- Waybar window --- */
 window#waybar,
 window#waybar.empty,
 window#waybar.empty #window {
   background-color: transparent;
   padding: 0px;
   border: 0px;
+  border-radius: 10px;
+  transition-property: background-color;
+  transition-duration: 0.5s;
 }
 
+window#waybar.hidden {
+  opacity: 0.2;
+}
+
+/* --- Tooltip --- */
 tooltip {
   color: white;
   background: #1e1e2e;
@@ -30,139 +44,198 @@ tooltip {
 tooltip label {
   color: #cdd6f4;
 }
-/*-----module groups----*/
+
+/* --- Modules group styling (MonoChrome, tightened spacing) --- */
+.modules-left,
+.modules-center,
 .modules-right {
+  border-bottom: 1px solid white;
+  border-radius: 10px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 2px;
+  padding-right: 2px;
   background-color: black;
   color: white;
-  border-bottom: 1px;
-  border-style: solid;
-  border-color: white;
-  border-radius: 10px;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  padding-right: 4px;
-  padding-left: 4px;
+  margin: 0px;
+  /* remove extra spacing */
 }
+
+/* Ultra-compact first/last modules */
+.modules-left:first-child {
+  padding-left: 2px;
+  margin-left: 0px;
+}
+
+.modules-right:last-child {
+  padding-right: 2px;
+  margin-right: 0px;
+}
+
 .modules-center {
-  background-color: black;
-  color: white;
-  border-bottom: 1px;
-  border-style: solid;
-  border-color: white;
-  border-radius: 10px;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  padding-right: 4px;
-  padding-left: 4px;
+  padding-left: 2px;
+  padding-right: 2px;
+  margin: 0px;
 }
-.modules-left {
-  background-color: black;
-  color: white;
-  border-bottom: 1px;
-  border-style: solid;
-  border-color: white;
-  border-radius: 10px;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  padding-right: 4px;
-  padding-left: 4px;
-}
-/*-----modules indv----*/
-#taskbar button,
+
+/* --- Workspaces (Hyde.css layout, MonoChrome colors) --- */
 #workspaces button {
-  color: dimgrey;
   box-shadow: none;
   text-shadow: none;
   padding: 0px;
-  border-radius: 9px;
-  padding-left: 4px;
-  padding-right: 4px;
-  animation: gradient_f 20s ease-in infinite;
-  transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.682);
-}
-#taskbar button:hover,
-#workspaces button:hover {
-  color: white;
-  background-color: #7f849c;
+  border-radius: 8px;
+  margin: 0px;
   padding-left: 2px;
   padding-right: 2px;
-  animation: gradient_f 20s ease-in infinite;
-  transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+  animation: ws_normal 20s ease-in-out 1;
+  color: dimgrey;
 }
 
-#taskbar button.active,
 #workspaces button.active {
+  margin-left: 2px;
+  padding-left: 11px;
+  padding-right: 11px;
+  margin-right: 2px;
+  animation: ws_active 20s ease-in-out 1;
+  transition: all 0.4s cubic-bezier(.55, -0.68, .48, 1.682);
   color: white;
-  padding-left: 8px;
-  padding-right: 8px;
-  animation: gradient_f 20s ease-in infinite;
-  transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
 }
 
-#workspaces button.persistent {
-  border-radius: 10px;
+#workspaces button:hover {
+  animation: ws_hover 20s ease-in-out 1;
+  transition: all 0.3s cubic-bezier(.55, -0.68, .48, 1.682);
+  padding-left: 2px;
+  padding-right: 2px;
+  color: white;
+  background-color: #7f849c;
 }
 
+/* --- Taskbar (Hyde.css layout, MonoChrome colors) --- */
+#taskbar button {
+  box-shadow: none;
+  text-shadow: none;
+  padding: 0px;
+  border-radius: 8px;
+  margin: 0px;
+  padding-left: 2px;
+  padding-right: 2px;
+  animation: tb_normal 20s ease-in-out 1;
+  color: dimgrey;
+}
+
+#taskbar button.active {
+  margin-left: 2px;
+  padding-left: 11px;
+  padding-right: 11px;
+  margin-right: 2px;
+  animation: tb_active 20s ease-in-out 1;
+  transition: all 0.4s cubic-bezier(.55, -0.68, .48, 1.682);
+  color: white;
+}
+
+#taskbar button:hover {
+  animation: tb_hover 20s ease-in-out 1;
+  transition: all 0.3s cubic-bezier(.55, -0.68, .48, 1.682);
+  padding-left: 2px;
+  padding-right: 2px;
+  color: white;
+  background-color: #7f849c;
+}
+
+/* --- Shared module padding (Hyde.css) --- */
 #backlight,
-#backlight-slider,
 #battery,
 #bluetooth,
+#custom-cava,
+#custom-cliphist,
 #clock,
+#custom-cpuinfo,
 #cpu,
-#disk,
+#custom-display,
+#custom-github_hyde,
+#custom-gpuinfo,
+#custom-hyprsunset,
 #idle_inhibitor,
-#keyboard-state,
+#custom-keybindhint,
+#language,
 #memory,
-#mode,
 #mpris,
 #network,
-#power-profiles-daemon,
-#pulseaudio,
-#pulseaudio-slider,
-#taskbar,
-#temperature,
-#tray,
-#window,
-#wireplumber,
-#workspaces,
-#custom-backlight,
-#custom-browser,
-#custom-cava_mviz,
-#custom-cycle_wall,
-#custom-file_manager,
-#custom-keybinds,
-#custom-keyboard,
-#custom-light_dark,
-#custom-lock,
-#custom-hint,
-#custom-hypridle,
-#custom-menu,
-#custom-playerctl,
-#custom-power_vertical,
+#custom-notifications,
 #custom-power,
-#custom-quit,
-#custom-reboot,
-#custom-settings,
+#privacy,
+#pulseaudio,
+#custom-sensorsinfo,
 #custom-spotify,
-#custom-swaync,
-#custom-tty,
+#taskbar,
+#taskbar#windows,
+#custom-theme,
+#tray,
+#custom-pomodoro,
+#custom-updates,
+#custom-wallchange,
+#custom-wbar,
 #custom-weather,
-#custom-weather.clearNight,
-#custom-weather.cloudyFoggyDay,
-#custom-weather.cloudyFoggyNight,
-#custom-weather.default,
-#custom-weather.rainyDay,
-#custom-weather.rainyNight,
-#custom-weather.severe,
-#custom-weather.showyIcyDay,
-#custom-weather.snowyIcyNight,
-#custom-weather.sunnyDay {
+#window,
+#workspaces,
+#custom-l_end,
+#custom-r_end,
+#custom-sl_end,
+#custom-sr_end,
+#custom-rl_end,
+#custom-rr_end {
   padding-top: 4px;
   padding-bottom: 4px;
-  padding-right: 6px;
   padding-left: 6px;
+  padding-right: 6px;
+  margin: 0px;
+  /* reduce gaps between modules */
 }
-/*-----Indicators----*/
+
+/* --- Custom end modules (Hyde.css layout, MonoChrome colors, tighter spacing) --- */
+#custom-l_end {
+  padding-left: 0px;
+  margin-left: 4px;
+  color: white;
+  border-radius: 19px 0px 0px 19px;
+}
+
+#custom-r_end {
+  padding-right: 0px;
+  margin-right: 4px;
+  color: white;
+  border-radius: 0px 19px 19px 0px;
+}
+
+#custom-sl_end {
+  padding-left: 0px;
+  margin-left: 4px;
+  color: white;
+  border-radius: 0px;
+}
+
+#custom-sr_end {
+  padding-right: 0px;
+  margin-right: 4px;
+  color: white;
+  border-radius: 0px;
+}
+
+#custom-rl_end {
+  padding-left: 0px;
+  margin-left: 4px;
+  color: white;
+  border-radius: 7px 0px 0px 7px;
+}
+
+#custom-rr_end {
+  padding-right: 0px;
+  margin-right: 4px;
+  color: white;
+  border-radius: 0px 7px 7px 0px;
+}
+
+/* --- Indicators & animations --- */
 #custom-hypridle.notactive,
 #idle_inhibitor.activated {
   color: #39ff14;
@@ -171,6 +244,7 @@ tooltip label {
 #pulseaudio.muted {
   color: #cc3436;
 }
+
 #temperature.critical {
   color: red;
 }
@@ -190,6 +264,7 @@ tooltip label {
   animation-direction: alternate;
 }
 
+/* --- Sliders --- */
 #backlight-slider slider,
 #pulseaudio-slider slider {
   min-width: 0px;

@@ -216,14 +216,14 @@ tooltip {
   color: #39ff14;
 }
 
-#tray {
-}
+#tray {}
 
 #custom-swaync,
 #custom-menu {
   color: yellow;
   padding-left: 8px;
 }
+
 #custom-power {
   color: #eba0ac;
 }
@@ -266,4 +266,56 @@ tooltip {
 #pulseaudio-slider highlight {
   min-height: 10px;
   border-radius: 5px;
+}
+
+/* Hyde-style layout for custom modules with balanced left/right */
+#custom-power {
+  padding-left: 6px;
+  /* less left padding */
+  padding-right: 10px;
+  /* more right padding */
+  border-radius: 12px;
+}
+
+#custom-power_vertical {
+  padding-left: 6px;
+  padding-right: 6px;
+  border-radius: 12px;
+}
+
+#idle_inhibitor {
+  padding-left: 10px;
+  padding-right: 6px;
+  border-radius: 12px;
+}
+
+/* Hyde “end” modules: add extra right padding to balance left/right spacing */
+#custom-r_end,
+#custom-rr_end,
+#custom-sr_end,
+#custom-power_vertical {
+  padding-right: 10px;
+}
+
+#custom-l_end,
+#custom-rl_end,
+#custom-sl_end {
+  padding-left: 10px;
+}
+
+/* Standard Hyde modules */
+#custom-wallchange,
+#custom-cliphist,
+#custom-hypridle,
+#custom-hyprsunset,
+#custom-github_hyde,
+#custom-cpuinfo,
+#custom-gpuinfo,
+#custom-theme,
+#custom-wbar,
+#custom-pomodoro,
+#custom-power {
+  opacity: 0.8;
+  padding-right: 8px;
+  padding-left: 10px;
 }

@@ -22,12 +22,12 @@ backend = "swww" # Wallpaper backend, example: swww, hyprpaper, pcmanfm, feh, et
 
 [wallpaper.swww]
 # swwwallselect.sh configuration
-framerate = 60 # transition framerate
+framerate = 30 # transition framerate
 duration = 2   # transition duration
 # Transition type [ none | simple | fade | left | right | top | bottom | wipe | wave | grow | center | any | outer | random ]
-transition_next = "any"    # transition type for next wallpaper
-transition_prev = "any"   # transition type for previous wallpaper
-transition_default = "any" # transition type for default wallpaper
+transition_next = "left"    # transition type for next wallpaper
+transition_prev = "right"   # transition type for previous wallpaper
+transition_default = "random" # transition type for default wallpaper
 
 
 # NOTE:
@@ -73,7 +73,7 @@ scale = 10
 scale = 8
 
 [wlogout]
-style = 1
+style = 2
 
 [battery.notify]
 # batterynotify.sh configuration
@@ -85,7 +85,7 @@ dock = false
 [battery.notify.threshold]
 full = 97
 critical = 3
-low = 20
+low = 10
 unplug = 90
 
 [battery.notify.execute]
