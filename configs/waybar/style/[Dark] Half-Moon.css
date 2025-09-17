@@ -333,7 +333,6 @@ tooltip label {
   /* more right padding */
   margin: 2px 0px;
   border-radius: 8px;
-  background-color: rgba(0, 0, 0, 0);
 }
 
 #custom-power_vertical {
@@ -341,15 +340,11 @@ tooltip label {
   padding-right: 6px;
   margin: 2px 0px;
   border-radius: 8px;
-  background-color: rgba(0, 0, 0, 0);
 }
 
 #idle_inhibitor {
-  padding-left: 6px;
-  padding-right: 6px;
-  margin: 2px 0px;
-  border-radius: 8px;
-  background-color: rgba(0, 0, 0, 0);
+  padding-right: 10px;
+  border-radius: 50px 50px;
 }
 
 /* Hyde “end” modules: add extra right padding to balance left/right spacing */
@@ -375,10 +370,14 @@ tooltip label {
 #custom-cpuinfo,
 #custom-gpuinfo,
 #custom-theme,
-#custom-wbar {
-  padding-left: 6px;
-  padding-right: 6px;
-  margin: 2px 0px;
-  border-radius: 8px;
-  background-color: rgba(0, 0, 0, 0);
+#custom-wbar,
+#custom-updates,
+#custom-pomodoro,
+#custom-spotify,
+#custom-power,
+#custom-keybindhint {
+  margin: 5px;
+  padding: 4px 18px;
+  border-radius: 50px 50px;
+  background: #0F1419;
 }
