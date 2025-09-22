@@ -82,7 +82,7 @@ aur_packages=(
   "onedrive-abraunegg" "dbgate-beta-bin" "postman-bin" "wayland-pipewire-idle-inhibit"
   "filebot" "obs-studio" "7zip" "github-desktop-bin"
   "fzf" "bat" "tofi" "bluetui" "pokemon-colorscripts-git"
-  "spotify-adblock-git" "hypnotix-wayland" "pwvucontrol"
+  "spotify-adblock-git" "iptvnator" "pwvucontrol"
   "arc-gtx-theme" "papirus-icon-theme" "whyq" "freetube"
   "swww" "sof-bin" "zathura" "spicetify-cli" "quickemu-git"
   "iwmenu" "bzmenu" "setzer-git" "winegui"
