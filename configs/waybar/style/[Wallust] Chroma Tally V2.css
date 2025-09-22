@@ -8,7 +8,7 @@
   font-family: "JetBrainsMono Nerd Font";
   font-weight: bold;
   min-height: 0;
-  font-size: 97%;
+  font-size: 90%;
   font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
 }
 
@@ -39,10 +39,7 @@ window#waybar {
   border: 0px;
   color: @color7;
   /* Light text */
-  background: linear-gradient(45deg,
-      @color5,
-      @color6,
-      @color7 );
+  background: linear-gradient(45deg, @color5, @color6, @color7);
   /* Lighter gradient */
   opacity: 0.5;
   transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
@@ -250,7 +247,8 @@ tooltip {
   /* Slightly lighter */
 }
 
-#tray {}
+#tray {
+}
 
 #custom-swaync,
 #custom-menu {

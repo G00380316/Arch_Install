@@ -5,12 +5,12 @@
   font-weight: bold;
   min-height: 0;
   /* set font-size to 100% if font scaling is set to 1.00 using nwg-look */
-  font-size: 97%;
+  font-size: 90%;
   font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
 
   border: none;
   border-radius: 10px;
-  font-size: 97%;
+  font-size: 90%;
   min-height: 20px;
   margin: 0px;
 }
@@ -21,12 +21,12 @@
   margin: 1px 1px;
 }
 
-.modules-left>widget:first-child .module {
+.modules-left > widget:first-child .module {
   margin-left: 2px;
 }
 
 /* Special Case: Right Margin for Last Module in Right Section */
-.modules-right>widget:last-child .module {
+.modules-right > widget:last-child .module {
   margin-right: 2px;
 }
 
@@ -244,11 +244,11 @@ label:focus {
 }
 
 /* Keyboard State Styles */
-#keyboard-state>label {
+#keyboard-state > label {
   padding: 0 5px;
 }
 
-#keyboard-state>label.locked {
+#keyboard-state > label.locked {
   background: rgba(0, 0, 0, 0.2);
 }
 
@@ -257,11 +257,11 @@ label:focus {
   background-color: black;
 }
 
-#tray>.passive {
+#tray > .passive {
   -gtk-icon-effect: dim;
 }
 
-#tray>.needs-attention {
+#tray > .needs-attention {
   -gtk-icon-effect: highlight;
   padding: 0 5px;
   background-color: red;
