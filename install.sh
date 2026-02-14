@@ -71,25 +71,6 @@
     sleep 1
     git pull
     sleep 3
-    echo "Do you want to install Gnome Display Manager just in case someting goes wrong? (y/n)"
-    read -r answer
-
-    if [[ "$answer" == "y" || "$answer" == "Y" ]]; then
-        echo "Installing Gnome display manager real quick..."
-        sudo pacman -S gdm
-    else
-        echo "Fine!!! Lets continue..."
-    fi
-    sleep 3
-    # Move custom configuration files
-    clear
-    sleep 3
-    echo "Working hard on moving your existing config files..."
-    clear
-    sleep 3
-    echo "Working hard on moving your existing config files..."
-    clear
-    sleep 3
     echo "Working hard on moving your existing config files..."
 
     rsync -a --progress ~/Arch_Install/configs/ ~/.config/
@@ -121,7 +102,7 @@
     chmod +x *.sh
 
     # Available scripts
-    SCRIPTS=( "zsh.sh" "devs.sh" "wallust.sh" "AniInstall.sh" "install.sh" "vanilla_sway.sh" "printers.sh" "displaylinkinstall.sh" "nerdfonts.sh" "wallpapers.sh" "util.sh" "main.sh")
+    SCRIPTS=( "zsh.sh" "devs.sh"  "AniInstall.sh" "install.sh" "printers.sh" "displaylinkinstall.sh" "nerdfonts.sh"  "main.sh")
 
     # Function to run a script
     run_script() {

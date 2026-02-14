@@ -36,23 +36,9 @@ rm -rf ~/.config/nvim
 mkdir -p ~/.config
 cp -r ./nvim ~/.config/nvim/
 
-# Clone tpm for tmux
-# echo "Cloning tpm for tmux configuration..."
-# if [ -d ./tpm/.git ]; then
-#     echo "TPM already exists in ./tpm, pulling latest changes..."
-#     git -C ./tpm pull
-# else
-#     echo "Cloning TPM fresh into ./tpm..."
-#     git clone https://github.com/tmux-plugins/tpm ./tpm
-# fi
-#
-# rm -rf ~/.tmux/plugins/tpm
-# mkdir -p ~/.tmux/plugins/
-# cp -r ./tpm ~/.tmux/plugins/tpm
-
 # Setup dirs
 dircolors -p > ~/.dircolors
-mkdir -p ~/Store/Projects ~/.cache/hyde/wallpapers
+# mkdir -p ~/Store/Projects ~/.cache/hyde/wallpapers
 
 # Install JetBrains Nerd Font if not already installed
 echo "Checking for JetBrains Mono Nerd Font..."
@@ -149,18 +135,12 @@ else
     rustup update
 fi
 
-# Install Flutter + Android
-if command -v flutter >/dev/null 2>&1; then
-    echo "Flutter is already installed. Skipping..."
-else
-    echo "Installing Flutter and Android tools..."
-    sudo rm -rf /opt/flutter
-    git clone https://github.com/flutter/flutter.git -b stable
-    sudo mv flutter /opt/flutter
-    echo 'export PATH="$PATH:/opt/flutter/bin"' >> ~/.zshrc
+# Install Android
+if
+    echo "Installing Android tools..."
     echo 'export CHROME_EXECUTABLE="/usr/bin/google-chrome-stable"' >> ~/.zshrc
     zsh -i -c "source ~/.zshrc"
-    yay -S --noconfirm --needed android-studio sdkmanager
+    yay -S --noconfirm --needed sdkmanager
     sudo sdkmanager --install "cmdline-tools;latest"
     sudo sdkmanager "platforms;android-34"
     pacman -S --noconfirm --needed android-sdk android-sdk-platform-tools android-sdk-build-tools
